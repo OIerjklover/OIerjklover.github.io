@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="广西/贵州 $OI$ .">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-04-21T07:53:40.256Z">
+<meta property="og:updated_time" content="2019-04-21T07:56:13.027Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GXOI&#x2F;GZOI2019 选做">
 <meta name="twitter:description" content="广西/贵州 $OI$ .">
@@ -383,7 +383,7 @@
                 
               
 
-              <time title="Created: 2019-04-21 13:45:53 / Modified: 15:53:40" itemprop="dateCreated datePublished" datetime="2019-04-21T13:45:53+08:00">2019-04-21</time>
+              <time title="Created: 2019-04-21 13:45:53 / Modified: 15:56:13" itemprop="dateCreated datePublished" datetime="2019-04-21T13:45:53+08:00">2019-04-21</time>
             
 
             
@@ -449,7 +449,7 @@
 <li>所有合法决策最值,一定是一个使 <strong>对向交换</strong> 的次数最多,另一个使 <strong>对向交换</strong> 的次数最少.</li>
 <li>计算 $a,b$ 的贡献时,交点的具体位置不重要,先只考虑 $y$ 的相对大小.</li>
 <li>对于最多的情况,我们可以在 <strong>每个</strong> 交点处都选择 <strong>对向交换</strong> .因为每个交点其实就是二元组 $(y_0,y_1)$ 的一个逆序对产生的.那么将每个逆序对的 $y_1$ 都交换,最后就不会有逆序对(交换排序),即满足要求.</li>
-<li>对于最少的情况,可以发现对于 $y_1$ 中的每个置换,内部需要交换大小 $-1$ 次,各个置换独立,那么总交换次数为 $n-$ 置换数目.</li>
+<li>对于最少的情况,可以发现对于 $y_1$ 中的每个置换,内部需要交换大小 $-1$ 次,各个置换独立,那么总交换次数为 $n-​$ 置换数目.找到的<a href="https://blog.csdn.net/gettogetto/article/details/69389810" target="_blank" rel="noopener">证明</a>.</li>
 <li>再来算 $c$ 的贡献.可以把所有点按 $y_1$ 从大到小依次加入 $set$ 中,以 $y_0$ 为关键字,这样能产生交点的点在 $set$ 中是一个前缀部分,合法就计算交点,不合法时就跳出,加入下一个点.</li>
 <li>曼哈顿距离不太好搞,经典套路,转化成切比雪夫距离,就变成了问每个交点是否被一些矩形中的至少一个覆盖.</li>
 <li>把点加入 $kdtree$ 中,每个矩形给其中的点打一打标记就好了.也可以离线后扫描线+树状数组.</li>
