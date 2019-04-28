@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="大概 $OIer$ 上化学课都会想到这个吧?">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-04-20T10:55:10.438Z">
+<meta property="og:updated_time" content="2019-04-28T14:36:21.319Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="烷烃计数">
 <meta name="twitter:description" content="大概 $OIer$ 上化学课都会想到这个吧?">
@@ -383,12 +383,24 @@
                 
               
 
-              <time title="Created: 2019-04-20 18:49:09 / Modified: 18:55:10" itemprop="dateCreated datePublished" datetime="2019-04-20T18:49:09+08:00">2019-04-20</time>
+              <time title="Created: 2019-04-20 18:49:09" itemprop="dateCreated datePublished" datetime="2019-04-20T18:49:09+08:00">2019-04-20</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-28 22:36:21" itemprop="dateModified" datetime="2019-04-28T22:36:21+08:00">2019-04-28</time>
               
             
           </span>
@@ -434,15 +446,12 @@
 <ul>
 <li>今天化学课教烷烃的同分异构体,我:这烷烃不就是颗树嘛?同分异构体数目不就是无标号树的个数嘛? $prufer$ 序列随便搞一下就能算吧???</li>
 <li>然后发现一个碳旁边最多连四个碳,度数还要 $\leq 4$.</li>
-<li><p>然后我就问旁边数竞小哥:你知道这个东西的通项嘛?他:我来找下规律.我:这东西(指数树)的规律大概率找不出来吧…他不信邪,结果找了一节课,未果,寻病终…</p>
-</li>
-<li><p>然后在 $dalao$ 们的博客中学习了一下.记 $f(i,j)$ 表示 $i$ 个点的<strong>有根树</strong>,根节点的度数为 $j$ 的方案数目.</p>
-</li>
+<li>然后我就问旁边数竞小哥:你知道这个东西的通项嘛?他:我来找下规律.我:这东西(指数树)的规律大概率找不出来吧…他不信邪,结果找了一节课,未果,寻病终…</li>
+<li>然后在 $dalao$ 们的博客中学习了一下.记 $f(i,j)$ 表示 $i$ 个点的<strong>有根树</strong>,根节点的度数为 $j$ 的方案数目.</li>
 <li>在枚举儿子节点时,为了避免算重,按照子树大小从大到小来枚举.先枚举儿子中最大的子树大小 $size$ ,再枚举有 $k$ 个这样大小的儿子.记 $s=\sum_{i=0}^{j-1} f(size,i)$ ,即每个这样的子树都有 $s$ 种方案可选.那么给 $k$ 个子树安排一下方案,就相当于把 $k$ 个球放入 $s$ 个无差别盒子中,方案数为 ${s+k-1\choose k}$ .</li>
-<li><p>那么转移方程就有 $f(i,j)=\sum f(i-k\times size,j-k)\cdot {s+k-1\choose k}$ .</p>
-</li>
-<li><p>但是这里我们数的是无根树,所以钦定树的重心作为根节点.那么在转移时就要注意 $2\cdot size&lt;i$ ,保证根为重心.</p>
-</li>
+<li>那么转移方程就有 $f(i,j)=\sum f(i-k\times size,j-k)\cdot {s+k-1\choose k}$ .</li>
+<li>如果是数烷基,就是无根树,直接就像上面这样算, $ans=\sum_{k=0}^3 f(n,k).​$</li>
+<li>如果数的是烷烃,就是无根树,所以钦定树的重心作为根节点.那么在转移时就要注意 $2\cdot size&lt;i$ ,保证根为重心.</li>
 <li>另外,在最后计算答案时,注意到当 $n$ 为偶数时,它有两个重心,那么两边的子树可以交换,多乘上 $p_k={\sum_{k’=0}^{k-1}f(\frac n 2,k’)+1\choose 2}$.</li>
 <li>最后就有 $ans=\sum_{k=0}^3 f(n,k)+[n\equiv 0\mod2]\cdot p_k$ .</li>
 </ul>
