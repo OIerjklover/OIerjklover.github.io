@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="$Div.1$">
-<meta name="keywords" content="二分,贪心,kmp,tarjan,DAG">
+  <meta name="description" content="$Div.1​$">
+<meta name="keywords" content="二分,贪心,kmp,tarjan,DAG,非传统题,floyd判圈">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CF1137">
 <meta property="og:url" content="http://yoursite.com/2019/04/28/CF1137/index.html">
 <meta property="og:site_name" content="JKLover">
-<meta property="og:description" content="$Div.1$">
+<meta property="og:description" content="$Div.1​$">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-04-28T14:32:02.194Z">
+<meta property="og:updated_time" content="2019-04-30T01:46:01.101Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CF1137">
-<meta name="twitter:description" content="$Div.1$">
+<meta name="twitter:description" content="$Div.1​$">
 
 
 
@@ -383,12 +383,24 @@
                 
               
 
-              <time title="Created: 2019-04-28 22:24:49 / Modified: 22:32:02" itemprop="dateCreated datePublished" datetime="2019-04-28T22:24:49+08:00">2019-04-28</time>
+              <time title="Created: 2019-04-28 22:24:49" itemprop="dateCreated datePublished" datetime="2019-04-28T22:24:49+08:00">2019-04-28</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-30 09:46:01" itemprop="dateModified" datetime="2019-04-30T09:46:01+08:00">2019-04-30</time>
               
             
           </span>
@@ -429,7 +441,7 @@
       
 
       
-        <p>$Div.1$</p>
+        <p>$Div.1​$</p>
 <a id="more"></a>
 <h3 id="CF1137A-Skyscrapers"><a href="#CF1137A-Skyscrapers" class="headerlink" title="CF1137A Skyscrapers"></a><a href="http://codeforces.com/contest/1137/problem/A" target="_blank" rel="noopener">CF1137A Skyscrapers</a></h3><ul>
 <li><p>二分.</p>
@@ -456,6 +468,15 @@
 <blockquote>
 <p>然而需要卡空间.懒得卡了.</p>
 </blockquote>
+<h3 id="CF1137D-Cooperative-Game"><a href="#CF1137D-Cooperative-Game" class="headerlink" title="CF1137D Cooperative Game"></a><a href="http://codeforces.com/contest/1137/problem/D" target="_blank" rel="noopener">CF1137D Cooperative Game</a></h3><ul>
+<li>交互题.</li>
+<li>这个模型可以考虑 $floyd$ 判圈算法.即 $A$ 的速度是 $2$ , $B$ 的速度是 $1$ ,同时从起点出发,当两人重新相遇时,快的那个人比慢的那个人多走了 $k$ 圈,即 $k\cdot c$ 步.操作时可以让 $A,B$ 一起走一步,再让 $A$ 走一步.</li>
+<li>相遇时, $B$ 肯定还没有走完一圈.记此时 $B$ 在圈内走了 $x$ 步( $x&lt;c$ ),那么 $B$ 一共走了 $t+x$ 步, $A$ 一共走了 $t+x+kc$ 步.而 $A$ 走的步数恰好是 $B$ 的二倍.</li>
+<li>所以可以得到 $kc=t+x$ .那么此时这两个人再一起往前走 $t$ 步就可以一起到达环的起点.</li>
+<li>而剩余的人还在出发点,也是再往前走 $t$ 步到达环的起点.于是相遇后所有人一起走,到达同一个位置时就结束了. </li>
+<li>分析一下总步数. $A,B$ 相遇前要进行 $2(t+x)$ 个操作,相遇后要进行 $t$ 个操作.总操作数不会大于 $3(t+c)$ .</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> out=<span class="number">0</span>,fh=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> jp=getchar();</span><br><span class="line">    <span class="keyword">while</span> ((jp&gt;<span class="string">'9'</span>||jp&lt;<span class="string">'0'</span>)&amp;&amp;jp!=<span class="string">'-'</span>)</span><br><span class="line">        jp=getchar();</span><br><span class="line">    <span class="keyword">if</span> (jp==<span class="string">'-'</span>)</span><br><span class="line">        fh=<span class="number">-1</span>,jp=getchar();</span><br><span class="line">    <span class="keyword">while</span> (jp&gt;=<span class="string">'0'</span>&amp;&amp;jp&lt;=<span class="string">'9'</span>)</span><br><span class="line">        out=out*<span class="number">10</span>+jp-<span class="string">'0'</span>,jp=getchar();</span><br><span class="line">    <span class="keyword">return</span> out*fh;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> groups;</span><br><span class="line"><span class="keyword">char</span> buf[<span class="number">10</span>][<span class="number">10</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getinfo</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	groups=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;groups;++i)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%s"</span>,buf[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">moveA</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">puts</span>(<span class="string">"next 0"</span>);</span><br><span class="line">	fflush(<span class="built_in">stdout</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">moveAB</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">puts</span>(<span class="string">"next 0 1"</span>);</span><br><span class="line">	fflush(<span class="built_in">stdout</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">moveAll</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">puts</span>(<span class="string">"next 0 1 2 3 4 5 6 7 8 9"</span>);</span><br><span class="line">	fflush(<span class="built_in">stdout</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Done</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">puts</span>(<span class="string">"done"</span>);</span><br><span class="line">	fflush(<span class="built_in">stdout</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">stage_catch</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		moveAB();</span><br><span class="line">		getinfo();</span><br><span class="line">		moveA();</span><br><span class="line">		getinfo();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;groups;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">bool</span> fa=<span class="literal">false</span>,fb=<span class="literal">false</span>;</span><br><span class="line">			<span class="keyword">int</span> len=<span class="built_in">strlen</span>(buf[i]);</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;len;++j)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(buf[i][j]==<span class="string">'0'</span>)</span><br><span class="line">					fa=<span class="literal">true</span>;</span><br><span class="line">				<span class="keyword">if</span>(buf[i][j]==<span class="string">'1'</span>)</span><br><span class="line">					fb=<span class="literal">true</span>;</span><br><span class="line">				<span class="keyword">if</span>(fa &amp;&amp; fb)</span><br><span class="line">					<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">stage_meet</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		moveAll();</span><br><span class="line">		getinfo();</span><br><span class="line">		<span class="keyword">if</span>(groups==<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			Done();</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	stage_catch();</span><br><span class="line">	stage_meet();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -488,6 +509,10 @@
             <a href="/tags/tarjan/" rel="tag"># tarjan</a>
           
             <a href="/tags/DAG/" rel="tag"># DAG</a>
+          
+            <a href="/tags/非传统题/" rel="tag"># 非传统题</a>
+          
+            <a href="/tags/floyd判圈/" rel="tag"># floyd判圈</a>
           
         </div>
       
@@ -664,7 +689,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">32</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">34</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -732,7 +761,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#CF1137A-Skyscrapers"><span class="nav-number">1.</span> <span class="nav-text">CF1137A Skyscrapers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CF1137B-Camp-Schedule"><span class="nav-number">2.</span> <span class="nav-text">CF1137B Camp Schedule</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CF1137C-Museums-Tour"><span class="nav-number">3.</span> <span class="nav-text">CF1137C Museums Tour</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#CF1137A-Skyscrapers"><span class="nav-number">1.</span> <span class="nav-text">CF1137A Skyscrapers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CF1137B-Camp-Schedule"><span class="nav-number">2.</span> <span class="nav-text">CF1137B Camp Schedule</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CF1137C-Museums-Tour"><span class="nav-number">3.</span> <span class="nav-text">CF1137C Museums Tour</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CF1137D-Cooperative-Game"><span class="nav-number">4.</span> <span class="nav-text">CF1137D Cooperative Game</span></a></li></ol></div>
             
 
           </div>
