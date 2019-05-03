@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="天津 $OI\ 2019.$">
-<meta name="keywords" content="dp计数,SAM,差分,容斥原理,矩阵快速幂,平衡树">
+  <meta name="description" content="向 $CQOI\ 2018$ 致敬?">
+<meta name="keywords" content="dp计数,SAM,差分,容斥原理,位运算,最短路,矩阵快速幂,平衡树,数位dp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TJOI2019 选做">
 <meta property="og:url" content="http://yoursite.com/2019/05/02/TJOI2019-选做/index.html">
 <meta property="og:site_name" content="JKLover">
-<meta property="og:description" content="天津 $OI\ 2019.$">
+<meta property="og:description" content="向 $CQOI\ 2018$ 致敬?">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-03T07:12:21.368Z">
+<meta property="og:updated_time" content="2019-05-03T09:34:09.936Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TJOI2019 选做">
-<meta name="twitter:description" content="天津 $OI\ 2019.$">
+<meta name="twitter:description" content="向 $CQOI\ 2018$ 致敬?">
 
 
 
@@ -400,7 +400,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-03 15:12:21" itemprop="dateModified" datetime="2019-05-03T15:12:21+08:00">2019-05-03</time>
+                <time title="Modified: 2019-05-03 17:34:09" itemprop="dateModified" datetime="2019-05-03T17:34:09+08:00">2019-05-03</time>
               
             
           </span>
@@ -441,7 +441,7 @@
       
 
       
-        <p>天津 $OI\ 2019.$ </p>
+        <p>向 $CQOI\ 2018$ 致敬?</p>
 <a id="more"></a>
 <h3 id="甲苯先生的字符串"><a href="#甲苯先生的字符串" class="headerlink" title="甲苯先生的字符串"></a>甲苯先生的字符串</h3><ul>
 <li>矩阵快速幂.</li>
@@ -459,7 +459,7 @@
 <li>容斥原理+ $dp$ 计数.</li>
 <li>为了方便,称题目中所说的一组同学为 <strong>位置</strong> $k$ <strong>在讨论蔡徐坤</strong> ,要求出没有位置在讨论蔡徐坤的方案数.</li>
 <li>显然可以容斥原理搞一搞,只需对每个 $i$ 求出钦定 $i$ 个位置在讨论蔡徐坤,其它不涉及的位置乱选的方案数.</li>
-<li>其它位置乱选方案数就是有重复元素的排列数,但每个元素使用次数有限制.可以构造多项式 $(x+y+z+w)^{tot}$,$tot=n-4i$ ,将次数符合要求的对应系数求和.</li>
+<li>其它位置乱选方案数就是有重复元素的排列数,但每个元素使用次数有限制.可以构造多项式 $(x+y+z+w)^{tot}$ , $tot=n-4i$ ,将次数符合要求的对应系数求和.</li>
 <li>二项式定理套两次,多项式展开为<br>$$<br>(x+y+z+w)^{tot}=\sum C_{tot}^j (x+y)^j(z+w)^{tot-j}<br>=\sum C_{tot}^j(\sum C_j^p x^p y^{j-p})(\sum C_{tot-j}^q z^q w^{tot-j-q})<br>$$</li>
 <li>预处理组合数前缀和,把 $x,y,z,w​$ 系数都符合限制的那一段取出来计算即可.</li>
 <li>考虑怎么求钦定 $i​$ 个位置在讨论蔡徐坤的方案数.</li>
@@ -469,6 +469,10 @@
 <li>时间复杂度 $O(n^2)​$ .</li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> out=<span class="number">0</span>,fh=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> ((jp&gt;<span class="string">'9'</span>||jp&lt;<span class="string">'0'</span>)&amp;&amp;jp!=<span class="string">'-'</span>)</span><br><span class="line">		jp=getchar();</span><br><span class="line">	<span class="keyword">if</span> (jp==<span class="string">'-'</span>)</span><br><span class="line">		fh=<span class="number">-1</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> (jp&gt;=<span class="string">'0'</span>&amp;&amp;jp&lt;=<span class="string">'9'</span>)</span><br><span class="line">		out=out*<span class="number">10</span>+jp-<span class="string">'0'</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">return</span> out*fh;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> P=<span class="number">998244353</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (a + b) % P;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">mul</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1L</span>L * a * b % P;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">upd</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> &amp;y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	y=add(x,y);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">1e3</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> n,mx;</span><br><span class="line"><span class="keyword">int</span> C[MAXN][MAXN],sumc[MAXN][MAXN];</span><br><span class="line"><span class="keyword">int</span> f[MAXN][MAXN][<span class="number">4</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;++i)</span><br><span class="line">		C[i][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=i;++j)</span><br><span class="line">			C[i][j]=add(C[i<span class="number">-1</span>][j],C[i<span class="number">-1</span>][j<span class="number">-1</span>]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		sumc[i][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=i;++j)</span><br><span class="line">			sumc[i][j]=add(sumc[i][j<span class="number">-1</span>],C[i][j]);</span><br><span class="line">	&#125;</span><br><span class="line">	f[<span class="number">0</span>][<span class="number">0</span>][<span class="number">3</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=mx;++j)</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;<span class="number">4</span>;++k)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(!f[i][j][k])</span><br><span class="line">					<span class="keyword">continue</span>;</span><br><span class="line">				upd(f[i][j][k],f[i+<span class="number">1</span>][j][k==<span class="number">3</span>?k:k+<span class="number">1</span>]);</span><br><span class="line">				<span class="keyword">if</span>(k==<span class="number">3</span>)</span><br><span class="line">					upd(f[i][j][k],f[i+<span class="number">1</span>][j+<span class="number">1</span>][<span class="number">0</span>]);</span><br><span class="line">			&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> lim[<span class="number">4</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	n=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">4</span>;++i)</span><br><span class="line">		lim[i]=read();</span><br><span class="line">	sort(lim,lim+<span class="number">4</span>);</span><br><span class="line">	mx=min(lim[<span class="number">0</span>],n/<span class="number">4</span>);<span class="comment">//最多mx个位置讨论蔡徐坤 </span></span><br><span class="line">	init();</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>,sgn=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=mx;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> res=<span class="number">0</span>,tmp=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span>(n&lt;<span class="number">4</span>)</span><br><span class="line">			tmp=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;<span class="number">4</span>;++k)</span><br><span class="line">				tmp=add(tmp,f[n<span class="number">-3</span>][i][k]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;<span class="number">4</span>;++k)</span><br><span class="line">			lim[k]-=i;</span><br><span class="line">		<span class="keyword">int</span> tot=n-i*<span class="number">4</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=tot;++j)</span><br><span class="line">		&#123; </span><br><span class="line">			<span class="keyword">int</span> lp=max(<span class="number">0</span>,j-lim[<span class="number">1</span>]);</span><br><span class="line">			<span class="keyword">int</span> rp=min(lim[<span class="number">0</span>],j);</span><br><span class="line">			<span class="keyword">int</span> lk=max(<span class="number">0</span>,tot-j-lim[<span class="number">3</span>]);</span><br><span class="line">			<span class="keyword">int</span> rk=min(lim[<span class="number">2</span>],tot-j);</span><br><span class="line">			<span class="keyword">if</span>(lp&gt;rp || lk&gt;rk)</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">int</span> t1=lp?sumc[j][rp]-sumc[j][lp<span class="number">-1</span>]:sumc[j][rp];</span><br><span class="line">			<span class="keyword">int</span> t2=lk?sumc[tot-j][rk]-sumc[tot-j][lk<span class="number">-1</span>]:sumc[tot-j][rk];</span><br><span class="line">			res=add(res,mul(C[tot][j],mul(t1,t2)));</span><br><span class="line">		&#125;</span><br><span class="line">		res=mul(res,tmp);</span><br><span class="line">		ans=add(ans,res*sgn);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;<span class="number">4</span>;++k)</span><br><span class="line">			lim[k]+=i;</span><br><span class="line">		sgn*=<span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;add(ans,P)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="甲苯先生与线段树"><a href="#甲苯先生与线段树" class="headerlink" title="甲苯先生与线段树"></a>甲苯先生与线段树</h3><ul>
+<li>位运算,数位 $dp$ .</li>
+<li>大概是个<a href="http://codeforces.com/contest/750/problem/G" target="_blank" rel="noopener">原题</a>.</li>
+</ul>
 <h3 id="甲苯先生和大中锋的字符串"><a href="#甲苯先生和大中锋的字符串" class="headerlink" title="甲苯先生和大中锋的字符串"></a>甲苯先生和大中锋的字符串</h3><ul>
 <li>$SAM$ + 差分.</li>
 <li>建出 $SAM$ 后在 $parent$ 树上递推 $right$ 集合的大小,若其为 $k$ ,则对 $[Minlen,Maxlen]$ 内的计数器都加 $1$ .</li>
@@ -478,6 +482,11 @@
 <blockquote>
 <p>读入格式很诡异.用快读读 $k​$ 会炸两个点,原因不明.</p>
 </blockquote>
+<h3 id="大中锋的游乐场"><a href="#大中锋的游乐场" class="headerlink" title="大中锋的游乐场"></a>大中锋的游乐场</h3><ul>
+<li>最短路.</li>
+<li>记 $dis[i][j]$ 表示从起点出发到节点 $i$ ,经过的 $1$ 减去经过的 $2$ 的数目为 $j$ 时的最短路长度.</li>
+<li>用 $Dijkstra$ 进行转移即可.</li>
+</ul>
 
       
     </div>
@@ -509,9 +518,15 @@
           
             <a href="/tags/容斥原理/" rel="tag"># 容斥原理</a>
           
+            <a href="/tags/位运算/" rel="tag"># 位运算</a>
+          
+            <a href="/tags/最短路/" rel="tag"># 最短路</a>
+          
             <a href="/tags/矩阵快速幂/" rel="tag"># 矩阵快速幂</a>
           
             <a href="/tags/平衡树/" rel="tag"># 平衡树</a>
+          
+            <a href="/tags/数位dp/" rel="tag"># 数位dp</a>
           
         </div>
       
@@ -698,7 +713,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">37</span>
+                      
+                    
+                    <span class="site-state-item-count">38</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -770,7 +787,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#甲苯先生的字符串"><span class="nav-number">1.</span> <span class="nav-text">甲苯先生的字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#甲苯先生的滚榜"><span class="nav-number">2.</span> <span class="nav-text">甲苯先生的滚榜</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#唱、跳、rap-和篮球"><span class="nav-number">3.</span> <span class="nav-text">唱、跳、rap 和篮球</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#甲苯先生和大中锋的字符串"><span class="nav-number">4.</span> <span class="nav-text">甲苯先生和大中锋的字符串</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#甲苯先生的字符串"><span class="nav-number">1.</span> <span class="nav-text">甲苯先生的字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#甲苯先生的滚榜"><span class="nav-number">2.</span> <span class="nav-text">甲苯先生的滚榜</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#唱、跳、rap-和篮球"><span class="nav-number">3.</span> <span class="nav-text">唱、跳、rap 和篮球</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#甲苯先生与线段树"><span class="nav-number">4.</span> <span class="nav-text">甲苯先生与线段树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#甲苯先生和大中锋的字符串"><span class="nav-number">5.</span> <span class="nav-text">甲苯先生和大中锋的字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大中锋的游乐场"><span class="nav-number">6.</span> <span class="nav-text">大中锋的游乐场</span></a></li></ol></div>
             
 
           </div>
