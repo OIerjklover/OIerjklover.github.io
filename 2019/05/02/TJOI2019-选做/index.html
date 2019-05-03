@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="天津 $OI\ 2019.$">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-03T05:22:07.038Z">
+<meta property="og:updated_time" content="2019-05-03T05:33:16.176Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TJOI2019 选做">
 <meta name="twitter:description" content="天津 $OI\ 2019.$">
@@ -400,7 +400,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-03 13:22:07" itemprop="dateModified" datetime="2019-05-03T13:22:07+08:00">2019-05-03</time>
+                <time title="Modified: 2019-05-03 13:33:16" itemprop="dateModified" datetime="2019-05-03T13:33:16+08:00">2019-05-03</time>
               
             
           </span>
@@ -457,7 +457,7 @@
 </blockquote>
 <ul>
 <li>容斥原理+ $dp$ 计数.</li>
-<li>为了方便,称题目中所说的一组同学为 <strong>位置 $k$ 在讨论蔡徐坤</strong> ,要求出没有位置在讨论蔡徐坤的方案数.</li>
+<li>为了方便,称题目中所说的一组同学为 <strong>位置</strong> $k$ <strong>在讨论蔡徐坤</strong> ,要求出没有位置在讨论蔡徐坤的方案数.</li>
 <li>显然可以容斥原理搞一搞,只需对每个 $i$ 求出钦定 $i$ 个位置在讨论蔡徐坤,其它不涉及的位置乱选的方案数.</li>
 <li>其它位置乱选方案数就是有重复元素的排列数.,但每个元素使用次数有限制.可以构造多项式 $(x+y+z+w)^{tot},tot=n-4i$ ,将次数符合要求的对应系数求和.</li>
 <li>二项式定理套两次,多项式展开为<br>$$<br>(x+y+z+w)^{tot}=\sum C_{tot}^j (x+y)^j(z+w)^{tot-j}<br>=\sum C_{tot}^j(\sum C_j^p x^p y^{j-p})(\sum C_{tot-j}^q z^q w^{tot-j-q})<br>$$</li>
