@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="乱搞 $STL$ + 线性筛乘法逆元.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-08T07:28:29.881Z">
+<meta property="og:updated_time" content="2019-05-08T07:31:01.892Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Luogu 5358 快速查询">
 <meta name="twitter:description" content="乱搞 $STL$ + 线性筛乘法逆元.">
@@ -383,7 +383,7 @@
                 
               
 
-              <time title="Created: 2019-05-08 15:13:56 / Modified: 15:28:29" itemprop="dateCreated datePublished" datetime="2019-05-08T15:13:56+08:00">2019-05-08</time>
+              <time title="Created: 2019-05-08 15:13:56 / Modified: 15:31:01" itemprop="dateCreated datePublished" datetime="2019-05-08T15:13:56+08:00">2019-05-08</time>
             
 
             
@@ -439,7 +439,7 @@
 <li>初始 $mul=1,add=sum=v=0.​$ 几种操作仔细推一下就好了:<ul>
 <li>操作 $1$ :先用操作 $5$ 查询 $a_i$ ,算出新的 $sum$ ,再将 $map$ 中位置 $i$ 改为 $(val-add)\cdot mul^{-1}$ .</li>
 <li>操作 $2$ : $sum+=val\cdot n,add+=val,v+=val.$</li>
-<li>操作 $3$ : 若 $val\not = 0$ ,$sum<em>=val.mul</em>=val.add<em>=val.v</em>=val.$ 若 $val=0$ ,执行操作 $4$ ,将所有值都赋为 $0$,否则会使 $mul=0$ ,要用到 $mul^{-1}​$ 时就炸了 .</li>
+<li>操作 $3$ : 若 $val\not = 0$ ,$sum\times =val,mul\times =val,add\times =val,v\times =val.$ 若 $val=0$ ,执行操作 $4$ ,将所有值都赋为 $0$,否则会使 $mul=0$ ,要用到 $mul^{-1}​$ 时就炸了 .</li>
 <li>操作 $4$ : 将 $map$ 清空, $sum=val\cdot n,mul=1,add=0,v=val$ .</li>
 <li>操作 $5$ : 若 $a_i$ 在 $map$ 中有权值 $x$ ,那么就是 $mul\cdot x+add$ ,否则为 $v$ .</li>
 <li>操作 $6$ : 当前的 $sum​$ .</li>
