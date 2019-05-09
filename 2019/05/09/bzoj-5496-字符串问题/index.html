@@ -96,13 +96,18 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="JKLover">
-<meta property="og:url" content="http://yoursite.com/tags/虚树/index.html">
+  <meta name="description" content="$SAM$ 优化连边 + $DAG$ 上 $dp$ .">
+<meta name="keywords" content="DAG,SAM,倍增">
+<meta property="og:type" content="article">
+<meta property="og:title" content="bzoj 5496 字符串问题">
+<meta property="og:url" content="http://yoursite.com/2019/05/09/bzoj-5496-字符串问题/index.html">
 <meta property="og:site_name" content="JKLover">
+<meta property="og:description" content="$SAM$ 优化连边 + $DAG$ 上 $dp$ .">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-05-09T12:13:17.039Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JKLover">
+<meta name="twitter:title" content="bzoj 5496 字符串问题">
+<meta name="twitter:description" content="$SAM$ 优化连边 + $DAG$ 上 $dp$ .">
 
 
 
@@ -110,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/tags/虚树/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/09/bzoj-5496-字符串问题/">
 
 
 
@@ -120,7 +125,7 @@
   };
 </script>
 
-  <title>Tag: 虚树 | JKLover</title>
+  <title>bzoj 5496 字符串问题 | JKLover</title>
   
 
 
@@ -168,7 +173,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -227,7 +232,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -274,22 +279,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -335,57 +324,200 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>虚树<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/09/bzoj-5496-字符串问题/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JKLover">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JKLover">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/05/06/bzoj-2286-消耗战/" itemprop="url">
-            
-              <span itemprop="name">bzoj 2286 消耗战</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">bzoj 5496 字符串问题
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-06T13:56:09+08:00" content="2019-05-06">
-          05-06
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-09 20:11:52 / Modified: 20:13:17" itemprop="dateCreated datePublished" datetime="2019-05-09T20:11:52+08:00">2019-05-09</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>$SAM$ 优化连边 + $DAG$ 上 $dp$ .</p>
+<a id="more"></a>
+<ul>
+<li>首先可以搞一个 $n_a+n_b$ 个节点的图.如果一个 $A$ 串支配了一个 $B$ 串,就从这个 $A$ 串对应的点向 $B$ 串对应的点连一条有向边.如果一个 $B$ 串是一个 $A$ 串的前缀,就从这个 $B$ 串对应的点向 $A$ 串对应的点连一条有向边.</li>
+<li>然后判环,如果没有环就在 $DAG$ 上 $dp$ 找最长路径.节点数目为 $O(n_a+n_b)$ ,可以接受.</li>
+<li>但是暴力连边的时间复杂度高达 $O(n_an_b)$ ,于是获得 $40$ 分好成绩.</li>
+<li>考虑利用 $SAM$ 的 $parent$ 树自带的树形结构来优化连边.</li>
+<li>第一类边,对于一个 $A$ 串,我们可以在 $SAM$ 上倍增找到它对应的节点,然后对于每个它支配的 $B$ 串也用倍增找到节点,从 $A$ 串节点向 $B$ 串节点连一条有向边.</li>
+<li>第二类边,要求 $B$ 串是 $A$ 串前缀.我们如果把主串反过来,就变成了 $B$ 串是 $A$ 串的后缀.在 $parent$ 树上显然表现为 $B$ 对应的节点是 $A$ 对应的节点的祖先.那么建 $parent$ 树时就从父亲到儿子连有向边,边自动就连好了.</li>
+<li>这样连边的时间复杂度为 $O(|S|log|S|)$ ,节点数目为 $O(|S|)$ ,均可以接受.</li>
+<li>但还存在一个问题. $parent$ 树上一个节点对应的子串不止一个.可能出现两个 $A$ 串都被定位到一个节点上.于是每次 $A$ 串定位到一个位置时就新建一个节点栽上去.新建 $n_a$ 个节点,节点数目不会爆炸.</li>
+</ul>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/DAG/" rel="tag"># DAG</a>
+          
+            <a href="/tags/SAM/" rel="tag"># SAM</a>
+          
+            <a href="/tags/倍增/" rel="tag"># 倍增</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/08/Luogu-5358-快速查询/" rel="next" title="Luogu 5358 快速查询">
+                <i class="fa fa-chevron-left"></i> Luogu 5358 快速查询
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -759,6 +891,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
 
   
 
@@ -774,6 +910,37 @@
 
   
 
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '0f2a43b3bf8ac1ba787a',
+    clientSecret: 'c271a61a1475cd2dd1bbc48c7fd45058b0d2afea',
+    repo: 'jkloverdcoi.github.io',
+    owner: 'jkloverdcoi',
+    admin: ['jkloverdcoi'],
+    id: md5(location.pathname),
+    
+      language: 'en',
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
 
 
   
