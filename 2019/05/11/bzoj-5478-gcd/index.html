@@ -104,10 +104,12 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="莫比乌斯反演.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-11T11:55:03.954Z">
+<meta property="og:image" content="http://yoursite.com/2019/05/11/bzoj-5478-gcd/formula.png">
+<meta property="og:updated_time" content="2019-05-11T12:00:22.599Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bzoj 5478 gcd">
 <meta name="twitter:description" content="莫比乌斯反演.">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/11/bzoj-5478-gcd/formula.png">
 
 
 
@@ -383,7 +385,7 @@
                 
               
 
-              <time title="Created: 2019-05-11 19:53:28 / Modified: 19:55:03" itemprop="dateCreated datePublished" datetime="2019-05-11T19:53:28+08:00">2019-05-11</time>
+              <time title="Created: 2019-05-11 19:53:28 / Modified: 20:00:22" itemprop="dateCreated datePublished" datetime="2019-05-11T19:53:28+08:00">2019-05-11</time>
             
 
             
@@ -435,7 +437,7 @@
 <li>题面有误, $a$ 应该是 $1\sim n$ 的一个排列.因为这个卡了好久…</li>
 <li>用 $\varphi$ 反演就很好做.</li>
 </ul>
-<p>$$<br>\begin{aligned}<br>\sum_{i=1}^n \sum_{j=1}^n gcd(i,j)\cdot gcd(a_i,a_j)&amp;=\sum_{i=1}^n \sum_{j=1}^n \sum_{d|i,d|j} \varphi(d) \cdot gcd(a_i,a_j)\<br>&amp;=\sum_{d=1}^n \varphi(d) \sum_{i=1}^{\lfloor \frac nd\rfloor} \sum_{j=1}^{\lfloor \frac nd\rfloor} gcd(a_{id},a_{jd})\<br>&amp;=\sum_{d=1}^n \varphi(d) \sum_{x} \varphi(x)\sum_{i=1}^{\lfloor\frac nd \rfloor} [x|a_{id}]^2<br>\end{aligned}<br>$$</p>
+<p><img src="formula.png" alt></p>
 <ul>
 <li>$O(n)$ 大力枚举 $d$ ,因为 $a$ 是个排列,所以可以大力枚举集合中的每个数的约数,对 $1\sim n$ 中每个数记录一下有 $f(i)$ 个数是它的倍数,那么后面那坨就是 $\sum f(i)^2$ 了.</li>
 <li>集合大小总和是个调和级数,总时间复杂度应该是 $O(nlog^3n)$ .<del>(其实我不会证)</del></li>
