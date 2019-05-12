@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="普及组套题.可能就 $AK$ 了.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-12T09:21:34.897Z">
+<meta property="og:updated_time" content="2019-05-12T09:32:15.361Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="test20190512">
 <meta name="twitter:description" content="普及组套题.可能就 $AK$ 了.">
@@ -383,7 +383,7 @@
                 
               
 
-              <time title="Created: 2019-05-12 17:17:14 / Modified: 17:21:34" itemprop="dateCreated datePublished" datetime="2019-05-12T17:17:14+08:00">2019-05-12</time>
+              <time title="Created: 2019-05-12 17:17:14 / Modified: 17:32:15" itemprop="dateCreated datePublished" datetime="2019-05-12T17:17:14+08:00">2019-05-12</time>
             
 
             
@@ -441,8 +441,10 @@
 <li>而同一天也不能割两株草.所以 $n$ 株草, $t$ 天就形成了一个 $n\times t$ 的矩阵,每个点有权值,现在每一行每一列最多选 $1$ 个,要求共选 $t$ 个的最大收益.就成了经典模型.</li>
 <li><p>用一个大数 $inf$ 减去原权值作为权值,就是最小费用最大流,最后算一下就可以了.由于 $n\leq 50$ ,肯定能过.</p>
 </li>
-<li><p>大家的做法:枚举答案 $t$ ,将草按 $grow$ 排序,先割 $grow$ 小的,再割大的,总共割 $t$ 次,做个 $01$ 背包.贪心的正确性可以用经典套路证明,尝试交换两株草被割的次序,答案不会变得更优.</p>
+<li><p>大家的做法:枚举答案 $t$ ,将草按 $grow$ 排序,先割 $grow$ 小的,再割大的,总共割 $t$ 次.</p>
 </li>
+<li>然后设 $f(i,j)$ 表示前 $i$ 株草割了 $j$ 株能获得的最大收益就好了.</li>
+<li>贪心部分的正确性可以用经典套路证明,尝试交换两株草被割的次序,答案不会变得更优.</li>
 </ul>
 <blockquote>
 <p>顿时感觉自己好 $sb$ 啊.如果这题把数据出大点今天可能就凉了…</p>
