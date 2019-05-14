@@ -96,13 +96,18 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="JKLover">
-<meta property="og:url" content="http://yoursite.com/tags/LCT/index.html">
+  <meta name="description" content="构造.">
+<meta name="keywords" content="构造">
+<meta property="og:type" content="article">
+<meta property="og:title" content="bzoj 4926 皮皮妖的递推">
+<meta property="og:url" content="http://yoursite.com/2019/05/14/bzoj-4926-皮皮妖的递推/index.html">
 <meta property="og:site_name" content="JKLover">
+<meta property="og:description" content="构造.">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-05-14T03:28:10.797Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JKLover">
+<meta name="twitter:title" content="bzoj 4926 皮皮妖的递推">
+<meta name="twitter:description" content="构造.">
 
 
 
@@ -110,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/tags/LCT/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/14/bzoj-4926-皮皮妖的递推/">
 
 
 
@@ -120,7 +125,7 @@
   };
 </script>
 
-  <title>Tag: LCT | JKLover</title>
+  <title>bzoj 4926 皮皮妖的递推 | JKLover</title>
   
 
 
@@ -168,7 +173,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -227,7 +232,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -274,22 +279,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -335,57 +324,195 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>LCT<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/14/bzoj-4926-皮皮妖的递推/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JKLover">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JKLover">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/05/04/bzoj-2555-substring/" itemprop="url">
-            
-              <span itemprop="name">bzoj 2555 substring</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">bzoj 4926 皮皮妖的递推
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-04T15:35:05+08:00" content="2019-05-04">
-          05-04
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-14 11:27:00 / Modified: 11:28:10" itemprop="dateCreated datePublished" datetime="2019-05-14T11:27:00+08:00">2019-05-14</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>构造.</p>
+<a id="more"></a>
+<ul>
+<li>发现这个迭代过程与斐波那契数列有相似之处,构造 $g(i)=g(i-1)+g(i-m),g(0)=1$ .</li>
+<li>把 $n$ 拆成 $k$ 个 $g_i$ 的和, $n=\sum_{i=1}^k g(a_i)$ ,则 $f_n=\sum_{i=1}^k g(a_i-1)$ .</li>
+<li>证明:将 $f$ 定义式变形得到 $f(n)+f^m(n-1)=n$ .而 $n=\sum_{i=1}^k g(a_i),f_n=\sum_{i=1}^k g(a_i-1)$ .</li>
+<li>$f^2(n)=\sum_{i=1}^k g(a_i-2)$ ,依次计算,可得 $f^m(n)=\sum_{i=1}^k g(a_i-m)$ .</li>
+<li>而现在需要的是 $f^m(n-1)$ ,而 $n$ 只比 $n-1$ 多了个 $1$ ,把 $g(0)$ 设为 $1$ 即可.</li>
+<li>那么就有 $\sum_{i=1}^k g(a_i-1)+\sum_{i=1}^k g(a_i-m)=\sum_{i=1}^k g(a_i)$ .于是 $g(i)=g(i-1)+g(i-m),g(0)=1$ .</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ll out=<span class="number">0</span>,fh=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> ((jp&gt;<span class="string">'9'</span>||jp&lt;<span class="string">'0'</span>)&amp;&amp;jp!=<span class="string">'-'</span>)</span><br><span class="line">		jp=getchar();</span><br><span class="line">	<span class="keyword">if</span> (jp==<span class="string">'-'</span>)</span><br><span class="line">		fh=<span class="number">-1</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> (jp&gt;=<span class="string">'0'</span>&amp;&amp;jp&lt;=<span class="string">'9'</span>)</span><br><span class="line">		out=out*<span class="number">10</span>+jp-<span class="string">'0'</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">return</span> out*fh;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">5e6</span>+<span class="number">10</span>;</span><br><span class="line">ll g[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ll n=read(),m=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=m;++i)</span><br><span class="line">		g[i]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> mx=m+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(;;++mx)</span><br><span class="line">	&#123;</span><br><span class="line">		g[mx]=g[mx<span class="number">-1</span>]+g[mx-m];</span><br><span class="line">		<span class="keyword">if</span>(g[mx]&gt;n)</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	--mx;</span><br><span class="line">	ll ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=mx;i&gt;=<span class="number">1</span> &amp;&amp; n;--i)</span><br><span class="line">		<span class="keyword">if</span>(n&gt;=g[i])</span><br><span class="line">			n-=g[i],ans+=g[i<span class="number">-1</span>];</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/构造/" rel="tag"># 构造</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/14/bzoj-4962-简单的字符串/" rel="next" title="bzoj 4962 简单的字符串">
+                <i class="fa fa-chevron-left"></i> bzoj 4962 简单的字符串
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -769,6 +896,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
 
   
 
@@ -784,6 +915,37 @@
 
   
 
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '0f2a43b3bf8ac1ba787a',
+    clientSecret: 'c271a61a1475cd2dd1bbc48c7fd45058b0d2afea',
+    repo: 'jkloverdcoi.github.io',
+    owner: 'jkloverdcoi',
+    admin: ['jkloverdcoi'],
+    id: md5(location.pathname),
+    
+      language: 'en',
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
 
 
   
