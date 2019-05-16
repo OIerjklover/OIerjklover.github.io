@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="$SAM​$ 的入门练习题.">
-<meta name="keywords" content="SAM">
+  <meta name="description" content="一道短小精悍(指代码)的数学题.">
+<meta name="keywords" content="数学">
 <meta property="og:type" content="article">
-<meta property="og:title" content="bzoj 3998 弦论">
-<meta property="og:url" content="http://yoursite.com/2019/04/27/bzoj-3998-弦论/index.html">
+<meta property="og:title" content="bzoj 4735 你的生命已如风中残烛">
+<meta property="og:url" content="http://yoursite.com/2019/05/16/bzoj-4735-你的生命已如风中残烛/index.html">
 <meta property="og:site_name" content="JKLover">
-<meta property="og:description" content="$SAM​$ 的入门练习题.">
+<meta property="og:description" content="一道短小精悍(指代码)的数学题.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-04-27T07:17:58.156Z">
+<meta property="og:updated_time" content="2019-05-16T13:37:00.475Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="bzoj 3998 弦论">
-<meta name="twitter:description" content="$SAM​$ 的入门练习题.">
+<meta name="twitter:title" content="bzoj 4735 你的生命已如风中残烛">
+<meta name="twitter:description" content="一道短小精悍(指代码)的数学题.">
 
 
 
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/04/27/bzoj-3998-弦论/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/16/bzoj-4735-你的生命已如风中残烛/">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>bzoj 3998 弦论 | JKLover</title>
+  <title>bzoj 4735 你的生命已如风中残烛 | JKLover</title>
   
 
 
@@ -340,7 +340,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/27/bzoj-3998-弦论/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/16/bzoj-4735-你的生命已如风中残烛/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JKLover">
@@ -357,7 +357,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">bzoj 3998 弦论
+          <h1 class="post-title" itemprop="name headline">bzoj 4735 你的生命已如风中残烛
 
               
             
@@ -383,7 +383,7 @@
                 
               
 
-              <time title="Created: 2019-04-27 15:12:14 / Modified: 15:17:58" itemprop="dateCreated datePublished" datetime="2019-04-27T15:12:14+08:00">2019-04-27</time>
+              <time title="Created: 2019-05-16 21:34:53 / Modified: 21:37:00" itemprop="dateCreated datePublished" datetime="2019-05-16T21:34:53+08:00">2019-05-16</time>
             
 
             
@@ -429,15 +429,18 @@
       
 
       
-        <p>$SAM​$ 的入门练习题.</p>
+        <p>一道短小精悍(指代码)的数学题.</p>
 <a id="more"></a>
 <ul>
-<li>先把 $SAM​$ 建出来,每个节点的 $right​$ 集合大小就是走到这个节点时对应的子串出现次数.</li>
-<li>如果 $t=0​$ ,那么这些位置只能被算一次,把每个点的 $right​$ 集合大小都置为 $1​$ ,否则就拓扑排序后(桶排),在$parent​$ 树上递推得出真正的 $right​$ 集合大小.</li>
-<li>注意根节点处对应的子串都是空串,不能算入贡献,要把根节点的 $siz$ 置为 $0$ .</li>
-<li>再在转移图中递推得到每个点能转移到的所有点的子串出现次数 $sum$ ,然后从根节点出发贪心走就好了.</li>
+<li>把每个位置上的数都 $-1$ ,于是要求就变为每个位置的前缀和都是非负数.</li>
+<li>如果在最后再加入一个 $-1$ ,那么就只有最后一个位置前缀和为 $-1$ ,其他位置都是非负数.</li>
+<li>这样就可证明,对于一个序列的所有循环同构,有且仅有一种序列是合法的.</li>
+<li>因为只有把多出来的 $-1$ 放在最后才合法.因为总和为 $-1$ ,若最后一个位置不是 $-1$ ,那么前面一个位置的前缀和一定为负.</li>
+<li>而这个 $-1$ 可以是原有的与新加的共 $m-n+1$ 个 $-1$ 中的任意一个,所以应除去.</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ll out=<span class="number">0</span>,fh=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> jp=getchar();</span><br><span class="line">    <span class="keyword">while</span> ((jp&gt;<span class="string">'9'</span>||jp&lt;<span class="string">'0'</span>)&amp;&amp;jp!=<span class="string">'-'</span>)</span><br><span class="line">        jp=getchar();</span><br><span class="line">    <span class="keyword">if</span> (jp==<span class="string">'-'</span>)</span><br><span class="line">        fh=<span class="number">-1</span>,jp=getchar();</span><br><span class="line">    <span class="keyword">while</span> (jp&gt;=<span class="string">'0'</span>&amp;&amp;jp&lt;=<span class="string">'9'</span>)</span><br><span class="line">        out=out*<span class="number">10</span>+jp-<span class="string">'0'</span>,jp=getchar();</span><br><span class="line">    <span class="keyword">return</span> out*fh;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> Siz=<span class="number">26</span>,MAXN=<span class="number">2e6</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> t[MAXN],A[MAXN];</span><br><span class="line"><span class="keyword">int</span> T,K;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SuffixAutomation</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> idx,lst;</span><br><span class="line">	<span class="keyword">int</span> ch[MAXN][Siz];</span><br><span class="line">	<span class="keyword">int</span> siz[MAXN],len[MAXN];</span><br><span class="line">	<span class="keyword">int</span> fa[MAXN];</span><br><span class="line">	<span class="keyword">int</span> sum[MAXN];</span><br><span class="line">	SuffixAutomation()&#123;idx=lst=<span class="number">1</span>;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Extend</span><span class="params">(<span class="keyword">int</span> c)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> p=lst,np=++idx;</span><br><span class="line">		lst=np;</span><br><span class="line">		siz[np]=<span class="number">1</span>;</span><br><span class="line">		len[np]=len[p]+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span>(p &amp;&amp; ch[p][c]==<span class="number">0</span>)</span><br><span class="line">			ch[p][c]=np,p=fa[p];</span><br><span class="line">		<span class="keyword">if</span>(p==<span class="number">0</span>)</span><br><span class="line">			fa[np]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> q=ch[p][c];</span><br><span class="line">			<span class="keyword">if</span>(len[q]==len[p]+<span class="number">1</span>)</span><br><span class="line">				fa[np]=q;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">int</span> nq=++idx;</span><br><span class="line">				len[nq]=len[p]+<span class="number">1</span>;</span><br><span class="line">				fa[nq]=fa[q];</span><br><span class="line">				fa[q]=fa[np]=nq;</span><br><span class="line">				<span class="built_in">memcpy</span>(ch[nq],ch[q],<span class="keyword">sizeof</span> ch[q]);</span><br><span class="line">				<span class="keyword">while</span>(p &amp;&amp; ch[p][c]==q)</span><br><span class="line">					ch[p][c]=nq,p=fa[p];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=idx;++i)</span><br><span class="line">			++t[len[i]];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=idx;++i)</span><br><span class="line">			t[i]+=t[i<span class="number">-1</span>];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=idx;++i)</span><br><span class="line">			A[t[len[i]]--]=i;</span><br><span class="line">		<span class="keyword">if</span>(T==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=idx;++i)</span><br><span class="line">				siz[i]=<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=idx;i&gt;=<span class="number">1</span>;--i)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">int</span> u=A[i];</span><br><span class="line">				siz[fa[u]]+=siz[u];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		siz[<span class="number">1</span>]=<span class="number">0</span>;<span class="comment">//在根节点处的串都是空串,不能计入 </span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=idx;i&gt;=<span class="number">1</span>;--i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> u=A[i];</span><br><span class="line">			sum[u]=siz[u];</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">26</span>;++j)</span><br><span class="line">				<span class="keyword">if</span>(ch[u][j])</span><br><span class="line">					sum[u]+=sum[ch[u][j]];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> u=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(sum[u]&lt;K)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">puts</span>(<span class="string">"-1"</span>);</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span>(K)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;Siz;++i)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(K&lt;=sum[ch[u][i]])</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="built_in">putchar</span>(<span class="string">'a'</span>+i);</span><br><span class="line">					K-=siz[ch[u][i]];</span><br><span class="line">					u=ch[u][i];</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					K-=sum[ch[u][i]];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">puts</span>(<span class="string">""</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;SAM;</span><br><span class="line"><span class="keyword">char</span> buf[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>,buf+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">int</span> L=<span class="built_in">strlen</span>(buf+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=L;++i)</span><br><span class="line">		SAM.Extend(buf[i]-<span class="string">'a'</span>);</span><br><span class="line">	T=read(),K=read();</span><br><span class="line">	SAM.solve();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>$$<br>ans=\frac {m!} {m-n+1}<br>$$</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> out=<span class="number">0</span>,fh=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> ((jp&gt;<span class="string">'9'</span>||jp&lt;<span class="string">'0'</span>)&amp;&amp;jp!=<span class="string">'-'</span>)</span><br><span class="line">		jp=getchar();</span><br><span class="line">	<span class="keyword">if</span> (jp==<span class="string">'-'</span>)</span><br><span class="line">		fh=<span class="number">-1</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> (jp&gt;=<span class="string">'0'</span>&amp;&amp;jp&lt;=<span class="string">'9'</span>)</span><br><span class="line">		out=out*<span class="number">10</span>+jp-<span class="string">'0'</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">return</span> out*fh;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> P=<span class="number">998244353</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">mul</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1L</span>L * a * b % P;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fpow</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> res=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>)</span><br><span class="line">			res=mul(res,a);</span><br><span class="line">		a=mul(a,a);</span><br><span class="line">		b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n=read(),m=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">		m+=read();</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=m;++i)</span><br><span class="line">		ans=mul(ans,i);</span><br><span class="line">	ans=mul(ans,fpow(m-n+<span class="number">1</span>,P<span class="number">-2</span>));</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -460,7 +463,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/SAM/" rel="tag"># SAM</a>
+            <a href="/tags/数学/" rel="tag"># 数学</a>
           
         </div>
       
@@ -473,8 +476,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/25/CF1151/" rel="next" title="CF1151">
-                <i class="fa fa-chevron-left"></i> CF1151
+              <a href="/2019/05/16/bzoj-4860-树的难题/" rel="next" title="bzoj 4860 树的难题">
+                <i class="fa fa-chevron-left"></i> bzoj 4860 树的难题
               </a>
             
           </div>
@@ -482,10 +485,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/27/bzoj-1396-识别子串/" rel="prev" title="bzoj 1396 识别子串">
-                bzoj 1396 识别子串 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

@@ -96,18 +96,13 @@
 
 
 
-  <meta name="description" content="$SAM​$ 的入门练习题.">
-<meta name="keywords" content="SAM">
-<meta property="og:type" content="article">
-<meta property="og:title" content="bzoj 3998 弦论">
-<meta property="og:url" content="http://yoursite.com/2019/04/27/bzoj-3998-弦论/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="JKLover">
+<meta property="og:url" content="http://yoursite.com/archives/2019/05/page/3/index.html">
 <meta property="og:site_name" content="JKLover">
-<meta property="og:description" content="$SAM​$ 的入门练习题.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-04-27T07:17:58.156Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="bzoj 3998 弦论">
-<meta name="twitter:description" content="$SAM​$ 的入门练习题.">
+<meta name="twitter:title" content="JKLover">
 
 
 
@@ -115,7 +110,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/04/27/bzoj-3998-弦论/">
+  <link rel="canonical" href="http://yoursite.com/archives/2019/05/page/3/">
 
 
 
@@ -125,7 +120,7 @@
   };
 </script>
 
-  <title>bzoj 3998 弦论 | JKLover</title>
+  <title>Archive | JKLover</title>
   
 
 
@@ -173,7 +168,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left page-archive">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -249,7 +244,7 @@
         
         
           
-          <li class="menu-item menu-item-archives">
+          <li class="menu-item menu-item-archives menu-item-active">
 
     
     
@@ -278,6 +273,22 @@
 
   
     
+
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
 
   
 
@@ -324,196 +335,81 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  
+  
+  
+  <div class="post-block archive">
+    <div id="posts" class="posts-collapse">
+      <span class="archive-move-on"></span>
 
-  
+      
+      <span class="archive-page-counter">
+        
+        
+         
+        
+        OK! 35 posts in total. Keep on posting.
+      </span>
+      
 
-  
-  
-  
+      
 
-  
+        
+        
+        
+
+        
+          
+          <div class="collection-title">
+            <h1 class="archive-year" id="archive-year-2019">2019</h1>
+          </div>
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/27/bzoj-3998-弦论/">
+    <header class="post-header">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JKLover">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JKLover">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h2 class="post-title">
         
+          <a class="post-title-link" href="/2019/05/02/TJOI2019-选做/" itemprop="url">
+            
+              <span itemprop="name">TJOI2019 选做</span>
+            
+          </a>
         
-          <h1 class="post-title" itemprop="name headline">bzoj 3998 弦论
+      </h2>
 
-              
-            
-          </h1>
-        
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2019-05-02T22:32:11+08:00" content="2019-05-02">
+          05-02
+        </time>
+      </div>
 
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-04-27 15:12:14 / Modified: 15:17:58" itemprop="dateCreated datePublished" datetime="2019-04-27T15:12:14+08:00">2019-04-27</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-            <span class="post-meta-divider">|</span>
-            <span class="post-meta-item-icon">
-            <i class="fa fa-eye"></i>
-             Views:  
-            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
-            </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>$SAM​$ 的入门练习题.</p>
-<a id="more"></a>
-<ul>
-<li>先把 $SAM​$ 建出来,每个节点的 $right​$ 集合大小就是走到这个节点时对应的子串出现次数.</li>
-<li>如果 $t=0​$ ,那么这些位置只能被算一次,把每个点的 $right​$ 集合大小都置为 $1​$ ,否则就拓扑排序后(桶排),在$parent​$ 树上递推得出真正的 $right​$ 集合大小.</li>
-<li>注意根节点处对应的子串都是空串,不能算入贡献,要把根节点的 $siz$ 置为 $0$ .</li>
-<li>再在转移图中递推得到每个点能转移到的所有点的子串出现次数 $sum$ ,然后从根节点出发贪心走就好了.</li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ll out=<span class="number">0</span>,fh=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> jp=getchar();</span><br><span class="line">    <span class="keyword">while</span> ((jp&gt;<span class="string">'9'</span>||jp&lt;<span class="string">'0'</span>)&amp;&amp;jp!=<span class="string">'-'</span>)</span><br><span class="line">        jp=getchar();</span><br><span class="line">    <span class="keyword">if</span> (jp==<span class="string">'-'</span>)</span><br><span class="line">        fh=<span class="number">-1</span>,jp=getchar();</span><br><span class="line">    <span class="keyword">while</span> (jp&gt;=<span class="string">'0'</span>&amp;&amp;jp&lt;=<span class="string">'9'</span>)</span><br><span class="line">        out=out*<span class="number">10</span>+jp-<span class="string">'0'</span>,jp=getchar();</span><br><span class="line">    <span class="keyword">return</span> out*fh;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> Siz=<span class="number">26</span>,MAXN=<span class="number">2e6</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> t[MAXN],A[MAXN];</span><br><span class="line"><span class="keyword">int</span> T,K;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SuffixAutomation</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> idx,lst;</span><br><span class="line">	<span class="keyword">int</span> ch[MAXN][Siz];</span><br><span class="line">	<span class="keyword">int</span> siz[MAXN],len[MAXN];</span><br><span class="line">	<span class="keyword">int</span> fa[MAXN];</span><br><span class="line">	<span class="keyword">int</span> sum[MAXN];</span><br><span class="line">	SuffixAutomation()&#123;idx=lst=<span class="number">1</span>;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Extend</span><span class="params">(<span class="keyword">int</span> c)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> p=lst,np=++idx;</span><br><span class="line">		lst=np;</span><br><span class="line">		siz[np]=<span class="number">1</span>;</span><br><span class="line">		len[np]=len[p]+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span>(p &amp;&amp; ch[p][c]==<span class="number">0</span>)</span><br><span class="line">			ch[p][c]=np,p=fa[p];</span><br><span class="line">		<span class="keyword">if</span>(p==<span class="number">0</span>)</span><br><span class="line">			fa[np]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> q=ch[p][c];</span><br><span class="line">			<span class="keyword">if</span>(len[q]==len[p]+<span class="number">1</span>)</span><br><span class="line">				fa[np]=q;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">int</span> nq=++idx;</span><br><span class="line">				len[nq]=len[p]+<span class="number">1</span>;</span><br><span class="line">				fa[nq]=fa[q];</span><br><span class="line">				fa[q]=fa[np]=nq;</span><br><span class="line">				<span class="built_in">memcpy</span>(ch[nq],ch[q],<span class="keyword">sizeof</span> ch[q]);</span><br><span class="line">				<span class="keyword">while</span>(p &amp;&amp; ch[p][c]==q)</span><br><span class="line">					ch[p][c]=nq,p=fa[p];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=idx;++i)</span><br><span class="line">			++t[len[i]];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=idx;++i)</span><br><span class="line">			t[i]+=t[i<span class="number">-1</span>];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=idx;++i)</span><br><span class="line">			A[t[len[i]]--]=i;</span><br><span class="line">		<span class="keyword">if</span>(T==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=idx;++i)</span><br><span class="line">				siz[i]=<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=idx;i&gt;=<span class="number">1</span>;--i)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">int</span> u=A[i];</span><br><span class="line">				siz[fa[u]]+=siz[u];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		siz[<span class="number">1</span>]=<span class="number">0</span>;<span class="comment">//在根节点处的串都是空串,不能计入 </span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=idx;i&gt;=<span class="number">1</span>;--i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> u=A[i];</span><br><span class="line">			sum[u]=siz[u];</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">26</span>;++j)</span><br><span class="line">				<span class="keyword">if</span>(ch[u][j])</span><br><span class="line">					sum[u]+=sum[ch[u][j]];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> u=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(sum[u]&lt;K)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">puts</span>(<span class="string">"-1"</span>);</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span>(K)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;Siz;++i)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(K&lt;=sum[ch[u][i]])</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="built_in">putchar</span>(<span class="string">'a'</span>+i);</span><br><span class="line">					K-=siz[ch[u][i]];</span><br><span class="line">					u=ch[u][i];</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					K-=sum[ch[u][i]];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">puts</span>(<span class="string">""</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;SAM;</span><br><span class="line"><span class="keyword">char</span> buf[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>,buf+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">int</span> L=<span class="built_in">strlen</span>(buf+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=L;++i)</span><br><span class="line">		SAM.Extend(buf[i]-<span class="string">'a'</span>);</span><br><span class="line">	T=read(),K=read();</span><br><span class="line">	SAM.solve();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/SAM/" rel="tag"># SAM</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/04/25/CF1151/" rel="next" title="CF1151">
-                <i class="fa fa-chevron-left"></i> CF1151
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/27/bzoj-1396-识别子串/" rel="prev" title="bzoj 1396 识别子串">
-                bzoj 1396 识别子串 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+    </header>
   </article>
 
 
+
+      
+
+    </div>
   </div>
+  
+  
+  
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/archives/2019/05/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/archives/2019/05/">1</a><a class="page-number" href="/archives/2019/05/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+
+
 
 
           </div>
           
-
-  
-    <div class="comments" id="gitalk-container">
-    </div>
-
-  
-
-
 
         </div>
         
@@ -901,10 +797,6 @@
 
 
   
-  <script src="/js/scrollspy.js?v=7.1.0"></script>
-<script src="/js/post-details.js?v=7.1.0"></script>
-
-
 
   
 
@@ -920,37 +812,6 @@
 
   
 
-
-  
-    
-
-<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-
-
-
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
-
-
-
-<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
-
-<script>
-  var gitalk = new Gitalk({
-    clientID: '0f2a43b3bf8ac1ba787a',
-    clientSecret: 'c271a61a1475cd2dd1bbc48c7fd45058b0d2afea',
-    repo: 'jkloverdcoi.github.io',
-    owner: 'jkloverdcoi',
-    admin: ['jkloverdcoi'],
-    id: md5(location.pathname),
-    
-      language: 'en',
-    
-    distractionFreeMode: 'true'
-  });
-  gitalk.render('gitalk-container');
-</script>
-
-  
 
 
   
