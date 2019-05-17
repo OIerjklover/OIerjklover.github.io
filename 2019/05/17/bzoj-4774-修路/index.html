@@ -96,13 +96,18 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="JKLover">
-<meta property="og:url" content="http://yoursite.com/tags/kdtree/index.html">
+  <meta name="description" content="斯坦纳树 + 状压 .">
+<meta name="keywords" content="状压dp,斯坦纳树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="bzoj 4774 修路">
+<meta property="og:url" content="http://yoursite.com/2019/05/17/bzoj-4774-修路/index.html">
 <meta property="og:site_name" content="JKLover">
+<meta property="og:description" content="斯坦纳树 + 状压 .">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-05-17T14:41:28.412Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JKLover">
+<meta name="twitter:title" content="bzoj 4774 修路">
+<meta name="twitter:description" content="斯坦纳树 + 状压 .">
 
 
 
@@ -110,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/tags/kdtree/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/17/bzoj-4774-修路/">
 
 
 
@@ -120,7 +125,7 @@
   };
 </script>
 
-  <title>Tag: kdtree | JKLover</title>
+  <title>bzoj 4774 修路 | JKLover</title>
   
 
 
@@ -168,7 +173,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -227,7 +232,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -274,22 +279,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -335,57 +324,201 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>kdtree<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/17/bzoj-4774-修路/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JKLover">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JKLover">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/04/21/GXOI-GZOI2019-选做/" itemprop="url">
-            
-              <span itemprop="name">GXOI/GZOI2019 选做</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">bzoj 4774 修路
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-21T13:45:53+08:00" content="2019-04-21">
-          04-21
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-17 22:38:54 / Modified: 22:41:28" itemprop="dateCreated datePublished" datetime="2019-05-17T22:38:54+08:00">2019-05-17</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>斯坦纳树</strong> + 状压 .</p>
+<a id="more"></a>
+<ul>
+<li>开始感觉直接做一颗最小生成树出来,把没用的边割掉就好了.然而随手画几个图发现是错的.</li>
+<li><p>然后<a href="https://www.cnblogs.com/cjyyb/p/9670025.html" target="_blank" rel="noopener">学习</a>了一波 <strong>最小斯坦纳树</strong> .这东西可以看做是最小生成树的一般情况.生成树是求一个选边方案,将所有的点加入联通块中.斯坦纳树是把指定点集中的点加入联通块中,也可以加入不在点集中的点来辅助.</p>
+<blockquote>
+<p>求解最小斯坦纳树是 $NP$ 的,没有多项式算法,用状压做.<br>设 $f[S][i]$ 为指定点的连通状态为 $S$ ,最小斯坦纳树的根节点为 $i$ 时的最小权值.转移有两种.<br>第一种是将当前集合拆成两个不相交的子集, $f[S][i]\leftarrow f[S_1][i]+f[S_2][i],S_1,S_2\sub S,S_1 \&amp; S_2=0$ .<br>另一种是换根, $f[S][i]\leftarrow f[S][j]+val_{i,j}$ ,后者表示连接 $i,j$ 的边权.这东西有后效性,用 $Spfa$ 转移.</p>
+</blockquote>
+</li>
+<li><p>而这道题是指定点对间连通,可以看做最小斯坦纳森林.设 $g[S]$ 表示连通了点集 $S$ 的最小斯坦纳森林的权值.</p>
+</li>
+<li>转移有 $g[S]\leftarrow g[S_1]+g[S_2],S_1,S_2\sub S,S_1 \&amp; S_2=0$ .即将 $S$ 拆成两个不相交子集. $S_1,S_2$ 都需要满足每对对应点要么都不在其中,要么都在其中.</li>
+<li>最后答案就是 $g[S_0]$ , $S_0$ 表示将那 $2d$ 个点都连通的状态.</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> out=<span class="number">0</span>,fh=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> ((jp&gt;<span class="string">'9'</span>||jp&lt;<span class="string">'0'</span>)&amp;&amp;jp!=<span class="string">'-'</span>)</span><br><span class="line">		jp=getchar();</span><br><span class="line">	<span class="keyword">if</span> (jp==<span class="string">'-'</span>)</span><br><span class="line">		fh=<span class="number">-1</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> (jp&gt;=<span class="string">'0'</span>&amp;&amp;jp&lt;=<span class="string">'9'</span>)</span><br><span class="line">		out=out*<span class="number">10</span>+jp-<span class="string">'0'</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">return</span> out*fh;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">1e4</span>+<span class="number">10</span>,MAXS=<span class="number">1</span>&lt;&lt;<span class="number">8</span>;</span><br><span class="line"><span class="keyword">int</span> inf;</span><br><span class="line"><span class="keyword">int</span> ecnt=<span class="number">0</span>,head[MAXN],to[MAXN&lt;&lt;<span class="number">1</span>],nx[MAXN&lt;&lt;<span class="number">1</span>],val[MAXN&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">addedge</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	++ecnt;</span><br><span class="line">	to[ecnt]=v;</span><br><span class="line">	nx[ecnt]=head[u];</span><br><span class="line">	val[ecnt]=w;</span><br><span class="line">	head[u]=ecnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> f[MAXS][MAXN],g[MAXS];</span><br><span class="line"><span class="keyword">int</span> n,m,D;</span><br><span class="line"><span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line"><span class="keyword">int</span> vis[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">SPFA</span><span class="params">(<span class="keyword">int</span> S)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(!q.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> u=q.front();</span><br><span class="line">		q.pop();</span><br><span class="line">		vis[u]=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=nx[i])</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> v=to[i];</span><br><span class="line">			<span class="keyword">if</span>(f[S][v]-f[S][u]&gt;val[i])</span><br><span class="line">			&#123;</span><br><span class="line">				f[S][v]=f[S][u]+val[i];</span><br><span class="line">				<span class="keyword">if</span>(!vis[v])</span><br><span class="line">				&#123;</span><br><span class="line">					vis[v]=<span class="number">1</span>;</span><br><span class="line">					q.push(v);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> S)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (S&amp;((<span class="number">1</span>&lt;&lt;D)<span class="number">-1</span>))==(S&gt;&gt;D);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	n=read(),m=read(),D=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> u=read(),v=read(),w=read();</span><br><span class="line">		addedge(u,v,w);</span><br><span class="line">		addedge(v,u,w);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">memset</span>(f,<span class="number">63</span>,<span class="keyword">sizeof</span> f);</span><br><span class="line">	<span class="built_in">memset</span>(g,<span class="number">63</span>,<span class="keyword">sizeof</span> g);</span><br><span class="line">	inf=f[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=D;++i)</span><br><span class="line">		f[<span class="number">1</span>&lt;&lt;(i<span class="number">-1</span>)][i]=f[<span class="number">1</span>&lt;&lt;(D+i<span class="number">-1</span>)][n-i+<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> mx=<span class="number">1</span>&lt;&lt;(<span class="number">2</span>*D);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> S=<span class="number">0</span>;S&lt;mx;++S)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> S1=(S<span class="number">-1</span>)&amp;S;S1;S1=(S1<span class="number">-1</span>)&amp;S)</span><br><span class="line">				f[S][i]=min(f[S][i],f[S1][i]+f[S^S1][i]);</span><br><span class="line">			<span class="keyword">if</span>(f[S][i]&lt;inf)</span><br><span class="line">			&#123;</span><br><span class="line">				q.push(i);</span><br><span class="line">				vis[i]=<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		SPFA(S);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">			g[S]=min(g[S],f[S][i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> S=<span class="number">0</span>;S&lt;mx;++S)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> S1=(S<span class="number">-1</span>)&amp;S;S1;S1=(S1<span class="number">-1</span>)&amp;S)</span><br><span class="line">			<span class="keyword">if</span>(check(S1) &amp;&amp; check(S^S1))</span><br><span class="line">				g[S]=min(g[S],g[S1]+g[S^S1]);</span><br><span class="line">	<span class="keyword">if</span>(g[mx<span class="number">-1</span>]&gt;=inf)</span><br><span class="line">		<span class="built_in">puts</span>(<span class="string">"-1"</span>);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;g[mx<span class="number">-1</span>];</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/状压dp/" rel="tag"># 状压dp</a>
+          
+            <a href="/tags/斯坦纳树/" rel="tag"># 斯坦纳树</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/16/bzoj-4735-你的生命已如风中残烛/" rel="next" title="bzoj 4735 你的生命已如风中残烛">
+                <i class="fa fa-chevron-left"></i> bzoj 4735 你的生命已如风中残烛
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -775,6 +908,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
 
   
 
@@ -790,6 +927,37 @@
 
   
 
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '0f2a43b3bf8ac1ba787a',
+    clientSecret: 'c271a61a1475cd2dd1bbc48c7fd45058b0d2afea',
+    repo: 'jkloverdcoi.github.io',
+    owner: 'jkloverdcoi',
+    admin: ['jkloverdcoi'],
+    id: md5(location.pathname),
+    
+      language: 'en',
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
 
 
   
