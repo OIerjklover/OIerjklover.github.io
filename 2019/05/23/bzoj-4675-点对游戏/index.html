@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="$T3$ 题意理解错了.直接爆炸.">
-<meta name="keywords" content="二分,STL,test,two pointer">
+  <meta name="description" content="点分治.">
+<meta name="keywords" content="点分治">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test20190519">
-<meta property="og:url" content="http://yoursite.com/2019/05/20/test20190519/index.html">
+<meta property="og:title" content="bzoj 4675 点对游戏">
+<meta property="og:url" content="http://yoursite.com/2019/05/23/bzoj-4675-点对游戏/index.html">
 <meta property="og:site_name" content="JKLover">
-<meta property="og:description" content="$T3$ 题意理解错了.直接爆炸.">
+<meta property="og:description" content="点分治.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-20T05:47:59.492Z">
+<meta property="og:updated_time" content="2019-05-23T13:47:56.150Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="test20190519">
-<meta name="twitter:description" content="$T3$ 题意理解错了.直接爆炸.">
+<meta name="twitter:title" content="bzoj 4675 点对游戏">
+<meta name="twitter:description" content="点分治.">
 
 
 
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/05/20/test20190519/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/23/bzoj-4675-点对游戏/">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>test20190519 | JKLover</title>
+  <title>bzoj 4675 点对游戏 | JKLover</title>
   
 
 
@@ -340,7 +340,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/20/test20190519/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/23/bzoj-4675-点对游戏/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JKLover">
@@ -357,7 +357,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">test20190519
+          <h1 class="post-title" itemprop="name headline">bzoj 4675 点对游戏
 
               
             
@@ -383,7 +383,7 @@
                 
               
 
-              <time title="Created: 2019-05-20 13:45:47 / Modified: 13:47:59" itemprop="dateCreated datePublished" datetime="2019-05-20T13:45:47+08:00">2019-05-20</time>
+              <time title="Created: 2019-05-23 21:47:17 / Modified: 21:47:56" itemprop="dateCreated datePublished" datetime="2019-05-23T21:47:17+08:00">2019-05-23</time>
             
 
             
@@ -429,26 +429,14 @@
       
 
       
-        <p>$T3$ 题意理解错了.直接爆炸.</p>
+        <p>点分治.</p>
 <a id="more"></a>
-<h3 id="sequence"><a href="#sequence" class="headerlink" title="$sequence$"></a>$sequence$</h3><ul>
-<li>考虑一段区间 $[l,r]$ 合法,则显然 $\forall\  l\leq i\leq r,b_i\geq \max_{j=l}^i a_j$ .</li>
-<li>这个东西对于 $l,r$ 两边来说都是具有单调性的, $two\ pointer$ 扫一遍即可.</li>
-<li>用线段树做 $RMQ$ 为 $O(nlogn)$ ,用 $ST$ 表则为 $O(n)$ .</li>
+<ul>
+<li>表面上看是个期望的题,然而跟期望没多大关系.</li>
+<li>每个人的答案显然是 <strong>能选的点对数目/总点对数目*幸运点对的总数目 </strong> .</li>
+<li>只需要求幸运点对的总数目.由于 $m$ 很小,所以直接点分治就可以了.时间复杂度 $O(nmlogn)$ .</li>
 </ul>
-<h3 id="circulate"><a href="#circulate" class="headerlink" title="$circulate$"></a>$circulate$</h3><ul>
-<li>考虑枚举循环节循环次数,对于每个确定的循环次数,二分出循环节数字的最大值.</li>
-<li>为了计算不重不漏,容斥一下,该循环次数的质因子个数为奇数,则加上,否则减去.</li>
-</ul>
-<blockquote>
-<p>$2\times 10^{18}$ 有 $19$ 个数字…考试没加 $19$ 的情况,丢了 $20$ 分.</p>
-</blockquote>
-<h3 id="cannon"><a href="#cannon" class="headerlink" title="$cannon$"></a>$cannon$</h3><ul>
-<li>题意搞错了,没注意到一座山被轰了几次后高度减低,可以换其他的炮轰…</li>
-<li>$80pts$ 很简单.设 $f(i)$ 表示轰平一座高度为 $i$ 的山最少需要轰几次,然后从低到高判断能否轰即可.</li>
-<li>转移就有 $\forall x\leq 0,f(x)=0.f(i)=1+f(i-max_D)$ , $max_D$ 表示 $A_j\geq i$  中最大的 $D_j$ .</li>
-<li>$100pts$ 的做法就是在上面改一下.因为 $D\leq 300$ ,所以上面的 $f$ 数组有用的只有 $M\cdot D$ 个.用 $map$ 做即可. </li>
-</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> out=<span class="number">0</span>,fh=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> ((jp&gt;<span class="string">'9'</span>||jp&lt;<span class="string">'0'</span>)&amp;&amp;jp!=<span class="string">'-'</span>)</span><br><span class="line">		jp=getchar();</span><br><span class="line">	<span class="keyword">if</span> (jp==<span class="string">'-'</span>)</span><br><span class="line">		fh=<span class="number">-1</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> (jp&gt;=<span class="string">'0'</span>&amp;&amp;jp&lt;=<span class="string">'9'</span>)</span><br><span class="line">		out=out*<span class="number">10</span>+jp-<span class="string">'0'</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">return</span> out*fh;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf=<span class="number">1e9</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">5e4</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,luckynum[<span class="number">11</span>];</span><br><span class="line">ll sum=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> ecnt=<span class="number">0</span>,head[MAXN],nx[MAXN&lt;&lt;<span class="number">1</span>],to[MAXN&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addedge</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	++ecnt;</span><br><span class="line">	to[ecnt]=v;</span><br><span class="line">	nx[ecnt]=head[u];</span><br><span class="line">	head[u]=ecnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> totsiz,siz[MAXN],mi,rt,vis[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getroot</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> fa)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	siz[u]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> sonsiz=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=nx[i])</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> v=to[i];</span><br><span class="line">		<span class="keyword">if</span>(vis[v] || v==fa)</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		getroot(v,u);</span><br><span class="line">		siz[u]+=siz[v];</span><br><span class="line">		sonsiz=max(sonsiz,siz[v]);</span><br><span class="line">	&#125;</span><br><span class="line">	sonsiz=max(sonsiz,totsiz-siz[u]);</span><br><span class="line">	<span class="keyword">if</span>(sonsiz&lt;mi)</span><br><span class="line">		mi=sonsiz,rt=u;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> dis[MAXN],bucket[MAXN],stk1[MAXN],tp1=<span class="number">0</span>,stk2[MAXN],tp2=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getdis</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> fa)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	stk2[++tp2]=u;</span><br><span class="line">	dis[u]=dis[fa]+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;++i)</span><br><span class="line">		<span class="keyword">if</span>(luckynum[i]&gt;=dis[u])</span><br><span class="line">			sum+=bucket[luckynum[i]-dis[u]];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=nx[i])</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> v=to[i];</span><br><span class="line">		<span class="keyword">if</span>(vis[v] || v==fa)</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		getdis(v,u);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> u)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(tp1)</span><br><span class="line">		bucket[dis[stk1[tp1--]]]=<span class="number">0</span>;</span><br><span class="line">	dis[u]=<span class="number">0</span>;<span class="comment">//先清空,再设dis[u]=0,否则可能清空错误 </span></span><br><span class="line">	bucket[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=nx[i])</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> v=to[i];</span><br><span class="line">		<span class="keyword">if</span>(vis[v])</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		tp2=<span class="number">0</span>;</span><br><span class="line">		getdis(v,u);</span><br><span class="line">		<span class="keyword">while</span>(tp2)</span><br><span class="line">		&#123;</span><br><span class="line">			stk1[++tp1]=stk2[tp2];</span><br><span class="line">			++bucket[dis[stk2[tp2]]];</span><br><span class="line">			--tp2;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">divide</span><span class="params">(<span class="keyword">int</span> u)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	solve(u);</span><br><span class="line">	vis[u]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=nx[i])</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> v=to[i];</span><br><span class="line">		<span class="keyword">if</span>(vis[v])</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		mi=inf,totsiz=siz[v];</span><br><span class="line">		getroot(v,<span class="number">0</span>);</span><br><span class="line">		divide(rt);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getsum</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	mi=inf,totsiz=n;</span><br><span class="line">	getroot(<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">	divide(rt);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">calc</span><span class="params">(ll pairs)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (<span class="keyword">double</span>(pairs)) * (<span class="keyword">double</span>(sum)) / (<span class="keyword">double</span>(<span class="number">1L</span>L * n * (n<span class="number">-1</span>) )) ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	n=read(),m=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;++i)</span><br><span class="line">		luckynum[i]=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> u=read(),v=read();</span><br><span class="line">		addedge(u,v);</span><br><span class="line">		addedge(v,u);</span><br><span class="line">	&#125;</span><br><span class="line">	getsum();</span><br><span class="line">	<span class="keyword">int</span> p=(n+<span class="number">2</span>)/<span class="number">3</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%.2f\n"</span>,calc(<span class="number">1L</span>L*p*(p<span class="number">-1</span>)));</span><br><span class="line">	p=(n+<span class="number">1</span>)/<span class="number">3</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%.2f\n"</span>,calc(<span class="number">1L</span>L*p*(p<span class="number">-1</span>)));</span><br><span class="line">	p=n/<span class="number">3</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%.2f\n"</span>,calc(<span class="number">1L</span>L*p*(p<span class="number">-1</span>)));</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -472,13 +460,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/二分/" rel="tag"># 二分</a>
-          
-            <a href="/tags/STL/" rel="tag"># STL</a>
-          
-            <a href="/tags/test/" rel="tag"># test</a>
-          
-            <a href="/tags/two-pointer/" rel="tag"># two pointer</a>
+            <a href="/tags/点分治/" rel="tag"># 点分治</a>
           
         </div>
       
@@ -491,8 +473,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/20/bzoj-4755-扭动的回文串/" rel="next" title="bzoj 4755 扭动的回文串">
-                <i class="fa fa-chevron-left"></i> bzoj 4755 扭动的回文串
+              <a href="/2019/05/23/bzoj-4698-Sandy的卡片/" rel="next" title="bzoj 4698 Sandy的卡片">
+                <i class="fa fa-chevron-left"></i> bzoj 4698 Sandy的卡片
               </a>
             
           </div>
@@ -500,10 +482,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/21/bzoj-4754-独特的树叶/" rel="prev" title="bzoj 4754 独特的树叶">
-                bzoj 4754 独特的树叶 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -551,17 +529,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -788,23 +757,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#sequence"><span class="nav-number">1.</span> <span class="nav-text">$sequence$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#circulate"><span class="nav-number">2.</span> <span class="nav-text">$circulate$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cannon"><span class="nav-number">3.</span> <span class="nav-text">$cannon$</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
