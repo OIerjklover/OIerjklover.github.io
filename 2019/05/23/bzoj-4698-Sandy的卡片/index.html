@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="$Manacher$ .">
-<meta name="keywords" content="Manacher">
+  <meta name="description" content="$SAM$ .">
+<meta name="keywords" content="SAM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="bzoj 4962 简单的字符串">
-<meta property="og:url" content="http://yoursite.com/2019/05/14/bzoj-4962-简单的字符串/index.html">
+<meta property="og:title" content="bzoj 4698 Sandy的卡片">
+<meta property="og:url" content="http://yoursite.com/2019/05/23/bzoj-4698-Sandy的卡片/index.html">
 <meta property="og:site_name" content="JKLover">
-<meta property="og:description" content="$Manacher$ .">
+<meta property="og:description" content="$SAM$ .">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-16T14:33:40.324Z">
+<meta property="og:updated_time" content="2019-05-23T05:18:38.637Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="bzoj 4962 简单的字符串">
-<meta name="twitter:description" content="$Manacher$ .">
+<meta name="twitter:title" content="bzoj 4698 Sandy的卡片">
+<meta name="twitter:description" content="$SAM$ .">
 
 
 
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/05/14/bzoj-4962-简单的字符串/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/23/bzoj-4698-Sandy的卡片/">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>bzoj 4962 简单的字符串 | JKLover</title>
+  <title>bzoj 4698 Sandy的卡片 | JKLover</title>
   
 
 
@@ -340,7 +340,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/14/bzoj-4962-简单的字符串/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/23/bzoj-4698-Sandy的卡片/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JKLover">
@@ -357,7 +357,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">bzoj 4962 简单的字符串
+          <h1 class="post-title" itemprop="name headline">bzoj 4698 Sandy的卡片
 
               
             
@@ -383,24 +383,12 @@
                 
               
 
-              <time title="Created: 2019-05-14 10:11:00" itemprop="dateCreated datePublished" datetime="2019-05-14T10:11:00+08:00">2019-05-14</time>
+              <time title="Created: 2019-05-23 13:17:58 / Modified: 13:18:38" itemprop="dateCreated datePublished" datetime="2019-05-23T13:17:58+08:00">2019-05-23</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-05-16 22:33:40" itemprop="dateModified" datetime="2019-05-16T22:33:40+08:00">2019-05-16</time>
               
             
           </span>
@@ -441,20 +429,14 @@
       
 
       
-        <p>$Manacher$ .</p>
+        <p>$SAM$ .</p>
 <a id="more"></a>
 <ul>
-<li>不知道性质的话应该挺难做的…</li>
-<li>先枚举子串中心,往两侧拓展,将走到的位置的字符交替写下来,记作 $S$ .</li>
-<li>比如字符串是 $abcdacce$ ,以 $d$ 右侧的那个位置为中心,则 $S=daccbcae$ (此处先写左边).</li>
-<li>若中心的两侧长度为 $L$ 的两个子串循环同构,则 $S$ 中对应的长度为 $2L$ 的前缀能被 $1$ 或 $2$ 个偶回文串拼接成.</li>
-<li>证明:如果左右两个子串完全相同,那么这个长度为 $2L$ 的前缀自身就是一个偶回文串.否则,若左右两个子串不同,但循环同构,那么设右边的串为 $s_1,s_2,\dots s_L$ ,左边的串为 $s_i,s_{i+1},\dots,s_L,s_1,s_2\dots,s_{i-1}$ .</li>
-<li>那么这个长度为 $2L$ 的前缀就应该是 $(s_{i-1},s_1,s_{i-2},s_2,\dots,s_1,s_{i-1})+(s_L,s_i,s_{L-1},s_{i+1},\dots,s_i,s_L)$ . 显然加号两边的串都是偶回文串.</li>
-<li>还有一个性质,若 $S=u+v$ , $u$ 和 $v$ 都是偶回文串,那么要么 $u$ 是 $S$ 的最长偶回文前缀,要么 $v$ 是 $S$ 的最长偶回文后缀.<a href="https://www.cnblogs.com/clrs97/p/7337155.html" target="_blank" rel="noopener">Claris的证明</a></li>
-<li>于是用 $Manacher$ 跑出每个位置的最长回文半径 $rmax$ ,对于每个前缀判断一下拆成 <strong>最长偶回文前缀 + 偶回文串</strong> 与拆成 <strong>偶回文串 + 最长偶回文后缀</strong> 是否有一个合法即可.</li>
-<li>时间复杂度 $O(n^2)$ . 若用 $Hash$ 代替 $Manacher$ 则为 $O(n^2 logn)$ .</li>
+<li>相同的定义比较奇怪,其实只需要差分一下就可以了,问题就是求这些串的最长公共子串.用 $SAM$ 解决.</li>
+<li>答案就是求出的公共子串 $+1$ ?但有可能没有位置补,比如 $s_1=”23”,s_2=”23”$ ,答案应该是 $2$ 而不是 $3$ .</li>
+<li>解决办法也很简单,在每个串后面加一个独特的且不在字符集中的标识符就可以了.</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> out=<span class="number">0</span>,fh=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> ((jp&gt;<span class="string">'9'</span>||jp&lt;<span class="string">'0'</span>)&amp;&amp;jp!=<span class="string">'-'</span>)</span><br><span class="line">		jp=getchar();</span><br><span class="line">	<span class="keyword">if</span> (jp==<span class="string">'-'</span>)</span><br><span class="line">		fh=<span class="number">-1</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> (jp&gt;=<span class="string">'0'</span>&amp;&amp;jp&lt;=<span class="string">'9'</span>)</span><br><span class="line">		out=out*<span class="number">10</span>+jp-<span class="string">'0'</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">return</span> out*fh;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">5e3</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> ch[MAXN],s[MAXN];</span><br><span class="line"><span class="keyword">int</span> n,rmax[MAXN],pre[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> len=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=p,j=p+<span class="number">1</span>;i&gt;=<span class="number">1</span> &amp;&amp; j&lt;=n;--i,++j)</span><br><span class="line">		s[++len]=ch[i],s[++len]=ch[j];</span><br><span class="line">	fill(pre+<span class="number">1</span>,pre+<span class="number">2</span>+len,<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">int</span> r=<span class="number">0</span>,pos=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=len;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> mx=min(max(r-i,<span class="number">0</span>),rmax[<span class="number">2</span>*pos-i]);</span><br><span class="line">		<span class="keyword">while</span>(i+mx+<span class="number">1</span>&lt;=n &amp;&amp; i-mx&gt;<span class="number">0</span> &amp;&amp; s[i+mx+<span class="number">1</span>]==s[i-mx])</span><br><span class="line">			++mx;</span><br><span class="line">		rmax[i]=mx;</span><br><span class="line">		<span class="keyword">if</span>(i+mx&gt;=r)</span><br><span class="line">			r=i+mx,pos=i;</span><br><span class="line">		pre[i+rmax[i]]=max(pre[i+rmax[i]],rmax[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=len;i&gt;=<span class="number">1</span>;--i)</span><br><span class="line">		pre[i]=max(pre[i],pre[i+<span class="number">1</span>]<span class="number">-1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=len;i&gt;=<span class="number">1</span>;i-=<span class="number">2</span>)</span><br><span class="line">		pre[i]&lt;&lt;=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> mx=<span class="number">0</span>,res=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=len;i+=<span class="number">2</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(rmax[i/<span class="number">2</span>]==i/<span class="number">2</span>)</span><br><span class="line">			mx=i;</span><br><span class="line">		<span class="keyword">if</span>(rmax[(i+mx)/<span class="number">2</span>]&gt;=(i-mx)/<span class="number">2</span> || rmax[(i-pre[i])/<span class="number">2</span>]&gt;=(i-pre[i])/<span class="number">2</span>)</span><br><span class="line">			++res;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	n=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">		ch[i]=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;++i)</span><br><span class="line">		ans+=solve(i);</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> out=<span class="number">0</span>,fh=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> ((jp&gt;<span class="string">'9'</span>||jp&lt;<span class="string">'0'</span>)&amp;&amp;jp!=<span class="string">'-'</span>)</span><br><span class="line">		jp=getchar();</span><br><span class="line">	<span class="keyword">if</span> (jp==<span class="string">'-'</span>)</span><br><span class="line">		fh=<span class="number">-1</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> (jp&gt;=<span class="string">'0'</span>&amp;&amp;jp&lt;=<span class="string">'9'</span>)</span><br><span class="line">		out=out*<span class="number">10</span>+jp-<span class="string">'0'</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">return</span> out*fh;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> Siz=<span class="number">1500</span>,MAXN=<span class="number">2e3</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> buf[MAXN];</span><br><span class="line"><span class="keyword">int</span> L,n,T=<span class="number">0</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SuffixAutoMation</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> idx,lst;</span><br><span class="line">	<span class="keyword">int</span> fa[MAXN],ch[MAXN][Siz];</span><br><span class="line">	<span class="keyword">int</span> len[MAXN],siz[MAXN];</span><br><span class="line">	<span class="keyword">int</span> A[MAXN],t[MAXN];</span><br><span class="line">	<span class="keyword">int</span> mxl[MAXN],res[MAXN];</span><br><span class="line">	SuffixAutoMation()</span><br><span class="line">	&#123;</span><br><span class="line">		idx=lst=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Extend</span><span class="params">(<span class="keyword">int</span> c)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> p=lst,np=++idx;</span><br><span class="line">		lst=np;</span><br><span class="line">		res[np]=len[np]=len[p]+<span class="number">1</span>;</span><br><span class="line">		siz[np]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span>(p &amp;&amp; ch[p][c]==<span class="number">0</span>)</span><br><span class="line">			ch[p][c]=np,p=fa[p];</span><br><span class="line">		<span class="keyword">if</span>(p==<span class="number">0</span>)</span><br><span class="line">			fa[np]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> q=ch[p][c];</span><br><span class="line">			<span class="keyword">if</span>(len[q]==len[p]+<span class="number">1</span>)</span><br><span class="line">				fa[np]=q;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">int</span> nq=++idx;</span><br><span class="line">				res[nq]=len[nq]=len[p]+<span class="number">1</span>;</span><br><span class="line">				fa[nq]=fa[q];</span><br><span class="line">				fa[q]=fa[np]=nq;</span><br><span class="line">				<span class="built_in">memcpy</span>(ch[nq],ch[q],<span class="keyword">sizeof</span> ch[q]);</span><br><span class="line">				<span class="keyword">while</span>(p &amp;&amp; ch[p][c]==q)</span><br><span class="line">					ch[p][c]=nq,p=fa[p];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">topsort</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=idx; ++i)</span><br><span class="line">			++t[len[i]];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=idx; ++i)</span><br><span class="line">			t[i]+=t[i<span class="number">-1</span>];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=idx; ++i)</span><br><span class="line">			A[t[len[i]]--]=i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		L=read();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=L; ++i)</span><br><span class="line">			buf[i]=read()<span class="number">-2</span>;</span><br><span class="line">		buf[L+<span class="number">1</span>]=T+<span class="number">200</span>,buf[L+<span class="number">2</span>]=<span class="number">0</span>;</span><br><span class="line">		++L;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=L; ++i)</span><br><span class="line">			buf[i]=buf[i+<span class="number">1</span>]-buf[i]+<span class="number">1200</span>;	</span><br><span class="line">		<span class="built_in">memset</span>(mxl,<span class="number">0</span>,<span class="keyword">sizeof</span> mxl);</span><br><span class="line">		<span class="keyword">int</span> p=<span class="number">1</span>,tmp=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=L; ++i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> c=buf[i];</span><br><span class="line">			<span class="keyword">while</span>(p &amp;&amp; ch[p][c]==<span class="number">0</span>)</span><br><span class="line">				p=fa[p];</span><br><span class="line">			<span class="keyword">if</span>(p==<span class="number">0</span>)</span><br><span class="line">				p=<span class="number">1</span>,tmp=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				tmp=min(tmp,len[p])+<span class="number">1</span>;</span><br><span class="line">				p=ch[p][c];</span><br><span class="line">			&#125;</span><br><span class="line">			mxl[p]=max(mxl[p],tmp);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=idx; i&gt;=<span class="number">1</span>; --i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> u=A[i];</span><br><span class="line">			mxl[fa[u]]=max(mxl[fa[u]],mxl[u]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=idx; ++i)</span><br><span class="line">			res[i]=min(res[i],mxl[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">pr</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=idx; ++i)</span><br><span class="line">			ans=max(ans,res[i]);</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;ans+<span class="number">1</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125; SAM;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	n=read();</span><br><span class="line">	L=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=L; ++i)</span><br><span class="line">		buf[i]=read()<span class="number">-2</span>;</span><br><span class="line">	++T;</span><br><span class="line">	buf[L+<span class="number">1</span>]=T+<span class="number">200</span>,buf[L+<span class="number">2</span>]=<span class="number">0</span>;</span><br><span class="line">	++L;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=L; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		buf[i]=buf[i+<span class="number">1</span>]-buf[i]+<span class="number">1200</span>;</span><br><span class="line">		SAM.Extend(buf[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	SAM.topsort();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;n; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		++T;</span><br><span class="line">		SAM.solve();</span><br><span class="line">	&#125;	</span><br><span class="line">	SAM.pr();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -478,7 +460,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Manacher/" rel="tag"># Manacher</a>
+            <a href="/tags/SAM/" rel="tag"># SAM</a>
           
         </div>
       
@@ -491,8 +473,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/14/bzoj-4985-评分/" rel="next" title="bzoj 4985 评分">
-                <i class="fa fa-chevron-left"></i> bzoj 4985 评分
+              <a href="/2019/05/22/bzoj-4668-冷战/" rel="next" title="bzoj 4668 冷战">
+                <i class="fa fa-chevron-left"></i> bzoj 4668 冷战
               </a>
             
           </div>
@@ -500,10 +482,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/14/bzoj-4926-皮皮妖的递推/" rel="prev" title="bzoj 4926 皮皮妖的递推">
-                bzoj 4926 皮皮妖的递推 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
