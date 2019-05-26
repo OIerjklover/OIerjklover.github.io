@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="$T3$ 题意理解错了.直接爆炸.">
-<meta name="keywords" content="二分,STL,test,two pointer">
+  <meta name="description" content="感觉 $T3$ 很假.">
+<meta name="keywords" content="数学,最短路,STL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test20190519">
-<meta property="og:url" content="http://yoursite.com/2019/05/20/test20190519/index.html">
+<meta property="og:title" content="test20190526">
+<meta property="og:url" content="http://yoursite.com/2019/05/26/test20190526/index.html">
 <meta property="og:site_name" content="JKLover">
-<meta property="og:description" content="$T3$ 题意理解错了.直接爆炸.">
+<meta property="og:description" content="感觉 $T3$ 很假.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-20T05:47:59.492Z">
+<meta property="og:updated_time" content="2019-05-26T09:11:42.091Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="test20190519">
-<meta name="twitter:description" content="$T3$ 题意理解错了.直接爆炸.">
+<meta name="twitter:title" content="test20190526">
+<meta name="twitter:description" content="感觉 $T3$ 很假.">
 
 
 
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/05/20/test20190519/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/26/test20190526/">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>test20190519 | JKLover</title>
+  <title>test20190526 | JKLover</title>
   
 
 
@@ -340,7 +340,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/20/test20190519/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/26/test20190526/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JKLover">
@@ -357,7 +357,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">test20190519
+          <h1 class="post-title" itemprop="name headline">test20190526
 
               
             
@@ -383,7 +383,7 @@
                 
               
 
-              <time title="Created: 2019-05-20 13:45:47 / Modified: 13:47:59" itemprop="dateCreated datePublished" datetime="2019-05-20T13:45:47+08:00">2019-05-20</time>
+              <time title="Created: 2019-05-26 16:56:23 / Modified: 17:11:42" itemprop="dateCreated datePublished" datetime="2019-05-26T16:56:23+08:00">2019-05-26</time>
             
 
             
@@ -429,26 +429,24 @@
       
 
       
-        <p>$T3$ 题意理解错了.直接爆炸.</p>
+        <p>感觉 $T3$ 很假.</p>
 <a id="more"></a>
-<h3 id="sequence"><a href="#sequence" class="headerlink" title="$sequence$"></a>$sequence$</h3><ul>
-<li>考虑一段区间 $[l,r]$ 合法,则显然 $\forall\  l\leq i\leq r,b_i\geq \max_{j=l}^i a_j$ .</li>
-<li>这个东西对于 $l,r$ 两边来说都是具有单调性的, $two\ pointer$ 扫一遍即可.</li>
-<li>用线段树做 $RMQ$ 为 $O(nlogn)$ ,用 $ST$ 表则为 $O(n)$ .</li>
+<h3 id="tweak"><a href="#tweak" class="headerlink" title="$tweak$"></a>$tweak$</h3><ul>
+<li>题面有误.题意是每次可以选一条边,权值修改为任意非负整数,问至少改多少条可以使 $1\to n$ 的最短路 $\leq c$ .</li>
+<li>显然可以贪心,每次修改时都改成 $0$ .设 $f(i,j)$ 表示 $1\to i$ ,改了 $j$ 条边时的最短路.用 $spfa$ 转移即可. </li>
 </ul>
-<h3 id="circulate"><a href="#circulate" class="headerlink" title="$circulate$"></a>$circulate$</h3><ul>
-<li>考虑枚举循环节循环次数,对于每个确定的循环次数,二分出循环节数字的最大值.</li>
-<li>为了计算不重不漏,容斥一下,该循环次数的质因子个数为奇数,则加上,否则减去.</li>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x=<span class="number">0</span>,k=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> ch=getchar();</span><br><span class="line">	<span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>)</span><br><span class="line">		&#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>) k=<span class="number">-1</span>;ch=getchar();&#125;</span><br><span class="line">	<span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>)</span><br><span class="line">		&#123;x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+ch-<span class="string">'0'</span>;ch=getchar();&#125;</span><br><span class="line">	<span class="keyword">return</span> k*x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">1e3</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> ecnt=<span class="number">0</span>,head[MAXN],to[MAXN],nx[MAXN],val[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">addedge</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	++ecnt;</span><br><span class="line">	to[ecnt]=v;</span><br><span class="line">	nx[ecnt]=head[u];</span><br><span class="line">	val[ecnt]=w;</span><br><span class="line">	head[u]=ecnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> n,m,c;</span><br><span class="line"><span class="keyword">int</span> f[MAXN][MAXN],tot=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> vis[MAXN];</span><br><span class="line"><span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">spfa</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(f,<span class="number">63</span>,<span class="keyword">sizeof</span> f);</span><br><span class="line">	<span class="keyword">int</span> inf=f[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">	f[<span class="number">1</span>][<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">	vis[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	q.push(<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">while</span>(!q.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> u=q.front();</span><br><span class="line">		q.pop();</span><br><span class="line">		vis[u]=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=nx[i])</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> v=to[i];</span><br><span class="line">			<span class="keyword">bool</span> flag=<span class="literal">false</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=m;++j)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(f[u][j]&gt;=inf)</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">if</span>(f[u][j]&lt;=f[v][j+<span class="number">1</span>])</span><br><span class="line">				&#123;</span><br><span class="line">					f[v][j+<span class="number">1</span>]=f[u][j];</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span>(f[u][j]+val[i]&lt;=f[v][j])</span><br><span class="line">				&#123;</span><br><span class="line">					f[v][j]=f[u][j]+val[i];</span><br><span class="line">					<span class="keyword">if</span>(!j)</span><br><span class="line">						flag=<span class="literal">true</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(flag &amp;&amp; !vis[v])</span><br><span class="line">			&#123;</span><br><span class="line">				vis[v]=<span class="number">1</span>;</span><br><span class="line">				q.push(v);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	freopen(<span class="string">"tweak.in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">	freopen(<span class="string">"tweak.out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</span><br><span class="line">	n=read(),m=read(),c=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> u=read(),v=read(),w=read();</span><br><span class="line">		addedge(u,v,w);</span><br><span class="line">	&#125;</span><br><span class="line">	spfa();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=m;++i)</span><br><span class="line">		<span class="keyword">if</span>(f[n][i]&lt;=c)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">cout</span>&lt;&lt;i&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="coins"><a href="#coins" class="headerlink" title="$coins$"></a>$coins$</h3><ul>
+<li>把每个硬币看做多项式 $(x^{a_i}+1)$ ,如果每个硬币都可以用,方案数就是 $\prod (x^{a_i}+1)$ 这个多项式中系数非零的 $x^k(k&gt;0)$ 的个数.</li>
+<li>限定某个硬币 $i$ 不能用,只需要在多项式 $\prod (x^{a_i}+1)$ 中把 $(x^{a_i}+1)$ 除去,然后统计答案.</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x=<span class="number">0</span>,k=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> ch=getchar();</span><br><span class="line">	<span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>)</span><br><span class="line">		&#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>) k=<span class="number">-1</span>;ch=getchar();&#125;</span><br><span class="line">	<span class="keyword">while</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>)</span><br><span class="line">		&#123;x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+ch-<span class="string">'0'</span>;ch=getchar();&#125;</span><br><span class="line">	<span class="keyword">return</span> k*x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> n,a[<span class="number">101</span>];</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">3e5</span>+<span class="number">10</span>;</span><br><span class="line">ll poly[MAXN],tmp[MAXN];</span><br><span class="line">ll stk[MAXN],sk[MAXN];</span><br><span class="line"><span class="keyword">int</span> deg=<span class="number">0</span>,tp=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	tp=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> Deg=deg,res=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(Deg)</span><br><span class="line">	&#123;</span><br><span class="line">		ll s=poly[Deg];</span><br><span class="line">		<span class="keyword">if</span>(!s)</span><br><span class="line">		&#123;</span><br><span class="line">			--Deg;</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(!tmp[Deg-p] &amp;&amp; Deg-p)</span><br><span class="line">			++res;</span><br><span class="line">		tmp[Deg-p]+=s;</span><br><span class="line">		stk[++tp]=Deg-p;</span><br><span class="line">		poly[Deg-p]-=s;</span><br><span class="line">		sk[tp]=s;</span><br><span class="line">		--Deg;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=tp;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		tmp[stk[i]]=<span class="number">0</span>;</span><br><span class="line">		poly[stk[i]]+=sk[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	freopen(<span class="string">"coin.in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">	freopen(<span class="string">"coin.out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</span><br><span class="line">	n=read();</span><br><span class="line">	poly[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		a[i]=read();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=deg;j&gt;=<span class="number">0</span>;--j)</span><br><span class="line">			poly[a[i]+j]+=poly[j];</span><br><span class="line">		deg+=a[i];	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,query(a[i]));</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="cakes"><a href="#cakes" class="headerlink" title="$cakes$"></a>$cakes$</h3><ul>
+<li>$std:$ 维护一个堆,存储每种大小的元素数目.每次取出顶部三个,做最多的三元组,把剩余的放回去.</li>
 </ul>
 <blockquote>
-<p>$2\times 10^{18}$ 有 $19$ 个数字…考试没加 $19$ 的情况,丢了 $20$ 分.</p>
+<p>并不知道我的贪心哪里出了问题.</p>
 </blockquote>
-<h3 id="cannon"><a href="#cannon" class="headerlink" title="$cannon$"></a>$cannon$</h3><ul>
-<li>题意搞错了,没注意到一座山被轰了几次后高度减低,可以换其他的炮轰…</li>
-<li>$80pts$ 很简单.设 $f(i)$ 表示轰平一座高度为 $i$ 的山最少需要轰几次,然后从低到高判断能否轰即可.</li>
-<li>转移就有 $\forall x\leq 0,f(x)=0.f(i)=1+f(i-max_D)$ , $max_D$ 表示 $A_j\geq i$  中最大的 $D_j$ .</li>
-<li>$100pts$ 的做法就是在上面改一下.因为 $D\leq 300$ ,所以上面的 $f$ 数组有用的只有 $M\cdot D$ 个.用 $map$ 做即可. </li>
-</ul>
 
       
     </div>
@@ -472,13 +470,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/二分/" rel="tag"># 二分</a>
+            <a href="/tags/数学/" rel="tag"># 数学</a>
+          
+            <a href="/tags/最短路/" rel="tag"># 最短路</a>
           
             <a href="/tags/STL/" rel="tag"># STL</a>
-          
-            <a href="/tags/test/" rel="tag"># test</a>
-          
-            <a href="/tags/two-pointer/" rel="tag"># two pointer</a>
           
         </div>
       
@@ -491,8 +487,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/20/bzoj-4755-扭动的回文串/" rel="next" title="bzoj 4755 扭动的回文串">
-                <i class="fa fa-chevron-left"></i> bzoj 4755 扭动的回文串
+              <a href="/2019/05/26/bzoj-4653-区间/" rel="next" title="bzoj 4653 区间">
+                <i class="fa fa-chevron-left"></i> bzoj 4653 区间
               </a>
             
           </div>
@@ -500,10 +496,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/21/bzoj-4754-独特的树叶/" rel="prev" title="bzoj 4754 独特的树叶">
-                bzoj 4754 独特的树叶 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -799,7 +791,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#sequence"><span class="nav-number">1.</span> <span class="nav-text">$sequence$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#circulate"><span class="nav-number">2.</span> <span class="nav-text">$circulate$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cannon"><span class="nav-number">3.</span> <span class="nav-text">$cannon$</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#tweak"><span class="nav-number">1.</span> <span class="nav-text">$tweak$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#coins"><span class="nav-number">2.</span> <span class="nav-text">$coins$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cakes"><span class="nav-number">3.</span> <span class="nav-text">$cakes$</span></a></li></ol></div>
             
 
           </div>
