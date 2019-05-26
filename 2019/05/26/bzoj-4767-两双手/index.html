@@ -96,13 +96,18 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="JKLover">
-<meta property="og:url" content="http://yoursite.com/tags/打表/index.html">
+  <meta name="description" content="容斥 +$dp$ .">
+<meta name="keywords" content="dp计数,容斥原理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="bzoj 4767 两双手">
+<meta property="og:url" content="http://yoursite.com/2019/05/26/bzoj-4767-两双手/index.html">
 <meta property="og:site_name" content="JKLover">
+<meta property="og:description" content="容斥 +$dp$ .">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-05-26T02:44:58.057Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JKLover">
+<meta name="twitter:title" content="bzoj 4767 两双手">
+<meta name="twitter:description" content="容斥 +$dp$ .">
 
 
 
@@ -110,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/tags/打表/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/26/bzoj-4767-两双手/">
 
 
 
@@ -120,7 +125,7 @@
   };
 </script>
 
-  <title>Tag: 打表 | JKLover</title>
+  <title>bzoj 4767 两双手 | JKLover</title>
   
 
 
@@ -168,7 +173,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -227,7 +232,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -274,22 +279,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -335,57 +324,196 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>打表<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/26/bzoj-4767-两双手/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JKLover">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JKLover">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/04/18/test20190417/" itemprop="url">
-            
-              <span itemprop="name">test20190417</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">bzoj 4767 两双手
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-18T13:28:02+08:00" content="2019-04-18">
-          04-18
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-26 10:44:27 / Modified: 10:44:58" itemprop="dateCreated datePublished" datetime="2019-05-26T10:44:27+08:00">2019-05-26</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>容斥 +$dp$ .</p>
+<a id="more"></a>
+<ul>
+<li>把两种移动方式看做两个向量 $\vec a,\vec b$ .因为题目保证它们不共线,所以每个点都可以被写成 $x\cdot \vec a+y\cdot \vec b$ .</li>
+<li>那么以解出来的 $(x,y)$ 代替原来的坐标,问题就变成了每次可以向右或向上走一步,求方案数.</li>
+<li>如果没有障碍,答案显然是 $C_{x+y}^x$ .但现在有障碍.直接递推显然不行,因为新坐标可以达到 $2\times 500^2$ .</li>
+<li>考虑容斥.将障碍点,目标点视为关键点,做坐标转换(如果不是整数就直接舍去),然后排序.原点为第 $0$ 个关键点.</li>
+<li>设 $f(i)$ 表示从原点到达第 $i$ 个关键点而不经过其他关键点的方案数. $g(i,j)$ 表示从第 $i$ 个关键点到第 $j$ 个关键点的所有方案数.转移有 $f(i)=g(0,i)-\sum_{j=1}^{i-1} g(j,i)\cdot f(j)$ .而 $g$ 不需要考虑障碍,显然就是组合数.</li>
+<li>时间复杂度 $O(n^2)$ .</li>
+</ul>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/dp计数/" rel="tag"># dp计数</a>
+          
+            <a href="/tags/容斥原理/" rel="tag"># 容斥原理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/25/Atcoder-Beginner-Contest-127/" rel="next" title="Atcoder Beginner Contest 127">
+                <i class="fa fa-chevron-left"></i> Atcoder Beginner Contest 127
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -789,6 +917,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
 
   
 
@@ -804,6 +936,37 @@
 
   
 
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '0f2a43b3bf8ac1ba787a',
+    clientSecret: 'c271a61a1475cd2dd1bbc48c7fd45058b0d2afea',
+    repo: 'jkloverdcoi.github.io',
+    owner: 'jkloverdcoi',
+    admin: ['jkloverdcoi'],
+    id: md5(location.pathname),
+    
+      language: 'en',
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
 
 
   
