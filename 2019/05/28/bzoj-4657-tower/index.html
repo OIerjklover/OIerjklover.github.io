@@ -96,13 +96,18 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="JKLover">
-<meta property="og:url" content="http://yoursite.com/tags/广义SAM/index.html">
+  <meta name="description" content="最小割.">
+<meta name="keywords" content="网络流">
+<meta property="og:type" content="article">
+<meta property="og:title" content="bzoj 4657 tower">
+<meta property="og:url" content="http://yoursite.com/2019/05/28/bzoj-4657-tower/index.html">
 <meta property="og:site_name" content="JKLover">
+<meta property="og:description" content="最小割.">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-05-28T03:48:46.693Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JKLover">
+<meta name="twitter:title" content="bzoj 4657 tower">
+<meta name="twitter:description" content="最小割.">
 
 
 
@@ -110,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/tags/广义SAM/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/28/bzoj-4657-tower/">
 
 
 
@@ -120,7 +125,7 @@
   };
 </script>
 
-  <title>Tag: 广义SAM | JKLover</title>
+  <title>bzoj 4657 tower | JKLover</title>
   
 
 
@@ -168,7 +173,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -227,7 +232,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -274,22 +279,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -335,57 +324,196 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>广义SAM<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/28/bzoj-4657-tower/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JKLover">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JKLover">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/05/03/bzoj-3926-诸神眷顾的幻想乡/" itemprop="url">
-            
-              <span itemprop="name">bzoj 3926 诸神眷顾的幻想乡</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">bzoj 4657 tower
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-03T21:16:43+08:00" content="2019-05-03">
-          05-03
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-28 11:47:44 / Modified: 11:48:46" itemprop="dateCreated datePublished" datetime="2019-05-28T11:47:44+08:00">2019-05-28</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最小割.</p>
+<a id="more"></a>
+<ul>
+<li>想到网络流应该不难,但关键是怎样建模.</li>
+<li>因为只有横向炮塔与竖向炮塔可能发生冲突,所以可以先套路地把一个点拆成一个横点和一个竖点,横点向对应竖点之间连一条边权为 $inf$ 的边.然后从源点 $S$ 向每个竖向攻击的炮塔的竖点连边权为 $inf$ 的边,从每个横向攻击的炮塔的横点向汇点 $T$ 连一条边权为 $inf$ 的边.</li>
+<li>考虑每个炮塔,选择一个点进行攻击,这个点显然是从炮塔出发到最大贡献所在点这条路径 $p$ 上的某个点.</li>
+<li>那么对于一个竖向攻击的炮塔,沿着路径 $p$ ,从炮塔到最大贡献点,相邻两点的竖点连上边.</li>
+<li>对于一个横向攻击的炮塔,沿着路径 $p$ ,从最大贡献点到炮塔,相邻两点的横点连上边.</li>
+<li>开始时钦定每个炮塔都打各自最大贡献点,收益为 $\sum max_i$ ,但这样会有路径相交,在图中表现为 $S$ 与 $T$ 连通.若一个炮塔改为打点 $u$ ,就把对应的路径 $p$ 上以 $u$ 为一端,另一端远离炮塔的点的边割掉就行了.减少的收益是 $max_i-val_u$ .可以发现,最后 $S$ 与 $T$ 不连通就与炮弹路径不相交是等价的.</li>
+<li>于是在路径 $p$ 上连边时,将边权设置为 $max_i-val_u$ ,用 $\sum max_i$ 减去最小割即可.</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> out=<span class="number">0</span>,fh=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> ((jp&gt;<span class="string">'9'</span>||jp&lt;<span class="string">'0'</span>)&amp;&amp;jp!=<span class="string">'-'</span>)</span><br><span class="line">		jp=getchar();</span><br><span class="line">	<span class="keyword">if</span> (jp==<span class="string">'-'</span>)</span><br><span class="line">		fh=<span class="number">-1</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> (jp&gt;=<span class="string">'0'</span>&amp;&amp;jp&lt;=<span class="string">'9'</span>)</span><br><span class="line">		out=out*<span class="number">10</span>+jp-<span class="string">'0'</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">return</span> out*fh;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf=<span class="number">1e9</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">2e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> ecnt=<span class="number">-1</span>,head[MAXN],cur[MAXN],tot=<span class="number">0</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> nx,to,flow;</span><br><span class="line">&#125;E[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addedge</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	++ecnt;</span><br><span class="line">	E[ecnt].to=v;</span><br><span class="line">	E[ecnt].nx=head[u];</span><br><span class="line">	E[ecnt].flow=w;</span><br><span class="line">	head[u]=ecnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ins</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	addedge(u,v,w);</span><br><span class="line">	addedge(v,u,<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> dep[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">bfs</span><span class="params">(<span class="keyword">int</span> S,<span class="keyword">int</span> T)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">	<span class="keyword">while</span>(!q.empty())</span><br><span class="line">		q.pop();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=tot;++i)</span><br><span class="line">		cur[i]=head[i];</span><br><span class="line">	<span class="built_in">memset</span>(dep,<span class="number">-1</span>,<span class="keyword">sizeof</span> dep);</span><br><span class="line">	dep[S]=<span class="number">0</span>;</span><br><span class="line">	q.push(S);</span><br><span class="line">	<span class="keyword">while</span>(!q.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> u=q.front();</span><br><span class="line">		q.pop();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i!=<span class="number">-1</span>;i=E[i].nx)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> v=E[i].to;</span><br><span class="line">			<span class="keyword">if</span>(dep[v]==<span class="number">-1</span> &amp;&amp; E[i].flow)</span><br><span class="line">			&#123;</span><br><span class="line">				dep[v]=dep[u]+<span class="number">1</span>;</span><br><span class="line">				q.push(v);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> dep[T]!=<span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> T,<span class="keyword">int</span> limit)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(u==T || !limit)</span><br><span class="line">		<span class="keyword">return</span> limit;</span><br><span class="line">	<span class="keyword">int</span> f,flow=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=cur[u];i!=<span class="number">-1</span>;i=E[i].nx)</span><br><span class="line">	&#123;</span><br><span class="line">		cur[u]=i;</span><br><span class="line">		<span class="keyword">int</span> v=E[i].to;</span><br><span class="line">		<span class="keyword">if</span>(dep[v]==dep[u]+<span class="number">1</span> &amp;&amp; (f=dfs(v,T,min(limit,E[i].flow))))</span><br><span class="line">		&#123;</span><br><span class="line">			limit-=f;</span><br><span class="line">			flow+=f;</span><br><span class="line">			E[i].flow-=f;</span><br><span class="line">			E[i^<span class="number">1</span>].flow+=f;</span><br><span class="line">			<span class="keyword">if</span>(!limit)</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> flow;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Dinic</span><span class="params">(<span class="keyword">int</span> S,<span class="keyword">int</span> T)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> maxflow=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(bfs(S,T))</span><br><span class="line">		maxflow+=dfs(S,T,inf);</span><br><span class="line">	<span class="keyword">return</span> maxflow;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="keyword">int</span> node_id[<span class="number">51</span>][<span class="number">51</span>][<span class="number">2</span>];<span class="comment">//0:up/down 1:left/right</span></span><br><span class="line"><span class="keyword">int</span> org_graph[<span class="number">51</span>][<span class="number">51</span>];</span><br><span class="line"><span class="keyword">int</span> S,T,ans=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build_graph</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> tp)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	org_graph[x][y]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span>(tp==<span class="number">1</span> || tp==<span class="number">2</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		ins(S,node_id[x][y][<span class="number">0</span>],inf);</span><br><span class="line">		<span class="keyword">int</span> mx=<span class="number">0</span>,maxpos=<span class="number">-1</span>;</span><br><span class="line">		<span class="keyword">if</span>(tp==<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=x<span class="number">-1</span>;i&gt;=<span class="number">1</span>;--i)</span><br><span class="line">				<span class="keyword">if</span>(org_graph[i][y]&gt;mx)</span><br><span class="line">					mx=org_graph[i][y],maxpos=i;</span><br><span class="line">			<span class="keyword">if</span>(maxpos==<span class="number">-1</span>)</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=x<span class="number">-1</span>;i&gt;=maxpos;--i)</span><br><span class="line">				ins(node_id[i+<span class="number">1</span>][y][<span class="number">0</span>],node_id[i][y][<span class="number">0</span>],mx-org_graph[i+<span class="number">1</span>][y]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=x+<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">				<span class="keyword">if</span>(org_graph[i][y]&gt;mx)</span><br><span class="line">					mx=org_graph[i][y],maxpos=i;</span><br><span class="line">			<span class="keyword">if</span>(maxpos==<span class="number">-1</span>)</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=x+<span class="number">1</span>;i&lt;=maxpos;++i)</span><br><span class="line">				ins(node_id[i<span class="number">-1</span>][y][<span class="number">0</span>],node_id[i][y][<span class="number">0</span>],mx-org_graph[i<span class="number">-1</span>][y]);</span><br><span class="line">		&#125;</span><br><span class="line">		ans+=mx;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		ins(node_id[x][y][<span class="number">1</span>],T,inf);</span><br><span class="line">		<span class="keyword">int</span> mx=<span class="number">0</span>,maxpos=<span class="number">-1</span>;</span><br><span class="line">		<span class="keyword">if</span>(tp==<span class="number">3</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=y<span class="number">-1</span>;j&gt;=<span class="number">1</span>;--j)</span><br><span class="line">				<span class="keyword">if</span>(org_graph[x][j]&gt;mx)</span><br><span class="line">					mx=org_graph[x][j],maxpos=j;</span><br><span class="line">			<span class="keyword">if</span>(maxpos==<span class="number">-1</span>)</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=y<span class="number">-1</span>;j&gt;=maxpos;--j)</span><br><span class="line">				ins(node_id[x][j][<span class="number">1</span>],node_id[x][j+<span class="number">1</span>][<span class="number">1</span>],mx-org_graph[x][j+<span class="number">1</span>]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=y+<span class="number">1</span>;j&lt;=m;++j)</span><br><span class="line">				<span class="keyword">if</span>(org_graph[x][j]&gt;mx)</span><br><span class="line">					mx=org_graph[x][j],maxpos=j;</span><br><span class="line">			<span class="keyword">if</span>(maxpos==<span class="number">-1</span>)</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=y+<span class="number">1</span>;j&lt;=maxpos;++j)</span><br><span class="line">				ins(node_id[x][j][<span class="number">1</span>],node_id[x][j<span class="number">-1</span>][<span class="number">1</span>],mx-org_graph[x][j<span class="number">-1</span>]);</span><br><span class="line">		&#125;</span><br><span class="line">		ans+=mx;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(head,<span class="number">-1</span>,<span class="keyword">sizeof</span> head);</span><br><span class="line">	n=read(),m=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;++j)</span><br><span class="line">		&#123;</span><br><span class="line">			org_graph[i][j]=read();</span><br><span class="line">			node_id[i][j][<span class="number">0</span>]=++tot;</span><br><span class="line">			node_id[i][j][<span class="number">1</span>]=++tot;</span><br><span class="line">			ins(tot<span class="number">-1</span>,tot,inf);</span><br><span class="line">		&#125;</span><br><span class="line">	S=++tot,T=++tot;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;++j)</span><br><span class="line">			<span class="keyword">if</span>(org_graph[i][j]&lt;<span class="number">0</span>)</span><br><span class="line">				build_graph(i,j,-org_graph[i][j]);</span><br><span class="line">	ans-=Dinic(S,T);</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/网络流/" rel="tag"># 网络流</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/28/Loj-6053-简单的函数/" rel="next" title="Loj 6053 简单的函数">
+                <i class="fa fa-chevron-left"></i> Loj 6053 简单的函数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -791,6 +919,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
 
   
 
@@ -806,6 +938,37 @@
 
   
 
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '0f2a43b3bf8ac1ba787a',
+    clientSecret: 'c271a61a1475cd2dd1bbc48c7fd45058b0d2afea',
+    repo: 'jkloverdcoi.github.io',
+    owner: 'jkloverdcoi',
+    admin: ['jkloverdcoi'],
+    id: md5(location.pathname),
+    
+      language: 'en',
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
 
 
   
