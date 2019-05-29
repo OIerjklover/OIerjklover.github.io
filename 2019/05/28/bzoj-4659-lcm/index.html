@@ -96,13 +96,18 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="JKLover">
-<meta property="og:url" content="http://yoursite.com/tags/floyd/index.html">
+  <meta name="description" content="莫比乌斯反演.">
+<meta name="keywords" content="数学,莫比乌斯反演">
+<meta property="og:type" content="article">
+<meta property="og:title" content="bzoj 4659 lcm">
+<meta property="og:url" content="http://yoursite.com/2019/05/28/bzoj-4659-lcm/index.html">
 <meta property="og:site_name" content="JKLover">
+<meta property="og:description" content="莫比乌斯反演.">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-05-29T04:40:36.120Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JKLover">
+<meta name="twitter:title" content="bzoj 4659 lcm">
+<meta name="twitter:description" content="莫比乌斯反演.">
 
 
 
@@ -110,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/tags/floyd/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/28/bzoj-4659-lcm/">
 
 
 
@@ -120,7 +125,7 @@
   };
 </script>
 
-  <title>Tag: floyd | JKLover</title>
+  <title>bzoj 4659 lcm | JKLover</title>
   
 
 
@@ -168,7 +173,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -227,7 +232,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -274,22 +279,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -335,57 +324,212 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>floyd<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/28/bzoj-4659-lcm/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JKLover">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JKLover">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/05/19/bzoj-4773-负环/" itemprop="url">
-            
-              <span itemprop="name">bzoj 4773 负环</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">bzoj 4659 lcm
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-19T10:00:36+08:00" content="2019-05-19">
-          05-19
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-28 18:11:28" itemprop="dateCreated datePublished" datetime="2019-05-28T18:11:28+08:00">2019-05-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-29 12:40:36" itemprop="dateModified" datetime="2019-05-29T12:40:36+08:00">2019-05-29</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>莫比乌斯反演.</p>
+<a id="more"></a>
+<ul>
+<li>转化一下条件,数对 $(a,b)$ 符合要求等价于 $\mu(gcd(a,b))\not=0$ .记集合 $S=\lbrace x|\mu(x)\not=0\rbrace$ ,则答案为:</li>
+</ul>
+<p>$$<br>\begin{aligned}<br>ans&amp;=\sum_{x\in S}\sum_{a=x}^A \sum_{b=x}^B [gcd(a,b)=x]\cdot\frac{ab}{x}\<br>&amp;=\sum_{x\in S}\sum_{a=1}^{A/x}\sum_{b=1}^{B/x}[gcd(a,b)=1]\cdot abx\<br>&amp;=\sum_{x\in S}x\sum_{a=1}^{A/x}\sum_{b=1}^{B/x}ab\sum_{d|a,d|b} \mu(d)\<br>&amp;=\sum_{x\in S}x\sum_{d=1}^{\min(A,B)} \mu(d)\cdot d^2 \sum_{a=1}^{A/xd}\sum_{b=1}^{B/xd} ab<br>\end{aligned}<br>$$</p>
+<ul>
+<li>枚举 $x$ 这步显得很蠢.因为 $\mu$ 只有 $0,1,-1$ 三种取值,所以可以写成下面这样:</li>
+</ul>
+<p>$$<br>ans=\sum_{x=1}^m\mu(x)^2\cdot x\sum_{d=1}^{\min(A,B)} \mu(d)\cdot d^2 \sum_{a=1}^{A/xd}\sum_{b=1}^{B/xd} ab<br>$$</p>
+<ul>
+<li>预处理两个前缀和之后,就可以套两个整除分块算了.</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> out=<span class="number">0</span>,fh=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> ((jp&gt;<span class="string">'9'</span>||jp&lt;<span class="string">'0'</span>)&amp;&amp;jp!=<span class="string">'-'</span>)</span><br><span class="line">		jp=getchar();</span><br><span class="line">	<span class="keyword">if</span> (jp==<span class="string">'-'</span>)</span><br><span class="line">		fh=<span class="number">-1</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> (jp&gt;=<span class="string">'0'</span>&amp;&amp;jp&lt;=<span class="string">'9'</span>)</span><br><span class="line">		out=out*<span class="number">10</span>+jp-<span class="string">'0'</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">return</span> out*fh;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> P=<span class="number">1</span>&lt;&lt;<span class="number">30</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (a + b) % P;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">mul</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1L</span>L * a * b % P; </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">4e6</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> prime[MAXN],cnt=<span class="number">0</span>,ism[MAXN],mu[MAXN];</span><br><span class="line"><span class="keyword">int</span> sum1[MAXN],sum2[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> N)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ism[<span class="number">1</span>]=<span class="number">1</span>,mu[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	sum1[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	sum2[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=N;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(!ism[i])</span><br><span class="line">		&#123;</span><br><span class="line">			prime[++cnt]=i;</span><br><span class="line">			mu[i]-=<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		sum1[i]=add(sum1[i<span class="number">-1</span>],mul(i,mu[i]*mu[i]));</span><br><span class="line">		sum2[i]=add(sum2[i<span class="number">-1</span>],mul(mu[i],mul(i,i)));</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=cnt &amp;&amp; i*prime[j]&lt;=N;++j)</span><br><span class="line">		&#123;</span><br><span class="line">			ism[i*prime[j]]=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(i%prime[j])</span><br><span class="line">				mu[i*prime[j]]=-mu[i];</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (<span class="number">1L</span>L*x*(x+<span class="number">1</span>)/<span class="number">2</span>)%P;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">calc</span><span class="params">(<span class="keyword">int</span> A,<span class="keyword">int</span> B,<span class="keyword">int</span> M)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> ld=<span class="number">1</span>,rd;ld&lt;=M;ld=rd+<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		rd=min(A/(A/ld),B/(B/(ld)));</span><br><span class="line">		<span class="keyword">int</span> tmp=add(sum2[rd],-sum2[ld<span class="number">-1</span>]);</span><br><span class="line">		tmp=mul(tmp,mul(sum(A/ld),sum(B/ld)));</span><br><span class="line">		res=add(res,tmp);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	init(<span class="number">4000000</span>);</span><br><span class="line">	<span class="keyword">int</span> T=read();</span><br><span class="line">	<span class="keyword">while</span>(T--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> A=read(),B=read();</span><br><span class="line">		<span class="keyword">int</span> m=min(A,B);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> lx=<span class="number">1</span>,rx;lx&lt;=m;lx=rx+<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			rx=min(A/(A/lx),B/(B/lx));</span><br><span class="line">			<span class="keyword">int</span> tmp=add(sum1[rx],-sum1[lx<span class="number">-1</span>]);</span><br><span class="line">			tmp=mul(tmp,calc(A/lx,B/lx,m/lx));</span><br><span class="line">			ans=add(ans,tmp);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,add(ans,P));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数学/" rel="tag"># 数学</a>
+          
+            <a href="/tags/莫比乌斯反演/" rel="tag"># 莫比乌斯反演</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/28/bzoj-4657-tower/" rel="next" title="bzoj 4657 tower">
+                <i class="fa fa-chevron-left"></i> bzoj 4657 tower
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -791,6 +935,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
 
   
 
@@ -806,6 +954,37 @@
 
   
 
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '0f2a43b3bf8ac1ba787a',
+    clientSecret: 'c271a61a1475cd2dd1bbc48c7fd45058b0d2afea',
+    repo: 'jkloverdcoi.github.io',
+    owner: 'jkloverdcoi',
+    admin: ['jkloverdcoi'],
+    id: md5(location.pathname),
+    
+      language: 'en',
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
 
 
   
