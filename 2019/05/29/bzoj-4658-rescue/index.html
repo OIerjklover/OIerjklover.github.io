@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="一场难度略高于普及组的 $Div.2$ .">
-<meta name="keywords" content="codeforces,二分,贪心,构造,概率&#x2F;期望,矩阵优化">
+  <meta name="description" content="$dp$ + 线段树.">
+<meta name="keywords" content="线段树">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CF1151">
-<meta property="og:url" content="http://yoursite.com/2019/04/25/CF1151/index.html">
+<meta property="og:title" content="bzoj 4658 rescue">
+<meta property="og:url" content="http://yoursite.com/2019/05/29/bzoj-4658-rescue/index.html">
 <meta property="og:site_name" content="JKLover">
-<meta property="og:description" content="一场难度略高于普及组的 $Div.2$ .">
+<meta property="og:description" content="$dp$ + 线段树.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-04-25T06:04:04.903Z">
+<meta property="og:updated_time" content="2019-05-29T08:20:21.286Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CF1151">
-<meta name="twitter:description" content="一场难度略高于普及组的 $Div.2$ .">
+<meta name="twitter:title" content="bzoj 4658 rescue">
+<meta name="twitter:description" content="$dp$ + 线段树.">
 
 
 
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/04/25/CF1151/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/29/bzoj-4658-rescue/">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>CF1151 | JKLover</title>
+  <title>bzoj 4658 rescue | JKLover</title>
   
 
 
@@ -340,7 +340,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/25/CF1151/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/29/bzoj-4658-rescue/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JKLover">
@@ -357,7 +357,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CF1151
+          <h1 class="post-title" itemprop="name headline">bzoj 4658 rescue
 
               
             
@@ -383,7 +383,7 @@
                 
               
 
-              <time title="Created: 2019-04-25 13:55:16 / Modified: 14:04:04" itemprop="dateCreated datePublished" datetime="2019-04-25T13:55:16+08:00">2019-04-25</time>
+              <time title="Created: 2019-05-29 16:19:25 / Modified: 16:20:21" itemprop="dateCreated datePublished" datetime="2019-05-29T16:19:25+08:00">2019-05-29</time>
             
 
             
@@ -429,43 +429,24 @@
       
 
       
-        <p>一场难度略高于普及组的 $Div.2$ .</p>
+        <p>$dp$ + 线段树.</p>
 <a id="more"></a>
-<h3 id="CF1151C-Problem-for-Nazar"><a href="#CF1151C-Problem-for-Nazar" class="headerlink" title="CF1151C Problem for Nazar"></a><a href="http://codeforces.com/contest/1151/problem/C" target="_blank" rel="noopener">CF1151C Problem for Nazar</a></h3><ul>
-<li><p>二分.</p>
-</li>
-<li><p>转化成求前缀和 $sum(r)-sum(l-1)$ .算每个前缀和的时候二分出整的前 $2^k$ 个数,剩下的单独算就好了.</p>
-</li>
+<ul>
+<li>显然只有关键点有用.设 $f(i)$ 表示到了第 $i$ 个关键点时的最小损失.把起点看做第 $0$ 个关键点,转移有:</li>
 </ul>
-<h3 id="CF1151D-Stas-and-the-Queue-at-the-Buffet"><a href="#CF1151D-Stas-and-the-Queue-at-the-Buffet" class="headerlink" title="CF1151D Stas and the Queue at the Buffet"></a><a href="http://codeforces.com/contest/1151/problem/D" target="_blank" rel="noopener">CF1151D Stas and the Queue at the Buffet</a></h3><ul>
-<li><p>贪心.</p>
-</li>
-<li><p>考虑当前的两个位置 $i,j\ (i&lt;j)$ , 有 $x,y$ 两个元素,若交换这两个元素,对答案的影响.</p>
-</li>
-<li><p>化简出来发现只需要将所有元素按 $a_i-b_i$ 从大到小排序就好了.</p>
-</li>
+<p>$$<br>f(i)=\min_{j=0}^{i-1}\lbrace f(j)+ \lceil \frac {T_i-T_j} D \rceil\cdot A\rbrace - b_i<br>$$</p>
+<ul>
+<li>这样大力转移是 $O(n^2)$ 的.注意到 $D$ 是固定的,考虑把 $T$ 写成 $T=C\cdot D+E,0\leq E&lt;D$ .</li>
+<li>那么原式就可以变成</li>
+</ul>
+<p>$$<br>f(i)=\min_{j=0}^{i-1}\lbrace f(j)+ A\cdot (C_i-C_j)+[E_i&gt;E_j]\cdot A\rbrace - b_i<br>$$</p>
+<ul>
+<li>以 $E$ 为下标建一颗动态开点的线段树,在 $E_j&lt; E_i,E_j\geq E_i$ 两部分分别查询 $f_j-A\cdot C_j$ 的最小值即可.</li>
 </ul>
 <blockquote>
-<p>这种判定贪心的可行性及怎样贪心的方法很常见,就是考虑交换两个元素对答案的影响.</p>
+<p>注意把 $Tree[0].val$ 初始化为 $inf$ .</p>
 </blockquote>
-<h3 id="CF1151E-Number-of-Components"><a href="#CF1151E-Number-of-Components" class="headerlink" title="CF1151E Number of Components"></a><a href="http://codeforces.com/contest/1151/problem/E" target="_blank" rel="noopener">CF1151E Number of Components</a></h3><ul>
-<li><p>构造.</p>
-</li>
-<li><p>考虑若当前计算的权值区间是 $(l,r)$ ,那么把在这个范围内的点权值赋为 $1$ ,否则赋为 $0$.</p>
-</li>
-<li>再在位置 $0$ 处补上一个权值 $0$ ,可以发现此时对于这对 $(l,r)$ 的答案就是相邻的 $(0,1)$ 对数.</li>
-<li>那么我们直接来算每两个相邻位置的贡献,即 $a_i,a_{i+1}$ 在多少组 $(l,r)$ 中被赋的权值不同就好了.</li>
-</ul>
-<h3 id="CF1153F-Sonya-and-Informatics"><a href="#CF1153F-Sonya-and-Informatics" class="headerlink" title="CF1153F Sonya and Informatics"></a><a href="http://codeforces.com/contest/1151/problem/F" target="_blank" rel="noopener">CF1153F Sonya and Informatics</a></h3><ul>
-<li><p>概率+矩阵快速幂.</p>
-</li>
-<li><p>设 $f(i,j)$ 表示操作了 $j$ 次,当前最后一个 $1$ 在位置 $i$ 的概率.</p>
-</li>
-<li><p>每次 $j\rightarrow j+1$ 转移的时候分类讨论一下选了哪两个位置,写出转移矩阵,转移 $k$ 次,矩阵快速幂加速即可.</p>
-</li>
-<li><p>时间复杂度 $O(n^3logk)$ .</p>
-</li>
-</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> out=<span class="number">0</span>,fh=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> ((jp&gt;<span class="string">'9'</span>||jp&lt;<span class="string">'0'</span>)&amp;&amp;jp!=<span class="string">'-'</span>)</span><br><span class="line">		jp=getchar();</span><br><span class="line">	<span class="keyword">if</span> (jp==<span class="string">'-'</span>)</span><br><span class="line">		fh=<span class="number">-1</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> (jp&gt;=<span class="string">'0'</span>&amp;&amp;jp&lt;=<span class="string">'9'</span>)</span><br><span class="line">		out=out*<span class="number">10</span>+jp-<span class="string">'0'</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">return</span> out*fh;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> ll inf=<span class="number">1e18</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Segtree</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> idx;</span><br><span class="line">	Segtree()&#123;idx=<span class="number">0</span>;Tree[<span class="number">0</span>].ls=Tree[<span class="number">0</span>].rs=<span class="number">0</span>;Tree[<span class="number">0</span>].val=inf;&#125;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">	&#123;</span></span><br><span class="line">		<span class="keyword">int</span> ls,rs;</span><br><span class="line">		ll val;</span><br><span class="line">	&#125;Tree[MAXN*<span class="number">30</span>];</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> root Tree[o]</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lson Tree[root.ls]</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rson Tree[root.rs]</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">pushup</span><span class="params">(<span class="keyword">int</span> o)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		root.val=min(lson.val,rson.val);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">ins</span><span class="params">(<span class="keyword">int</span> &amp;o,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> pos,ll c)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(!o)</span><br><span class="line">		&#123;</span><br><span class="line">			o=++idx;</span><br><span class="line">			root.val=inf;</span><br><span class="line">			root.ls=root.rs=<span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(l==r)</span><br><span class="line">		&#123;</span><br><span class="line">			root.val=min(root.val,c);</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(pos&lt;=mid)</span><br><span class="line">			ins(root.ls,l,mid,pos,c);</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			ins(root.rs,mid+<span class="number">1</span>,r,pos,c);</span><br><span class="line">		pushup(o);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">ll <span class="title">query</span><span class="params">(<span class="keyword">int</span> o,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> L,<span class="keyword">int</span> R)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(!o || L&gt;R)</span><br><span class="line">			<span class="keyword">return</span> inf;</span><br><span class="line">		<span class="keyword">if</span>(L&lt;=l &amp;&amp; r&lt;=R)</span><br><span class="line">			<span class="keyword">return</span> root.val;</span><br><span class="line">		ll res=inf;</span><br><span class="line">		<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(L&lt;=mid)</span><br><span class="line">			res=min(res,query(root.ls,l,mid,L,R));</span><br><span class="line">		<span class="keyword">if</span>(R&gt;mid)</span><br><span class="line">			res=min(res,query(root.rs,mid+<span class="number">1</span>,r,L,R));</span><br><span class="line">		<span class="keyword">return</span> res;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;T;</span><br><span class="line"><span class="keyword">int</span> n,rt=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> A,B[MAXN],C[MAXN],D,E[MAXN],K,M;</span><br><span class="line">ll f[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update_info</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	T.ins(rt,<span class="number">0</span>,D<span class="number">-1</span>,E[x],f[x]<span class="number">-1L</span>L*A*C[x]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	K=read(),M=read(),D=read(),A=read();</span><br><span class="line">	n=read();</span><br><span class="line">	C[<span class="number">0</span>]=K/D,E[<span class="number">0</span>]=K%D,B[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">	++n;</span><br><span class="line">	C[n]=M/D,E[n]=M%D,B[n]=<span class="number">0</span>;</span><br><span class="line">	f[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">	update_info(<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> T=read();</span><br><span class="line">		C[i]=T/D;</span><br><span class="line">		E[i]=T%D;</span><br><span class="line">		B[i]=read();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		f[i]=<span class="number">1L</span>L*C[i]*A-B[i];</span><br><span class="line">		ll tmp=T.query(rt,<span class="number">0</span>,D<span class="number">-1</span>,<span class="number">0</span>,E[i]<span class="number">-1</span>)+A;</span><br><span class="line">		tmp=min(tmp,T.query(rt,<span class="number">0</span>,D<span class="number">-1</span>,E[i],D<span class="number">-1</span>));</span><br><span class="line">		f[i]+=tmp;</span><br><span class="line">		update_info(i);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;(-f[n])&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -489,17 +470,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/codeforces/" rel="tag"># codeforces</a>
-          
-            <a href="/tags/二分/" rel="tag"># 二分</a>
-          
-            <a href="/tags/贪心/" rel="tag"># 贪心</a>
-          
-            <a href="/tags/构造/" rel="tag"># 构造</a>
-          
-            <a href="/tags/概率-期望/" rel="tag"># 概率/期望</a>
-          
-            <a href="/tags/矩阵优化/" rel="tag"># 矩阵优化</a>
+            <a href="/tags/线段树/" rel="tag"># 线段树</a>
           
         </div>
       
@@ -512,8 +483,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/21/GXOI-GZOI2019-选做/" rel="next" title="GXOI/GZOI2019 选做">
-                <i class="fa fa-chevron-left"></i> GXOI/GZOI2019 选做
+              <a href="/2019/05/28/bzoj-4659-lcm/" rel="next" title="bzoj 4659 lcm">
+                <i class="fa fa-chevron-left"></i> bzoj 4659 lcm
               </a>
             
           </div>
@@ -522,8 +493,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/04/27/bzoj-3998-弦论/" rel="prev" title="bzoj 3998 弦论">
-                bzoj 3998 弦论 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/05/29/bzoj-4658-rescue-1/" rel="prev" title="bzoj 4658 rescue">
+                bzoj 4658 rescue <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -572,17 +543,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -811,23 +773,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#CF1151C-Problem-for-Nazar"><span class="nav-number">1.</span> <span class="nav-text">CF1151C Problem for Nazar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CF1151D-Stas-and-the-Queue-at-the-Buffet"><span class="nav-number">2.</span> <span class="nav-text">CF1151D Stas and the Queue at the Buffet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CF1151E-Number-of-Components"><span class="nav-number">3.</span> <span class="nav-text">CF1151E Number of Components</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CF1153F-Sonya-and-Informatics"><span class="nav-number">4.</span> <span class="nav-text">CF1153F Sonya and Informatics</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
