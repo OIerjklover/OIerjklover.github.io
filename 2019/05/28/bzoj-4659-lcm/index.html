@@ -104,10 +104,12 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="莫比乌斯反演.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-29T04:40:36.120Z">
+<meta property="og:image" content="http://yoursite.com/2019/05/28/bzoj-4659-lcm/formula.png">
+<meta property="og:updated_time" content="2019-05-29T04:57:05.365Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bzoj 4659 lcm">
 <meta name="twitter:description" content="莫比乌斯反演.">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/28/bzoj-4659-lcm/formula.png">
 
 
 
@@ -400,7 +402,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-29 12:40:36" itemprop="dateModified" datetime="2019-05-29T12:40:36+08:00">2019-05-29</time>
+                <time title="Modified: 2019-05-29 12:57:05" itemprop="dateModified" datetime="2019-05-29T12:57:05+08:00">2019-05-29</time>
               
             
           </span>
@@ -446,7 +448,7 @@
 <ul>
 <li>转化一下条件,数对 $(a,b)$ 符合要求等价于 $\mu(gcd(a,b))\not=0$ .记集合 $S=\lbrace x|\mu(x)\not=0\rbrace$ ,则答案为:</li>
 </ul>
-<p>$$<br>\begin{aligned}<br>ans&amp;=\sum_{x\in S}\sum_{a=x}^A \sum_{b=x}^B [gcd(a,b)=x]\cdot\frac{ab}{x}\<br>&amp;=\sum_{x\in S}\sum_{a=1}^{A/x}\sum_{b=1}^{B/x}[gcd(a,b)=1]\cdot abx\<br>&amp;=\sum_{x\in S}x\sum_{a=1}^{A/x}\sum_{b=1}^{B/x}ab\sum_{d|a,d|b} \mu(d)\<br>&amp;=\sum_{x\in S}x\sum_{d=1}^{\min(A,B)} \mu(d)\cdot d^2 \sum_{a=1}^{A/xd}\sum_{b=1}^{B/xd} ab<br>\end{aligned}<br>$$</p>
+<p><img src="formula.png" alt></p>
 <ul>
 <li>枚举 $x$ 这步显得很蠢.因为 $\mu$ 只有 $0,1,-1$ 三种取值,所以可以写成下面这样:</li>
 </ul>
