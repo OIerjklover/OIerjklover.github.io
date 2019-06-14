@@ -136,18 +136,18 @@
 
 
 
-  <meta name="description" content="线段树优化连边.">
-<meta name="keywords" content="最短路,线段树连边">
+  <meta name="description" content="树链剖分 + 李超线段树.">
+<meta name="keywords" content="树链剖分,李超线段树">
 <meta property="og:type" content="article">
-<meta property="og:title" content="bzoj 3073 Journeys">
-<meta property="og:url" content="http://yoursite.com/2019/05/21/bzoj-3073-Journeys/index.html">
+<meta property="og:title" content="bzoj 4515 游戏">
+<meta property="og:url" content="http://yoursite.com/2019/06/14/bzoj-4515-游戏/index.html">
 <meta property="og:site_name" content="JKLover">
-<meta property="og:description" content="线段树优化连边.">
+<meta property="og:description" content="树链剖分 + 李超线段树.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-21T03:33:48.676Z">
+<meta property="og:updated_time" content="2019-06-14T14:11:31.612Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="bzoj 3073 Journeys">
-<meta name="twitter:description" content="线段树优化连边.">
+<meta name="twitter:title" content="bzoj 4515 游戏">
+<meta name="twitter:description" content="树链剖分 + 李超线段树.">
 
 
 
@@ -155,7 +155,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/05/21/bzoj-3073-Journeys/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/14/bzoj-4515-游戏/">
 
 
 
@@ -165,7 +165,7 @@
   };
 </script>
 
-  <title>bzoj 3073 Journeys | JKLover</title>
+  <title>bzoj 4515 游戏 | JKLover</title>
   
 
 
@@ -380,7 +380,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/21/bzoj-3073-Journeys/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/14/bzoj-4515-游戏/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JKLover">
@@ -397,7 +397,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">bzoj 3073 Journeys
+          <h1 class="post-title" itemprop="name headline">bzoj 4515 游戏
 
               
             
@@ -423,7 +423,7 @@
                 
               
 
-              <time title="Created: 2019-05-21 11:31:47 / Modified: 11:33:48" itemprop="dateCreated datePublished" datetime="2019-05-21T11:31:47+08:00">2019-05-21</time>
+              <time title="Created: 2019-06-14 22:09:57 / Modified: 22:11:31" itemprop="dateCreated datePublished" datetime="2019-06-14T22:09:57+08:00">2019-06-14</time>
             
 
             
@@ -469,14 +469,15 @@
       
 
       
-        <p>线段树优化连边.</p>
+        <p>树链剖分 + 李超线段树.</p>
 <a id="more"></a>
-<ul>
-<li>边是双向的.开两颗线段树, $A$ 里面节点表示一条有向边的起点,儿子向父亲连边, $B$ 里面节点表示一条有向边的终点,父亲向儿子连边, $B$ 向 $A$ 中对应的节点连边.</li>
-<li>区间连边时,新建一个节点,将区间在线段树上拆成 $log$ 个区间进行连边就好了.</li>
-<li>最后跑一次 $Dijkstra$ .</li>
+<h3 id="bzoj-4515-游戏"><a href="#bzoj-4515-游戏" class="headerlink" title="bzoj 4515 游戏"></a><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=4515" target="_blank" rel="noopener">bzoj 4515 游戏</a></h3><ul>
+<li>树剖 + 李超线段树.</li>
+<li>显然可以先来一个树剖,就成了区间上的问题.每次修改 $(s,t)$ 就拆成 $(s,lca),(lca,t)$ 两段来做.</li>
+<li>于是修改操作都是给一条区间加一条线段的形式,询问是问一个区间内点值的最小值.</li>
+<li>用李超线段树维护优势线段与区间的答案即可.</li>
+<li>时间复杂度 $O(nlog^3n)$ ,但常数比较小,所以能过.</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> out=<span class="number">0</span>,fh=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> ((jp&gt;<span class="string">'9'</span>||jp&lt;<span class="string">'0'</span>)&amp;&amp;jp!=<span class="string">'-'</span>)</span><br><span class="line">		jp=getchar();</span><br><span class="line">	<span class="keyword">if</span> (jp==<span class="string">'-'</span>)</span><br><span class="line">		fh=<span class="number">-1</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> (jp&gt;=<span class="string">'0'</span>&amp;&amp;jp&lt;=<span class="string">'9'</span>)</span><br><span class="line">		out=out*<span class="number">10</span>+jp-<span class="string">'0'</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">return</span> out*fh;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">5e5</span>+<span class="number">10</span>,MAXM=<span class="number">2220000</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,S;</span><br><span class="line"><span class="keyword">int</span> ecnt=<span class="number">0</span>,head[MAXM],to[MAXM],nx[MAXM],val[MAXM];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addedge</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	++ecnt;</span><br><span class="line">	to[ecnt]=v;</span><br><span class="line">	nx[ecnt]=head[u];</span><br><span class="line">	val[ecnt]=w;</span><br><span class="line">	head[u]=ecnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> ls,rs;</span><br><span class="line">&#125;Tree[MAXN&lt;&lt;<span class="number">2</span>];</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> root Tree[o]</span></span><br><span class="line"><span class="keyword">int</span> pos[MAXN],tot=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bd1</span><span class="params">(<span class="keyword">int</span> &amp;o,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	o=++tot;</span><br><span class="line">	<span class="keyword">if</span>(l==r)</span><br><span class="line">	&#123;</span><br><span class="line">		pos[l]=o;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	bd1(root.ls,l,mid);</span><br><span class="line">	bd1(root.rs,mid+<span class="number">1</span>,r);</span><br><span class="line">	addedge(root.ls,o,<span class="number">0</span>);</span><br><span class="line">	addedge(root.rs,o,<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bd2</span><span class="params">(<span class="keyword">int</span> &amp;o,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	o=++tot;</span><br><span class="line">	<span class="keyword">if</span>(l==r)</span><br><span class="line">	&#123;</span><br><span class="line">		addedge(o,pos[l],<span class="number">0</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	bd2(root.ls,l,mid);</span><br><span class="line">	bd2(root.rs,mid+<span class="number">1</span>,r);</span><br><span class="line">	addedge(o,root.ls,<span class="number">0</span>);</span><br><span class="line">	addedge(o,root.rs,<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">upd1</span><span class="params">(<span class="keyword">int</span> o,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> L,<span class="keyword">int</span> R)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(L&lt;=l &amp;&amp; r&lt;=R)</span><br><span class="line">	&#123;</span><br><span class="line">		addedge(o,tot,<span class="number">1</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(L&lt;=mid)</span><br><span class="line">		upd1(root.ls,l,mid,L,R);</span><br><span class="line">	<span class="keyword">if</span>(R&gt;mid)</span><br><span class="line">		upd1(root.rs,mid+<span class="number">1</span>,r,L,R);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">upd2</span><span class="params">(<span class="keyword">int</span> o,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> L,<span class="keyword">int</span> R)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(L&lt;=l &amp;&amp; r&lt;=R)</span><br><span class="line">	&#123;</span><br><span class="line">		addedge(tot,o,<span class="number">1</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(L&lt;=mid)</span><br><span class="line">		upd2(root.ls,l,mid,L,R);</span><br><span class="line">	<span class="keyword">if</span>(R&gt;mid)</span><br><span class="line">		upd2(root.rs,mid+<span class="number">1</span>,r,L,R);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> rt1=<span class="number">0</span>,rt2=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> vis[MAXM],dis[MAXM];</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mp make_pair</span></span><br><span class="line">priority_queue&lt;pii&gt; q;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Dijkstra</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(dis,<span class="number">0x7f</span>,<span class="keyword">sizeof</span> dis);</span><br><span class="line">	dis[pos[S]]=<span class="number">0</span>;</span><br><span class="line">	q.push(mp(<span class="number">0</span>,pos[S]));</span><br><span class="line">	<span class="keyword">while</span>(!q.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> u=q.top().second;</span><br><span class="line">		q.pop();</span><br><span class="line">		<span class="keyword">if</span>(vis[u])</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		vis[u]=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=nx[i])</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> v=to[i];</span><br><span class="line">			<span class="keyword">if</span>(dis[v]-dis[u]&gt;val[i])</span><br><span class="line">			&#123;</span><br><span class="line">				dis[v]=dis[u]+val[i];</span><br><span class="line">				q.push(mp(-dis[v],v));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	n=read(),m=read(),S=read();</span><br><span class="line">	bd1(rt1,<span class="number">1</span>,n);</span><br><span class="line">	bd2(rt2,<span class="number">1</span>,n);</span><br><span class="line">	<span class="keyword">while</span>(m--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> x1=read(),y1=read(),x2=read(),y2=read();</span><br><span class="line">		++tot;upd1(rt1,<span class="number">1</span>,n,x1,y1);upd2(rt2,<span class="number">1</span>,n,x2,y2);</span><br><span class="line">		++tot;upd1(rt1,<span class="number">1</span>,n,x2,y2);upd2(rt2,<span class="number">1</span>,n,x1,y1);</span><br><span class="line">	&#125;</span><br><span class="line">	Dijkstra();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,dis[pos[i]]&gt;&gt;<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -500,9 +501,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/最短路/" rel="tag"># 最短路</a>
+            <a href="/tags/树链剖分/" rel="tag"># 树链剖分</a>
           
-            <a href="/tags/线段树连边/" rel="tag"># 线段树连边</a>
+            <a href="/tags/李超线段树/" rel="tag"># 李超线段树</a>
           
         </div>
       
@@ -515,8 +516,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/21/bzoj-4762-最小集合/" rel="next" title="bzoj 4762 最小集合">
-                <i class="fa fa-chevron-left"></i> bzoj 4762 最小集合
+              <a href="/2019/06/12/bzoj-4514-数字配对/" rel="next" title="bzoj 4514 数字配对">
+                <i class="fa fa-chevron-left"></i> bzoj 4514 数字配对
               </a>
             
           </div>
@@ -524,10 +525,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/22/bzoj-4700-适者/" rel="prev" title="bzoj 4700 适者">
-                bzoj 4700 适者 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -575,8 +572,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -811,6 +817,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-4515-游戏"><span class="nav-number">1.</span> <span class="nav-text">bzoj 4515 游戏</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
