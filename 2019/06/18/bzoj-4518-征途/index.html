@@ -136,18 +136,18 @@
 
 
 
-  <meta name="description" content="min_25 筛 .">
-<meta name="keywords" content="数学,min_25筛">
+  <meta name="description" content="斜率优化 $dp$ .">
+<meta name="keywords" content="斜率优化">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Loj 6053 简单的函数">
-<meta property="og:url" content="http://yoursite.com/2019/05/28/Loj-6053-简单的函数/index.html">
+<meta property="og:title" content="bzoj 4518 征途">
+<meta property="og:url" content="http://yoursite.com/2019/06/18/bzoj-4518-征途/index.html">
 <meta property="og:site_name" content="JKLover">
-<meta property="og:description" content="min_25 筛 .">
+<meta property="og:description" content="斜率优化 $dp$ .">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-28T02:07:22.229Z">
+<meta property="og:updated_time" content="2019-06-18T08:28:31.343Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Loj 6053 简单的函数">
-<meta name="twitter:description" content="min_25 筛 .">
+<meta name="twitter:title" content="bzoj 4518 征途">
+<meta name="twitter:description" content="斜率优化 $dp$ .">
 
 
 
@@ -155,7 +155,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/05/28/Loj-6053-简单的函数/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/18/bzoj-4518-征途/">
 
 
 
@@ -165,7 +165,7 @@
   };
 </script>
 
-  <title>Loj 6053 简单的函数 | JKLover</title>
+  <title>bzoj 4518 征途 | JKLover</title>
   
 
 
@@ -380,7 +380,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/28/Loj-6053-简单的函数/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/18/bzoj-4518-征途/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JKLover">
@@ -397,7 +397,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Loj 6053 简单的函数
+          <h1 class="post-title" itemprop="name headline">bzoj 4518 征途
 
               
             
@@ -423,7 +423,7 @@
                 
               
 
-              <time title="Created: 2019-05-28 10:05:25 / Modified: 10:07:22" itemprop="dateCreated datePublished" datetime="2019-05-28T10:05:25+08:00">2019-05-28</time>
+              <time title="Created: 2019-06-18 16:25:27 / Modified: 16:28:31" itemprop="dateCreated datePublished" datetime="2019-06-18T16:25:27+08:00">2019-06-18</time>
             
 
             
@@ -469,13 +469,27 @@
       
 
       
-        <p><strong>min_25 筛</strong> .</p>
+        <p>斜率优化 $dp$ .</p>
 <a id="more"></a>
 <ul>
-<li>除了 $2$ 之外的质数 $p$ 都是奇数, $f(p)=p-1$ ,而 $f(2)=3$ .</li>
-<li>把 $f(p)$ 都当成 $f(p)=p-1$ ,用 <strong>min_25</strong> 筛法来做.有 $2$ 就特判一下, $+2$ 就好了.</li>
+<li><p>推一下式子,记第 $i$ 天走的长度为 $t_i$ , $s=\sum t_i$ ,则 $S^2 \cdot m^2=(m\cdot \sum t_i^2)-s^2$ .</p>
+</li>
+<li><p>由于 $m,s$ 为定值,所以只需要最小化平方和 $\sum t_i^2$  .</p>
+</li>
+<li><p>设 $f(i,j)$ 表示走了 $i$ 天,恰好走了 $j$ 段路时的最小平方和, $sum_i$ 表示前 $i$ 段路的长度和.</p>
+</li>
+<li><p>暴力转移有 $f(i,j)=\min \lbrace f(i-1,k)+(sum_j-sum_k)^2,0\leq k&lt;j \rbrace$ ,可以看出暴力转移是 $O(n^3)$ 的.</p>
+</li>
+<li><p>若固定 $i$ ,可以看出 $j$ 这一维是满足斜率优化的,因为同时与 $j,k$ 有关的项是 $-2sum_j\cdot sum_k$ ,而 $sum_k$ 单调.</p>
+</li>
+<li><p>于是就可以进行斜率优化了.若用 $k_1$ 转移比 $k_2$ 更优 ( $k_1&gt;k_2$ ) ,由转移方程可得到:</p>
+</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ll out=<span class="number">0</span>,fh=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> ((jp&gt;<span class="string">'9'</span>||jp&lt;<span class="string">'0'</span>)&amp;&amp;jp!=<span class="string">'-'</span>)</span><br><span class="line">		jp=getchar();</span><br><span class="line">	<span class="keyword">if</span> (jp==<span class="string">'-'</span>)</span><br><span class="line">		fh=<span class="number">-1</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> (jp&gt;=<span class="string">'0'</span>&amp;&amp;jp&lt;=<span class="string">'9'</span>)</span><br><span class="line">		out=out*<span class="number">10</span>+jp-<span class="string">'0'</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">return</span> out*fh;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">2e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> P=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inv2=(P+<span class="number">1</span>)&gt;&gt;<span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(ll a,ll b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	a%=P;</span><br><span class="line">	b%=P;</span><br><span class="line">	<span class="keyword">return</span> (a + b) % P;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">mul</span><span class="params">(ll a,ll b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	a%=P;</span><br><span class="line">	b%=P;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1L</span>L * a * b % P;</span><br><span class="line">&#125;</span><br><span class="line">ll n,sqr,w[MAXN];</span><br><span class="line"><span class="keyword">int</span> cnt=<span class="number">0</span>,ism[MAXN],sump[MAXN],m;</span><br><span class="line">ll prime[MAXN];</span><br><span class="line">ll id1[MAXN],id2[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> N)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ism[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=N;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(!ism[i])</span><br><span class="line">		&#123;</span><br><span class="line">			prime[++cnt]=i;</span><br><span class="line">			sump[cnt]=add(sump[cnt<span class="number">-1</span>],i);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=cnt &amp;&amp; prime[j]*i&lt;=N;++j)</span><br><span class="line">		&#123;</span><br><span class="line">			ism[prime[j]*i]=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(i%prime[j]==<span class="number">0</span>)</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> h[MAXN],g[MAXN],ans;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">S</span><span class="params">(ll x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x&lt;=<span class="number">1</span> || prime[y]&gt;x)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> k=(x&lt;=sqr)?id1[x]:id2[n/x];</span><br><span class="line">	<span class="keyword">int</span> res=add(g[k]-sump[y<span class="number">-1</span>],y-h[k]<span class="number">-1</span>);</span><br><span class="line">	<span class="keyword">if</span>(y==<span class="number">1</span>)</span><br><span class="line">		res+=<span class="number">2</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=y;i&lt;=cnt &amp;&amp; <span class="number">1L</span>L*prime[i]*prime[i]&lt;=x;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		ll pow1=prime[i],pow2=<span class="number">1L</span>L*prime[i]*prime[i];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> e=<span class="number">1</span>;pow2&lt;=x;++e,pow1=pow2,pow2*=prime[i])</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> tmp=mul(S(x/pow1,i+<span class="number">1</span>),prime[i]^e);</span><br><span class="line">			tmp=add(tmp,prime[i]^(e+<span class="number">1</span>));</span><br><span class="line">			res=add(res,tmp);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	n=read();</span><br><span class="line">	sqr=<span class="built_in">sqrt</span>(n);</span><br><span class="line">	init(sqr);</span><br><span class="line">	<span class="keyword">for</span>(ll l=<span class="number">1</span>,r;l&lt;=n;l=r+<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		ll &amp;i=l,&amp;j=r;</span><br><span class="line">		r=n/(n/l);</span><br><span class="line">		w[++m]=n/l;</span><br><span class="line">		h[m]=add(w[m]%P,<span class="number">-1</span>);</span><br><span class="line">		g[m]=mul(w[m],w[m]+<span class="number">1</span>);</span><br><span class="line">		g[m]=mul(g[m],inv2);</span><br><span class="line">		g[m]=add(g[m],<span class="number">-1</span>);</span><br><span class="line">		<span class="keyword">if</span>(w[m]&lt;=sqr)</span><br><span class="line">			id1[n/l]=m;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			id2[r]=m;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=cnt;++j)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m &amp;&amp; prime[j]*prime[j]&lt;=w[i];++i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> k=(w[i]/prime[j]&lt;=sqr)?id1[w[i]/prime[j]]:id2[n/(w[i]/prime[j])];</span><br><span class="line">			g[i]=add(g[i],-mul(prime[j],add(g[k],-sump[j<span class="number">-1</span>])));</span><br><span class="line">			h[i]=add(h[i],j-h[k]<span class="number">-1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	ans=add(S(n,<span class="number">1</span>),<span class="number">1</span>);</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;(ans+P)%P&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>$$<br>slope(k_1,k_2)={f(i-1,k_1)+sum_{k_1}^2-f(i-1,k_2)-sum_{k_2}^2 \over sum_{k_1}-sum_{k_2}} &lt; 2sum_j<br>$$</p>
+<ul>
+<li>而斜率 $2sum_j$ 也是单调的,所以并不需要二分,直接暴力跳指针,用单调队列维护下凸壳即可.</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> out=<span class="number">0</span>,fh=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> ((jp&gt;<span class="string">'9'</span>||jp&lt;<span class="string">'0'</span>)&amp;&amp;jp!=<span class="string">'-'</span>)</span><br><span class="line">		jp=getchar();</span><br><span class="line">	<span class="keyword">if</span> (jp==<span class="string">'-'</span>)</span><br><span class="line">		fh=<span class="number">-1</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> (jp&gt;=<span class="string">'0'</span>&amp;&amp;jp&lt;=<span class="string">'9'</span>)</span><br><span class="line">		out=out*<span class="number">10</span>+jp-<span class="string">'0'</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">return</span> out*fh;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">3e3</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,sum[MAXN],s;</span><br><span class="line">ll f[MAXN][MAXN];</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">slope</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> k1,<span class="keyword">int</span> k2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (f[i<span class="number">-1</span>][k1]+<span class="number">1.0</span>*sum[k1]*sum[k1]-f[i<span class="number">-1</span>][k2]<span class="number">-1.0</span>*sum[k2]*sum[k2])/(<span class="number">1.0</span>*sum[k1]<span class="number">-1.0</span>*sum[k2]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> q[MAXN],head,tail;<span class="comment">// [head,tail]</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	n=read(),m=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">		sum[i]=sum[i<span class="number">-1</span>]+read();</span><br><span class="line">	<span class="built_in">memset</span>(f,<span class="number">63</span>,<span class="keyword">sizeof</span> f);</span><br><span class="line">	f[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		head=tail=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;++j)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">while</span>(head&lt;tail &amp;&amp; slope(i,q[head+<span class="number">1</span>],q[head])&lt;<span class="number">2</span>*sum[j])</span><br><span class="line">				++head;</span><br><span class="line">			<span class="keyword">int</span> k=q[head];</span><br><span class="line">			f[i][j]=f[i<span class="number">-1</span>][k]+<span class="number">1L</span>L*(sum[j]-sum[k])*(sum[j]-sum[k]);</span><br><span class="line">			<span class="keyword">while</span>(head&lt;tail &amp;&amp; slope(i,q[tail],q[tail<span class="number">-1</span>])&gt;slope(i,q[tail],j))</span><br><span class="line">				--tail;</span><br><span class="line">			q[++tail]=j;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;f[m][n]*m<span class="number">-1L</span>L*sum[n]*sum[n]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -499,9 +513,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/数学/" rel="tag"># 数学</a>
-          
-            <a href="/tags/min-25筛/" rel="tag"># min_25筛</a>
+            <a href="/tags/斜率优化/" rel="tag"># 斜率优化</a>
           
         </div>
       
@@ -514,8 +526,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/27/bzoj-4665-小w的喜糖/" rel="next" title="bzoj 4665 小w的喜糖">
-                <i class="fa fa-chevron-left"></i> bzoj 4665 小w的喜糖
+              <a href="/2019/06/18/bzoj-4516-生成魔咒/" rel="next" title="bzoj 4516 生成魔咒">
+                <i class="fa fa-chevron-left"></i> bzoj 4516 生成魔咒
               </a>
             
           </div>
@@ -523,10 +535,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/28/bzoj-4657-tower/" rel="prev" title="bzoj 4657 tower">
-                bzoj 4657 tower <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
