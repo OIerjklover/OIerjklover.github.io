@@ -144,10 +144,12 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="线段树.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-06-20T13:58:09.670Z">
+<meta property="og:image" content="http://yoursite.com/2019/06/20/bzoj-4540-序列/1.png">
+<meta property="og:updated_time" content="2019-06-20T14:05:28.514Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bzoj 4540 序列">
 <meta name="twitter:description" content="线段树.">
+<meta name="twitter:image" content="http://yoursite.com/2019/06/20/bzoj-4540-序列/1.png">
 
 
 
@@ -423,7 +425,7 @@
                 
               
 
-              <time title="Created: 2019-06-20 21:56:00 / Modified: 21:58:09" itemprop="dateCreated datePublished" datetime="2019-06-20T21:56:00+08:00">2019-06-20</time>
+              <time title="Created: 2019-06-20 21:56:00 / Modified: 22:05:28" itemprop="dateCreated datePublished" datetime="2019-06-20T21:56:00+08:00">2019-06-20</time>
             
 
             
@@ -477,9 +479,8 @@
 <li>加入第 $p$ 个元素后,立即回答所有 $r=p$ 的询问,答案显然是 $\sum_{i=l}^r sum_i$ .</li>
 <li>于是我们只需要用一颗线段树来维护 $val,sum$ 这两个值(的区间和)即可.</li>
 <li>考虑加入第 $p$ 个元素后如何修改 $val,sum$ .可以通过单调栈求出最小的 $i$ ,使得 $[i,p]$ 内最小值都为 $a_p$ .需要将 $[i,p]$ 这个区间内的 $val$ 都修改成 $a_p$ ,并让区间 $[1,p]$ 内的 $sum$ 加上对应位置新的 $val$. </li>
-<li>修改时打标记,记 $len$ 表示当前节点线段长度 $r-l+1$ ,标记 $(a,b,c,d)$ 表示当前节点修改后, $val’=a\cdot val+b\cdot len,sum’=sum+c\cdot val+d\cdot len$ .发现如果把 $(val,sum,len)$ 看成一个向量,修改就是对这个向量进行了一个线性变换,所以两个标记的合并可以直接手算矩阵乘法.</li>
 </ul>
-<p>$$<br>\left(<br>\begin{matrix}<br>  a &amp; 0 &amp; b \<br>  c &amp; 1 &amp; d \<br>  0 &amp; 0 &amp; 1<br>\end{matrix}<br>\right)<br>\left(<br>\begin{matrix}<br>   val \<br>   sum \<br>   len<br>\end{matrix}<br>\right) =<br>\left(<br>\begin{matrix}<br>  val’ \<br>  sum’\<br>  len<br>\end{matrix}<br>\right)<br>$$</p>
+<p><img src="1.png" alt></p>
 <ul>
 <li>时间复杂度 $O(nlogn)$ .</li>
 </ul>
