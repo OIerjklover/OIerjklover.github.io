@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="$Nimk$ 游戏 + $dp$ 计数.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-07-02T05:43:32.455Z">
+<meta property="og:updated_time" content="2019-07-02T14:11:03.448Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bzoj 4550 小奇的博弈">
 <meta name="twitter:description" content="$Nimk$ 游戏 + $dp$ 计数.">
@@ -423,7 +423,7 @@
                 
               
 
-              <time title="Created: 2019-07-02 13:42:23 / Modified: 13:43:32" itemprop="dateCreated datePublished" datetime="2019-07-02T13:42:23+08:00">2019-07-02</time>
+              <time title="Created: 2019-07-02 13:42:23 / Modified: 22:11:03" itemprop="dateCreated datePublished" datetime="2019-07-02T13:42:23+08:00">2019-07-02</time>
             
 
             
@@ -473,7 +473,8 @@
 <a id="more"></a>
 <ul>
 <li>最优策略下,白棋显然都选择右移,黑棋都选择左移.如果把每对棋子的间隔长度看做一堆石子的石子数目,那么此题就是一个 $Nim$ 游戏的变种,每次最多可以选 $d$ 堆石子进行操作.这个东西叫做 $Nimk$ 游戏. </li>
-<li>$Nimk$ 游戏先手必败条件:每堆石子的 $popcount$ 都为 $d+1$ 的倍数.</li>
+<li>$Nimk$ 游戏先手必败条件:对于每个二进制位 $i$ ,所有石子数目的第 $i$ 位之和为 $d+1$ 的倍数.</li>
+<li>即, $\forall i,(\sum_j(a_j&gt;&gt;i)\&amp;1)\mod d+1=0​$ .</li>
 <li>转成 $Nimk$ 模型,有 $\frac k 2$ 堆石子,石子总数不超过 $n-k$ 个.求必胜方案数可以用总方案数 $n \choose k$ 减去必败方案数.</li>
 <li>令 $f(i,j)$ 表示从第 $0$ 位开始算,已经考虑了二进制的前 $i$ 位,用掉了 $j$ 个石子的方案数.转移有:</li>
 </ul>
