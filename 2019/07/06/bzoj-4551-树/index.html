@@ -136,18 +136,14 @@
 
 
 
-  <meta name="description" content="贪心 + 矩阵快速幂.">
-<meta name="keywords" content="贪心,矩阵优化">
-<meta property="og:type" content="article">
-<meta property="og:title" content="bzoj 4547 小奇的集合">
-<meta property="og:url" content="http://yoursite.com/2019/06/27/bzoj-4547-小奇的集合/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="bzoj 4551 树">
+<meta property="og:url" content="http://yoursite.com/2019/07/06/bzoj-4551-树/index.html">
 <meta property="og:site_name" content="JKLover">
-<meta property="og:description" content="贪心 + 矩阵快速幂.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-06-27T05:23:03.767Z">
+<meta property="og:updated_time" content="2019-07-06T05:05:29.459Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="bzoj 4547 小奇的集合">
-<meta name="twitter:description" content="贪心 + 矩阵快速幂.">
+<meta name="twitter:title" content="bzoj 4551 树">
 
 
 
@@ -155,7 +151,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/06/27/bzoj-4547-小奇的集合/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/06/bzoj-4551-树/">
 
 
 
@@ -165,7 +161,7 @@
   };
 </script>
 
-  <title>bzoj 4547 小奇的集合 | JKLover</title>
+  <title>bzoj 4551 树 | JKLover</title>
   
 
 
@@ -380,7 +376,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/27/bzoj-4547-小奇的集合/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/06/bzoj-4551-树/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JKLover">
@@ -397,7 +393,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">bzoj 4547 小奇的集合
+          <h1 class="post-title" itemprop="name headline">bzoj 4551 树
 
               
             
@@ -423,13 +419,9 @@
                 
               
 
-              <time title="Created: 2019-06-27 13:17:57 / Modified: 13:23:03" itemprop="dateCreated datePublished" datetime="2019-06-27T13:17:57+08:00">2019-06-27</time>
+              <time title="Created: 2019-07-06 13:05:29" itemprop="dateCreated datePublished" datetime="2019-07-06T13:05:29+08:00">2019-07-06</time>
             
 
-            
-              
-
-              
             
           </span>
 
@@ -469,20 +461,7 @@
       
 
       
-        <p>贪心 + 矩阵快速幂.</p>
-<a id="more"></a>
-<ul>
-<li>显然可以贪心,每次取最大的两个数加起来.答案为初始所有元素之和加上每次操作加入的数.</li>
-<li>记初始时最大数为 $a$ ,次大数为 $b$ ,因为题目保证答案非负,所以 $a,b$ 不可能都为负.</li>
-<li>若 $a,b$ 都非负,那么加入的数就是一个类斐波那契数列,用矩阵快速幂加速计算就可以了.</li>
-<li>若 $a&gt;0$ , $b&lt;0$ ,那么就先算出最少要加几次能使得有两个非负数.只要 $k$ 不为 $0$ ,又保证最终答案为非负,那么一定能在 $k$ 次之内得到两个非负数.</li>
-<li>这部分贡献可以直接算出,然后再对剩余次数计算类斐波那契数列部分的贡献即可.</li>
-</ul>
-<blockquote>
-<p>记得答案 $+$ 模数后再输出.</p>
-</blockquote>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> out=<span class="number">0</span>,fh=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> ((jp&gt;<span class="string">'9'</span>||jp&lt;<span class="string">'0'</span>)&amp;&amp;jp!=<span class="string">'-'</span>)</span><br><span class="line">		jp=getchar();</span><br><span class="line">	<span class="keyword">if</span> (jp==<span class="string">'-'</span>)</span><br><span class="line">		fh=<span class="number">-1</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> (jp&gt;=<span class="string">'0'</span>&amp;&amp;jp&lt;=<span class="string">'9'</span>)</span><br><span class="line">		out=out*<span class="number">10</span>+jp-<span class="string">'0'</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">return</span> out*fh;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf=<span class="number">0x7fffffff</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> P=<span class="number">1e7</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inv2=(P+<span class="number">1</span>)&gt;&gt;<span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (a + b) % P;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">mul</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1L</span>L * a * b % P;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Matrix</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> A[<span class="number">3</span>][<span class="number">3</span>];</span><br><span class="line">	Matrix()&#123;<span class="built_in">memset</span>(A,<span class="number">0</span>,<span class="keyword">sizeof</span> A);&#125;</span><br><span class="line">	Matrix <span class="keyword">operator</span> * (<span class="keyword">const</span> Matrix &amp;rhs) <span class="keyword">const</span></span><br><span class="line">	&#123;</span><br><span class="line">		Matrix res;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;<span class="number">3</span>;++k)</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">3</span>;++i)</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">3</span>;++j)</span><br><span class="line">					res.A[i][j]=add(res.A[i][j],mul(A[i][k],rhs.A[k][j]));</span><br><span class="line">		<span class="keyword">return</span> res;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function">Matrix <span class="title">fpow</span><span class="params">(Matrix a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Matrix res;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">3</span>;++i)</span><br><span class="line">		res.A[i][i]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>)</span><br><span class="line">			res=res*a;</span><br><span class="line">		a=a*a;</span><br><span class="line">		b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">calc</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	assert(k&gt;=<span class="number">0</span>);</span><br><span class="line">	Matrix trans,st;</span><br><span class="line">	trans.A[<span class="number">0</span>][<span class="number">0</span>]=trans.A[<span class="number">0</span>][<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	trans.A[<span class="number">1</span>][<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	trans.A[<span class="number">2</span>][<span class="number">0</span>]=trans.A[<span class="number">2</span>][<span class="number">1</span>]=trans.A[<span class="number">2</span>][<span class="number">2</span>]=<span class="number">1</span>;</span><br><span class="line">	st.A[<span class="number">0</span>][<span class="number">0</span>]=a;</span><br><span class="line">	st.A[<span class="number">1</span>][<span class="number">0</span>]=b;</span><br><span class="line">	st=fpow(trans,k)*st;</span><br><span class="line">	<span class="keyword">return</span> st.A[<span class="number">2</span>][<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n=read(),k=read(),ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> a=-inf,b=-inf;</span><br><span class="line">	<span class="keyword">while</span>(n--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> x=read();</span><br><span class="line">		ans=add(ans,x);</span><br><span class="line">		<span class="keyword">if</span>(x&gt;a)</span><br><span class="line">			b=a,a=x;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(x&gt;b)</span><br><span class="line">			b=x;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(a&gt;=<span class="number">0</span> &amp;&amp; b&gt;=<span class="number">0</span>)</span><br><span class="line">		ans=add(ans,calc(a,b,k));</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> tmp=(-b+a<span class="number">-1</span>)/a;</span><br><span class="line">		ans=add(ans,mul(tmp,b));</span><br><span class="line">		ans=add(ans,mul(a,mul(inv2,mul(tmp+<span class="number">1</span>,tmp))));</span><br><span class="line">		k-=tmp;</span><br><span class="line">		b=tmp*a+b;</span><br><span class="line">		<span class="keyword">if</span>(b&gt;a)</span><br><span class="line">			swap(a,b);</span><br><span class="line">		ans=add(ans,calc(a,b,k));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;add(ans,P)&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+        <a id="more"></a>
       
     </div>
 
@@ -503,14 +482,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/贪心/" rel="tag"># 贪心</a>
-          
-            <a href="/tags/矩阵优化/" rel="tag"># 矩阵优化</a>
-          
-        </div>
-      
 
       
       
@@ -520,8 +491,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/26/bzoj-1041-圆上的整点/" rel="next" title="bzoj 1041 圆上的整点">
-                <i class="fa fa-chevron-left"></i> bzoj 1041 圆上的整点
+              <a href="/2019/07/04/bzoj-4552-排序/" rel="next" title="bzoj 4552 排序">
+                <i class="fa fa-chevron-left"></i> bzoj 4552 排序
               </a>
             
           </div>
@@ -529,10 +500,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/29/CF1186/" rel="prev" title="CF1186">
-                CF1186 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
