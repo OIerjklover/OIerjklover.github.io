@@ -145,7 +145,7 @@
 <meta property="og:description" content="同步爆零.">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://yoursite.com/9102/07/16/NOI2019同步赛游记/formula.png">
-<meta property="og:updated_time" content="2019-07-17T03:27:53.808Z">
+<meta property="og:updated_time" content="2019-07-18T09:18:32.510Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NOI2019同步赛游记">
 <meta name="twitter:description" content="同步爆零.">
@@ -442,7 +442,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-17 11:27:53" itemprop="dateModified" datetime="2019-07-17T11:27:53+08:00">2019-07-17</time>
+                <time title="Modified: 2019-07-18 17:18:32" itemprop="dateModified" datetime="2019-07-18T17:18:32+08:00">2019-07-18</time>
               
             
           </span>
@@ -488,8 +488,8 @@
 <h1 id="Day-infty"><a href="#Day-infty" class="headerlink" title="$Day -\infty$"></a>$Day -\infty$</h1><p>划水,摸鱼,被虐.</p>
 <h1 id="Day-1"><a href="#Day-1" class="headerlink" title="$Day\ 1$"></a>$Day\ 1$</h1><p>做题顺序 $1\to 2\to 3$ .</p>
 <p>$T1$ 感觉 $70$ 分很可做,大力 $O(\max q\cdot n)$ 来 $dp$ .</p>
-<p>不是 $DAG$ 也没有关系,时间那一维是没有后效性的,先枚举时间就好了.</p>
-<p>然后又感觉后面的 $15$ 分也可以做,每个点按照所有的上/下车时间,将 $n$ 个点拆成 $O(m)$ 个点,这部分 $A=0$ ,贡献是线性的,所以对于原来一个点拆出来的所有点,连边时不需要两两连,按时间排序,相邻的才连边,然后跑 $Dijkstra$ . </p>
+<p>不是 $DAG​$ 也没有关系,时间那一维是没有后效性的,先枚举时间就好了.</p>
+<p>然后又感觉后面的 $15$ 分也可以做,每个点按照所有的上/下车时间,将 $n$ 个点拆成 $O(m)$ 个点,这部分 $A=0$ ,贡献是线性的,所以对于原来一个点拆出来的所有点,连边时不需要两两连,按时间排序,相邻的才连边,然后跑 $Dijkstra​$ . </p>
 <p>感觉这个玩意细节处理起来比较麻烦,只有 $15$ 分,就先放着,去看后面两个题.</p>
 <p>$T2$ 无想法,写了 $20$ 分暴力就放着了.</p>
 <p>$T3$ 无想法,写了个 $28$ 分的 $O(n^4)$ 大力 $dp$ 就放着了.</p>
@@ -506,6 +506,20 @@
 <blockquote>
 <p>下午 $4$ 点左右有数据了.测了一下, $100+20+28=148$ ,没挂, <del>成功</del> 获得暴力分.</p>
 </blockquote>
+<h1 id="Day-2"><a href="#Day-2" class="headerlink" title="$Day\ 2$"></a>$Day\ 2$</h1><p>做题顺序 $1\to 2\to 3$ .</p>
+<p>$T1$ 感觉用 $kdt$ 建图就好了?然后发现空间 <code>128 MB</code> .跑了一波边数,发现开不下.</p>
+<p>意识到出题人安排这个空间就是卡 $kdt$ 的?但是貌似想不出其他比较优秀的做法了…</p>
+<p>只好头铁写了一波 $kdt$ .</p>
+<p>看 $T2$ ,怎么又是 $landlords$ …先写了个 $10$ 分暴力,写 $dp$ 的部分分时候思路很乱,胡乱写了一发,过不了样例.调了一会,未果,只好放着了…</p>
+<p>$T3$ 是个交互?自己似乎是第一次做这种带端口的交互(之前只在 $CF/ATC$ 上遇到输出命令来交互的题).</p>
+<p>有点被吓到,冷静下来分析一波,发现前面 $5$ 个点就是暴力分,每个点改一次,再询问所有点,变了的就是与它有边的.</p>
+<p>度数 $=1$ 的部分也比较可做,图是 $N/2$ 个点对,询问次数是 $N\log N$ ,提示得比较明显,每个二进制位都做一次,将当前二进制位为 $1$ 的点 $modify$ 一次,再询问所有点,若它的状态改变,说明它连的点这一位上与它相同,否则不同.</p>
+<p>于是就有 $36$ 分的暴力了.</p>
+<p>回过去再卡了一下 $T1$ 的空间,就结束了…</p>
+<blockquote>
+<p>下午测了一波, $76+10+36=122$ .</p>
+</blockquote>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>果然自己还是菜的真实,希望明年能作为正式选手取得令自己满意的成绩吧.</p>
 
       
     </div>
@@ -888,7 +902,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-infty"><span class="nav-number">1.</span> <span class="nav-text">$Day -\infty$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-1"><span class="nav-number">2.</span> <span class="nav-text">$Day\ 1$</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-infty"><span class="nav-number">1.</span> <span class="nav-text">$Day -\infty$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-1"><span class="nav-number">2.</span> <span class="nav-text">$Day\ 1$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Day-2"><span class="nav-number">3.</span> <span class="nav-text">$Day\ 2$</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-number">4.</span> <span class="nav-text">后记</span></a></li></ol></div>
             
 
           </div>
