@@ -138,7 +138,7 @@
 
   <meta property="og:type" content="website">
 <meta property="og:title" content="JKLover">
-<meta property="og:url" content="http://yoursite.com/tags/atcoder/index.html">
+<meta property="og:url" content="http://yoursite.com/tags/Atcoder/index.html">
 <meta property="og:site_name" content="JKLover">
 <meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
@@ -150,7 +150,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/tags/atcoder/">
+  <link rel="canonical" href="http://yoursite.com/tags/Atcoder/">
 
 
 
@@ -160,7 +160,7 @@
   };
 </script>
 
-  <title>Tag: atcoder | JKLover</title>
+  <title>Tag: Atcoder | JKLover</title>
   
 
 
@@ -382,7 +382,7 @@
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h1>atcoder<small>Tag</small>
+        <h1>Atcoder<small>Tag</small>
         </h1>
       </div>
 
@@ -394,69 +394,17 @@
 
       <h2 class="post-title">
         
-          <a class="post-title-link" href="/2019/06/17/diverta-2019-Programming-Contest-2/" itemprop="url">
+          <a class="post-title-link" href="/2019/07/08/Atcoder-Beginner-Contest-133/" itemprop="url">
             
-              <span itemprop="name">diverta 2019 Programming Contest 2</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-06-17T18:22:19+08:00" content="2019-06-17">
-          06-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/05/25/Atcoder-Beginner-Contest-127/" itemprop="url">
-            
-              <span itemprop="name">Atcoder Beginner Contest 127</span>
+              <span itemprop="name">Atcoder Beginner Contest 133</span>
             
           </a>
         
       </h2>
 
       <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-25T21:36:55+08:00" content="2019-05-25">
-          05-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/04/21/Tenka1-Programmer-Contest-2019/" itemprop="url">
-            
-              <span itemprop="name">Tenka1 Programmer Contest 2019</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-21T09:48:29+08:00" content="2019-04-21">
-          04-21
+        <time class="post-time" itemprop="dateCreated" datetime="2019-07-08T08:39:05+08:00" content="2019-07-08">
+          07-08
         </time>
       </div>
 
@@ -513,7 +461,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">124</span>
+                    <span class="site-state-item-count">125</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1313,6 +1261,71 @@
   });
 </script>
 <script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('Copied');
+        else $(this).text('Copy failed');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('Copy');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+
+</body>
+</html>
+eX-AMS-MML_HTMLorMML"></script>
 
     
   
