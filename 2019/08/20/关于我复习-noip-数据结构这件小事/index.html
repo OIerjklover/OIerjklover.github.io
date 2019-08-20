@@ -136,18 +136,18 @@
 
 
 
-  <meta name="description" content="和 $$ 平衡树与 $LCT$ 待更.">
+  <meta name="description" content="平衡树与 $LCT$ 待更.">
 <meta name="keywords" content="学习笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于我复习 noip 数据结构这件小事">
 <meta property="og:url" content="http://yoursite.com/2019/08/20/关于我复习-noip-数据结构这件小事/index.html">
 <meta property="og:site_name" content="JKLover">
-<meta property="og:description" content="和 $$ 平衡树与 $LCT$ 待更.">
+<meta property="og:description" content="平衡树与 $LCT$ 待更.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-20T12:57:07.165Z">
+<meta property="og:updated_time" content="2019-08-20T13:01:30.910Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于我复习 noip 数据结构这件小事">
-<meta name="twitter:description" content="和 $$ 平衡树与 $LCT$ 待更.">
+<meta name="twitter:description" content="平衡树与 $LCT$ 待更.">
 
 
 
@@ -440,7 +440,7 @@
                 
               
 
-              <time title="Created: 2019-08-20 20:53:45 / Modified: 20:57:07" itemprop="dateCreated datePublished" datetime="2019-08-20T20:53:45+08:00">2019-08-20</time>
+              <time title="Created: 2019-08-20 20:53:45 / Modified: 21:01:30" itemprop="dateCreated datePublished" datetime="2019-08-20T20:53:45+08:00">2019-08-20</time>
             
 
             
@@ -486,11 +486,15 @@
       
 
       
-        <p>和 $$</p>
-<p>平衡树与 $LCT$ 待更.</p>
+        <p>平衡树与 $LCT$ 待更.</p>
 <a id="more"></a>
-<h3 id="STL"><a href="#STL" class="headerlink" title="$STL$"></a>$STL$</h3><p>关键是会用.比较常用的有 <figure class="highlight plain"><figcaption><span>这几个.</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">简单说一下 ``bitset`` .</span><br><span class="line"></span><br><span class="line">```cpp</span><br><span class="line">bitset&lt;MAXN&gt; s;</span><br></pre></td></tr></table></figure></p>
-<p>这样就定义了一个 <figure class="highlight plain"><figcaption><span>.默认所有位置都是 $0$ .</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">你可以把它看成是一个长度为 ```MAXN​``` 的布尔数组,也可以看成是有 ```MAXN``` 位的二进制数.</span><br><span class="line"></span><br><span class="line">它支持直接调用/修改某一位上的值,</span><br><span class="line"></span><br><span class="line">```cpp</span><br><span class="line">s[0]=1;</span><br><span class="line">s[1]=1;</span><br></pre></td></tr></table></figure></p>
+<h3 id="STL"><a href="#STL" class="headerlink" title="$STL$"></a>$STL$</h3><p>关键是会用.比较常用的有 $set,mutiset,priority\ queue,map$ 这几个.</p>
+<p>简单说一下 $bitset$ .</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bitset</span>&lt;MAXN&gt; s;</span><br></pre></td></tr></table></figure>
+<p>这样就定义了一个 $bitset$ .默认所有位置都是 $0$ .</p>
+<p>可以把它看成是一个长度为 $MAXN$ 的布尔数组,也可以看成是有 $MAXN$ 位的二进制数.</p>
+<p>它支持直接调用/修改某一位上的值,</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">s[<span class="number">1</span>]=<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
 <p>也可以用它直接进行位运算,</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s=s|(s&lt;&lt;<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
 <p>一次位运算耗时是长度/系统位数,一般是 $32$ 或者 $64$ .</p>
@@ -556,7 +560,7 @@
 <p>如果合并到一个位置时,其中一者没有这个位置上的节点,就直接返回另一者.</p>
 <p>否则将这个位置的信息合并后,还要递归合并它们的儿子.</p>
 <p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=4860" target="_blank" rel="noopener">树的难题</a> <a href="https://jkloverdcoi.github.io/2019/05/16/bzoj-4860-%E6%A0%91%E7%9A%84%E9%9A%BE%E9%A2%98/" target="_blank" rel="noopener">sol</a></p>
-<h2 id="扫描线"><a href="#扫描线" class="headerlink" title="扫描线"></a>扫描线</h2><p>最经典的是求矩形面积并.将每个矩形按照 $x$ 坐标排序,从左往右扫过来,看成两个事件,加入和删除.</p>
+<h3 id="扫描线"><a href="#扫描线" class="headerlink" title="扫描线"></a>扫描线</h3><p>最经典的是求矩形面积并.将每个矩形按照 $x$ 坐标排序,从左往右扫过来,看成两个事件,加入和删除.</p>
 <p>每次发生了加入事件就去更新答案.</p>
 <p>需要注意边界的处理问题,加入和删除操作需要分出前后顺序,根据题目而定.</p>
 <p><a href="https://loj.ac/problem/535" target="_blank" rel="noopener">花火</a> <a href="https://jkloverdcoi.github.io/2019/08/13/Loj-535-%E8%8A%B1%E7%81%AB/" target="_blank" rel="noopener">sol</a></p>
@@ -973,7 +977,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#STL"><span class="nav-number">1.</span> <span class="nav-text">$STL$</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#并查集"><span class="nav-number"></span> <span class="nav-text">并查集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树状数组"><span class="nav-number"></span> <span class="nav-text">树状数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线段树"><span class="nav-number"></span> <span class="nav-text">线段树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#经典应用"><span class="nav-number">1.</span> <span class="nav-text">经典应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态开点线段树"><span class="nav-number">2.</span> <span class="nav-text">动态开点线段树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可持久化线段树"><span class="nav-number">3.</span> <span class="nav-text">可持久化线段树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#李超线段树"><span class="nav-number">4.</span> <span class="nav-text">李超线段树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#吉司机线段树"><span class="nav-number">5.</span> <span class="nav-text">吉司机线段树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线段树分治"><span class="nav-number">6.</span> <span class="nav-text">线段树分治</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线段树合并"><span class="nav-number">7.</span> <span class="nav-text">线段树合并</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扫描线"><span class="nav-number"></span> <span class="nav-text">扫描线</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cdq-分治"><span class="nav-number">1.</span> <span class="nav-text">$cdq$ 分治</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#STL"><span class="nav-number">1.</span> <span class="nav-text">$STL$</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#并查集"><span class="nav-number"></span> <span class="nav-text">并查集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树状数组"><span class="nav-number"></span> <span class="nav-text">树状数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线段树"><span class="nav-number"></span> <span class="nav-text">线段树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#经典应用"><span class="nav-number">1.</span> <span class="nav-text">经典应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态开点线段树"><span class="nav-number">2.</span> <span class="nav-text">动态开点线段树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可持久化线段树"><span class="nav-number">3.</span> <span class="nav-text">可持久化线段树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#李超线段树"><span class="nav-number">4.</span> <span class="nav-text">李超线段树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#吉司机线段树"><span class="nav-number">5.</span> <span class="nav-text">吉司机线段树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线段树分治"><span class="nav-number">6.</span> <span class="nav-text">线段树分治</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线段树合并"><span class="nav-number">7.</span> <span class="nav-text">线段树合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扫描线"><span class="nav-number">8.</span> <span class="nav-text">扫描线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cdq-分治"><span class="nav-number">9.</span> <span class="nav-text">$cdq$ 分治</span></a></li></ol></li></div>
             
 
           </div>
