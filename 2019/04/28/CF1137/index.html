@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<script> 
+	(function(){
+		if(''){
+			if (prompt('Please enter the password') !== ''){
+				alert('Wrong password'); 
+				history.back(); 
+			} 
+		} 
+	})();
+</script>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script> 
+	(function(){
+		if(''){
+			if (prompt('Please enter the password') !== ''){
+				alert('Wrong password'); 
+				history.back(); 
+			} 
+		} 
+	})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<script> 
+	(function(){
+		if(''){
+			if (prompt('Please enter the password') !== ''){
+				alert('Wrong password'); 
+				history.back(); 
+			} 
+		} 
+	})();
+</script>
+<meta name="theme-color" content="#222">
+<script> 
+	(function(){
+		if(''){
+			if (prompt('Please enter the password') !== ''){
+				alert('Wrong password'); 
+				history.back(); 
+			} 
+		} 
+	})();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/myicon-32x32.jpg?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/myicon-16x16.jpg?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="$Div.1​$">
+<meta name="keywords" content="贪心,二分,线段树,codeforces,kmp,tarjan,DAG,非传统题,floyd判圈,树链剖分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CF1137">
+<meta property="og:url" content="http://yoursite.com/2019/04/28/CF1137/index.html">
+<meta property="og:site_name" content="JKLover">
+<meta property="og:description" content="$Div.1​$">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-05-02T09:24:13.586Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CF1137">
+<meta name="twitter:description" content="$Div.1​$">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/04/28/CF1137/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>CF1137 | JKLover</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">JKLover</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">夢はここに 思い出は遠くに</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/28/CF1137/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JKLover">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JKLover">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CF1137
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-28 22:24:49" itemprop="dateCreated datePublished" datetime="2019-04-28T22:24:49+08:00">2019-04-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-02 17:24:13" itemprop="dateModified" datetime="2019-05-02T17:24:13+08:00">2019-05-02</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>$Div.1​$</p>
+<a id="more"></a>
+<h3 id="CF1137A-Skyscrapers"><a href="#CF1137A-Skyscrapers" class="headerlink" title="CF1137A Skyscrapers"></a><a href="http://codeforces.com/contest/1137/problem/A" target="_blank" rel="noopener">CF1137A Skyscrapers</a></h3><ul>
+<li><p>二分.</p>
+</li>
+<li><p><del>通过观察可以发现,</del>对于每个询问,如果交点位置的值是 $x$ ,那么答案就是该列比 $x$ 小的数字种数与该行比 $x$ 小的数字种数的较大值+该列比 $x$ 小的数字种数与该行比 $x$ 小的数字种数的较大值 + $1$ .</p>
+</li>
+<li>离散化后二分一下就可以求出了.</li>
+</ul>
+<h3 id="CF1137B-Camp-Schedule"><a href="#CF1137B-Camp-Schedule" class="headerlink" title="CF1137B Camp Schedule"></a><a href="http://codeforces.com/contest/1137/problem/B" target="_blank" rel="noopener">CF1137B Camp Schedule</a></h3><ul>
+<li>贪心 + $kmp$ .</li>
+<li>这个东西显然可以贪心,构造字符串时先放一个目标串,然后后面从最长 $border$ 那里接上去继续放,直到放完或者 $0/1$ 不够用.</li>
+<li>用 $kmp$ 搞一下最长 $border$ 长度就好了.</li>
+</ul>
+<h3 id="CF1137C-Museums-Tour"><a href="#CF1137C-Museums-Tour" class="headerlink" title="CF1137C Museums Tour"></a><a href="http://codeforces.com/contest/1137/problem/C" target="_blank" rel="noopener">CF1137C Museums Tour</a></h3><ul>
+<li>$tarjan$ 缩点, $DAG$ 上 $dp$ .</li>
+<li>注意到 $d$ 较小,所以首先可以把原来的每个点拆成 $d$ 个点,并连上合法的转移边.这样每个点有两个值 $(x,t)$ ,如果城市 $x$ 在当天有展览,这个点权值为 $1$ ,否则为 $0$ .</li>
+<li>用 $tarjan$ 搞出每个强连通分量,缩成一个点,那么这个新点的权值就是这个 $SCC$ 内有展览的城市数目和.</li>
+<li>注意到同一个城市拆出来的点 $(x,t)$ 与 $(x,t’)$ 路径可逆(连续走 $d-1$ 次),要么彼此都不可达,对应的两个 $SCC$ 不连通;要么彼此都可达.在同一个 $SCC$ 内.</li>
+<li>所以在 $DAG$ 上 $dp$ 的话,两个 $SCC$ 内相同城市拆出来的点贡献不会叠加.</li>
+<li>那么就可以直接从 $(1,0)$ 所在的强连通分量出发,在 $DAG$ 上找一条点权和最大的路径,可以 $dp$ 解决.</li>
+<li>时间复杂度 $O(nd)$ .</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> out=<span class="number">0</span>,fh=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> jp=getchar();</span><br><span class="line">    <span class="keyword">while</span> ((jp&gt;<span class="string">'9'</span>||jp&lt;<span class="string">'0'</span>)&amp;&amp;jp!=<span class="string">'-'</span>)</span><br><span class="line">        jp=getchar();</span><br><span class="line">    <span class="keyword">if</span> (jp==<span class="string">'-'</span>)</span><br><span class="line">        fh=<span class="number">-1</span>,jp=getchar();</span><br><span class="line">    <span class="keyword">while</span> (jp&gt;=<span class="string">'0'</span>&amp;&amp;jp&lt;=<span class="string">'9'</span>)</span><br><span class="line">        out=out*<span class="number">10</span>+jp-<span class="string">'0'</span>,jp=getchar();</span><br><span class="line">    <span class="keyword">return</span> out*fh;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">5e6</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,d;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; graph[MAXN];</span><br><span class="line"><span class="keyword">int</span> eu[N],ev[N];</span><br><span class="line"><span class="keyword">int</span> on_display[MAXN];</span><br><span class="line"><span class="keyword">char</span> schedule[<span class="number">51</span>];</span><br><span class="line"><span class="keyword">bool</span> vis[N];</span><br><span class="line"><span class="keyword">int</span> low[MAXN],dfn[MAXN],idx=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> stk[MAXN],tp=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> scc[MAXN],scc_cnt=<span class="number">0</span>,sccval[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tarjan</span><span class="params">(<span class="keyword">int</span> u)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	stk[++tp]=u;</span><br><span class="line">	dfn[u]=low[u]=++idx;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">auto</span> v:graph[u])</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(!dfn[v])</span><br><span class="line">		&#123;</span><br><span class="line">			tarjan(v);</span><br><span class="line">			low[u]=min(low[u],low[v]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(!scc[v])</span><br><span class="line">			low[u]=min(low[u],dfn[v]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(dfn[u]==low[u])</span><br><span class="line">	&#123;</span><br><span class="line">		++scc_cnt;</span><br><span class="line">		<span class="keyword">while</span>(tp)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> v=stk[tp--];</span><br><span class="line">			scc[v]=scc_cnt;</span><br><span class="line">			<span class="keyword">if</span>(on_display[v])</span><br><span class="line">			&#123;</span><br><span class="line">				sccval[scc_cnt]+=(<span class="keyword">int</span>)(!vis[(v/d)+<span class="number">1</span>]);</span><br><span class="line">				vis[(v/d)+<span class="number">1</span>]=<span class="literal">true</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(v==u)</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> f[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(f[u]!=<span class="number">-1</span>)</span><br><span class="line">		<span class="keyword">return</span> f[u];</span><br><span class="line">	f[u]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">auto</span> v:graph[u])</span><br><span class="line">		f[u]=max(f[u],dfs(v));</span><br><span class="line">	f[u]+=sccval[u];</span><br><span class="line">	<span class="keyword">return</span> f[u];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	n=read(),m=read(),d=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> u=read(),v=read();</span><br><span class="line">		eu[i]=u,ev[i]=v;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> ut=<span class="number">0</span>;ut&lt;d;++ut)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> vt=(ut+<span class="number">1</span>)%d;</span><br><span class="line">			graph[(u<span class="number">-1</span>)*d+ut].push_back((v<span class="number">-1</span>)*d+vt);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%s"</span>,schedule);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;d;++j)</span><br><span class="line">			on_display[(i<span class="number">-1</span>)*d+j]=schedule[j]-<span class="string">'0'</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	tarjan((<span class="number">1</span><span class="number">-1</span>)*d+<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n*d;++i)</span><br><span class="line">		graph[i].clear();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> u=eu[i],v=ev[i];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> ut=<span class="number">0</span>;ut&lt;d;++ut)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> vt=(ut+<span class="number">1</span>)%d;</span><br><span class="line">			<span class="keyword">if</span>(scc[(u<span class="number">-1</span>)*d+ut] &amp;&amp; scc[(u<span class="number">-1</span>)*d+ut]!=scc[(v<span class="number">-1</span>)*d+vt])</span><br><span class="line">				graph[scc[(u<span class="number">-1</span>)*d+ut]].push_back(scc[(v<span class="number">-1</span>)*d+vt]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">memset</span>(f,<span class="number">-1</span>,<span class="keyword">sizeof</span> f);</span><br><span class="line">	<span class="keyword">int</span> ans=dfs(scc[(<span class="number">1</span><span class="number">-1</span>)*d+<span class="number">0</span>]);</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>然而需要卡空间.懒得卡了.</p>
+</blockquote>
+<h3 id="CF1137D-Cooperative-Game"><a href="#CF1137D-Cooperative-Game" class="headerlink" title="CF1137D Cooperative Game"></a><a href="http://codeforces.com/contest/1137/problem/D" target="_blank" rel="noopener">CF1137D Cooperative Game</a></h3><ul>
+<li>交互题.</li>
+<li>这个模型可以考虑 $floyd$ 判圈算法.即 $A$ 的速度是 $2$ , $B$ 的速度是 $1$ ,同时从起点出发,当两人重新相遇时,快的那个人比慢的那个人多走了 $k$ 圈,即 $k\cdot c$ 步.操作时可以让 $A,B$ 一起走一步,再让 $A$ 走一步.</li>
+<li>相遇时, $B$ 肯定还没有走完一圈.记此时 $B$ 在圈内走了 $x$ 步( $x&lt;c$ ),那么 $B$ 一共走了 $t+x$ 步, $A$ 一共走了 $t+x+kc$ 步.而 $A$ 走的步数恰好是 $B$ 的二倍.</li>
+<li>所以可以得到 $kc=t+x$ .那么此时这两个人再一起往前走 $t$ 步就可以一起到达环的起点.</li>
+<li>而剩余的人还在出发点,也是再往前走 $t$ 步到达环的起点.于是相遇后所有人一起走,到达同一个位置时就结束了. </li>
+<li>分析一下总步数. $A,B$ 相遇前要进行 $2(t+x)$ 个操作,相遇后要进行 $t$ 个操作.总操作数不会大于 $3(t+c)$ .</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> out=<span class="number">0</span>,fh=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> jp=getchar();</span><br><span class="line">    <span class="keyword">while</span> ((jp&gt;<span class="string">'9'</span>||jp&lt;<span class="string">'0'</span>)&amp;&amp;jp!=<span class="string">'-'</span>)</span><br><span class="line">        jp=getchar();</span><br><span class="line">    <span class="keyword">if</span> (jp==<span class="string">'-'</span>)</span><br><span class="line">        fh=<span class="number">-1</span>,jp=getchar();</span><br><span class="line">    <span class="keyword">while</span> (jp&gt;=<span class="string">'0'</span>&amp;&amp;jp&lt;=<span class="string">'9'</span>)</span><br><span class="line">        out=out*<span class="number">10</span>+jp-<span class="string">'0'</span>,jp=getchar();</span><br><span class="line">    <span class="keyword">return</span> out*fh;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> groups;</span><br><span class="line"><span class="keyword">char</span> buf[<span class="number">10</span>][<span class="number">10</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getinfo</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	groups=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;groups;++i)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%s"</span>,buf[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">moveA</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">puts</span>(<span class="string">"next 0"</span>);</span><br><span class="line">	fflush(<span class="built_in">stdout</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">moveAB</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">puts</span>(<span class="string">"next 0 1"</span>);</span><br><span class="line">	fflush(<span class="built_in">stdout</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">moveAll</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">puts</span>(<span class="string">"next 0 1 2 3 4 5 6 7 8 9"</span>);</span><br><span class="line">	fflush(<span class="built_in">stdout</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Done</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">puts</span>(<span class="string">"done"</span>);</span><br><span class="line">	fflush(<span class="built_in">stdout</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">stage_catch</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		moveAB();</span><br><span class="line">		getinfo();</span><br><span class="line">		moveA();</span><br><span class="line">		getinfo();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;groups;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">bool</span> fa=<span class="literal">false</span>,fb=<span class="literal">false</span>;</span><br><span class="line">			<span class="keyword">int</span> len=<span class="built_in">strlen</span>(buf[i]);</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;len;++j)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(buf[i][j]==<span class="string">'0'</span>)</span><br><span class="line">					fa=<span class="literal">true</span>;</span><br><span class="line">				<span class="keyword">if</span>(buf[i][j]==<span class="string">'1'</span>)</span><br><span class="line">					fb=<span class="literal">true</span>;</span><br><span class="line">				<span class="keyword">if</span>(fa &amp;&amp; fb)</span><br><span class="line">					<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">stage_meet</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		moveAll();</span><br><span class="line">		getinfo();</span><br><span class="line">		<span class="keyword">if</span>(groups==<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			Done();</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	stage_catch();</span><br><span class="line">	stage_meet();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="CF1137F-Matches-Are-Not-a-Child’s-Play"><a href="#CF1137F-Matches-Are-Not-a-Child’s-Play" class="headerlink" title="CF1137F Matches Are Not a Child’s Play"></a><a href="http://codeforces.com/contest/1137/problem/F" target="_blank" rel="noopener">CF1137F Matches Are Not a Child’s Play</a></h3><ul>
+<li>树剖 + 线段树.</li>
+<li>$compare$ 询问显然不用单独考虑,做两次 $when$ 询问就可以了.</li>
+<li>初始的删点序列我们可以暴力搞出,只需要考虑每次 $up$ 操作带来的影响.</li>
+<li>首先可以发现在一条路径上,只能从两边往中间删.,若 $up$ 当前权值最大的节点,就没有影响.否则,如果把 $u$ 改成了最大, $v$ 是原来最大的点, $v\not = u$ ,那么 $v-u$ 这条路径一定是最后被删除的,且删除顺序是严格按照 $v\rightarrow u$ 这条单向路径.</li>
+<li>不在这条路径上的点被删除的相对顺序显然不会变.即, $up$ 操作一次之后,先删除不在这条路径上的点,顺序是操作前被删除的相对顺序,再沿路径 $v\rightarrow u$ 顺次删除.</li>
+<li>实现可以通过染色,第 $i$ 次 $up$ 操作时把 $v_i\rightarrow u_i$ 这条路径上的点颜色染为 $i$ .那么询问 $when(x)$ 的答案就是颜色序号比 $col_x$ 小的节点数加上路径 $v_{colx} \rightarrow x$ 的节点数目.初始化可以看做进行了 $n$ 次 $up$ 操作.</li>
+<li>染色用树剖+线段树实现,答案的两部分,前者用线段树维护每种颜色的节点数目,后者只需要记录每次的 $v_i$ ,利用树剖维护的 $dep,top$ 计算.</li>
+<li>时间复杂度 $O(qlog^2n)$ .</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/贪心/" rel="tag"># 贪心</a>
+          
+            <a href="/tags/二分/" rel="tag"># 二分</a>
+          
+            <a href="/tags/线段树/" rel="tag"># 线段树</a>
+          
+            <a href="/tags/codeforces/" rel="tag"># codeforces</a>
+          
+            <a href="/tags/kmp/" rel="tag"># kmp</a>
+          
+            <a href="/tags/tarjan/" rel="tag"># tarjan</a>
+          
+            <a href="/tags/DAG/" rel="tag"># DAG</a>
+          
+            <a href="/tags/非传统题/" rel="tag"># 非传统题</a>
+          
+            <a href="/tags/floyd判圈/" rel="tag"># floyd判圈</a>
+          
+            <a href="/tags/树链剖分/" rel="tag"># 树链剖分</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/28/DNA分子计数/" rel="next" title="DNA分子计数">
+                <i class="fa fa-chevron-left"></i> DNA分子计数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/02/TJOI2019-选做/" rel="prev" title="TJOI2019 选做">
+                TJOI2019 选做 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">JKLover</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">160</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">97</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                dalao们
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/autoint/" title="https://www.cnblogs.com/autoint/" rel="noopener" target="_blank">autoint</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://gluttony-hs.github.io/" title="https://gluttony-hs.github.io/" rel="noopener" target="_blank">Gluttony</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/ChiTongZ/" title="https://www.cnblogs.com/ChiTongZ/" rel="noopener" target="_blank">ChiTongZ</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/TheShadow/" title="https://www.cnblogs.com/TheShadow/" rel="noopener" target="_blank">TheShadow</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://decorationqwq.com/" title="https://decorationqwq.com/" rel="noopener" target="_blank">decoration</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://orzsiyuan.com/" title="https://orzsiyuan.com/" rel="noopener" target="_blank">Siyuan</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#CF1137A-Skyscrapers"><span class="nav-number">1.</span> <span class="nav-text">CF1137A Skyscrapers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CF1137B-Camp-Schedule"><span class="nav-number">2.</span> <span class="nav-text">CF1137B Camp Schedule</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CF1137C-Museums-Tour"><span class="nav-number">3.</span> <span class="nav-text">CF1137C Museums Tour</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CF1137D-Cooperative-Game"><span class="nav-number">4.</span> <span class="nav-text">CF1137D Cooperative Game</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CF1137F-Matches-Are-Not-a-Child’s-Play"><span class="nav-number">5.</span> <span class="nav-text">CF1137F Matches Are Not a Child’s Play</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JKLover</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="Total Visitors">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="Total Views">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '0f2a43b3bf8ac1ba787a',
+    clientSecret: 'c271a61a1475cd2dd1bbc48c7fd45058b0d2afea',
+    repo: 'jkloverdcoi.github.io',
+    owner: 'jkloverdcoi',
+    admin: ['jkloverdcoi'],
+    id: md5(location.pathname),
+    
+      language: 'en',
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('Copied');
+        else $(this).text('Copy failed');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('Copy');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+
+</body>
+</html>

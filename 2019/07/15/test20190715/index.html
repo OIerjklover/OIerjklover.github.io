@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<script> 
+	(function(){
+		if(''){
+			if (prompt('Please enter the password') !== ''){
+				alert('Wrong password'); 
+				history.back(); 
+			} 
+		} 
+	})();
+</script>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script> 
+	(function(){
+		if(''){
+			if (prompt('Please enter the password') !== ''){
+				alert('Wrong password'); 
+				history.back(); 
+			} 
+		} 
+	})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<script> 
+	(function(){
+		if(''){
+			if (prompt('Please enter the password') !== ''){
+				alert('Wrong password'); 
+				history.back(); 
+			} 
+		} 
+	})();
+</script>
+<meta name="theme-color" content="#222">
+<script> 
+	(function(){
+		if(''){
+			if (prompt('Please enter the password') !== ''){
+				alert('Wrong password'); 
+				history.back(); 
+			} 
+		} 
+	})();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/myicon-32x32.jpg?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/myicon-16x16.jpg?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="神仙题,又被虐了.">
+<meta name="keywords" content="数学,dp计数,构造,容斥原理,高斯消元,test">
+<meta property="og:type" content="article">
+<meta property="og:title" content="test20190715">
+<meta property="og:url" content="http://yoursite.com/2019/07/15/test20190715/index.html">
+<meta property="og:site_name" content="JKLover">
+<meta property="og:description" content="神仙题,又被虐了.">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-07-15T13:52:41.583Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="test20190715">
+<meta name="twitter:description" content="神仙题,又被虐了.">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/07/15/test20190715/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>test20190715 | JKLover</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">JKLover</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">夢はここに 思い出は遠くに</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/15/test20190715/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JKLover">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JKLover">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">test20190715
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-15 21:48:42 / Modified: 21:52:41" itemprop="dateCreated datePublished" datetime="2019-07-15T21:48:42+08:00">2019-07-15</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>神仙题,又被虐了.</p>
+<a id="more"></a>
+<h3 id="graph"><a href="#graph" class="headerlink" title="$graph$"></a>$graph$</h3><ul>
+<li>$60$ 分做法:将所有方程列出来,因为保证有唯一解,所以不用管方程个数,直接高斯消元.时间复杂度 $O(m^3)$ .</li>
+<li>满分做法:比较神仙,注意到条件 $2$ 的形式是电学中基尔霍夫方程组,将 $A$ 看做 $\epsilon$ , $B$ 看做 $R$ , $C$ 看做 $I$  .</li>
+<li>为每个节点定义一个电压 $\phi(u)$ ,规定 $\phi (1)=0$ , $\phi(u)=\sum_{i=0}^{k-1} I(v_i,v_{i+1})\cdot R(v_i,v_{i+1})-\epsilon (v_i,v_{i+1})$ ,其中 $&lt;v_0=1,v_1,\dots,v_{k-1},v_k=u&gt;$ 是原图中一条路径,这样定义也满足了条件 $3$ .</li>
+<li>容易验证无论选择怎样的路径,每个点的电压值都是不变的.利用条件 $1$ 列出 $n-1$ 个方程,高斯消元解出 $2\sim n$ 的电压,再根据 $I(u,v)=\frac {\phi(u)-\phi(v)+\epsilon(u,v)} {R(u,v)}$ 求出电流.时间复杂度 $O(n^3)$ .</li>
+</ul>
+<blockquote>
+<p>考试情况:只写了 $60$ 分的做法.</p>
+</blockquote>
+<blockquote>
+<p>$std$</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;memory.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(i,a,b) for(int i=(a);i&lt;=(b);i++)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> repk(i,a,b) rep(i,a,(b)-1)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rrep(i,a,b) for(int i=(b);i&gt;=(a);i--)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rrepk(i,a,b) rrep(i,a,(b)-1)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fe(e,x) for(edge *e = (x)-&gt;first;e;e = e-&gt;next)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> foreach(tank_type,iterator_name,set_name) \</span></span><br><span class="line">	<span class="keyword">for</span>(tank_type::iterator iterator_name = (set_name).begin();iterator_name != (set_name).end();iterator_name++)</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> comp_def(cmp_name,type) bool cmp_name(type l,type r)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ifn(x) <span class="meta-keyword">if</span>(!(x))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> vind(p_point) (p_point-points)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> eind(p_edge) (p_edge-edges)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> eopp(p_edge) (edges+(eind(p_edge)^1))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mp(x,y) make_pair((x),(y))</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf = <span class="number">0x3fffffff</span>,upinf = <span class="number">0x7fffffff</span>,geps = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps = <span class="number">1e-12</span>,dinf = <span class="number">1e20</span>;</span><br><span class="line"></span><br><span class="line">ll modnum;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">modll</span>&#123;</span></span><br><span class="line">	ll x;</span><br><span class="line">	modll():x(<span class="number">0</span>)&#123;&#125;</span><br><span class="line">	modll(ll _x)&#123;</span><br><span class="line">		_x &lt; <span class="number">0</span> ? x = _x % modnum + modnum : (_x &gt;= modnum ? x = _x % modnum : x = _x);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">static</span> ll <span class="title">pmod</span><span class="params">(ll _x)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> _x &gt;= modnum ? _x - modnum : _x;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">static</span> ll <span class="title">plus</span><span class="params">(ll x,ll y)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> pmod(x + y);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">static</span> ll <span class="title">minus</span><span class="params">(ll x,ll y)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> pmod(x + modnum - y);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">static</span> ll <span class="title">multi</span><span class="params">(ll x,ll y)</span></span>&#123;</span><br><span class="line">		ll s = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(;y;y&gt;&gt;=<span class="number">1</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(y&amp;<span class="number">1</span>) s = plus(s,x);</span><br><span class="line">			x = plus(x,x);</span><br><span class="line">		&#125;<span class="keyword">return</span> s;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">static</span> ll <span class="title">inv</span><span class="params">(ll a)</span></span>&#123;</span><br><span class="line">		ll b = modnum,c = a%b,q = a/b,k1 = <span class="number">1</span>,k2 = <span class="number">0</span>,k3 = pmod(minus(k1,multi(q,k2)));</span><br><span class="line">		<span class="keyword">while</span>(c^<span class="number">1</span>) a = b,b = c,c = a%b,q = a/b,k1 = k2,k2 = k3,k3 = pmod(minus(k1,multi(q,k2)));</span><br><span class="line">		<span class="keyword">return</span> k3;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">inline</span> <span class="keyword">static</span> ll <span class="title">llpow</span><span class="params">(ll b,ll p)</span></span>&#123;</span><br><span class="line">		ll s = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(;p;p&gt;&gt;=<span class="number">1</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(p&amp;<span class="number">1</span>) s = multi(s,b);</span><br><span class="line">			b = multi(b,b);</span><br><span class="line">		&#125;<span class="keyword">return</span> s;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">bool</span> <span class="keyword">operator</span>==(modll l,modll r)&#123;<span class="keyword">return</span> l.x == r.x;&#125;</span><br><span class="line"><span class="keyword">bool</span> <span class="keyword">operator</span>!=(modll l,modll r)&#123;<span class="keyword">return</span> l.x != r.x;&#125;</span><br><span class="line"></span><br><span class="line">modll <span class="keyword">operator</span>+(modll l,modll r)&#123;<span class="keyword">return</span> modll(modll::plus(l.x,r.x));&#125;</span><br><span class="line">modll <span class="keyword">operator</span>-(modll l,modll r)&#123;<span class="keyword">return</span> modll(modll::minus(l.x,r.x));&#125;</span><br><span class="line">modll <span class="keyword">operator</span>*(modll l,modll r)&#123;<span class="keyword">return</span> modll(modll::multi(l.x,r.x));&#125;</span><br><span class="line">modll <span class="keyword">operator</span>/(modll l,modll r)&#123;<span class="keyword">return</span> modll(modll::multi(l.x,modll::inv(r.x)));&#125;</span><br><span class="line">modll <span class="keyword">operator</span>^(modll l,ll r)&#123;</span><br><span class="line">	<span class="keyword">return</span> r &lt; <span class="number">0</span> ? modll(modll::llpow(modll::inv(l.x),-r)) : modll(modll::llpow(l.x,r));</span><br><span class="line">&#125;</span><br><span class="line">modll <span class="keyword">operator</span>-(modll l)&#123;<span class="keyword">return</span> modll(-l.x);&#125;</span><br><span class="line"></span><br><span class="line">modll <span class="keyword">operator</span>+=(modll&amp; l,modll r)&#123;<span class="keyword">return</span> modll(l.x = modll::plus(l.x,r.x));&#125;</span><br><span class="line">modll <span class="keyword">operator</span>-=(modll&amp; l,modll r)&#123;<span class="keyword">return</span> modll(l.x = modll::minus(l.x,r.x));&#125;</span><br><span class="line">modll <span class="keyword">operator</span>*=(modll&amp; l,modll r)&#123;<span class="keyword">return</span> modll(l.x = modll::multi(l.x,r.x));&#125;</span><br><span class="line">modll <span class="keyword">operator</span>/=(modll&amp; l,modll r)&#123;<span class="keyword">return</span> modll(l.x = modll::multi(l.x,modll::inv(r.x)));&#125;</span><br><span class="line">modll <span class="keyword">operator</span>^=(modll&amp; l,ll r)&#123;</span><br><span class="line">	<span class="keyword">return</span> modll(</span><br><span class="line">			l.x = r &lt; <span class="number">0</span> ?</span><br><span class="line">				modll::llpow(modll::inv(l.x),-r) :</span><br><span class="line">				modll::llpow(l.x,r)</span><br><span class="line">		);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">100</span>,maxm = <span class="number">2000</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">equation</span>&#123;</span></span><br><span class="line">	modll dat[maxn][maxn + geps];</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">(<span class="keyword">int</span> _n)</span></span>&#123;</span><br><span class="line">		n = _n;</span><br><span class="line">		repk(i,<span class="number">0</span>,n) repk(j,<span class="number">0</span>,n+<span class="number">1</span>) dat[i][j].x = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">modll&amp; <span class="title">operator</span><span class="params">()</span><span class="params">(<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span>&#123;<span class="keyword">return</span> dat[i][j];&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">rowswap</span><span class="params">(<span class="keyword">int</span> r1,<span class="keyword">int</span> r2)</span></span>&#123;</span><br><span class="line">		repk(j,<span class="number">0</span>,n+<span class="number">1</span>) swap(dat[r1][j],dat[r2][j]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">elimination</span><span class="params">(<span class="keyword">int</span> r1,<span class="keyword">int</span> r2)</span></span>&#123;<span class="comment">//eliminate r2 from r1</span></span><br><span class="line">		modll g = dat[r2][r1]/dat[r1][r1];</span><br><span class="line">		repk(j,<span class="number">0</span>,n+<span class="number">1</span>) dat[r2][j] -= dat[r1][j] * g;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">vector</span>&lt;modll&gt; getans()&#123;</span><br><span class="line">		<span class="built_in">vector</span>&lt;modll&gt; ans;</span><br><span class="line">		repk(i,<span class="number">0</span>,n)&#123;</span><br><span class="line">			<span class="keyword">if</span>(dat[i][i] == <span class="number">0</span>)&#123;</span><br><span class="line">				repk(j,i+<span class="number">1</span>,n) <span class="keyword">if</span>(dat[i][j] != <span class="number">0</span>) &#123;rowswap(i,j);<span class="keyword">break</span>;&#125;</span><br><span class="line">				<span class="keyword">if</span>(dat[i][i] == <span class="number">0</span>) <span class="keyword">return</span> ans;</span><br><span class="line">			&#125;repk(j,<span class="number">0</span>,n) <span class="keyword">if</span>(i != j) elimination(i,j);</span><br><span class="line">		&#125;repk(i,<span class="number">0</span>,n) ans.push_back(dat[i][n] / dat[i][i]);</span><br><span class="line">		<span class="keyword">return</span> ans;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Graph</span>&#123;</span></span><br><span class="line">	equation Eq;pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; edge[maxm];</span><br><span class="line">	modll As[maxm],Bs[maxm];</span><br><span class="line">	<span class="keyword">int</span> V,E;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">create</span><span class="params">(<span class="keyword">int</span> _V)</span></span>&#123;Eq.clear(V = _V);E = <span class="number">0</span>;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">addedge</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,modll A,modll B)</span></span>&#123;</span><br><span class="line">		Eq(v,v) += <span class="number">1</span>/B;</span><br><span class="line">		Eq(v,u) -= <span class="number">1</span>/B;</span><br><span class="line">		Eq(v,V) -= A/B;</span><br><span class="line">		Eq(u,v) -= <span class="number">1</span>/B;</span><br><span class="line">		Eq(u,u) += <span class="number">1</span>/B;</span><br><span class="line">		Eq(u,V) += A/B;</span><br><span class="line">		As[E] = A,Bs[E] = B;</span><br><span class="line">		edge[E++] = make_pair(u,v);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">vector</span>&lt;ll&gt; solve_graph()&#123;</span><br><span class="line">		repk(j,<span class="number">0</span>,V+<span class="number">1</span>) Eq(V<span class="number">-1</span>,j) = <span class="number">0</span>;</span><br><span class="line">		Eq(V<span class="number">-1</span>,V<span class="number">-1</span>) = <span class="number">1</span>;</span><br><span class="line">		<span class="built_in">vector</span>&lt;modll&gt; Por = Eq.getans();</span><br><span class="line">		<span class="built_in">vector</span>&lt;ll&gt; ans;</span><br><span class="line">		<span class="keyword">if</span>(Por.size() == <span class="number">0</span>) <span class="keyword">return</span> ans;</span><br><span class="line">		repk(i,<span class="number">0</span>,E)&#123;</span><br><span class="line">			<span class="keyword">int</span> u = edge[i].first,v = edge[i].second;</span><br><span class="line">			ans.push_back(((Por[v] - Por[u] + As[i]) / Bs[i]).x);</span><br><span class="line">		&#125;<span class="keyword">return</span> ans;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;G;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Init</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%lld"</span>,&amp;n,&amp;m,&amp;modnum);G.create(n);</span><br><span class="line">	<span class="keyword">int</span> x,y;ll A,B;</span><br><span class="line">	repk(i,<span class="number">0</span>,m)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%lld%lld"</span>,&amp;x,&amp;y,&amp;A,&amp;B);</span><br><span class="line">		G.addedge(x<span class="number">-1</span>,y<span class="number">-1</span>,A,B);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">vector</span>&lt;ll&gt; ans = G.solve_graph();</span><br><span class="line">	<span class="keyword">if</span>(ans.size() == <span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		foreach(<span class="built_in">vector</span>&lt;ll&gt;,it,ans) <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,*it);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	freopen(<span class="string">"graph.in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">	freopen(<span class="string">"graph.out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</span><br><span class="line"></span><br><span class="line">	Init();</span><br><span class="line">	solve();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="grid"><a href="#grid" class="headerlink" title="$grid$"></a>$grid$</h3><ul>
+<li>$40$ 分做法:设 $f(s,i,j,d)$ 表示两人各自都走了 $s$ 步,以 $(1,1)$ 作为左下角,第一个人向右走了 $i$ 步,第二个人向右走了 $j$ 步,一共已经经过了 $d$ 个特殊点时的方案数.两人交换算一种方案,限制 $j\le i$ , $O(n^4)$  大力 $dp$ .</li>
+<li>满分做法:先考虑一条路径的方案数,将特殊点按照 $x+y$ 排序,那么一条路径上出现的特殊点的编号递增.</li>
+<li>设 $f(i,j)$ 表示走到了第 $i$ 个特殊点,此前经过了 $j$ 个特殊点的方案数, $g(i,j)$ 表示从第 $i$ 个特殊点走到第 $j$ 个特殊点而不经过其他特殊点的方案数.枚举上一个走过的特殊点是 $k$ ,</li>
+</ul>
+<p>$$<br>f(i,j)=\sum_{k=1}^{i-1} f(k,j-1)\cdot g(k,i)<br>$$</p>
+<ul>
+<li>把起点看做 $0$ 号点,终点看做 $C+1$ 号点,方案数为:</li>
+</ul>
+<p>$$<br>ans=\sum_{i=0}^D f(C+1,i)<br>$$</p>
+<ul>
+<li>考虑如何求 $g(i,j)$ .若不考虑特殊点,从 $(x_0,y_0)$ 走到 $(x_1,y_1)$ 的方案数显然是 $x_1-x_0+y_1-y_0\choose x_1-x_0$ .</li>
+<li>记 $h(i,j)$ 表示从特殊点 $i$ 到特殊点 $j$ 的方案数(不考虑限制),枚举不合法路径上的第一个点 $k$ ,</li>
+</ul>
+<p>$$<br>g(i,j)=h(i,j)-\sum_{k=i+1}^{j-1} g(i,k)\cdot h(k,j)<br>$$</p>
+<ul>
+<li>于是我们用 $O(C^3)$ 的时间复杂度解决了一条路径经过特殊点个数不超过 $D$ 的方案数.</li>
+</ul>
+<blockquote>
+<p>到目前为止的部分和 <a href="https://jkloverdcoi.github.io/2019/05/26/bzoj-4767-%E4%B8%A4%E5%8F%8C%E6%89%8B/" target="_blank" rel="noopener">这个题</a> 做法是差不多的.</p>
+</blockquote>
+<ul>
+<li>若要求两条不相交路径的方案数,将两条路径看做 $(1,2)\to (n-1,m)$ 与 $(2,1) \to (n,m-1)$ .</li>
+<li>记它们为 $s_1\to t_1,s_2\to t_2$ .容斥一下,用总方案数减去路径相交的方案数.</li>
+<li>若两条路径相交于点 $p$ ,可以将它们的后半段交换,得到 $s_1\to p\to t_2$ 与 $s_2\to p \to t_1$ 两条路径.</li>
+<li>于是可以断言,所有的 $s_1\to t_2$ 与所有的 $s_2\to t_1$ 一定是一一对应的,且对应的两条路径一定相交.</li>
+<li>那么最终答案为 $s_1\to t_1,s_2\to t_2$ 的方案数乘积减去 $s_1\to t_2$ 与 $s_2\to t_1$ 的方案数之和,不需要不相交,直接套用前部分算一条路径的方案数即可.</li>
+<li>模数不为质数时,无法直接预处理阶乘逆元,需要分解质因子, $mod=\prod p_i^k$ ,处理每个质因子的时候,位置 $p_i^j$ 特判,其余位置直接求逆元,最后再用 $CRT$ 合并答案.</li>
+</ul>
+<blockquote>
+<p>考试情况:只写了 $40$ 分的部分.</p>
+</blockquote>
+<blockquote>
+<p>$std$</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ll long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mkp make_pair</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fir first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> sec second</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MaxN = <span class="number">200010</span>, Log = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> fac[MaxN], facpow[MaxN][Log], facinv[MaxN];</span><br><span class="line"><span class="keyword">int</span> factor[Log], ftot;</span><br><span class="line"><span class="keyword">int</span> mod;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">exgcd</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> &amp;x, <span class="keyword">int</span> &amp;y)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (b == <span class="number">0</span>) &#123;</span><br><span class="line">		x = <span class="number">1</span>, y = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	exgcd(b, a % b, y, x);</span><br><span class="line">	y -= a / b * x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">get_inv</span><span class="params">(<span class="keyword">int</span> a)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x, y;</span><br><span class="line">	exgcd(a, mod, x, y);</span><br><span class="line">	<span class="keyword">return</span> ((x % mod) + mod) % mod;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">power</span><span class="params">(ll x, <span class="keyword">int</span> l)</span> </span>&#123;</span><br><span class="line">	ll ret = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (; l; l &gt;&gt;= <span class="number">1</span>, x = x * x % mod)</span><br><span class="line">		<span class="keyword">if</span> (l &amp; <span class="number">1</span>) ret = ret * x % mod;</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">	ftot = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> x = mod;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i * i &lt;= mod; ++i) </span><br><span class="line">		<span class="keyword">if</span> (x % i == <span class="number">0</span>) &#123;</span><br><span class="line">			factor[ftot++] = i;</span><br><span class="line">			<span class="keyword">while</span> (x % i == <span class="number">0</span>) x /= i;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">if</span> (x != <span class="number">1</span>) factor[ftot++] = x;</span><br><span class="line"></span><br><span class="line">	fac[<span class="number">0</span>] = facinv[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">		<span class="keyword">int</span> x = i;</span><br><span class="line">		<span class="built_in">memcpy</span>(facpow[i], facpow[i - <span class="number">1</span>], <span class="keyword">sizeof</span> facpow[i]);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; ftot; ++j)</span><br><span class="line">			<span class="keyword">while</span> (x % factor[j] == <span class="number">0</span>) &#123;</span><br><span class="line">				x /= factor[j];</span><br><span class="line">				++facpow[i][j];</span><br><span class="line">			&#125;</span><br><span class="line">		fac[i] = <span class="number">1l</span>l * fac[i - <span class="number">1</span>] * x % mod;</span><br><span class="line">		facinv[i] = get_inv(fac[i]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">comb</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> m)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ret = <span class="number">1l</span>l * fac[n] * facinv[m] % mod * facinv[n - m] % mod;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; ftot; ++j)</span><br><span class="line">		ret = <span class="number">1l</span>l * ret * power(factor[j], facpow[n][j] - facpow[m][j] - facpow[n - m][j]) % mod;</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MaxC = <span class="number">210</span>;</span><br><span class="line"><span class="keyword">int</span> n, m, c, d;</span><br><span class="line"><span class="keyword">int</span> f[MaxC][MaxC], g[MaxC][MaxC], ways[MaxC][MaxC];</span><br><span class="line"><span class="keyword">bool</span> mark[MaxC][MaxC];</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">2</span>][<span class="number">2</span>][MaxC], ans[MaxC];</span><br><span class="line">pair &lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; car[MaxN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">tless</span><span class="params">(pair &lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; a, pair &lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; b)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (a.fir &lt;= b.fir) &amp;&amp; (a.sec &lt;= b.sec);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init_car</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(ways, <span class="number">0</span>, <span class="keyword">sizeof</span>(ways));</span><br><span class="line">	<span class="built_in">memset</span>(f, <span class="number">0</span>, <span class="keyword">sizeof</span>(f));</span><br><span class="line">	<span class="built_in">memset</span>(mark, <span class="number">0</span>, <span class="keyword">sizeof</span>(mark));</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= c; ++i)</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt;= c; ++j) </span><br><span class="line">			<span class="keyword">if</span> (tless(car[i], car[j])) &#123;</span><br><span class="line">				ways[i][j] = comb(car[j].fir - car[i].fir + car[j].sec - car[i].sec, car[j].fir - car[i].fir);</span><br><span class="line">				mark[i][j] = <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= c; ++i)</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= c; ++j) </span><br><span class="line">			<span class="keyword">if</span> (mark[i][j]) &#123;</span><br><span class="line">				f[i][j] = ways[i][j];</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> k = i + <span class="number">1</span>; k &lt; j; ++k)</span><br><span class="line">					<span class="keyword">if</span> (mark[i][k] &amp;&amp; mark[k][j] &amp;&amp; f[i][k]) &#123;</span><br><span class="line">						f[i][j] = (f[i][j] - <span class="number">1l</span>l * f[i][k] * ways[k][j]) % mod;</span><br><span class="line">					&#125;</span><br><span class="line">			&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">calc</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> sx, <span class="keyword">int</span> sy, <span class="keyword">int</span> tx, <span class="keyword">int</span> ty)</span> </span>&#123;</span><br><span class="line">	fill(a, a + c + <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">	car[<span class="number">0</span>] = mkp(sx, sy);</span><br><span class="line">	car[c + <span class="number">1</span>] = mkp(tx, ty);</span><br><span class="line">	<span class="keyword">if</span> (!tless(car[<span class="number">0</span>], car[c + <span class="number">1</span>])) <span class="keyword">return</span>;</span><br><span class="line">	<span class="comment">//init f[0][], f[][c + 1]</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= c + <span class="number">1</span>; ++i)</span><br><span class="line">		<span class="keyword">if</span> (tless(car[<span class="number">0</span>], car[i])) &#123;</span><br><span class="line">			f[<span class="number">0</span>][i] = ways[<span class="number">0</span>][i] = comb(car[i].fir - sx + car[i].sec - sy, car[i].fir - sx);			</span><br><span class="line">			mark[<span class="number">0</span>][i] = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; i; ++j)</span><br><span class="line">				<span class="keyword">if</span> (mark[<span class="number">0</span>][j] &amp;&amp; mark[j][i] &amp;&amp; f[<span class="number">0</span>][j])</span><br><span class="line">					f[<span class="number">0</span>][i] = (f[<span class="number">0</span>][i] - <span class="number">1l</span>l * f[<span class="number">0</span>][j] * ways[j][i]) % mod;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			f[<span class="number">0</span>][i] = ways[<span class="number">0</span>][i] = mark[<span class="number">0</span>][i] = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = c + <span class="number">1</span>; i &gt;= <span class="number">0</span>; --i)</span><br><span class="line">		<span class="keyword">if</span> (tless(car[i], car[c + <span class="number">1</span>])) &#123;</span><br><span class="line">			f[i][c + <span class="number">1</span>] = ways[i][c + <span class="number">1</span>] = comb(tx - car[i].fir + ty - car[i].sec, tx - car[i].fir);</span><br><span class="line">			mark[i][c + <span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt;= c; ++j)</span><br><span class="line">				<span class="keyword">if</span> (mark[i][j] &amp;&amp; mark[j][c + <span class="number">1</span>] &amp;&amp; f[i][j]) &#123;</span><br><span class="line">					f[i][c + <span class="number">1</span>] = (f[i][c + <span class="number">1</span>] - <span class="number">1l</span>l * f[i][j] * ways[j][c + <span class="number">1</span>]) % mod;</span><br><span class="line">				&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			f[i][c + <span class="number">1</span>] = ways[i][c + <span class="number">1</span>] = mark[i][c + <span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">memset</span>(g, <span class="number">0</span>, <span class="keyword">sizeof</span>(g));</span><br><span class="line">	g[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= c + <span class="number">1</span>; ++i)</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= d + <span class="number">1</span>; ++j)</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; i; ++k) &#123;</span><br><span class="line">				g[i][j] = (g[i][j] + <span class="number">1l</span>l * g[k][j - <span class="number">1</span>] * f[k][i]) % mod;</span><br><span class="line">			&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= d + <span class="number">1</span>; ++i) a[i] = g[c + <span class="number">1</span>][i + <span class="number">1</span>];</span><br><span class="line"><span class="comment">//	for (int i = 0; i &lt;= d + 1; ++i) printf("%d ", a[i]); puts(";");</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d%d%d"</span>, &amp;n, &amp;m, &amp;c, &amp;d, &amp;mod);</span><br><span class="line">	init(n + m);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= c; ++i) </span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;car[i].fir, &amp;car[i].sec);</span><br><span class="line">	sort(car + <span class="number">1</span>, car + c + <span class="number">1</span>);</span><br><span class="line">	init_car();</span><br><span class="line">	calc(a[<span class="number">0</span>][<span class="number">0</span>], <span class="number">1</span>, <span class="number">2</span>, n - <span class="number">1</span>, m);</span><br><span class="line">	calc(a[<span class="number">0</span>][<span class="number">1</span>], <span class="number">1</span>, <span class="number">2</span>, n, m - <span class="number">1</span>);</span><br><span class="line">	calc(a[<span class="number">1</span>][<span class="number">0</span>], <span class="number">2</span>, <span class="number">1</span>, n - <span class="number">1</span>, m);</span><br><span class="line">	calc(a[<span class="number">1</span>][<span class="number">1</span>], <span class="number">2</span>, <span class="number">1</span>, n, m - <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">memset</span>(ans, <span class="number">0</span>, <span class="keyword">sizeof</span>(ans));</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= d; ++i) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= i; ++j) </span><br><span class="line">			ans[i] = (ans[i] + <span class="number">1l</span>l * a[<span class="number">0</span>][<span class="number">0</span>][j] * a[<span class="number">1</span>][<span class="number">1</span>][i - j] - <span class="number">1l</span>l * a[<span class="number">0</span>][<span class="number">1</span>][j] * a[<span class="number">1</span>][<span class="number">0</span>][i - j]) % mod;</span><br><span class="line">		ret += (ans[i] &lt; <span class="number">0</span> ? ans[i] += mod : ans[i]);</span><br><span class="line">		ret &gt;= mod ? ret -= mod : ret;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ret &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  freopen(<span class="string">"grid.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</span><br><span class="line">  freopen(<span class="string">"grid.out"</span>, <span class="string">"w"</span>, <span class="built_in">stdout</span>);</span><br><span class="line">	<span class="keyword">int</span> T;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;T);</span><br><span class="line">	<span class="keyword">while</span> (T--) Main();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数学/" rel="tag"># 数学</a>
+          
+            <a href="/tags/dp计数/" rel="tag"># dp计数</a>
+          
+            <a href="/tags/构造/" rel="tag"># 构造</a>
+          
+            <a href="/tags/容斥原理/" rel="tag"># 容斥原理</a>
+          
+            <a href="/tags/高斯消元/" rel="tag"># 高斯消元</a>
+          
+            <a href="/tags/test/" rel="tag"># test</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/15/test20190714/" rel="next" title="test20190714">
+                <i class="fa fa-chevron-left"></i> test20190714
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/17/Luogu-4783-矩阵求逆/" rel="prev" title="Luogu 4783 矩阵求逆">
+                Luogu 4783 矩阵求逆 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">JKLover</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">160</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">97</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                dalao们
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/autoint/" title="https://www.cnblogs.com/autoint/" rel="noopener" target="_blank">autoint</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://gluttony-hs.github.io/" title="https://gluttony-hs.github.io/" rel="noopener" target="_blank">Gluttony</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/ChiTongZ/" title="https://www.cnblogs.com/ChiTongZ/" rel="noopener" target="_blank">ChiTongZ</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/TheShadow/" title="https://www.cnblogs.com/TheShadow/" rel="noopener" target="_blank">TheShadow</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://decorationqwq.com/" title="https://decorationqwq.com/" rel="noopener" target="_blank">decoration</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://orzsiyuan.com/" title="https://orzsiyuan.com/" rel="noopener" target="_blank">Siyuan</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#graph"><span class="nav-number">1.</span> <span class="nav-text">$graph$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#grid"><span class="nav-number">2.</span> <span class="nav-text">$grid$</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JKLover</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="Total Visitors">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="Total Views">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '0f2a43b3bf8ac1ba787a',
+    clientSecret: 'c271a61a1475cd2dd1bbc48c7fd45058b0d2afea',
+    repo: 'jkloverdcoi.github.io',
+    owner: 'jkloverdcoi',
+    admin: ['jkloverdcoi'],
+    id: md5(location.pathname),
+    
+      language: 'en',
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('Copied');
+        else $(this).text('Copy failed');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('Copy');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+
+</body>
+</html>
