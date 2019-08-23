@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="平衡树与 $LCT$ 待更.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-20T14:03:48.243Z">
+<meta property="og:updated_time" content="2019-08-21T14:02:52.381Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于我复习 noip 数据结构这件小事">
 <meta name="twitter:description" content="平衡树与 $LCT$ 待更.">
@@ -440,12 +440,24 @@
                 
               
 
-              <time title="Created: 2019-08-20 20:53:45 / Modified: 22:03:48" itemprop="dateCreated datePublished" datetime="2019-08-20T20:53:45+08:00">2019-08-20</time>
+              <time title="Created: 2019-08-20 20:53:45" itemprop="dateCreated datePublished" datetime="2019-08-20T20:53:45+08:00">2019-08-20</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-08-21 22:02:52" itemprop="dateModified" datetime="2019-08-21T22:02:52+08:00">2019-08-21</time>
               
             
           </span>
@@ -536,7 +548,7 @@
 <p>经典的使用方法是利用主席树对 $[1,1],[1,2],[1,3]\dots,[1,n]$ 这 $n$ 个前缀建出 $m$ 颗线段树.</p>
 <p>这样在查询可减的信息时(如某数的个数),就可以直接用 $[1,R]$ 的线段树答案减去 $[1,L-1]$ 的线段树答案了.</p>
 <p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=2665" target="_blank" rel="noopener">Kth number</a> <a href="https://www.cnblogs.com/jklover/p/10135082.html" target="_blank" rel="noopener">sol</a></p>
-<p><a href="https://www.lydsy.com/JudgeOnline/upload/201805/day2(2" target="_blank" rel="noopener">混合果汁</a>.pdf) <a href="https://loj.ac/problem/2555" target="_blank" rel="noopener">sol</a></p>
+<p><a href="https://loj.ac/problem/2555" target="_blank" rel="noopener">混合果汁</a> <a href="https://jkloverdcoi.github.io/2019/08/20/bzoj-5343-%E6%B7%B7%E5%90%88%E6%9E%9C%E6%B1%81/" target="_blank" rel="noopener">sol</a></p>
 <h3 id="李超线段树"><a href="#李超线段树" class="headerlink" title="李超线段树"></a>李超线段树</h3><p>解决的经典问题是每次可以在平面内添加一条 $y=kx+b​$ 的线段,或者询问当 $x=x_0​$ 时,各个线段中最大的 $y​$ .</p>
 <blockquote>
 <p>如果是先添加完所有线段,再进行若干次询问,可以求出上凸壳, $O(n\log n)$ 解决.</p>
@@ -548,10 +560,43 @@
 <p>否则,就递归下去,用 $c$ 去更新两个子区间.</p>
 <p>因为至少在 $[l,mid]$ 与 $[mid+1,r]$ 这两个区间中的一者, $c$ 完全覆盖了 $s$ ,或 $s$ 完全覆盖了 $c$ .</p>
 <p>所以更新一个线段树上的区间的时间复杂度是 $O(\log n)$ ,插入一条线段的总时间复杂度是 $O(\log^2 n)$ .</p>
-<p>查询时就在线段上向下走,经过一个区间时,就用存储的优势线段来更新答案,每次的时间复杂度是 $O(\log n)$ .</p>
+<p>查询时就在线段上向下走,经过一个区间时,就用这个区间的优势线段来更新答案,每次的时间复杂度是 $O(\log n)$ .</p>
 <p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=4700" target="_blank" rel="noopener">适者</a> <a href="https://jkloverdcoi.github.io/2019/05/22/bzoj-4700-%E9%80%82%E8%80%85/" target="_blank" rel="noopener">sol</a></p>
 <p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=4515" target="_blank" rel="noopener">游戏</a> <a href="[https://jkloverdcoi.github.io/2019/06/14/bzoj-4515-游戏/](https://jkloverdcoi.github.io/2019/06/14/bzoj-4515-%E6%B8%B8%E6%88%8F/">sol</a>)</p>
-<h3 id="吉司机线段树"><a href="#吉司机线段树" class="headerlink" title="吉司机线段树"></a>吉司机线段树</h3><h3 id="线段树分治"><a href="#线段树分治" class="headerlink" title="线段树分治"></a>线段树分治</h3><p>题目也是让你维护一些信息,每次可以询问,可以执行一种操作,也可以将之前的某个操作撤回.</p>
+<h3 id="吉司机线段树"><a href="#吉司机线段树" class="headerlink" title="吉司机线段树"></a>吉司机线段树</h3><h4 id="区间取最值问题"><a href="#区间取最值问题" class="headerlink" title="区间取最值问题"></a>区间取最值问题</h4><p>维护一个长度为 $n$ 的整数序列 $a$ ,支持以下 $m$ 次操作:</p>
+<ol>
+<li>区间 $[L,R]$ 内的所有数 $a_i$ 与 $x$ 取 $\min$ .</li>
+<li>区间 $[L,R]$ 内所有数加上 $x$ .</li>
+<li>询问区间 $[L,R]$ 中 $a_i$ 的最大值.</li>
+<li>询问区间 $[L,R]$ 中 $a_i​$ 的和.</li>
+</ol>
+<p>对线段树每个区间维护最大值 $mx$ ,最大值的个数 $cnt$ ,次大值 $se$ ,区间和 $sum$ .</p>
+<p>询问操作可以定位后直接做.</p>
+<p>对于修改操作,若将一个线段树区间对 $x$ 取 $\min$ ,可以分情况讨论:</p>
+<ol>
+<li>$mx\le x$ ,无效果,直接返回.</li>
+<li>$se&lt;x&lt;mx$ .效果就是将所有 $mx$ 改为 $x$ ,其它不变.新的区间和 $sum’=sum-(mx-x)\cdot cnt​$ 可以直接算出,再打上修改标记,返回.</li>
+<li>$x\le se​$ .递归下去,分别修改左右儿子.</li>
+</ol>
+<p>复杂度为 $O(n\log^2 n)$ ,但实现效果接近 $O(n\log n)$ .如果没有操作 $2$ ,复杂度就是 $O(n\log n)$ .</p>
+<p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=4695" target="_blank" rel="noopener">最假女选手</a></p>
+<h4 id="历史最值问题"><a href="#历史最值问题" class="headerlink" title="历史最值问题"></a>历史最值问题</h4><p>维护一个长度为 $n$ 的数列 $a$ ,支持以下 $m$ 次操作:</p>
+<ol>
+<li>区间 $[L,R]$ 内所有数加上 $x$ .</li>
+<li>区间 $[L,R]$ 内所有数变为 $x$ .</li>
+<li>询问 $[L,R]$ 内数的最大值.</li>
+<li>询问 $[L,R]$ 内数的历史最大值.</li>
+</ol>
+<p>修改操作的 $x$ 可能 $&lt;0$ .</p>
+<p>尝试将两种修改操作归纳为一种修改操作 $(a,b)$ ,表示先加上 $a$ ,再与 $b$ 取 $\max$ .</p>
+<p>那么修改 $1$ 对应的操作就是 $(x,-\inf)$ ,修改 $2$ 对应的操作就是 $(-\inf,x)$ .</p>
+<p>考虑两个标记如何合并,假设当前权值为 $v$ ,依次经过 $(a,b),(c,d)$ 两次修改的效果:<br>$$<br>\begin{aligned}<br>v&amp;\to \max{\max{v+a,b}+c,d} \\<br>&amp;=\max{v+a+c,b+c,d} \\<br>&amp;=\max{v+a+c,\max{b+c,d}}<br>\end{aligned}<br>$$<br>可以看出就等价于一次修改操作 $(a+c,\max{b+c,d})$ ,于是两个标记就合并为了一个.</p>
+<p>为了能查询历史信息,维护一个意义一样的标记 $(a,b)$ ,表示区间内历史的最大增加量 $a$ ,历史最大与 $b$ 取 $\max$ .</p>
+<p>将两个标记的 $+$ 定义为两个标记的合并,两个标记取 $\max$ 定义为两个元素分别取 $\max$ .</p>
+<p>每次更新标记后,若当前标记为 $x$ ,历史标记为 $y$ ,则让 $y=\max(x,y)$ .</p>
+<p>每个结点需要维护当前标记,历史标记,当前最大值,历史最大值 $4$ 个信息.</p>
+<p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=3064" target="_blank" rel="noopener">CPU监控</a></p>
+<h3 id="线段树分治"><a href="#线段树分治" class="headerlink" title="线段树分治"></a>线段树分治</h3><p>题目也是让你维护一些信息,每次可以询问,可以执行一种操作,也可以将之前的某个操作撤回.</p>
 <p>操作容易维护,但撤回操作不容易维护.</p>
 <p>需要将操作,询问都离线下来.将时间轴画出来,那么每个操作只在时间轴上的一个区间内生效.</p>
 <p>用线段树给这个区间打上这个操作的标记,维护信息.</p>
@@ -561,6 +606,42 @@
 <p>如果合并到一个位置时,其中一者没有这个位置上的节点,就直接返回另一者.</p>
 <p>否则将这个位置的信息合并后,还要递归合并它们的儿子.</p>
 <p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=4860" target="_blank" rel="noopener">树的难题</a> <a href="https://jkloverdcoi.github.io/2019/05/16/bzoj-4860-%E6%A0%91%E7%9A%84%E9%9A%BE%E9%A2%98/" target="_blank" rel="noopener">sol</a></p>
+<h2 id="kd-tree"><a href="#kd-tree" class="headerlink" title="$kd-tree$"></a>$kd-tree$</h2><p>处理二维/高维上点的信息.其实就是一棵二叉树.</p>
+<p>注意它是二叉树,所以信息的存储与线段树不同. $kd-tree$ 每个结点存储的是整个子树的信息和自己的信息.</p>
+<p>每个点有若干个维度,可以表示为 $(p_1,p_2,p_3,\dots,p_k)$ .</p>
+<p>建树时,选择按照当前维度排序后的中点作为根,递归建左右子树,每次进入下一层是更换当前维度.</p>
+<p>每个节点需要维护自己的坐标,以及每个维度的管辖范围.</p>
+<p>查找平面上最近点是爆搜 + 剪枝,复杂度为玄学.</p>
+<p>如果提出一个范围内所有点进行修改/询问,复杂度为 $O(n^{1-\frac 1 k})$ ,其中 $k$ 为维度.</p>
+<p>这里的范围是指每一维的坐标都在某个特定的区间中,如二维平面中的矩形.</p>
+<p><a href="https://www.lydsy.com/JudgeOnline/show.php?id=2850" target="_blank" rel="noopener">巧克力王国</a></p>
+<p><a href="https://loj.ac/problem/3159" target="_blank" rel="noopener">弹跳</a></p>
+<h2 id="莫队"><a href="#莫队" class="headerlink" title="莫队"></a>莫队</h2><h3 id="经典莫队"><a href="#经典莫队" class="headerlink" title="经典莫队"></a>经典莫队</h3><p>需要离线,且无修改操作.</p>
+<p>问题是给出 $m$ 个询问,每次询问序列上一个区间 $[l,r]$ 内的信息.</p>
+<p>特点是如果维护了 $[l,r]$ 内的所有信息与答案,则可以 $O(1)$ 得出 $[l,r+1],[l,r-1],[l-1,r],[l+1,r]$ 这些区间的信息与答案.</p>
+<p>做法是将长度为 $n$ 的序列分块,每 $B$ 个数分为一块.</p>
+<p>再将询问排序,排序时以 $l$ 所属块的编号为第一关键字,以 $r$ 为第二关键字.</p>
+<p>然后维护当前区间 $[L,R]$ 中的信息,遍历每个询问,不断移动当前区间端点并更新信息,当前区间与询问区间重合时,就得到了答案.</p>
+<p>考虑这样做的时间复杂度.</p>
+<p>对于同一块内的询问, $L$ 移动 $O(B)$ 次, $R$ 只会往右侧移动,移动 $O(n)$ 次.</p>
+<p>对于不同块内的询问, 在每次块改变时, $L$ 移动 $O(B)$ 次, $R$ 移动 $O(n)$ 次.</p>
+<p>所以总移动次数为 $O(mB+\frac {n^2} B)$</p>
+<p>取 $B=\frac n {\sqrt m}$ 时最优.</p>
+<p>再加上给询问排序,整个算法时间复杂度为 $O(n\sqrt m+m\log m)$ .</p>
+<p><a href="https://www.lydsy.com/JudgeOnline/show.php?id=3585" target="_blank" rel="noopener">mex</a> <a href="https://www.cnblogs.com/jklover/p/10105545.html" target="_blank" rel="noopener">sol</a></p>
+<p><a href="https://www.lydsy.com/JudgeOnline/show.php?id=4358" target="_blank" rel="noopener">permu</a> <a href="https://jkloverdcoi.github.io/2019/08/16/bzoj-4358-permu/" target="_blank" rel="noopener">sol</a></p>
+<h3 id="带修莫队"><a href="#带修莫队" class="headerlink" title="带修莫队"></a>带修莫队</h3><p>就是支持修改的莫队.</p>
+<p>做法是将每次询问的时间也考虑进去,形成一个三元组 $(l,r,t)$ </p>
+<p>排序时加入 $t$ 作为第三关键字.</p>
+<p>若移动端点的同时时间跨越了某个修改操作,那么就执行/撤回修改.</p>
+<p>为了便于分析,视 $n,m$ 同阶,时间复杂度 $O(n^{\frac 5 3})$ .</p>
+<h3 id="树上莫队"><a href="#树上莫队" class="headerlink" title="树上莫队"></a>树上莫队</h3><p><a href="https://www.cnblogs.com/jklover/p/10096091.html" target="_blank" rel="noopener">分块方式</a></p>
+<p>定义这里的取反是指,若当前节点的信息在贡献中,则除去,否则加入.</p>
+<p>若从$(pu,pv)$ 移动到 $(u,v)$ ,则只需对路径 $(pu,u),(pv,v)$ 的点是否包含情况取反, $LCA​$ 不处理.</p>
+<p>保存答案前对 $(u,v)$ 的 $LCA$ 取反,答案保存后再将它取反回去.</p>
+<p>若有修改操作,则还需记录每个询问的时间.</p>
+<p>时间复杂度与序列上的莫队完全一致.</p>
+<p><a href="https://www.cnblogs.com/jklover/p/10105576.html" target="_blank" rel="noopener">糖果公园</a></p>
 <h2 id="扫描线"><a href="#扫描线" class="headerlink" title="扫描线"></a>扫描线</h2><p>最经典的是求矩形面积并.将每个矩形按照 $x$ 坐标排序,从左往右扫过来,看成两个事件,加入和删除.</p>
 <p>每次发生了加入事件就去更新答案.</p>
 <p>需要注意边界的处理问题,加入和删除操作需要分出前后顺序,根据题目而定.</p>
@@ -693,7 +774,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">159</span>
+                    <span class="site-state-item-count">160</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -978,7 +1059,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#STL"><span class="nav-number">1.</span> <span class="nav-text">$STL$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并查集"><span class="nav-number">2.</span> <span class="nav-text">并查集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树状数组"><span class="nav-number">3.</span> <span class="nav-text">树状数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线段树"><span class="nav-number">4.</span> <span class="nav-text">线段树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#经典应用"><span class="nav-number">4.1.</span> <span class="nav-text">经典应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态开点线段树"><span class="nav-number">4.2.</span> <span class="nav-text">动态开点线段树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可持久化线段树"><span class="nav-number">4.3.</span> <span class="nav-text">可持久化线段树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#李超线段树"><span class="nav-number">4.4.</span> <span class="nav-text">李超线段树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#吉司机线段树"><span class="nav-number">4.5.</span> <span class="nav-text">吉司机线段树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线段树分治"><span class="nav-number">4.6.</span> <span class="nav-text">线段树分治</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线段树合并"><span class="nav-number">4.7.</span> <span class="nav-text">线段树合并</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扫描线"><span class="nav-number">5.</span> <span class="nav-text">扫描线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cdq-分治"><span class="nav-number">6.</span> <span class="nav-text">$cdq$ 分治</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#STL"><span class="nav-number">1.</span> <span class="nav-text">$STL$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并查集"><span class="nav-number">2.</span> <span class="nav-text">并查集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树状数组"><span class="nav-number">3.</span> <span class="nav-text">树状数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线段树"><span class="nav-number">4.</span> <span class="nav-text">线段树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#经典应用"><span class="nav-number">4.1.</span> <span class="nav-text">经典应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态开点线段树"><span class="nav-number">4.2.</span> <span class="nav-text">动态开点线段树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可持久化线段树"><span class="nav-number">4.3.</span> <span class="nav-text">可持久化线段树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#李超线段树"><span class="nav-number">4.4.</span> <span class="nav-text">李超线段树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#吉司机线段树"><span class="nav-number">4.5.</span> <span class="nav-text">吉司机线段树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#区间取最值问题"><span class="nav-number">4.5.1.</span> <span class="nav-text">区间取最值问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#历史最值问题"><span class="nav-number">4.5.2.</span> <span class="nav-text">历史最值问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线段树分治"><span class="nav-number">4.6.</span> <span class="nav-text">线段树分治</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线段树合并"><span class="nav-number">4.7.</span> <span class="nav-text">线段树合并</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kd-tree"><span class="nav-number">5.</span> <span class="nav-text">$kd-tree$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#莫队"><span class="nav-number">6.</span> <span class="nav-text">莫队</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#经典莫队"><span class="nav-number">6.1.</span> <span class="nav-text">经典莫队</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#带修莫队"><span class="nav-number">6.2.</span> <span class="nav-text">带修莫队</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#树上莫队"><span class="nav-number">6.3.</span> <span class="nav-text">树上莫队</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扫描线"><span class="nav-number">7.</span> <span class="nav-text">扫描线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cdq-分治"><span class="nav-number">8.</span> <span class="nav-text">$cdq$ 分治</span></a></li></ol></div>
             
 
           </div>
