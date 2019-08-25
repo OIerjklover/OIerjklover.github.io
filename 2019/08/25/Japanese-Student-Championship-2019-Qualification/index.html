@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="$\text{+9 rating}$ 可还行.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-25T08:30:24.477Z">
+<meta property="og:updated_time" content="2019-08-25T13:01:07.975Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Japanese Student Championship 2019 Qualification">
 <meta name="twitter:description" content="$\text{+9 rating}$ 可还行.">
@@ -440,7 +440,7 @@
                 
               
 
-              <time title="Created: 2019-08-25 07:26:51 / Modified: 16:30:24" itemprop="dateCreated datePublished" datetime="2019-08-25T07:26:51+08:00">2019-08-25</time>
+              <time title="Created: 2019-08-25 07:26:51 / Modified: 21:01:07" itemprop="dateCreated datePublished" datetime="2019-08-25T07:26:51+08:00">2019-08-25</time>
             
 
             
@@ -506,6 +506,11 @@
 <p>再来证 $n\le2^k$ 时一定存在最大边权不超过 $k$ 的合法解,尝试直接构造方案.</p>
 <p>对于节点 $i,j$ ,若它们的二进制位从低到高第 $x$ 位不同,就将它们之间的边权设为 $x$ .</p>
 <p>这样对于任意一个 $0\le x&lt;k$ ,边权为 $k$ 的边一定只存在于第 $x$ 位为 $0$ 与第 $x$ 位为 $1$ 的点之间,形成了二分图.</p>
+<h3 id="E-Card-Collector"><a href="#E-Card-Collector" class="headerlink" title="E Card Collector"></a><a href="https://atcoder.jp/contests/jsc2019-qual/tasks/jsc2019_qual_e" target="_blank" rel="noopener">E Card Collector</a></h3><p>考虑像网络流那样,每一行每一列都建出一个点,读入的每个点向所在行列连边,权值都是 $A_i$ .</p>
+<p>于是需要选出一些边使得它们的权值最大,并且任意两条边不能有公共点.</p>
+<p>分析性质后,发现就是在求解加权拟阵的最大权值独立子集,贪心求解即可.</p>
+<p>即将所有边按权值从大到小排序后,依次遍历,若当前的边能加入,就加入.</p>
+<h3 id="F-Candy-Retribution"><a href="#F-Candy-Retribution" class="headerlink" title="F Candy Retribution"></a><a href="https://atcoder.jp/contests/jsc2019-qual/tasks/jsc2019_qual_f" target="_blank" rel="noopener">F Candy Retribution</a></h3><p>留坑.</p>
 
       
     </div>
@@ -916,7 +921,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Takahashi-Calendar"><span class="nav-number">1.</span> <span class="nav-text">A Takahashi Calendar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Kleene-Inversion"><span class="nav-number">2.</span> <span class="nav-text">B Kleene Inversion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Cell-Inversion"><span class="nav-number">3.</span> <span class="nav-text">C Cell Inversion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Classified"><span class="nav-number">4.</span> <span class="nav-text">D Classified</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Takahashi-Calendar"><span class="nav-number">1.</span> <span class="nav-text">A Takahashi Calendar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Kleene-Inversion"><span class="nav-number">2.</span> <span class="nav-text">B Kleene Inversion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Cell-Inversion"><span class="nav-number">3.</span> <span class="nav-text">C Cell Inversion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Classified"><span class="nav-number">4.</span> <span class="nav-text">D Classified</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-Card-Collector"><span class="nav-number">5.</span> <span class="nav-text">E Card Collector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F-Candy-Retribution"><span class="nav-number">6.</span> <span class="nav-text">F Candy Retribution</span></a></li></ol></div>
             
 
           </div>
