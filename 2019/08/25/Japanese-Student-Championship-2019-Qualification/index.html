@@ -137,14 +137,14 @@
 
 
   <meta name="description" content="$\text{+9 rating}$ 可还行.">
-<meta name="keywords" content="Atcoder">
+<meta name="keywords" content="Atcoder,构造,二分图">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Japanese Student Championship 2019 Qualification">
 <meta property="og:url" content="http://yoursite.com/2019/08/25/Japanese-Student-Championship-2019-Qualification/index.html">
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="$\text{+9 rating}$ 可还行.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-24T23:40:12.505Z">
+<meta property="og:updated_time" content="2019-08-25T08:22:22.846Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Japanese Student Championship 2019 Qualification">
 <meta name="twitter:description" content="$\text{+9 rating}$ 可还行.">
@@ -440,7 +440,7 @@
                 
               
 
-              <time title="Created: 2019-08-25 07:26:51 / Modified: 07:40:12" itemprop="dateCreated datePublished" datetime="2019-08-25T07:26:51+08:00">2019-08-25</time>
+              <time title="Created: 2019-08-25 07:26:51 / Modified: 16:22:22" itemprop="dateCreated datePublished" datetime="2019-08-25T07:26:51+08:00">2019-08-25</time>
             
 
             
@@ -495,7 +495,18 @@
 <blockquote>
 <p>开始没判 $1$ 和 $0$ 个数不等的情况,卡了挺久的.</p>
 </blockquote>
-<h3 id="D-Classified"><a href="#D-Classified" class="headerlink" title="D Classified"></a><a href="https://atcoder.jp/contests/jsc2019-qual/tasks/jsc2019_qual_d" target="_blank" rel="noopener">D Classified</a></h3>
+<h3 id="D-Classified"><a href="#D-Classified" class="headerlink" title="D Classified"></a><a href="https://atcoder.jp/contests/jsc2019-qual/tasks/jsc2019_qual_d" target="_blank" rel="noopener">D Classified</a></h3><p>题意读错了.意思是走回来时,走过的长度为偶数,不是每条边经过的次数都为偶数.</p>
+<p>于是就要求同一种边权的边形成的图是二分图.</p>
+<p>如果用到最大的边权为 $k$ ,那么最多只能构造出 $n=2^k$ 的情况.</p>
+<p>首先证最大边权为 $k​$ 时, $n=2^k+1​$ 不可行.</p>
+<p>考虑使用数学归纳法,当 $k=1,n=2^1+1=3$ 时,显然不可行.否则,假定 $k=x-1,n=2^{x-1}+1$ 时不可行.</p>
+<p>那么当 $k=x,n=2^x+1$ 时,二分图中黑色的节点至少有 $2^{x-1}+1$ 个,否则白色的节点至少有 $2^{x-1}+1$ 个.</p>
+<p>假设黑色节点至少有 $2^{x-1}+1$ 个,对于黑色节点内部,因为用前 $x-1$ 种边权无合法解,所以一定会有权值为 $x$ 的边.</p>
+<p>这与二分图的定义相矛盾了,所以结论成立,即最大边权为 $k$ 时, $n=2^k+1$ 不可行.</p>
+<p>再来证 $n\le2^k$ 时一定存在最大边权不超过 $k$ 的合法解,尝试直接构造方案.</p>
+<p>对于节点 $i,j$ ,若它们的二进制位从低到高第 $x$ 位不同,就将它们之间的边权设为 $x$ .</p>
+<p>这样对于任意一个 $0\le x&lt;k$ ,边权为 $k$ 的边一定只存在于第 $x$ 位为 $0$ 与第 $x$ 位为 $1$ 的点之间,形成了二分图.</p>
+
       
     </div>
 
@@ -519,6 +530,10 @@
         <div class="post-tags">
           
             <a href="/tags/Atcoder/" rel="tag"># Atcoder</a>
+          
+            <a href="/tags/构造/" rel="tag"># 构造</a>
+          
+            <a href="/tags/二分图/" rel="tag"># 二分图</a>
           
         </div>
       
