@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="两个简单题 + 一个比较难的原题.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-26T05:58:13.974Z">
+<meta property="og:updated_time" content="2019-08-26T06:03:25.193Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="test20190826">
 <meta name="twitter:description" content="两个简单题 + 一个比较难的原题.">
@@ -440,7 +440,7 @@
                 
               
 
-              <time title="Created: 2019-08-26 12:45:00 / Modified: 13:58:13" itemprop="dateCreated datePublished" datetime="2019-08-26T12:45:00+08:00">2019-08-26</time>
+              <time title="Created: 2019-08-26 12:45:00 / Modified: 14:03:25" itemprop="dateCreated datePublished" datetime="2019-08-26T12:45:00+08:00">2019-08-26</time>
             
 
             
@@ -507,11 +507,9 @@
 <p>若有一个 $S\to T$ 的割,那么所有 $S\to T$ 路径一定会经过至少一条割集中的边,只需要考虑割集中的边贡献.</p>
 <p>一开始让 $s$ 集只有 $S$ , $T$ 集包含剩余的所有点,这是一个合法的割.</p>
 <p>按照拓扑序枚举删掉 $x$ 后的答案,依次进行如下操作,以将点 $x$ 从 $T$ 集合中取出,放入 $S$ 集中.</p>
-<ol>
-<li>将 $x$ 的所有入边从割集中删掉.</li>
-<li>所有割集的边的最大贡献就是删掉点 $x$ 的答案.</li>
-<li>将 $x$ 的所有出边加入割集.</li>
-</ol>
+<p>$1.$ 将 $x$ 的所有入边从割集中删掉.</p>
+<p>$2.$ 所有割集的边的最大贡献就是删掉点 $x$ 的答案.</p>
+<p>$3.$ 将 $x$ 的所有出边加入割集.</p>
 <p>正确性可以利用数学归纳法证明.</p>
 <p>执行第 $1$ 步之前,割是整张图的一个割,假设它不含从 $x$ 出发能到的任何边.</p>
 <p>所以删掉 $x$ 的入边后,割就是去掉 $x$ 的图的一个合法割,此时可以更新答案.</p>
