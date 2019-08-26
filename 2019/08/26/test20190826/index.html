@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="两个简单题 + 一个比较难的原题.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-26T06:03:25.193Z">
+<meta property="og:updated_time" content="2019-08-26T08:42:06.243Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="test20190826">
 <meta name="twitter:description" content="两个简单题 + 一个比较难的原题.">
@@ -440,7 +440,7 @@
                 
               
 
-              <time title="Created: 2019-08-26 12:45:00 / Modified: 14:03:25" itemprop="dateCreated datePublished" datetime="2019-08-26T12:45:00+08:00">2019-08-26</time>
+              <time title="Created: 2019-08-26 12:45:00 / Modified: 16:42:06" itemprop="dateCreated datePublished" datetime="2019-08-26T12:45:00+08:00">2019-08-26</time>
             
 
             
@@ -490,8 +490,8 @@
 <a id="more"></a>
 <h3 id="Gene"><a href="#Gene" class="headerlink" title="$Gene$"></a>$Gene$</h3><p>有一个十分简单的 $O(n\log n)$ 的做法,字符串 $hash$ + 二分,用自然溢出常数比较小,是可以过的.</p>
 <p>$O(n)$ 的一个做法是 $SAM$ ,对反串建后缀自动机,答案就是每个点的 $siz$ 之和,但空间很容易炸.</p>
-<p>另一个做法是利用 $kmp$ 的 $fail$ 数组,每个位置不断往后跳,每跳一次就说明有一个合法的匹配.</p>
-<p>暴力跳会超时,记忆化一下,用 $f(i)$ 表示从 $i$ 开始能往后跳几次,则 $f(i)=f(fail_i)+1$ .</p>
+<p>另一个做法是利用 $kmp$ 的 $fail$ 数组,每个位置不断往前跳,每跳一次就说明有一个合法的匹配.</p>
+<p>暴力跳会超时,记忆化一下,用 $f(i)$ 表示从 $i$ 开始能往前跳几次,则 $f(i)=f(fail_i)+1$ .</p>
 <h3 id="Shield"><a href="#Shield" class="headerlink" title="$Shield$"></a>$Shield$</h3><p>因为给出的两个向量线性无关,可以它们为一组基底,解出每个点在这组基底下的坐标.</p>
 <p>于是一个点可以转移到 $x,y$ 都不小于它的点.</p>
 <p>将点按 $x$ 为第一关键字, $y$ 为第二关键字排序,将 $y$ 离散化后用树状数组做一个类似于 $LIS$ 的 $dp$ 即可.</p>
