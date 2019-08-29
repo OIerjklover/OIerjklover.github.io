@@ -147,7 +147,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/08/29/Manacher算法学习笔记/1.png">
 <meta property="og:image" content="http://yoursite.com/2019/08/29/Manacher算法学习笔记/2.png">
 <meta property="og:image" content="http://yoursite.com/2019/08/29/Manacher算法学习笔记/3.png">
-<meta property="og:updated_time" content="2019-08-29T12:13:35.119Z">
+<meta property="og:updated_time" content="2019-08-29T12:18:06.663Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Manacher算法学习笔记">
 <meta name="twitter:description" content="感觉自己之前学的时候没学清楚,于是重新整理了一遍.">
@@ -444,7 +444,7 @@
                 
               
 
-              <time title="Created: 2019-08-29 19:39:08 / Modified: 20:13:35" itemprop="dateCreated datePublished" datetime="2019-08-29T19:39:08+08:00">2019-08-29</time>
+              <time title="Created: 2019-08-29 19:39:08 / Modified: 20:18:06" itemprop="dateCreated datePublished" datetime="2019-08-29T19:39:08+08:00">2019-08-29</time>
             
 
             
@@ -495,7 +495,7 @@
 <p>本文主要整理自 <strong>2014年集训队论文 《浅谈回文子串问题 徐毅》</strong>.</p>
 <h3 id="回文半径"><a href="#回文半径" class="headerlink" title="回文半径"></a>回文半径</h3><p>以字符串第 $i$ 个位置为中心的回文子串长度的一半,称为该字符串第 $i$ 位的回文半径,记作 $R(i)$ .</p>
 <h3 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h3><p>处理回文子串问题时,为了方便,经常将原字符串加入特殊字符,避免奇偶讨论与边界问题.</p>
-<p>如: <code>&quot;abbabcba&quot; -&gt;  &quot;##a#b#b#a#b#c#b#a@&quot;</code></p>
+<p>如: <code>&quot;abbabcba&quot; -&gt;  &quot;$#a#b#b#a#b#c#b#a@&quot;</code></p>
 <p>对新字符串求出每个位置的回文半径,就对应了原串中以字符为中心的奇回文串和以空隙为中心的偶回文串.</p>
 <h3 id="Manacher-算法"><a href="#Manacher-算法" class="headerlink" title="$Manacher$ 算法"></a>$Manacher$ 算法</h3><p>又称马拉车算法.</p>
 <p>可以以 $O(n)$ 的时间复杂度求解长度为 $n$ 的字符串每个位置的回文半径.</p>
