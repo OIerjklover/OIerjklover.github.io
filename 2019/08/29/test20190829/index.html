@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="我上当了.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-29T05:26:23.919Z">
+<meta property="og:updated_time" content="2019-08-29T05:41:26.337Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="test20190829">
 <meta name="twitter:description" content="我上当了.">
@@ -440,7 +440,7 @@
                 
               
 
-              <time title="Created: 2019-08-29 12:50:59 / Modified: 13:26:23" itemprop="dateCreated datePublished" datetime="2019-08-29T12:50:59+08:00">2019-08-29</time>
+              <time title="Created: 2019-08-29 12:50:59 / Modified: 13:41:26" itemprop="dateCreated datePublished" datetime="2019-08-29T12:50:59+08:00">2019-08-29</time>
             
 
             
@@ -494,10 +494,11 @@
 <p>那么对于在最短路图上的一条边 $u\to v$ ,以 $S$ 为起点时的所有贡献为 $f(u)\cdot g(v)$ .</p>
 <p>时间复杂度 $O(nm\log n)$ .</p>
 <h3 id="seq"><a href="#seq" class="headerlink" title="$seq$"></a>$seq$</h3><p><a href="https://acm.uestc.edu.cn/problem/shu-lie-seq/description" target="_blank" rel="noopener">典故</a> ,来自电子神大的 $OJ$.</p>
-<p>由于题面没说清楚,就认为规定 $j&gt;i$ ,把数据修了.</p>
+<p>由于题面没说清楚,就强行规定 $j&gt;i$ ,把数据修了.</p>
 <p>就是要找到右边第一个严格大于 $a_x$ 的位置 $y$ ,那么 $[x+1,y-1]$ 这一段都可以作为答案,可以在线段树上二分. </p>
 <p>然后加上从 $y$ 开始,最长单调不下降子序列的长度,这可以分块.</p>
 <p>分成 $\sqrt n$ 个块后,维护每一块内部的不下降子序列和块边界处的不下降子序列.</p>
+<p>询问时对整块二分,边角暴力.</p>
 <p>然而直接 $O(n^2)$ 暴力可以过 $80\sim 100$ 分?</p>
 <blockquote>
 <p>我上当了,写了个线段树 + 定期重构,比暴力的分还少一些,而且我发现去掉重构之后还是差不多慢.</p>
@@ -559,8 +560,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/9102/07/16/NOI2019同步赛游记/" rel="prev" title="置顶-NOI2019同步赛游记">
-                置顶-NOI2019同步赛游记 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/08/29/Manacher算法学习笔记/" rel="prev" title="Manacher算法学习笔记">
+                Manacher算法学习笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -636,7 +637,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">168</span>
+                    <span class="site-state-item-count">169</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
