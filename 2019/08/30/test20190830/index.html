@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="原题大战.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-30T07:46:51.051Z">
+<meta property="og:updated_time" content="2019-08-30T07:50:15.542Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="test20190830">
 <meta name="twitter:description" content="原题大战.">
@@ -440,7 +440,7 @@
                 
               
 
-              <time title="Created: 2019-08-30 14:35:06 / Modified: 15:46:51" itemprop="dateCreated datePublished" datetime="2019-08-30T14:35:06+08:00">2019-08-30</time>
+              <time title="Created: 2019-08-30 14:35:06 / Modified: 15:50:15" itemprop="dateCreated datePublished" datetime="2019-08-30T14:35:06+08:00">2019-08-30</time>
             
 
             
@@ -495,7 +495,7 @@
 <p>时间复杂度 $O(n\sqrt n \log n)$ .</p>
 <h3 id="art"><a href="#art" class="headerlink" title="$art$"></a>$art$</h3><p><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=4766" target="_blank" rel="noopener">典故</a></p>
 <p>考虑矩阵树定理,将那 $n$ 个点标号为 $1\sim n$ ,另外 $m$ 个点标号为 $n+1\sim n+m$ .</p>
-<p>由于图是一张完全二分图,所以可以直接写出它的基尔霍夫矩阵去掉最后一行一列得到的余子式.<br>$$<br>\begin{vmatrix}<br>m &amp; 0 &amp;\cdots &amp; 0 &amp; -1 &amp; -1 &amp;\cdots &amp; -1 \<br>0 &amp; m  &amp;\cdots &amp; 0 &amp; -1 &amp; -1 &amp;\cdots &amp; -1 \<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots&amp; \vdots&amp; \vdots&amp;  \vdots&amp; \vdots\<br>0 &amp; 0 &amp;\cdots &amp; m &amp; -1 &amp; -1 &amp;\cdots &amp; -1 \<br>-1 &amp; -1 &amp;\dots &amp; -1 &amp; n &amp; 0 &amp; \dots &amp; 0 \<br>-1 &amp; -1 &amp;\dots &amp; -1 &amp; 0 &amp; n &amp;\dots &amp; 0 \<br>\vdots &amp; \vdots &amp; \vdots &amp; \vdots&amp; \vdots&amp; \vdots&amp;  \ddots&amp; \vdots\<br>-1 &amp; -1 &amp;\dots &amp; -1 &amp; 0 &amp; 0 &amp;\dots &amp; n<br>\end{vmatrix}<br>$$</p>
+<p>由于图是一张完全二分图,所以可以直接写出它的基尔霍夫矩阵去掉最后一行一列得到的余子式.<br>$$<br>\begin{vmatrix}<br>m &amp; 0 &amp;\cdots &amp; 0 &amp; -1 &amp; -1 &amp;\cdots &amp; -1 \\<br>0 &amp; m  &amp;\cdots &amp; 0 &amp; -1 &amp; -1 &amp;\cdots &amp; -1 \\<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots&amp; \vdots&amp; \vdots&amp;  \vdots&amp; \vdots\\<br>0 &amp; 0 &amp;\cdots &amp; m &amp; -1 &amp; -1 &amp;\cdots &amp; -1 \\<br>-1 &amp; -1 &amp;\dots &amp; -1 &amp; n &amp; 0 &amp; \dots &amp; 0 \\<br>-1 &amp; -1 &amp;\dots &amp; -1 &amp; 0 &amp; n &amp;\dots &amp; 0 \\<br>\vdots &amp; \vdots &amp; \vdots &amp; \vdots&amp; \vdots&amp; \vdots&amp;  \ddots&amp; \vdots\\<br>-1 &amp; -1 &amp;\dots &amp; -1 &amp; 0 &amp; 0 &amp;\dots &amp; n<br>\end{vmatrix}<br>$$</p>
 <p>这个矩阵的行列式就是答案,比较明显的,可以将它分成 $4$ 个区域,左下角和右上角全都是 $-1$ .</p>
 <p>左上角是一个 $n\times n$ 的对角矩阵,对角线上元素都是 $m$ .</p>
 <p>右下角是一个 $(m-1)\times (m-1)$ 的对角矩阵,对角线上元素都是 $n$ .</p>
