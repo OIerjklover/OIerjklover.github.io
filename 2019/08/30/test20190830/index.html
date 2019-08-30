@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="原题大战.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-30T07:45:40.790Z">
+<meta property="og:updated_time" content="2019-08-30T07:46:51.051Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="test20190830">
 <meta name="twitter:description" content="原题大战.">
@@ -440,7 +440,7 @@
                 
               
 
-              <time title="Created: 2019-08-30 14:35:06 / Modified: 15:45:40" itemprop="dateCreated datePublished" datetime="2019-08-30T14:35:06+08:00">2019-08-30</time>
+              <time title="Created: 2019-08-30 14:35:06 / Modified: 15:46:51" itemprop="dateCreated datePublished" datetime="2019-08-30T14:35:06+08:00">2019-08-30</time>
             
 
             
@@ -502,8 +502,8 @@
 <p>由于这个矩阵十分特殊,我们直接尝试手算它的行列式.</p>
 <p>由于前 $n$ 行已经完成了上三角化,只需要对后 $m-1$ 行上三角化.</p>
 <p>将前 $n​$ 行每一行都乘一个 $\frac 1 m ​$ ,加到后 $m-1​$ 行的每一行中,行列式不变,矩阵被消成了这样:<br>$$<br>\begin{vmatrix}<br>m &amp; 0 &amp;\cdots &amp; 0 &amp; -1 &amp; -1 &amp;\cdots &amp; -1 \\<br>0 &amp; m  &amp;\cdots &amp; 0 &amp; -1 &amp; -1 &amp;\cdots &amp; -1 \\<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots&amp; \vdots&amp; \vdots&amp;  \vdots&amp; \vdots\\<br>0 &amp; 0 &amp;\cdots &amp; m &amp; -1 &amp; -1 &amp;\cdots &amp; -1 \\<br>0 &amp; 0 &amp;\dots &amp; 0 &amp; \frac{n(m-1)}m &amp; \frac{-n}m &amp; \dots &amp; \frac{-n}m \\<br>0 &amp; 0 &amp;\dots &amp; 0 &amp; \frac{-n}m &amp; \frac{n(m-1)}m &amp;\dots &amp; \frac{-n}m \\<br>\vdots &amp; \vdots &amp; \vdots &amp; \vdots&amp; \vdots&amp; \vdots&amp;  \ddots&amp; \vdots\\<br>0 &amp; 0 &amp;\dots &amp; 0 &amp; \frac{-n}m &amp; \frac{-n}m &amp;\dots &amp; \frac{n(m-1)}m<br>\end{vmatrix}<br>$$<br>此时,因为下面 $m-1$ 行的前 $n$ 列都是 $0$ ,无论怎样进行行变换都不会变,所以这个矩阵的行列式其实就等于左上角的 $n\times n$ 的矩阵的行列式与右下角 $(m-1)\times (m-1)$ 的矩阵行列式之积.</p>
-<p>左上角的那个对角线矩阵行列式显然是 $m^n$ .</p>
-<p>对于右下角那个矩阵,我们将每个元素都乘上 $\frac m n$ ,行列式会变为原来的 $(\frac m n)^{m-1}$ 倍.</p>
+<p>左上角的那个对角线矩阵行列式显然是 $m^n​$ .</p>
+<p>对于右下角那个矩阵,我们将每个元素都乘上 $\frac m n​$ ,行列式会变为原来的 $(\frac m n)^{m-1}​$ 倍,最后答案要乘上系数 $(\frac n m)^{m-1}​$ .</p>
 <p>右下角的元素乘上 $\frac m n$ 后,得到的新的 $(m-1) \times (m-1)$ 的矩阵是这样的:<br>$$<br>\begin{vmatrix}<br>m-1 &amp; -1 &amp;\cdots &amp;-1 \\<br>-1 &amp; m-1 &amp;\cdots &amp;-1\\<br>\vdots &amp; \vdots &amp;\ddots &amp;\vdots\\<br>-1 &amp; -1 &amp; -1 &amp; m-1<br>\end{vmatrix}<br>$$<br>即主对角线上的元素都是 $m-1$ ,其余元素都是 $-1$ .</p>
 <p>如果我们再给他在外面补上一行一列,补成一个 $m\times m$ 的矩阵,<br>$$<br>\begin{vmatrix}<br>m-1 &amp; -1 &amp;-1 &amp;\cdots &amp;-1 &amp;-1 \\<br>-1 &amp; m-1 &amp;-1 &amp;\cdots &amp;-1 &amp;-1\\<br>-1 &amp; -1 &amp;m-1 &amp;\cdots &amp;-1 &amp;-1\\<br>\vdots&amp;\vdots &amp; \vdots &amp;\vdots &amp;\ddots&amp;\vdots\\<br>-1 &amp;-1 &amp; -1 &amp; \cdots  &amp; -1&amp; m-1<br>\end{vmatrix}<br>$$<br>这个 $m\times m$ 的矩阵其实就是一张完全图 $K_m$ 的基尔霍夫矩阵,每个点度数为 $m-1$ ,每两个点之间都有边.</p>
 <p>根据矩阵树定理,那个 $(m-1)\times (m-1)$ 的矩阵的行列式就等于完全图 $K_m$ 的生成树个数.</p>
@@ -517,7 +517,7 @@
 <p>将障碍点,目标点视为关键点,记原点为第 $0​$ 个关键点.</p>
 <p>坐标转换后,按照 $x$ 为第一关键字, $y$ 为第二关键字排序,就做出了一个拓扑序,再进行 $dp$ .</p>
 <p>设 $f(i)$ 表示从原点到达第 $i$ 个关键点而不经过其他关键点的方案数.</p>
-<p>$g(i,j)$ 表示从第 $i$ 个关键点到第 $j$ 个关键点的所有方案数.</p>
+<p>$g(i,j)​$ 表示从第 $i​$ 个关键点到第 $j​$ 个关键点的所有方案数.</p>
 <p>转移有 $f(i)=g(0,i)-\sum_{j=1}^{i-1} g(j,i)\cdot f(j)$ .而 $g$ 不需要考虑障碍,若能够到达,就是组合数,否则是 $0$ .</p>
 <p>时间复杂度 $O(n^2)​$ .</p>
 
