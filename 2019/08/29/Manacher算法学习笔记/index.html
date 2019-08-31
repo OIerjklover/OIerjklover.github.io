@@ -147,7 +147,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/08/29/Manacher算法学习笔记/1.png">
 <meta property="og:image" content="http://yoursite.com/2019/08/29/Manacher算法学习笔记/2.png">
 <meta property="og:image" content="http://yoursite.com/2019/08/29/Manacher算法学习笔记/3.png">
-<meta property="og:updated_time" content="2019-08-29T13:41:32.677Z">
+<meta property="og:updated_time" content="2019-08-31T11:41:23.478Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Manacher算法学习笔记">
 <meta name="twitter:description" content="感觉自己之前学的时候没学清楚,于是重新整理了一遍.">
@@ -444,12 +444,24 @@
                 
               
 
-              <time title="Created: 2019-08-29 19:39:08 / Modified: 21:41:32" itemprop="dateCreated datePublished" datetime="2019-08-29T19:39:08+08:00">2019-08-29</time>
+              <time title="Created: 2019-08-29 19:39:08" itemprop="dateCreated datePublished" datetime="2019-08-29T19:39:08+08:00">2019-08-29</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-08-31 19:41:23" itemprop="dateModified" datetime="2019-08-31T19:41:23+08:00">2019-08-31</time>
               
             
           </span>
@@ -527,7 +539,7 @@
 <p>一个长度为 $n$ 的字符串的回文性质可以用 $O(n)​$ 个相等与不等关系表示.</p>
 <p>定义一个字符串的回文性质为所有回文子串出现位置的集合.</p>
 <p>即,若串 $S$ 与串 $T$ 具有相同的回文性质,则 $S(i,\dots j)$ 为回文串,当且仅当 $T(i,\dots,j)$ 为回文串.</p>
-<p>而一个串 $S$ 的回文性质可以用一些相等和不等关系表示.对于以第 $i$ 位为中心的回文子串,显然有 $S[i-k]=S<a href="0\le k&lt;R(i">i+k</a>)$ ,以及 $S[i-R(i)]\not=S[i+R(i)]$ ,这就是一些相等与不等关系.</p>
+<p>而一个串 $S​$ 的回文性质可以用一些相等和不等关系表示.对于以第 $i​$ 位为中心的回文子串,显然有 $0\le k&lt;R(i),S[i-k]=S[i+k]​$ ,以及 $S[i-R(i)]\not=S[i+R(i)]​$ ,这就是一些相等与不等关系.</p>
 <p>只有当 $mx$ 增大时,才会产生新的相等关系,否则一定存在对称的相等关系,相等关系数量是 $O(n)$ 的.</p>
 <p>而每个位置作为回文中心只会产生一个不等关系,不等关系数量也是 $O(n)$ 的.</p>
 <p>所以可以只用 $O(n)$ 个相等和不等关系表示回文性质.</p>
