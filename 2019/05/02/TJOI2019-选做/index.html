@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="向 $CQOI\ 2018$ 致敬?">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-07-18T23:57:23.547Z">
+<meta property="og:updated_time" content="2019-08-31T23:12:36.637Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TJOI2019 选做">
 <meta name="twitter:description" content="向 $CQOI\ 2018$ 致敬?">
@@ -457,7 +457,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-19 07:57:23" itemprop="dateModified" datetime="2019-07-19T07:57:23+08:00">2019-07-19</time>
+                <time title="Modified: 2019-09-01 07:12:36" itemprop="dateModified" datetime="2019-09-01T07:12:36+08:00">2019-09-01</time>
               
             
           </span>
@@ -517,7 +517,7 @@
 <li>为了方便,称题目中所说的一组同学为 <strong>位置</strong> $k$ <strong>在讨论蔡徐坤</strong> ,要求出没有位置在讨论蔡徐坤的方案数.</li>
 <li>显然可以容斥原理搞一搞,只需对每个 $i$ 求出钦定 $i$ 个位置在讨论蔡徐坤,其它不涉及的位置乱选的方案数.</li>
 <li>其它位置乱选方案数就是有重复元素的排列数,但每个元素使用次数有限制.可以构造多项式 $(x+y+z+w)^{tot}$ , $tot=n-4i$ ,将次数符合要求的对应系数求和.</li>
-<li>二项式定理套两次,多项式展开为<br>$$<br>(x+y+z+w)^{tot}=\sum C_{tot}^j (x+y)^j(z+w)^{tot-j}<br>=\sum C_{tot}^j(\sum C_j^p x^p y^{j-p})(\sum C_{tot-j}^q z^q w^{tot-j-q})<br>$$</li>
+<li>二项式定理套两次,多项式展开为<br>$$<br>\begin{aligned}<br>(x+y+z+w)^{tot}&amp;=\sum C_{tot}^j (x+y)^j(z+w)^{tot-j}\\<br>&amp;=\sum C_{tot}^j(\sum C_j^p x^p y^{j-p})(\sum C_{tot-j}^q z^q w^{tot-j-q})<br>\end{aligned}<br>$$</li>
 <li>预处理组合数前缀和,把 $x,y,z,w​$ 系数都符合限制的那一段取出来计算即可.</li>
 <li>考虑怎么求钦定 $i​$ 个位置在讨论蔡徐坤的方案数.</li>
 <li>抽象一下就是选出 $i$ 个位置,相邻两个位置之差至少为 $4$ .需要求出每个 $i$ 的方案数.</li>
