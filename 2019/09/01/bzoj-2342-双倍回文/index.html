@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="$Manacher$ .">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-01T07:47:35.458Z">
+<meta property="og:updated_time" content="2019-09-01T09:28:05.630Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bzoj 2342 双倍回文">
 <meta name="twitter:description" content="$Manacher$ .">
@@ -440,7 +440,7 @@
                 
               
 
-              <time title="Created: 2019-09-01 07:20:57 / Modified: 15:47:35" itemprop="dateCreated datePublished" datetime="2019-09-01T07:20:57+08:00">2019-09-01</time>
+              <time title="Created: 2019-09-01 07:20:57 / Modified: 17:28:05" itemprop="dateCreated datePublished" datetime="2019-09-01T07:20:57+08:00">2019-09-01</time>
             
 
             
@@ -489,7 +489,7 @@
         <p>$Manacher$ .</p>
 <a id="more"></a>
 <p>考虑用 $Manacher$ 预处理出每个位置的回文半径.</p>
-<p>枚举双倍回文子串的中心 $i$ ,为了得到以 $i$ 为中心的最长双倍回文子串,需要找到左边第一个 $j+R(j)-1\ge i$ ,且 $R(i)\ge 2i-2j $ 的位置 $j$ ,这里的 $i,j$ 在新串上的字符都必须为 $’#‘​$ .</p>
+<p>枚举双倍回文子串的中心 $i$ ,为了得到以 $i$ 为中心的最长双倍回文子串,需要找到左边第一个 $j+R(j)-1\ge i$ ,且 $R(i)\ge 2i-2j $ 的位置 $j$ ,这里的 $i,j​$ 在新串上的字符都必须为 ‘#’​ .</p>
 <p>通过第二个条件可知 $j\ge \frac {2i-R(i)} {2}​$ ,即 $j\ge i-\lfloor \frac {R(i)} 2\rfloor​$ .</p>
 <p>将所有 $j$ 按照 $j+R(j)-1$ 排序,从大到小枚举 $i$ ,将所有 $j+R(j)-1\ge i$ 的 $j$ 放入一个 $set$ 中.</p>
 <p>此时在 $set$ 中查询 $i-\lfloor \frac {R(i)} 2\rfloor$ 的后继,就是要求的 $j$ ,注意特判不存在的情况以及检验 $j&lt;i$ .</p>
