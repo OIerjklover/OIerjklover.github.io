@@ -11,7 +11,7 @@
   <entry>
     <title><![CDATA[Atcoder Beginner Contest 139]]></title>
     <url>%2F2019%2F09%2F01%2FAtcoder-Beginner-Contest-139%2F</url>
-    <content type="text"><![CDATA[莫名奇妙被罚了 $6$ 次. A Tenki签到题,注意直接这样写会错掉, 12345scanf("%s%s",a,b);int s=0;for(int i=0;i&lt;3;++i) s+=a[i]==b[i];cout&lt;&lt;s&lt;&lt;endl; 要这样写, 12345scanf("%s%s",a,b);int s=0;for(int i=0;i&lt;3;++i) s+=(a[i]==b[i]);cout&lt;&lt;s&lt;&lt;endl; 一开始没注意,交上去被罚了一次. B Power Socket签到题,但题意有点难理解. 应该是一开始有 $1$ 个物品,每次可以把 $1$ 个换成 $A$ 个,问至少有 $B$ 个,需要操作多少次,然后就简单了. C Lower签到题,读入后反过来递推即可. D ModSum考试的时候根据样例猜了个结论,令 $P_i=i+1(1\le i&lt;n),P_n=1$ . 这样答案是 $\frac {n(n-1)} 2$ ,然后就过了. E League把每场比赛看做一个点,若 $A$ 必须在 $B$ 之前比赛,就连边 $A\to B$ . 若有环,则无解,否则答案为 $DAG$ 上的最长链. F Engines 其实应该算 POI 原题? 最终的向量一定是由那些在它的方向上投影为正的向量相加得到. 极角排序后扫一圈更新答案即可.]]></content>
+    <content type="text"><![CDATA[莫名奇妙被罚了 $6$ 次. A Tenki签到题,注意两个字符串虽然长度都为 $3$ ,但直接这样开会错掉. 1char a[3],b[3]; 要开大一些,可能是因为终止符/空格的问题? 一开始没注意,交上去被罚了一次. B Power Socket签到题,但题意有点难理解. 应该是一开始有 $1$ 个物品,每次可以把 $1$ 个换成 $A$ 个,问至少有 $B$ 个,需要操作多少次,然后就简单了. C Lower签到题,读入后反过来递推即可. D ModSum考试的时候根据样例猜了个结论,令 $P_i=i+1(1\le i&lt;n),P_n=1$ . 这样答案是 $\frac {n(n-1)} 2$ ,然后就过了. E League把每场比赛看做一个点,若 $A$ 必须在 $B$ 之前比赛,就连边 $A\to B$ . 若有环,则无解,否则答案为 $DAG$ 上的最长链. F Engines 其实应该算 POI 原题? 最终的向量一定是由那些在它的方向上投影为正的向量相加得到. 极角排序后扫一圈更新答案即可.]]></content>
       <tags>
         <tag>Atcoder</tag>
         <tag>贪心</tag>

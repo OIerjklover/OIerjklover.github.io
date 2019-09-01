@@ -145,7 +145,7 @@
 <meta property="og:description" content="莫名奇妙被罚了 $6$ 次.">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://yoursite.com/2019/09/01/Atcoder-Beginner-Contest-139/1.png">
-<meta property="og:updated_time" content="2019-09-01T13:40:53.068Z">
+<meta property="og:updated_time" content="2019-09-01T13:48:31.764Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Atcoder Beginner Contest 139">
 <meta name="twitter:description" content="莫名奇妙被罚了 $6$ 次.">
@@ -442,7 +442,7 @@
                 
               
 
-              <time title="Created: 2019-09-01 21:24:12 / Modified: 21:40:53" itemprop="dateCreated datePublished" datetime="2019-09-01T21:24:12+08:00">2019-09-01</time>
+              <time title="Created: 2019-09-01 21:24:12 / Modified: 21:48:31" itemprop="dateCreated datePublished" datetime="2019-09-01T21:24:12+08:00">2019-09-01</time>
             
 
             
@@ -490,10 +490,9 @@
       
         <p>莫名奇妙被罚了 $6$ 次.</p>
 <a id="more"></a>
-<h3 id="A-Tenki"><a href="#A-Tenki" class="headerlink" title="A Tenki"></a><a href="https://atcoder.jp/contests/abc139/tasks/abc139_a" target="_blank" rel="noopener">A Tenki</a></h3><p>签到题,注意直接这样写会错掉,</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">scanf</span>(<span class="string">"%s%s"</span>,a,b);</span><br><span class="line"><span class="keyword">int</span> s=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">3</span>;++i)</span><br><span class="line">	s+=a[i]==b[i];</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;s&lt;&lt;<span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
-<p>要这样写,</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">scanf</span>(<span class="string">"%s%s"</span>,a,b);</span><br><span class="line"><span class="keyword">int</span> s=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">3</span>;++i)</span><br><span class="line">	s+=(a[i]==b[i]);</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;s&lt;&lt;<span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="A-Tenki"><a href="#A-Tenki" class="headerlink" title="A Tenki"></a><a href="https://atcoder.jp/contests/abc139/tasks/abc139_a" target="_blank" rel="noopener">A Tenki</a></h3><p>签到题,注意两个字符串虽然长度都为 $3$ ,但直接这样开会错掉.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> a[<span class="number">3</span>],b[<span class="number">3</span>];</span><br></pre></td></tr></table></figure>
+<p>要开大一些,可能是因为终止符/空格的问题?</p>
 <p>一开始没注意,交上去被罚了一次.</p>
 <h3 id="B-Power-Socket"><a href="#B-Power-Socket" class="headerlink" title="B Power Socket"></a><a href="https://atcoder.jp/contests/abc139/tasks/abc139_b" target="_blank" rel="noopener">B Power Socket</a></h3><p>签到题,但题意有点难理解.</p>
 <p>应该是一开始有 $1$ 个物品,每次可以把 $1$ 个换成 $A$ 个,问至少有 $B$ 个,需要操作多少次,然后就简单了.</p>
