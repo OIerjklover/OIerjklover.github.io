@@ -9,9 +9,20 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[CF1204]]></title>
+    <url>%2F2019%2F09%2F02%2FCF1204%2F</url>
+    <content type="text"><![CDATA[$Div.2$ A BowWow and the Timetable判断一下读入的数是不是 $0$ 或者 $4$ 的幂次. B Mislove Has Lost an Array若首先放入 $1,2,4,\dots 2^{l-1}$ ,剩下的位置都放入 $1$ ,得到的和最小. 若首先放入 $1,2,4,\dots,2^{r-1}$ ,剩下的位置都放入 $2^{r-1}$ ,得到的和最大. C Anna, Svyatoslav and Maps如果上个点到下个点的所有最短路都不经过当前点,那么当前点必须选. $floyd$ 预处理两点间最短路长度后进行判断. D Kirk and a Binary String将原串中的 $10$ 子串全部删去,再把剩余的 $1$ 改成 $0$ ,将删掉的 $10$ 放回原位即得答案. 因为这样的子串对 $LIS$ 的贡献只可能是 $1$ ,所以删掉不会造成影响. E Natasha, Sasha and the Prefix Sums记 $sum$ 表示 $a$ 的前缀和. 考虑枚举 $x=f(a)$ ,并且枚举第一次得到这个前缀和时,用了 $y$ 个 $1$ . 即,若 $k$ 是第一个使得 $sum(k)=x$ 的位置,从 $1$ 到 $k$ 一共有 $y$ 个 $1$ ,那么从 $1$ 到 $k$ 一共有 $y-x$ 个 $-1$ . 求出这种数列的方案数 $t$ ,那么这些数列对答案的贡献就是 $t\cdot x$ . 由于位置 $k$ 一定是 $1$ ,所以只需要分别求出 $1\sim k-1$ 与 $k+1\sim n+m$ 这两段的方案数,相乘即为 $t$ . $1\sim k-1$ 的 $1,-1$ 的个数都是确定的,只要求每个位置从 $1$ 开始的前缀和都 $&lt;x$ . $k+1\sim n+m$ 的 $1,-1$ 个数也是确定的,只要求每个位置从 $k+1$ 开始前缀和都 $\le 0$ . 这两个问题都可以归纳为在二维平面上,从 $(0,0)$ 走到 $(X,Y)$ ,每次只能往右或上走一格,并且不能触碰到直线 $y=x+b$ 的方案数,注意不能跨越也可以转化为不能触碰,将直线向上平移一个位置即可. 设原点关于该直线的对称点为 $P$ ,答案就是从原点走到终点的方案数减去从 $P$ 走到终点的方案数,都不考虑限制. 因为从 $P$ 走到终点的每种方案都恰好对应了一种从原点走到终点,但触碰到了直线的方案. 时间复杂度 $O(n^2)$ . 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;inline int read()&#123; int out=0,fh=1; char jp=getchar(); while ((jp&gt;'9'||jp&lt;'0')&amp;&amp;jp!='-') jp=getchar(); if (jp=='-') fh=-1,jp=getchar(); while (jp&gt;='0'&amp;&amp;jp&lt;='9') out=out*10+jp-'0',jp=getchar(); return out*fh;&#125;const int MAXN=4e3+10;const int P=998244853;int add(int a,int b)&#123; return (a+b&gt;=P)?(a+b-P):(a+b);&#125;int mul(int a,int b)&#123; return 1LL * a * b % P;&#125;int fpow(int a,int b)&#123; int res=1; while(b) &#123; if(b&amp;1) res=mul(res,a); a=mul(a,a); b&gt;&gt;=1; &#125; return res;&#125;int inv(int x)&#123; return fpow(x,P-2);&#125;int fac[MAXN],invfac[MAXN];void Init(int N)&#123; fac[0]=invfac[0]=1; for(int i=1;i&lt;=N;++i) fac[i]=mul(fac[i-1],i); invfac[N]=inv(fac[N]); for(int i=N-1;i&gt;=1;--i) invfac[i]=mul(invfac[i+1],i+1);&#125;int C(int M,int N)&#123; if(N&gt;M || N&lt;0 || M&lt;0) return 0; return mul(fac[M],mul(invfac[N],invfac[M-N]));&#125;int ans=0,n,m;int calc(int x,int y,int b)//(0,0)-&gt;(x,y),without touching y=x+b&#123; return add(C(x+y,y),P-C(x+y,y-b));&#125;int main()&#123; Init(4000); n=read(),m=read(); for(int x=1;x&lt;=n;++x) for(int y=x;y&lt;=n &amp;&amp; y-x&lt;=m;++y) &#123; int t=calc(y-x,y-1,x); t=mul(tmp,calc(m+x-y,n-y,1)); ans=add(ans,mul(tmp,x)); &#125; cout&lt;&lt;ans&lt;&lt;endl; return 0;&#125;]]></content>
+      <tags>
+        <tag>贪心</tag>
+        <tag>数学</tag>
+        <tag>codeforces</tag>
+        <tag>floyd</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[bzoj 3670 动物园]]></title>
     <url>%2F2019%2F09%2F02%2Fbzoj-3670-%E5%8A%A8%E7%89%A9%E5%9B%AD%2F</url>
-    <content type="text"><![CDATA[$kmp$ . 对于每个位置 $i$ ,需要找出 $2|Border|\le i$ 的非空 $Border$ 数目. 用 $kmp$ 求一次 $next$ 数组,根据 $next$ 数组,可以建出 $kmp$ 自动机的树. 这棵树以 $0$ 为根, $next(i)$ 向 $i$ 连边, $i$ 号点表示了长度为 $i$ 的前缀,从根到 $i$ 路径上的点都为前缀 $i$ 的 $Border$ . 那么只需要知道根节点到 $i$ 的路径上有多少个编号 $\le \lfloor \frac i 2\rfloor$ 的节点. 编号从上到下是单调递增的,所以可以维护一个栈,存储根节点到当前节点路径上的点,在栈中二分求出答案. 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;inline int read()&#123; int out=0,fh=1; char jp=getchar(); while ((jp&gt;'9'||jp&lt;'0')&amp;&amp;jp!='-') jp=getchar(); if (jp=='-') fh=-1,jp=getchar(); while (jp&gt;='0'&amp;&amp;jp&lt;='9') out=out*10+jp-'0',jp=getchar(); return out*fh;&#125;const int P=1e9+7;int mul(int a,int b)&#123; return 1LL * a * b % P;&#125;const int MAXN=1e6+10;char s[MAXN];int n,nxt[MAXN];int ecnt=0,head[MAXN],nx[MAXN],to[MAXN];void addedge(int u,int v)&#123; ++ecnt; to[ecnt]=v; nx[ecnt]=head[u]; head[u]=ecnt;&#125;int stk[MAXN],tp,ans;void dfs(int u)&#123; if(u) stk[++tp]=u; int L=1,R=tp,res=0; while(L&lt;=R) &#123; int mid=(L+R)&gt;&gt;1; if(stk[mid]*2&lt;=u) res=mid,L=mid+1; else R=mid-1; &#125; ans=mul(ans,res+1); for(int i=head[u];i;i=nx[i]) &#123; int v=to[i]; dfs(v); &#125; if(u) --tp;&#125;void solve()&#123; ecnt=0; memset(head,0,sizeof head); scanf("%s",s+1); n=strlen(s+1); nxt[1]=0; addedge(0,1); for(int i=2;i&lt;=n;++i) &#123; int j=nxt[i-1]; while(j &amp;&amp; s[i]!=s[j+1]) j=nxt[j]; if(s[i]==s[j+1]) ++j; nxt[i]=j; addedge(nxt[i],i); &#125; ans=1; tp=0; dfs(0); printf("%d\n",ans);&#125;int main()&#123; int T=read(); while(T--) solve(); return 0;&#125;]]></content>
+    <content type="text"><![CDATA[$kmp$ . 对于每个位置 $i$ ,需要找出 $2|Border|\le i$ 的非空 $Border$ 数目. 用 $kmp$ 求一次 $next$ 数组,根据 $next$ 数组,可以建出 $kmp$ 自动机的树. 这棵树以 $0$ 为根, $next(i)$ 向 $i$ 连边, $i$ 号点表示了长度为 $i$ 的前缀,从根到 $i$ 路径上的点都为前缀 $i$ 的 $Border$ . 那么只需要知道根节点到 $i$ 的路径上有多少个编号 $\le \lfloor \frac i 2\rfloor$ 的节点. 编号从上到下是单调递增的,所以可以维护一个栈,存储根节点到当前节点路径上的点,在栈中二分求出答案. 时间复杂度 $O(T\cdot n\log n)$ . 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;inline int read()&#123; int out=0,fh=1; char jp=getchar(); while ((jp&gt;'9'||jp&lt;'0')&amp;&amp;jp!='-') jp=getchar(); if (jp=='-') fh=-1,jp=getchar(); while (jp&gt;='0'&amp;&amp;jp&lt;='9') out=out*10+jp-'0',jp=getchar(); return out*fh;&#125;const int P=1e9+7;int mul(int a,int b)&#123; return 1LL * a * b % P;&#125;const int MAXN=1e6+10;char s[MAXN];int n,nxt[MAXN];int ecnt=0,head[MAXN],nx[MAXN],to[MAXN];void addedge(int u,int v)&#123; ++ecnt; to[ecnt]=v; nx[ecnt]=head[u]; head[u]=ecnt;&#125;int stk[MAXN],tp,ans;void dfs(int u)&#123; if(u) stk[++tp]=u; int L=1,R=tp,res=0; while(L&lt;=R) &#123; int mid=(L+R)&gt;&gt;1; if(stk[mid]*2&lt;=u) res=mid,L=mid+1; else R=mid-1; &#125; ans=mul(ans,res+1); for(int i=head[u];i;i=nx[i]) &#123; int v=to[i]; dfs(v); &#125; if(u) --tp;&#125;void solve()&#123; ecnt=0; memset(head,0,sizeof head); scanf("%s",s+1); n=strlen(s+1); nxt[1]=0; addedge(0,1); for(int i=2;i&lt;=n;++i) &#123; int j=nxt[i-1]; while(j &amp;&amp; s[i]!=s[j+1]) j=nxt[j]; if(s[i]==s[j+1]) ++j; nxt[i]=j; addedge(nxt[i],i); &#125; ans=1; tp=0; dfs(0); printf("%d\n",ans);&#125;int main()&#123; int T=read(); while(T--) solve(); return 0;&#125;]]></content>
       <tags>
         <tag>kmp</tag>
       </tags>
@@ -309,8 +320,8 @@
     <url>%2F2019%2F08%2F16%2Fbzoj-1143-%E7%A5%AD%E7%A5%80%2F</url>
     <content type="text"><![CDATA[$floyd$ 传递闭包 + 二分图的相关理论. 先用 $floyd$ 做传递闭包,预处理每两点间的连通性. 每个点拆成入点和出点,再枚举点 $a,b$ ,若 $a$ 能到 $b$ ,就从 $a$ 的入点向 $b$ 的出点连边. 然后就是要求新建出来的二分图的最大独立集,就等于原来的点数减去它的最大匹配数. 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;inline int read()&#123; int out=0,fh=1; char jp=getchar(); while ((jp&gt;'9'||jp&lt;'0')&amp;&amp;jp!='-') jp=getchar(); if (jp=='-') fh=-1,jp=getchar(); while (jp&gt;='0'&amp;&amp;jp&lt;='9') out=out*10+jp-'0',jp=getchar(); return out*fh;&#125;const int MAXN=128;int n,m;bool f[MAXN][MAXN];void floyd()&#123; for(int k=1;k&lt;=n;++k) for(int i=1;i&lt;=n;++i) for(int j=1;j&lt;=n;++j) f[i][j]|=(f[i][k]&amp;f[k][j]);&#125;int par[MAXN],vis[MAXN];int dfs(int u)&#123; for(int v=1;v&lt;=n;++v) &#123; if(v!=u &amp;&amp; !vis[v] &amp;&amp; f[u][v]) &#123; vis[v]=1; if(!par[v] || dfs(par[v])) &#123; par[v]=u; return 1; &#125; &#125; &#125; return 0;&#125;int Hungarian()&#123; int ans=0; for(int i=1;i&lt;=n;++i) &#123; memset(vis,0,sizeof vis); ans+=dfs(i); &#125; return ans;&#125;int main()&#123; n=read(),m=read(); for(int i=1;i&lt;=n;++i) f[i][i]=true; for(int i=1;i&lt;=m;++i) &#123; int u=read(),v=read(); f[u][v]=true; &#125; floyd(); int ans=Hungarian(); printf("%d\n",n-ans); return 0;&#125;]]></content>
       <tags>
-        <tag>二分图</tag>
         <tag>floyd</tag>
+        <tag>二分图</tag>
       </tags>
   </entry>
   <entry>
@@ -1540,8 +1551,8 @@
         <tag>平衡树</tag>
         <tag>dp计数</tag>
         <tag>差分</tag>
-        <tag>最短路</tag>
         <tag>位运算</tag>
+        <tag>最短路</tag>
         <tag>SAM</tag>
         <tag>容斥原理</tag>
         <tag>矩阵加速</tag>
@@ -1621,8 +1632,8 @@
         <tag>树链剖分</tag>
         <tag>矩阵优化</tag>
         <tag>差分</tag>
-        <tag>最短路</tag>
         <tag>位运算</tag>
+        <tag>最短路</tag>
         <tag>单调栈</tag>
         <tag>棋牌</tag>
         <tag>kdtree</tag>
