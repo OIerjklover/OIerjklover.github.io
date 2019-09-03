@@ -9,6 +9,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[bzoj 4162 shlw loves matrix II]]></title>
+    <url>%2F2019%2F09%2F03%2Fbzoj-4162-shlw-loves-matrix-II%2F</url>
+    <content type="text"><![CDATA[拉格朗日插值求特征多项式 + 多项式取模. $k\times k$ 的方阵 $M$ 的特征多项式 $f(x)=|xI-M|$ ,它是个 $k$ 次多项式,首项系数为一. 可以随便选 $k+1$ 个 $x$ ,代到多项式里,用高斯消元算出对应的 $f(x)​$ . 然后利用拉格朗日插值得到特征多项式 $f(x)$ 的系数. 根据 $Cayley-Hamilton$ 定理, $f(M)=0$ , 那么我们给 $M^n$ 加上任意多个 $f(M)$ 都不会影响答案,即 $M^n=M^n\bmod f(M)$ . 只需计算 $M^n\bmod f(M)$ ,两者都是关于 $M$ 的多项式,模数不是 $NTT$ 模数,多项式快速幂 + 暴力取模. 最终得到的 $M^n\bmod f(M)$ 次数显然小于 $k$ ,将 $M$ 代进去暴力算即可. 时间复杂度 $O(k^4+k^2\log n)$ .]]></content>
+      <tags>
+        <tag>线性代数</tag>
+        <tag>多项式</tag>
+        <tag>拉格朗日插值</tag>
+        <tag>高斯消元</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[bzoj 4128 Matrix]]></title>
     <url>%2F2019%2F09%2F03%2Fbzoj-4128-Matrix%2F</url>
     <content type="text"><![CDATA[$BSGS$ . 因为保证了矩阵 $A$ 在模 $p$ 意义下有逆,并且在 $p$ 以内有解,所以就直接像普通的 $BSGS$ 那样做就可以了. 可以手写一个 $hash$ 函数,来判断两个矩阵是否完全相等. 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;inline int read()&#123; int out=0,fh=1; char jp=getchar(); while ((jp&gt;'9'||jp&lt;'0')&amp;&amp;jp!='-') jp=getchar(); if (jp=='-') fh=-1,jp=getchar(); while (jp&gt;='0'&amp;&amp;jp&lt;='9') out=out*10+jp-'0',jp=getchar(); return out*fh;&#125;const int MAXN=70;typedef unsigned long long ull;const ull Base=137;int n,P;int add(int a,int b)&#123; return (a+b&gt;=P)?(a+b-P):(a+b);&#125;int mul(int a,int b)&#123; return 1LL * a * b % P;&#125;struct Matrix&#123; int v[MAXN][MAXN]; Matrix()&#123;memset(v,0,sizeof v);&#125; Matrix operator * (const Matrix &amp;rhs) const &#123; Matrix res; for(int i=0;i&lt;n;++i) for(int k=0;k&lt;n;++k)if(v[i][k]) for(int j=0;j&lt;n;++j) res.v[i][j]=add(res.v[i][j],mul(v[i][k],rhs.v[k][j])); return res; &#125; ull Hash() &#123; ull res=0; for(int i=0;i&lt;n;++i) for(int j=0;j&lt;n;++j) res=res*Base+(ull)(v[i][j]); return res; &#125;&#125;A,B,I;Matrix fpow(Matrix a,int b)&#123; Matrix res=I; while(b) &#123; if(b&amp;1) res=res*a; a=a*a; b&gt;&gt;=1; &#125; return res;&#125;map&lt;ull,int&gt; mp;int BSGS()&#123; int m=sqrt(P); Matrix prod=B,tmp=A; for(int j=0;j&lt;m;++j) &#123; mp[prod.Hash()]=j; prod=prod*tmp; &#125; prod=tmp=fpow(A,m); for(int i=1;i&lt;=m;++i) &#123; ull t=prod.Hash(); if(mp.find(t)!=mp.end()) return i*m-mp[t]; prod=prod*tmp; &#125; return -1;&#125;int main()&#123; n=read(),P=read(); for(int i=0;i&lt;n;++i) I.v[i][i]=1; for(int i=0;i&lt;n;++i) for(int j=0;j&lt;n;++j) A.v[i][j]=read(); for(int i=0;i&lt;n;++i) for(int j=0;j&lt;n;++j) B.v[i][j]=read(); cout&lt;&lt;BSGS()&lt;&lt;endl; return 0;&#125;]]></content>
@@ -325,8 +336,8 @@
       <tags>
         <tag>数学</tag>
         <tag>Trie</tag>
-        <tag>网络流</tag>
         <tag>BSGS</tag>
+        <tag>网络流</tag>
         <tag>test</tag>
       </tags>
   </entry>
@@ -356,8 +367,8 @@
       <tags>
         <tag>数学</tag>
         <tag>概率/期望</tag>
-        <tag>状压dp</tag>
         <tag>Lucas定理</tag>
+        <tag>状压dp</tag>
         <tag>点分治</tag>
         <tag>test</tag>
       </tags>
@@ -739,8 +750,8 @@
       <tags>
         <tag>贪心</tag>
         <tag>数学</tag>
-        <tag>构造</tag>
         <tag>codeforces</tag>
+        <tag>构造</tag>
         <tag>two pointer</tag>
       </tags>
   </entry>
@@ -786,8 +797,8 @@
     <content type="text"><![CDATA[二次剩余 + $BSGS$ . 这个题可以暴力水过去.先找出模 $P=10^9+9​$ 意义下的循环节,发现是 $\frac {P-1} 3​$ .于是 $O(\frac {P-1} 3)​$ 暴力判. 考虑正经一点的,比较优秀的做法.记 $\phi=\frac {\sqrt 5+1} 2​$ ,则数列第 $n​$ 项 $F_n=\frac 1 {\sqrt 5} \cdot (\phi^n-(-\frac 1 \phi)^n)​$ . 注意 $5$ 在模 $P$ 意义下可以开根号,记开出来的根为 $k=383008016$ ,答案为 $x$ ,那么要解的方程化为, $$\phi^x-(-\frac 1 \phi)^x=k\cdot n$$ 换元,令 $t=\phi ^x$ ,则方程化为, $$t^2-(-1)^x\cdot=(k\cdot n)t$$ 得到了 $t$ 的一元二次方程,对 $x$ 为奇数/偶数分别求解.若 $\Delta$ 不为二次剩余,则无解. 否则,求根公式解得 $t​$ ,再根据 $t=\phi ^x​$ 用 $BSGS​$ 解出最小 $x​$ . 瓶颈在 $BSGS​$ 上,时间复杂度 $O(\sqrt P)​$ . 暴力 123456789101112131415161718192021222324252627282930313233343536373839404142#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;inline int read()&#123; int out=0,fh=1; char jp=getchar(); while ((jp&gt;'9'||jp&lt;'0')&amp;&amp;jp!='-') jp=getchar(); if (jp=='-') fh=-1,jp=getchar(); while (jp&gt;='0'&amp;&amp;jp&lt;='9') out=out*10+jp-'0',jp=getchar(); return out*fh;&#125;const int P=1e9+9;inline int add(int a,int b)&#123; return (a+b&gt;=P)?(a+b-P):(a+b);&#125;int solve(int n)&#123; if(n==1) return 1; int len=333333336; int a=0,b=1,c; for(int i=2;i&lt;=len;++i) &#123; c=add(a,b); if(c==n) return i; a=b; b=c; &#125; return -1;&#125;int main()&#123; int n=read(); cout&lt;&lt;solve(n)&lt;&lt;endl; return 0;&#125; 正经做法 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;inline int read()&#123; int out=0,fh=1; char jp=getchar(); while ((jp&gt;'9'||jp&lt;'0')&amp;&amp;jp!='-') jp=getchar(); if (jp=='-') fh=-1,jp=getchar(); while (jp&gt;='0'&amp;&amp;jp&lt;='9') out=out*10+jp-'0',jp=getchar(); return out*fh;&#125;const int P=1e9+9,inv2=(P+1)&gt;&gt;1;const int k=383008016,phi=691504013;const int Len=(P+1)/3;inline int add(int a,int b)&#123; return ((a+b)%P+P)%P;&#125;inline int mul(int a,int b)&#123; return 1LL * a * b % P;&#125;int fpow(int a,int b)&#123; int res=1; while(b) &#123; if(b&amp;1) res=mul(res,a); a=mul(a,a); b&gt;&gt;=1; &#125; return res;&#125;int inv(int x)&#123; return fpow(x,P-2);&#125;bool EulerJudge(int x)&#123; return fpow(x,(P-1)&gt;&gt;1)!=(P-1);&#125;int wi;struct Complex&#123; int x,y;//x+yw Complex(int x=0,int y=0):x(x),y(y) &#123;&#125; Complex operator * (const Complex &amp;rhs) const &#123; int tx=mul(mul(y,rhs.y),wi); tx=add(tx,mul(x,rhs.x)); int ty=add(mul(x,rhs.y),mul(y,rhs.x)); return Complex(tx,ty); &#125; friend Complex operator ^ (Complex a,int b) &#123; Complex res=Complex(1,0); while(b) &#123; if(b&amp;1) res=res*a; a=a*a; b&gt;&gt;=1; &#125; return res; &#125;&#125;;int Cipolla(int n)&#123; if(!EulerJudge(n)) return -1; srand(time(NULL)); int a; while("RLDAKIOI") &#123; a=rand()%P; wi=add(mul(a,a),-n); if(!EulerJudge(wi)) break; &#125; Complex res=Complex(a,1); res=res^((P+1)&gt;&gt;1); res.x=add(res.x,P); return min(res.x,P-res.x);&#125;map&lt;int,int&gt; mp;int BSGS(int a,int b)//a^x=b&#123; mp.clear(); int m=ceil(sqrt(P)); for(int j=0; j&lt;m; ++j) mp[mul(b,fpow(a,j))]=j; for(int i=1; i&lt;=m; ++i) &#123; int j,val=fpow(a,i*m); if(mp.find(val)!=mp.end()) &#123; j=mp[val]; return i*m-j; &#125; &#125; return P;&#125;int n;int solve(int b,int c,int t)&#123; if(t==-1) return P; t=add(t,-b); t=mul(t,inv2); int x=BSGS(phi,t); if(c==1 &amp;&amp; x%2==0) return P; if(c==-1 &amp;&amp; x%2==1) return P; return x;&#125;int calc(int b,int c)&#123; int Delta=add(mul(b,b),mul(-4,c)); int t=Cipolla(Delta); if(t==-1) return P; return min(solve(b,c,t),solve(b,c,add(P,-t)));&#125;int main()&#123; n=read(); int ans=P; int b=mul(P-k,n); ans=min(ans,calc(b,1));//odd ans=min(ans,calc(b,-1));//even if(ans&lt;P) printf("%d\n",ans); else puts("-1"); return 0;&#125;]]></content>
       <tags>
         <tag>数学</tag>
-        <tag>二次剩余</tag>
         <tag>BSGS</tag>
+        <tag>二次剩余</tag>
       </tags>
   </entry>
   <entry>
@@ -1047,10 +1058,10 @@
       <tags>
         <tag>贪心</tag>
         <tag>dp计数</tag>
+        <tag>并查集</tag>
         <tag>atcoder</tag>
         <tag>DAG</tag>
         <tag>构造</tag>
-        <tag>并查集</tag>
       </tags>
   </entry>
   <entry>
@@ -1084,8 +1095,8 @@
     <url>%2F2019%2F06%2F11%2Fbzoj-4596-%E9%BB%91%E6%9A%97%E5%89%8D%E7%9A%84%E5%B9%BB%E6%83%B3%E4%B9%A1%2F</url>
     <content type="text"><![CDATA[矩阵树定理 + 容斥原理. 如果把所有出现的边都加上,直接算生成树个数,可能会包括了有某些公司没有用边的情况. 于是减去 $1$ 个公司不修路,其他公司随便修的方案数.再加上 $2$ 个公司不修路的方案数… 二进制大力枚举每个公司的边考不考虑,用矩阵树定理算方案数,乘上容斥系数即可. 时间复杂度 $O(2^n\cdot n^3)$ . 二进制表示状态的题,下标从 $0$ 开始会方便一些. 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;inline int read()&#123; int out=0,fh=1; char jp=getchar(); while ((jp&gt;'9'||jp&lt;'0')&amp;&amp;jp!='-') jp=getchar(); if (jp=='-') fh=-1,jp=getchar(); while (jp&gt;='0'&amp;&amp;jp&lt;='9') out=out*10+jp-'0',jp=getchar(); return out*fh;&#125;const int P=1e9+7;inline int add(int a,int b)&#123; return (a + b) % P;&#125;inline int mul(int a,int b)&#123; return 1LL * a * b % P;&#125;inline int count(int x)&#123; int s=0; while(x) s+=x&amp;1,x&gt;&gt;=1; return s;&#125;const int MAXN=20;typedef pair&lt;int,int&gt; pii;#define mp make_pairint n,ans=0;vector&lt;pii&gt; E[MAXN];int A[MAXN][MAXN];int sgn;void SwapRow(int x,int y,int k)&#123; for(int i=k;i&lt;n;++i) swap(A[x][i],A[y][i]);&#125;void GCD(int x,int y)&#123; if(!A[y][x]) return; int t=A[x][x]/A[y][x]; for(int i=x;i&lt;n;++i) A[x][i]=add(A[x][i],P-mul(t,A[y][i])); SwapRow(x,y,x); sgn*=-1; GCD(x,y);&#125;void Gauss(int x)&#123; if(x==n-1) return; if(!A[x][x]) &#123; for(int i=x+1;i&lt;n;++i) if(A[i][x]) &#123; SwapRow(x,i,x); sgn*=-1; break; &#125; &#125; if(!A[x][x]) return; for(int i=x+1;i&lt;n;++i) if(A[i][x]) GCD(x,i); Gauss(x+1);&#125;int det()&#123; int res=1; sgn=1; Gauss(1); for(int i=1;i&lt;n;++i) res=mul(res,A[i][i]); return add(P,sgn*res);&#125;int main()&#123; n=read(); for(int i=0;i&lt;n-1;++i) &#123; int m=read(); for(int j=1;j&lt;=m;++j) &#123; int u=read(),v=read(); E[i].push_back(mp(u-1,v-1)); &#125; &#125; int mx=1&lt;&lt;(n-1); for(int st=0;st&lt;mx;++st) &#123; memset(A,0,sizeof A); int tot=count(st); for(int i=0;i&lt;n-1;++i) &#123; if((st&gt;&gt;i)&amp;1) continue; int siz=E[i].size(); for(int j=0;j&lt;siz;++j) &#123; int u=E[i][j].first; int v=E[i][j].second; ++A[u][u],++A[v][v]; A[u][v]=add(A[u][v],P-1); A[v][u]=add(A[v][u],P-1); &#125; &#125; if(tot&amp;1) ans=add(ans,P-det()); else ans=add(ans,det()); &#125; cout&lt;&lt;add(ans%P,P)&lt;&lt;endl; return 0;&#125;]]></content>
       <tags>
-        <tag>矩阵树定理</tag>
         <tag>高斯消元</tag>
+        <tag>矩阵树定理</tag>
       </tags>
   </entry>
   <entry>
@@ -1111,10 +1122,10 @@
     <url>%2F2019%2F06%2F08%2FCF1173%2F</url>
     <content type="text"><![CDATA[$Div.2$ 官方题解 A Nauuo and Votes 签到题. B Nauuo and Chess 构造题. 可以将所有数沿着第一列与最后一行放成一个 $L$ 形.容易验证一定是合法的. 这样构造, $m=\lfloor \frac n 2 \rfloor+1$ .而考虑首尾两个位置,有$$|r_1-r_n|+|c_1-c_n|\geq n-1$$ 而 $|r_1-r_n|\leq m-1,|c_1-c_n|\leq m-1$ ,所以 $2m-2\geq n-1$ , $m$ 为整数,可得到 $m\geq \lfloor \frac n 2 \rfloor+1$ . 所以这样构造一定是一个最优解. C Nauuo and Cards 策略是如果能不打 $0$ 直接完成,就直接完成,否则先打若干 $0$ ,然后再也不打 $0$ . 考虑如果已经打了若干 $0$ ,开始一直打数字牌,那么此时 $1$ 必定在手中, $2$ 必定在手中或在牌堆的第 $1$ 个位置(打了 $1$ 就会被摸到手中), $3$ 必定在手中或在第 $2$ 个位置,以此类推. 如果有一些牌的位置不合要求,那么我们需要先打空白牌来将他们加入到手中或是放到正确的位置. 在手中可以看做位置 $0$ ,记 $p_i$ 为 $i$ 的初始位置,那么答案就是 $n+\max\limits_{i=1}^n (p_i-i+1)$ . $n$ 是因为要连续打出 $1\sim n$ 这些牌,后面的部分是将 $p_i$ 调整到 $i-1$ 所需打出的 $0$ 的数目. 123456789101112131415161718192021222324252627282930313233343536373839404142434445#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;inline int read()&#123; int out=0,fh=1; char jp=getchar(); while ((jp&gt;'9'||jp&lt;'0')&amp;&amp;jp!='-') jp=getchar(); if (jp=='-') fh=-1,jp=getchar(); while (jp&gt;='0'&amp;&amp;jp&lt;='9') out=out*10+jp-'0',jp=getchar(); return out*fh;&#125;const int MAXN=2e5+10;int n,a[MAXN],b[MAXN],p[MAXN];int main()&#123; n=read(); for(int i=1;i&lt;=n;++i) a[i]=read(); for(int i=1;i&lt;=n;++i) p[b[i]=read()]=i; if(p[1]) &#123; int x; for(x=2;p[x]==p[1]+x-1;++x); if(p[x-1]==n) &#123; int y; for(y=x;y&lt;=n &amp;&amp; p[y]&lt;=y-x;++y); if(y&gt;n) &#123; cout&lt;&lt;n-x+1&lt;&lt;endl; return 0; &#125; &#125; &#125; int ans=0; for(int i=1;i&lt;=n;++i) ans=max(ans,p[i]-i+1); cout&lt;&lt;ans+n&lt;&lt;endl; return 0;&#125; D Nauuo and Circle $dp$ 计数. 考虑 $dp$ ,设 $f_u$ 表示子树 $u$ 的方案数,先钦定根节点为 $1$ ,最后答案就是 $n\cdot f_1$ . 画子树时,先要给所有儿子,若不为根,还有自己排序,转移有 $f_u=(|son_u|+[u==1])!\cdot \prod\limits_{v \in son_u}f_v$ . 把 $dp$ 的式子展开,可以发现答案就是 $n\cdot \prod\limits _{i=1}^n deg_i$ , $deg$ 表示度数. 待续…]]></content>
       <tags>
-        <tag>树形dp</tag>
         <tag>dp计数</tag>
-        <tag>构造</tag>
+        <tag>树形dp</tag>
         <tag>codeforces</tag>
+        <tag>构造</tag>
       </tags>
   </entry>
   <entry>
@@ -1502,8 +1513,8 @@
     <url>%2F2019%2F05%2F10%2Fbzoj-5477-%E6%98%9F%E9%99%85%E7%A9%BF%E8%B6%8A%2F</url>
     <content type="text"><![CDATA[$dfs$ 序 + 树状数组. 由于路径的权是点权,可以考虑每个点被多少条路径经过,乘上它的点权即为贡献. 假设当前询问是在子树 $p$ 内,考虑一个点 $i$ ,在子树 $i$ 内与不在子树 $i$ 内的点形成了 $siz[i]\cdot (siz[p]-siz[i]+1)$ 条路径,都经过了点 $i$ . 还有一部分路径是将 $i$ 作为 $LCA$ 经过.显然每两个在 $i$ 的不同儿子形成的子树内的点都会经过 $i$ .这部分路径数目可以在 $dfs$ 时利用前缀和算出,记作 $k[i]$ . 由于修改只会单点修改点权,不改变树的形态,把那个 $siz[p]$ 拆出去算,预处理出每个点的剩下的系数. 直接利用 $dfs$ 序,树状数组维护答案. 记 $w[i]=k[i]+siz[i]\cdot (1-siz[u])​$ . 那么每次询问的答案就是子树 $p​$ 内的 $siz[p]\cdot (\sum siz[i]\cdot val[i])+(\sum w[i]\cdot val[i])​$ . 开两个树状数组分别维护前缀 $\sum siz\cdot val$ 与 $\sum siz\cdot w$ 就好了. 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115#include&lt;bits/stdc++.h&gt;using namespace std;#define ll long longinline int read()&#123; int out=0,fh=1; char jp=getchar(); while ((jp&gt;'9'||jp&lt;'0')&amp;&amp;jp!='-') jp=getchar(); if (jp=='-') fh=-1,jp=getchar(); while (jp&gt;='0'&amp;&amp;jp&lt;='9') out=out*10+jp-'0',jp=getchar(); return out*fh;&#125;const int MAXN=2e5+10;const int P=1e9+7;int n,m;inline int add(int a,int b)&#123; return (a + b) % P;&#125;inline int mul(int a,int b)&#123; return 1LL * a * b % P;&#125;struct FenwickTree&#123; #define lowbit(x) x&amp;(-x) int bit[MAXN]; FenwickTree()&#123;memset(bit,0,sizeof bit);&#125; void upd(int x,int c) &#123; for(;x&lt;=n;x+=lowbit(x)) bit[x]=add(bit[x],c); &#125; int sum(int x) &#123; int s=0; for(;x;x-=lowbit(x)) s=add(s,bit[x]); return s; &#125; int query(int l,int r) &#123; return add(sum(r),P-sum(l-1)); &#125;&#125;;int ecnt=0,head[MAXN],to[MAXN&lt;&lt;1],nx[MAXN&lt;&lt;1],val[MAXN];void addedge(int u,int v)&#123; ++ecnt; to[ecnt]=v; nx[ecnt]=head[u]; head[u]=ecnt;&#125;int siz[MAXN],dfn[MAXN],idx=0;int k[MAXN],w[MAXN];void dfs(int u,int fa)&#123; dfn[u]=++idx; for(int i=head[u];i;i=nx[i]) &#123; int v=to[i]; if(v==fa) continue; dfs(v,u); k[u]=add(k[u],mul(siz[v],siz[u])); siz[u]+=siz[v]; &#125; siz[u]++;&#125;FenwickTree T1;//siz*valFenwickTree T2;//w*valvoid init()&#123; for(int i=1;i&lt;=n;++i) &#123; T1.upd(dfn[i],mul(siz[i],val[i])); w[i]=add(k[i],mul(siz[i],P+1-siz[i])); T2.upd(dfn[i],mul(w[i],val[i])); &#125;&#125;int main()&#123; n=read(),m=read(); for(int i=1;i&lt;n;++i) &#123; val[i]=1; int u=read(),v=read(); addedge(u,v); addedge(v,u); &#125; val[n]=1; dfs(1,0); init(); while(m--) &#123; int op=read(); if(op==1) &#123; int p=read(),x=read(); T1.upd(dfn[p],mul(siz[p],x)); T2.upd(dfn[p],mul(w[p],x)); &#125; else &#123; int p=read(); int ans=T2.query(dfn[p],dfn[p]+siz[p]-1); ans=add(ans,mul(siz[p],T1.query(dfn[p],dfn[p]+siz[p]-1))); printf("%d\n",ans); &#125; &#125; return 0;&#125;]]></content>
       <tags>
-        <tag>dfs序</tag>
         <tag>树状数组</tag>
+        <tag>dfs序</tag>
       </tags>
   </entry>
   <entry>
@@ -1541,13 +1552,13 @@
       <tags>
         <tag>贪心</tag>
         <tag>线段树</tag>
-        <tag>构造</tag>
         <tag>codeforces</tag>
+        <tag>构造</tag>
         <tag>博弈论</tag>
-        <tag>自动机dp</tag>
         <tag>状压dp</tag>
-        <tag>最小生成树</tag>
         <tag>dfs序</tag>
+        <tag>自动机dp</tag>
+        <tag>最小生成树</tag>
       </tags>
   </entry>
   <entry>
@@ -1606,8 +1617,8 @@
         <tag>平衡树</tag>
         <tag>dp计数</tag>
         <tag>差分</tag>
-        <tag>位运算</tag>
         <tag>最短路</tag>
+        <tag>位运算</tag>
         <tag>SAM</tag>
         <tag>容斥原理</tag>
         <tag>矩阵加速</tag>
@@ -1622,8 +1633,8 @@
         <tag>贪心</tag>
         <tag>二分</tag>
         <tag>线段树</tag>
-        <tag>DAG</tag>
         <tag>codeforces</tag>
+        <tag>DAG</tag>
         <tag>kmp</tag>
         <tag>tarjan</tag>
         <tag>非传统题</tag>
@@ -1671,8 +1682,8 @@
       <tags>
         <tag>贪心</tag>
         <tag>二分</tag>
-        <tag>构造</tag>
         <tag>codeforces</tag>
+        <tag>构造</tag>
         <tag>概率/期望</tag>
         <tag>矩阵优化</tag>
       </tags>
@@ -1687,8 +1698,8 @@
         <tag>树链剖分</tag>
         <tag>矩阵优化</tag>
         <tag>差分</tag>
-        <tag>位运算</tag>
         <tag>最短路</tag>
+        <tag>位运算</tag>
         <tag>单调栈</tag>
         <tag>棋牌</tag>
         <tag>kdtree</tag>
@@ -1752,10 +1763,10 @@
     <content type="text"><![CDATA[$Div.2$ CF1153B Serval and Toy Bricks 贪心+构造. 能放行 $\max$ 而不爆列 $\max$ 的位置都放行 $\max$ , 能放列 $\max$ 而不爆行 $\max$ 的位置都放列 $\max$ . 这样每个位置显然不会被定为两个不同的值.对于其他有而未放的位置直接都放 $1$ 就好了. 12345678910111213141516171819202122232425262728293031323334353637383940414243444546#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;inline int read()&#123; int out=0,fh=1; char jp=getchar(); while ((jp&gt;'9'||jp&lt;'0')&amp;&amp;jp!='-') jp=getchar(); if (jp=='-') fh=-1,jp=getchar(); while (jp&gt;='0'&amp;&amp;jp&lt;='9') out=out*10+jp-'0',jp=getchar(); return out*fh;&#125;const int MAXN=128;int n,m,H;int a[MAXN],b[MAXN];int c[MAXN][MAXN],h[MAXN][MAXN];int main()&#123; n=read(),m=read(),H=read(); for(int i=1;i&lt;=m;++i) a[i]=read(); for(int i=1;i&lt;=n;++i) b[i]=read(); for(int i=1;i&lt;=n;++i) for(int j=1;j&lt;=m;++j) h[i][j]=read(); for(int i=1;i&lt;=n;++i) &#123; for(int j=1;j&lt;=m;++j) &#123; if(h[i][j]) &#123; if(a[j]&lt;=b[i]) c[i][j]=a[j]; else c[i][j]=b[i]; &#125; printf("%d ",c[i][j]); &#125; puts(""); &#125; return 0;&#125; CF1153C Serval and Parenthesis Sequence 贪心+构造.显然可以将左括号,右括号的权值分别赋为 $1,-1$. 那么容易发现题中限制条件就是权值前缀和 $sum(n)=0,sum(i)&gt;0,\forall i&lt;n$. 将所有未确定的位置赋为 $1$ ,可以算出 $sum(n)=k$ ,需要将 $\frac k 2$ 个位置改为 $-1$. 从后往前贪心改,能改的位置就改.判一下不合法的情况, $k$ 为奇数,负数或不够改. 改完后再从前往后 $check$ 一次就可以了. 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758#include&lt;bits/stdc++.h&gt;#define GG return puts(":("),0;using namespace std;typedef long long ll;inline int read()&#123; int out=0,fh=1; char jp=getchar(); while ((jp&gt;'9'||jp&lt;'0')&amp;&amp;jp!='-') jp=getchar(); if (jp=='-') fh=-1,jp=getchar(); while (jp&gt;='0'&amp;&amp;jp&lt;='9') out=out*10+jp-'0',jp=getchar(); return out*fh;&#125;const int MAXN=3e5+10;int n;char buf[MAXN];int a[MAXN];int main()&#123; n=read(); scanf("%s",buf+1); int k=0,tot=0; for(int i=1;i&lt;=n;++i) &#123; if(buf[i]==')') --k,a[i]=-1; else if(buf[i]=='(') ++k,a[i]=1; else ++k,a[i]=1,++tot; &#125; if(k&lt;0 || k%2==1 || k/2&gt;tot) GG for(int i=n;i&gt;=1 &amp;&amp; k&gt;0;--i) &#123; if(buf[i]=='?') a[i]=-1,k-=2; &#125; int sum=0; for(int i=1;i&lt;n;++i) &#123; sum+=a[i]; if(sum&lt;=0) GG &#125; for(int i=1;i&lt;=n;++i) &#123; if(a[i]==1) putchar('('); else putchar(')'); &#125; puts(""); return 0;&#125; CF1153D Serval and Rooted Tree 树形 $dp$ .(一定思维难度?) 考虑一颗子树,若其中有 $p$ 个叶子节点,任意选择 $p$ 个互不相同的权值,经过最优排列后,这个根节点的权值的相对大小,即排名,一定是确定的,即与选择了哪些权值无关. 那么记 $f_i$ 表示给子树 $i$ 中的叶子节点最优赋值后,节点 $i$ 上的权值是这些叶子节点权值中的第 $f_i$ 大. 对于叶子节点 ,显然 $f_u=1$ . 若操作符为 $\min$ ,可以证明感性理解, $f_u=\sum f_v$ .若操作符为 $\max$ ,可以证明感性理解, $f_u=\min f_v$ ,其中 $v$ 为 $u$ 的儿子. 共有 $k$ 个叶子节点,最后答案即为 $k+1-f_1$ ,即全部可用的权值的第 $f_1$ 大. 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;inline int read()&#123; int out=0,fh=1; char jp=getchar(); while ((jp&gt;'9'||jp&lt;'0')&amp;&amp;jp!='-') jp=getchar(); if (jp=='-') fh=-1,jp=getchar(); while (jp&gt;='0'&amp;&amp;jp&lt;='9') out=out*10+jp-'0',jp=getchar(); return out*fh;&#125;const int MAXN=3e5+10;int head[MAXN],nx[MAXN],to[MAXN],ecnt=0;inline void addedge(int u,int v)&#123; ++ecnt; nx[ecnt]=head[u]; to[ecnt]=v; head[u]=ecnt;&#125;int n;int opt[MAXN],f[MAXN],outdeg[MAXN],k=0;void dfs(int u)&#123; if(!outdeg[u]) &#123; ++k; f[u]=1; return; &#125; if(opt[u]==1) f[u]=MAXN+1; for(int i=head[u];i;i=nx[i]) &#123; int v=to[i]; dfs(v); if(!opt[u]) f[u]+=f[v]; else f[u]=min(f[u],f[v]); &#125;&#125;int main()&#123; n=read(); for(int i=1;i&lt;=n;++i) opt[i]=read(); for(int i=2;i&lt;=n;++i) &#123; int fa=read(); addedge(fa,i); ++outdeg[fa]; &#125; dfs(1); cout&lt;&lt;k+1-f[1]&lt;&lt;endl; return 0;&#125; CF1153F Serval and Bonus Problem 概率/期望,计数, $dp$ . 随便在线段上钦定 $2n$ 个点,分割成 $2n+1$ 段区间,所以每段区间的期望长度就是 $\frac l {2n+1}$ .于是只需要再乘上一段区间至少被 $k$ 条线段覆盖的概率就好了. 设 $f(i,j)$ 表示考虑 $i$ 个端点,第 $i$ 个端点后面的区间恰好被 $j$ 条线段所覆盖的方案数.转移时枚举 $i$ 是作为左端点还是右端点, $O(n^2)$ 大力转移. 最后将所有合法方案数目求和,除以 $f(2n,0)$ 得到概率. 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;inline int read()&#123; int out=0,fh=1; char jp=getchar(); while ((jp&gt;'9'||jp&lt;'0')&amp;&amp;jp!='-') jp=getchar(); if (jp=='-') fh=-1,jp=getchar(); while (jp&gt;='0'&amp;&amp;jp&lt;='9') out=out*10+jp-'0',jp=getchar(); return out*fh;&#125;const int P=998244353;inline int add(int a,int b)&#123; return (a + b) % P;&#125;inline int mul(int a,int b)&#123; return 1LL * a * b % P;&#125;int fpow(int a,int b)&#123; int res=1; while(b) &#123; if(b&amp;1) res=mul(res,a); a=mul(a,a); b&gt;&gt;=1; &#125; return res;&#125;int inv(int x)&#123; return fpow(x,P-2);&#125;const int MAXN=2019&lt;&lt;1;int n,l,k;int fac[MAXN];int f[MAXN][MAXN];int main()&#123; n=read(),k=read(); l=read(); int perl=mul(l,inv(2*n+1)); fac[0]=1; for(int i=1;i&lt;=n;++i) fac[i]=mul(fac[i-1],i); f[0][0]=1; for(int i=0;i&lt;2*n;++i) &#123; for(int j=n&lt;i?n:i;j&gt;=0;--j) &#123; f[i+1][j+1]=add(f[i+1][j+1],f[i][j]); if(j) f[i+1][j-1]=add(f[i+1][j-1],mul(f[i][j],j)); &#125; &#125; int ans=0; for(int i=1;i&lt;2*n;++i) for(int j=k;j&lt;=n;++j) &#123; int tmp=mul(f[i][j],f[2*n-i][j]); tmp=mul(tmp,fac[j]); ans=add(ans,tmp); &#125; cout&lt;&lt;mul(ans,mul(perl,inv(f[2*n][0]))); return 0;&#125;]]></content>
       <tags>
         <tag>贪心</tag>
-        <tag>树形dp</tag>
         <tag>dp计数</tag>
-        <tag>构造</tag>
+        <tag>树形dp</tag>
         <tag>codeforces</tag>
+        <tag>构造</tag>
         <tag>概率/期望</tag>
       </tags>
   </entry>
