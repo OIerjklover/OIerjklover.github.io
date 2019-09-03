@@ -136,13 +136,18 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="JKLover">
-<meta property="og:url" content="http://yoursite.com/tags/字符串/index.html">
+  <meta name="description" content="$kd$ 树.">
+<meta name="keywords" content="kdtree">
+<meta property="og:type" content="article">
+<meta property="og:title" content="bzoj 4154 Generating Synergy">
+<meta property="og:url" content="http://yoursite.com/2019/09/03/bzoj-4154-Generating-Synergy/index.html">
 <meta property="og:site_name" content="JKLover">
+<meta property="og:description" content="$kd$ 树.">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-09-03T13:17:30.869Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JKLover">
+<meta name="twitter:title" content="bzoj 4154 Generating Synergy">
+<meta name="twitter:description" content="$kd$ 树.">
 
 
 
@@ -150,7 +155,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/tags/字符串/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/03/bzoj-4154-Generating-Synergy/">
 
 
 
@@ -160,7 +165,7 @@
   };
 </script>
 
-  <title>Tag: 字符串 | JKLover</title>
+  <title>bzoj 4154 Generating Synergy | JKLover</title>
   
 
 
@@ -208,7 +213,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -284,7 +289,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -372,80 +377,197 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>字符串<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/03/bzoj-4154-Generating-Synergy/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JKLover">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JKLover">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/07/12/bzoj-4598-模式字符串/" itemprop="url">
-            
-              <span itemprop="name">bzoj 4598 模式字符串</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">bzoj 4154 Generating Synergy
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-12T21:12:10+08:00" content="2019-07-12">
-          07-12
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-09-03 19:56:59 / Modified: 21:17:30" itemprop="dateCreated datePublished" datetime="2019-09-03T19:56:59+08:00">2019-09-03</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>$kd$ 树.</p>
+<a id="more"></a>
+<p>将每个点的 $dfn,dep$ 视作 $x,y$ 坐标,那么每次修改就是给平面上一个矩形内的点染色.</p>
+<p>用 $kd$ 树写一写,时间复杂度 $O(n\log n+q\sqrt n)$ .</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> out=<span class="number">0</span>,fh=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> ((jp&gt;<span class="string">'9'</span>||jp&lt;<span class="string">'0'</span>)&amp;&amp;jp!=<span class="string">'-'</span>)</span><br><span class="line">		jp=getchar();</span><br><span class="line">	<span class="keyword">if</span> (jp==<span class="string">'-'</span>)</span><br><span class="line">		fh=<span class="number">-1</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> (jp&gt;=<span class="string">'0'</span>&amp;&amp;jp&lt;=<span class="string">'9'</span>)</span><br><span class="line">		out=out*<span class="number">10</span>+jp-<span class="string">'0'</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">return</span> out*fh;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> P=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (a+b&gt;=P)?(a+b-P):(a+b);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">mul</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1L</span>L * a * b % P;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf=<span class="number">1e9</span>;</span><br><span class="line"><span class="keyword">int</span> ecnt=<span class="number">0</span>,head[MAXN],to[MAXN],nx[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">addedge</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	++ecnt;</span><br><span class="line">	to[ecnt]=v;</span><br><span class="line">	nx[ecnt]=head[u];</span><br><span class="line">	head[u]=ecnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> dfn[MAXN],idx=<span class="number">0</span>,siz[MAXN],dep[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	dfn[u]=++idx;</span><br><span class="line">	siz[u]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=head[u];i;i=nx[i])</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> v=to[i];</span><br><span class="line">		dep[v]=dep[u]+<span class="number">1</span>;</span><br><span class="line">		dfs(v);</span><br><span class="line">		siz[u]+=siz[v];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> n,C,Q,Tp;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> v[<span class="number">2</span>],mx[<span class="number">2</span>],mi[<span class="number">2</span>],fa,id;</span><br><span class="line">	<span class="keyword">int</span> col,tag,ls,rs;</span><br><span class="line">	node()&#123;mx[<span class="number">0</span>]=mx[<span class="number">1</span>]=-inf,mi[<span class="number">0</span>]=mi[<span class="number">1</span>]=inf;&#125;</span><br><span class="line">	<span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> node &amp;rhs) <span class="keyword">const</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> v[Tp]&lt;rhs.v[Tp];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;Tree[MAXN];</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> root Tree[o]</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lson Tree[root.ls]</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rson Tree[root.rs]</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pushup</span><span class="params">(<span class="keyword">int</span> o)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">2</span>;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		root.mx[i]=max(lson.mx[i],rson.mx[i]);</span><br><span class="line">		root.mx[i]=max(root.mx[i],root.v[i]);</span><br><span class="line">		root.mi[i]=min(lson.mi[i],rson.mi[i]);</span><br><span class="line">		root.mi[i]=min(root.mi[i],root.v[i]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> pos[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">BuildTree</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> tp)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Tp=tp;</span><br><span class="line">	<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> o=mid;</span><br><span class="line">	nth_element(Tree+l,Tree+mid,Tree+r+<span class="number">1</span>);</span><br><span class="line">	pos[root.id]=o;</span><br><span class="line">	<span class="keyword">if</span>(l&lt;=mid<span class="number">-1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		root.ls=BuildTree(l,mid<span class="number">-1</span>,tp^<span class="number">1</span>);</span><br><span class="line">		lson.fa=o;</span><br><span class="line">	&#125;	</span><br><span class="line">	<span class="keyword">if</span>(mid+<span class="number">1</span>&lt;=r)</span><br><span class="line">	&#123;</span><br><span class="line">		root.rs=BuildTree(mid+<span class="number">1</span>,r,tp^<span class="number">1</span>);</span><br><span class="line">		rson.fa=o;</span><br><span class="line">	&#125;	</span><br><span class="line">	pushup(o);</span><br><span class="line">	<span class="keyword">return</span> o;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(<span class="keyword">int</span> o)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(root.tag)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(root.ls)</span><br><span class="line">			lson.col=lson.tag=root.tag;</span><br><span class="line">		<span class="keyword">if</span>(root.rs)</span><br><span class="line">			rson.col=rson.tag=root.tag;</span><br><span class="line">		root.tag=<span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> Mx[<span class="number">2</span>],Mi[<span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">upd</span><span class="params">(<span class="keyword">int</span> o,<span class="keyword">int</span> c)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(root.mi[<span class="number">0</span>]&gt;Mx[<span class="number">0</span>] || root.mx[<span class="number">0</span>]&lt;Mi[<span class="number">0</span>] || root.mi[<span class="number">1</span>]&gt;Mx[<span class="number">1</span>] || root.mx[<span class="number">1</span>]&lt;Mi[<span class="number">1</span>])</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">if</span>(Mi[<span class="number">0</span>]&lt;=root.mi[<span class="number">0</span>] &amp;&amp; root.mx[<span class="number">0</span>]&lt;=Mx[<span class="number">0</span>] &amp;&amp; Mi[<span class="number">1</span>]&lt;=root.mi[<span class="number">1</span>] &amp;&amp; root.mx[<span class="number">1</span>]&lt;=Mx[<span class="number">1</span>])</span><br><span class="line">		<span class="keyword">return</span> (<span class="keyword">void</span>)(root.col=root.tag=c);</span><br><span class="line">	<span class="keyword">if</span>(Mi[<span class="number">0</span>]&lt;=root.v[<span class="number">0</span>] &amp;&amp; root.v[<span class="number">0</span>]&lt;=Mx[<span class="number">0</span>] &amp;&amp; Mi[<span class="number">1</span>]&lt;=root.v[<span class="number">1</span>] &amp;&amp; root.v[<span class="number">1</span>]&lt;=Mx[<span class="number">1</span>])</span><br><span class="line">		root.col=c;</span><br><span class="line">	pushdown(o);</span><br><span class="line">	<span class="keyword">if</span>(root.ls)</span><br><span class="line">		upd(root.ls,c);</span><br><span class="line">	<span class="keyword">if</span>(root.rs)</span><br><span class="line">		upd(root.rs,c);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> stk[MAXN],tp;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	tp=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> y=x;</span><br><span class="line">	<span class="keyword">while</span>(Tree[y].fa)</span><br><span class="line">	&#123;</span><br><span class="line">		stk[++tp]=Tree[y].fa;</span><br><span class="line">		y=Tree[y].fa;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(tp)</span><br><span class="line">		pushdown(stk[tp--]);</span><br><span class="line">	<span class="keyword">return</span> Tree[x].col;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	n=read(),C=read(),Q=read();</span><br><span class="line">	ecnt=<span class="number">0</span>;</span><br><span class="line">	idx=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">		head[i]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;++i)</span><br><span class="line">		addedge(read(),i);</span><br><span class="line">	dfs(<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		Tree[i].v[<span class="number">0</span>]=dfn[i];</span><br><span class="line">		Tree[i].v[<span class="number">1</span>]=dep[i];</span><br><span class="line">		Tree[i].ls=Tree[i].rs=<span class="number">0</span>;</span><br><span class="line">		Tree[i].col=<span class="number">1</span>;</span><br><span class="line">		Tree[i].tag=<span class="number">0</span>;</span><br><span class="line">		Tree[i].fa=<span class="number">0</span>;</span><br><span class="line">		Tree[i].id=i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> rt=BuildTree(<span class="number">1</span>,n,<span class="number">0</span>);</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=Q;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> x=read(),y=read(),c=read();</span><br><span class="line">		<span class="keyword">if</span>(!c) <span class="comment">//query</span></span><br><span class="line">			ans=add(ans,mul(i,query(pos[x])));</span><br><span class="line">		<span class="keyword">else</span> <span class="comment">//update</span></span><br><span class="line">		&#123;</span><br><span class="line">			Mi[<span class="number">0</span>]=dfn[x];</span><br><span class="line">			Mx[<span class="number">0</span>]=dfn[x]+siz[x]<span class="number">-1</span>;</span><br><span class="line">			Mi[<span class="number">1</span>]=dep[x];</span><br><span class="line">			Mx[<span class="number">1</span>]=dep[x]+y;</span><br><span class="line">			upd(rt,c);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> T=read();</span><br><span class="line">	<span class="keyword">while</span>(T--)</span><br><span class="line">		solve();	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/kdtree/" rel="tag"># kdtree</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/03/bzoj-4162-shlw-loves-matrix-II/" rel="next" title="bzoj 4162 shlw loves matrix II">
+                <i class="fa fa-chevron-left"></i> bzoj 4162 shlw loves matrix II
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/9102/07/16/NOI2019同步赛游记/" rel="prev" title="置顶-NOI2019同步赛游记">
+                置顶-NOI2019同步赛游记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -930,6 +1052,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
 
   
 
@@ -945,6 +1071,37 @@
 
   
 
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '0f2a43b3bf8ac1ba787a',
+    clientSecret: 'c271a61a1475cd2dd1bbc48c7fd45058b0d2afea',
+    repo: 'jkloverdcoi.github.io',
+    owner: 'jkloverdcoi',
+    admin: ['jkloverdcoi'],
+    id: md5(location.pathname),
+    
+      language: 'en',
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
 
 
   
