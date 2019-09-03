@@ -9,6 +9,16 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[bzoj 4128 Matrix]]></title>
+    <url>%2F2019%2F09%2F03%2Fbzoj-4128-Matrix%2F</url>
+    <content type="text"><![CDATA[$BSGS$ . 因为保证了矩阵 $A$ 在模 $p$ 意义下有逆,并且在 $p$ 以内有解,所以就直接像普通的 $BSGS$ 那样做就可以了. 可以手写一个 $hash$ 函数,来判断两个矩阵是否完全相等. 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;inline int read()&#123; int out=0,fh=1; char jp=getchar(); while ((jp&gt;'9'||jp&lt;'0')&amp;&amp;jp!='-') jp=getchar(); if (jp=='-') fh=-1,jp=getchar(); while (jp&gt;='0'&amp;&amp;jp&lt;='9') out=out*10+jp-'0',jp=getchar(); return out*fh;&#125;const int MAXN=70;typedef unsigned long long ull;const ull Base=137;int n,P;int add(int a,int b)&#123; return (a+b&gt;=P)?(a+b-P):(a+b);&#125;int mul(int a,int b)&#123; return 1LL * a * b % P;&#125;struct Matrix&#123; int v[MAXN][MAXN]; Matrix()&#123;memset(v,0,sizeof v);&#125; Matrix operator * (const Matrix &amp;rhs) const &#123; Matrix res; for(int i=0;i&lt;n;++i) for(int k=0;k&lt;n;++k) if(v[i][k]) for(int j=0;j&lt;n;++j) res.v[i][j]=add(res.v[i][j],mul(v[i][k],rhs.v[k][j])); return res; &#125; ull Hash() &#123; ull res=0; for(int i=0;i&lt;n;++i) for(int j=0;j&lt;n;++j) res=res*Base+(ull)(v[i][j]); return res; &#125;&#125;A,B,I;Matrix fpow(Matrix a,int b)&#123; Matrix res=I; while(b) &#123; if(b&amp;1) res=res*a; a=a*a; b&gt;&gt;=1; &#125; return res;&#125;map&lt;ull,int&gt; mp;int BSGS()&#123; int m=sqrt(P); Matrix prod=B,tmp=A; for(int j=0;j&lt;m;++j) &#123; mp[prod.Hash()]=j; prod=prod*tmp; &#125; prod=tmp=fpow(A,m); for(int i=1;i&lt;=m;++i) &#123; ull t=prod.Hash(); if(mp.find(t)!=mp.end()) return i*m-mp[t]; prod=prod*tmp; &#125; return -1;&#125;int main()&#123; n=read(),P=read(); for(int i=0;i&lt;n;++i) I.v[i][i]=1; for(int i=0;i&lt;n;++i) for(int j=0;j&lt;n;++j) A.v[i][j]=read(); for(int i=0;i&lt;n;++i) for(int j=0;j&lt;n;++j) B.v[i][j]=read(); cout&lt;&lt;BSGS()&lt;&lt;endl; return 0;&#125;]]></content>
+      <tags>
+        <tag>数学</tag>
+        <tag>hash</tag>
+        <tag>BSGS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[bzoj 4247 挂饰]]></title>
     <url>%2F2019%2F09%2F03%2Fbzoj-4247-%E6%8C%82%E9%A5%B0%2F</url>
     <content type="text"><![CDATA[贪心 + 记忆化搜索. 贪心,先考虑挂钩多的选不选,再考虑挂钩少的选不选,将物品按照挂钩数目从大到小排序. 设 $f(i,j)$ 表示可以选择 $i\sim n$ 的物品,有 $j$ 个挂钩,能获得的最大收益,枚举第 $i$ 个选还是不选来转移. 因为物品是按照挂钩数目从大到小考虑的,就没有后效性了. 挂钩数目可能很多,但有用的最多 $n$ 个,所以状态数是 $O(n^2)$ 的. 时间复杂度 $O(n\log n+n^2)$ . 12345678910111213141516171819202122232425262728293031323334353637383940414243444546#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;inline int read()&#123; int out=0,fh=1; char jp=getchar(); while ((jp&gt;'9'||jp&lt;'0')&amp;&amp;jp!='-') jp=getchar(); if (jp=='-') fh=-1,jp=getchar(); while (jp&gt;='0'&amp;&amp;jp&lt;='9') out=out*10+jp-'0',jp=getchar(); return out*fh;&#125;const int MAXN=2e3+10,inf=0x7fffffff;int n,f[MAXN][MAXN];pair&lt;int,int&gt; p[MAXN];int dfs(int i,int j)&#123; j=min(j,n); if(i&gt;n) return 0; if(f[i][j]!=-inf) return f[i][j]; f[i][j]=dfs(i+1,j); if(j&gt;0) f[i][j]=max(f[i][j],dfs(i+1,j-1+p[i].first)+p[i].second); return f[i][j];&#125;int main()&#123; n=read(); for(int i=1;i&lt;=n;++i) &#123; p[i].first=read(); p[i].second=read(); &#125; sort(p+1,p+1+n); reverse(p+1,p+1+n); for(int i=0;i&lt;=n;++i) for(int j=0;j&lt;=n;++j) f[i][j]=-inf; cout&lt;&lt;dfs(1,1)&lt;&lt;endl; return 0;&#125;]]></content>
@@ -346,8 +356,8 @@
       <tags>
         <tag>数学</tag>
         <tag>概率/期望</tag>
-        <tag>Lucas定理</tag>
         <tag>状压dp</tag>
+        <tag>Lucas定理</tag>
         <tag>点分治</tag>
         <tag>test</tag>
       </tags>
@@ -1492,8 +1502,8 @@
     <url>%2F2019%2F05%2F10%2Fbzoj-5477-%E6%98%9F%E9%99%85%E7%A9%BF%E8%B6%8A%2F</url>
     <content type="text"><![CDATA[$dfs$ 序 + 树状数组. 由于路径的权是点权,可以考虑每个点被多少条路径经过,乘上它的点权即为贡献. 假设当前询问是在子树 $p$ 内,考虑一个点 $i$ ,在子树 $i$ 内与不在子树 $i$ 内的点形成了 $siz[i]\cdot (siz[p]-siz[i]+1)$ 条路径,都经过了点 $i$ . 还有一部分路径是将 $i$ 作为 $LCA$ 经过.显然每两个在 $i$ 的不同儿子形成的子树内的点都会经过 $i$ .这部分路径数目可以在 $dfs$ 时利用前缀和算出,记作 $k[i]$ . 由于修改只会单点修改点权,不改变树的形态,把那个 $siz[p]$ 拆出去算,预处理出每个点的剩下的系数. 直接利用 $dfs$ 序,树状数组维护答案. 记 $w[i]=k[i]+siz[i]\cdot (1-siz[u])​$ . 那么每次询问的答案就是子树 $p​$ 内的 $siz[p]\cdot (\sum siz[i]\cdot val[i])+(\sum w[i]\cdot val[i])​$ . 开两个树状数组分别维护前缀 $\sum siz\cdot val$ 与 $\sum siz\cdot w$ 就好了. 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115#include&lt;bits/stdc++.h&gt;using namespace std;#define ll long longinline int read()&#123; int out=0,fh=1; char jp=getchar(); while ((jp&gt;'9'||jp&lt;'0')&amp;&amp;jp!='-') jp=getchar(); if (jp=='-') fh=-1,jp=getchar(); while (jp&gt;='0'&amp;&amp;jp&lt;='9') out=out*10+jp-'0',jp=getchar(); return out*fh;&#125;const int MAXN=2e5+10;const int P=1e9+7;int n,m;inline int add(int a,int b)&#123; return (a + b) % P;&#125;inline int mul(int a,int b)&#123; return 1LL * a * b % P;&#125;struct FenwickTree&#123; #define lowbit(x) x&amp;(-x) int bit[MAXN]; FenwickTree()&#123;memset(bit,0,sizeof bit);&#125; void upd(int x,int c) &#123; for(;x&lt;=n;x+=lowbit(x)) bit[x]=add(bit[x],c); &#125; int sum(int x) &#123; int s=0; for(;x;x-=lowbit(x)) s=add(s,bit[x]); return s; &#125; int query(int l,int r) &#123; return add(sum(r),P-sum(l-1)); &#125;&#125;;int ecnt=0,head[MAXN],to[MAXN&lt;&lt;1],nx[MAXN&lt;&lt;1],val[MAXN];void addedge(int u,int v)&#123; ++ecnt; to[ecnt]=v; nx[ecnt]=head[u]; head[u]=ecnt;&#125;int siz[MAXN],dfn[MAXN],idx=0;int k[MAXN],w[MAXN];void dfs(int u,int fa)&#123; dfn[u]=++idx; for(int i=head[u];i;i=nx[i]) &#123; int v=to[i]; if(v==fa) continue; dfs(v,u); k[u]=add(k[u],mul(siz[v],siz[u])); siz[u]+=siz[v]; &#125; siz[u]++;&#125;FenwickTree T1;//siz*valFenwickTree T2;//w*valvoid init()&#123; for(int i=1;i&lt;=n;++i) &#123; T1.upd(dfn[i],mul(siz[i],val[i])); w[i]=add(k[i],mul(siz[i],P+1-siz[i])); T2.upd(dfn[i],mul(w[i],val[i])); &#125;&#125;int main()&#123; n=read(),m=read(); for(int i=1;i&lt;n;++i) &#123; val[i]=1; int u=read(),v=read(); addedge(u,v); addedge(v,u); &#125; val[n]=1; dfs(1,0); init(); while(m--) &#123; int op=read(); if(op==1) &#123; int p=read(),x=read(); T1.upd(dfn[p],mul(siz[p],x)); T2.upd(dfn[p],mul(w[p],x)); &#125; else &#123; int p=read(); int ans=T2.query(dfn[p],dfn[p]+siz[p]-1); ans=add(ans,mul(siz[p],T1.query(dfn[p],dfn[p]+siz[p]-1))); printf("%d\n",ans); &#125; &#125; return 0;&#125;]]></content>
       <tags>
-        <tag>树状数组</tag>
         <tag>dfs序</tag>
+        <tag>树状数组</tag>
       </tags>
   </entry>
   <entry>
@@ -1534,8 +1544,8 @@
         <tag>构造</tag>
         <tag>codeforces</tag>
         <tag>博弈论</tag>
-        <tag>状压dp</tag>
         <tag>自动机dp</tag>
+        <tag>状压dp</tag>
         <tag>最小生成树</tag>
         <tag>dfs序</tag>
       </tags>
