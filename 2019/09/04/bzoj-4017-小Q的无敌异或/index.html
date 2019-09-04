@@ -136,18 +136,18 @@
 
 
 
-  <meta name="description" content="$T2$ 被常数卡到暴力分了.">
-<meta name="keywords" content="线段树,数学,树形dp,单调栈,test">
+  <meta name="description" content="树状数组.">
+<meta name="keywords" content="位运算,树状数组.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test20190814">
-<meta property="og:url" content="http://yoursite.com/2019/08/14/test20190814/index.html">
+<meta property="og:title" content="bzoj 4017 小Q的无敌异或">
+<meta property="og:url" content="http://yoursite.com/2019/09/04/bzoj-4017-小Q的无敌异或/index.html">
 <meta property="og:site_name" content="JKLover">
-<meta property="og:description" content="$T2$ 被常数卡到暴力分了.">
+<meta property="og:description" content="树状数组.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-14T10:57:10.031Z">
+<meta property="og:updated_time" content="2019-09-04T07:14:14.126Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="test20190814">
-<meta name="twitter:description" content="$T2$ 被常数卡到暴力分了.">
+<meta name="twitter:title" content="bzoj 4017 小Q的无敌异或">
+<meta name="twitter:description" content="树状数组.">
 
 
 
@@ -155,7 +155,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/08/14/test20190814/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/04/bzoj-4017-小Q的无敌异或/">
 
 
 
@@ -165,7 +165,7 @@
   };
 </script>
 
-  <title>test20190814 | JKLover</title>
+  <title>bzoj 4017 小Q的无敌异或 | JKLover</title>
   
 
 
@@ -397,7 +397,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/14/test20190814/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/04/bzoj-4017-小Q的无敌异或/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JKLover">
@@ -414,7 +414,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">test20190814
+          <h1 class="post-title" itemprop="name headline">bzoj 4017 小Q的无敌异或
 
               
             
@@ -440,7 +440,7 @@
                 
               
 
-              <time title="Created: 2019-08-14 18:55:57 / Modified: 18:57:10" itemprop="dateCreated datePublished" datetime="2019-08-14T18:55:57+08:00">2019-08-14</time>
+              <time title="Created: 2019-09-04 10:44:48 / Modified: 15:14:14" itemprop="dateCreated datePublished" datetime="2019-09-04T10:44:48+08:00">2019-09-04</time>
             
 
             
@@ -486,12 +486,16 @@
       
 
       
-        <p>$T2$ 被常数卡到暴力分了.</p>
+        <p>树状数组.</p>
 <a id="more"></a>
-<h3 id="tree"><a href="#tree" class="headerlink" title="$tree$"></a>$tree$</h3><p>原题.直接树形 $dp$ .</p>
-<h3 id="dance"><a href="#dance" class="headerlink" title="$dance$"></a>$dance$</h3><p>从前往后枚举右端点,依次加入每个点,用单调栈维护后缀最大/最小值,线段树维护答案.</p>
-<h3 id="seq"><a href="#seq" class="headerlink" title="$seq$"></a>$seq$</h3><p>打表或者分析,把递推式子搞出来, $f_i=f_{i-1}+(i-1)\cdot (i-2)$ .</p>
-<p>然后用特征方程那一套理论把通项找出来, $f_n=2^{n+1}-n^2-n-2$ ,就可以直接算了.</p>
+<p>对于第一问,将每个二进制位分开计算贡献,变为 $0/1$ 数列,询问有几个区间的异或和为 $1$ ,随便做做.</p>
+<p>对于第二问,仍然将每个二进制为分开算,只需要考虑所有的区间和的第 $i$ 位有奇数个 $1$ 还是偶数个 $1$ .</p>
+<p>记前缀和 $sum(x)=\sum_{i=1}^x a_i​$ ,那么每个区间和都是 $sum(r)-sum(l-1)​$ 的形式.</p>
+<p>从前往后枚举 $r$ ,若 $sum(r)-sum(l-1)$ 第 $i$ 位上为 $1$ ,则只有两种可能.</p>
+<p>一种是 $sum(r)$ 与 $sum(l-1)$ 第 $i$ 位不同,且 $sum(r)\bmod 2^i\ge sum(l-1)\bmod 2^i$ ,即没有向第 $i$ 位借位.</p>
+<p>另一种是 $sum(r)$ 与 $sum(l-1)$ 第 $i$ 位相同,且 $sum(r)\bmod 2^i&lt; sum(l-1)\bmod 2^i$ ,即有向第 $i$ 位借位.</p>
+<p>将所有前缀和离散化,开两个树状数组进行维护,时间复杂度 $O(37\cdot n\log n)$ .</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> out=<span class="number">0</span>,fh=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> ((jp&gt;<span class="string">'9'</span>||jp&lt;<span class="string">'0'</span>)&amp;&amp;jp!=<span class="string">'-'</span>)</span><br><span class="line">		jp=getchar();</span><br><span class="line">	<span class="keyword">if</span> (jp==<span class="string">'-'</span>)</span><br><span class="line">		fh=<span class="number">-1</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> (jp&gt;=<span class="string">'0'</span>&amp;&amp;jp&lt;=<span class="string">'9'</span>)</span><br><span class="line">		out=out*<span class="number">10</span>+jp-<span class="string">'0'</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">return</span> out*fh;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> P=<span class="number">998244353</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (a+b&gt;=P)?(a+b-P):(a+b);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mul</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1L</span>L * a * b % P;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> n,a[MAXN];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">FenwickTree</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> bit[MAXN];</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lowbit(x) x&amp;(-x)</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(;x&lt;=n+<span class="number">1</span>;x+=lowbit(x))</span><br><span class="line">			bit[x]^=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> s=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(;x;x-=lowbit(x))</span><br><span class="line">			s^=bit[x];</span><br><span class="line">		<span class="keyword">return</span> s;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> sum(r)^sum(l<span class="number">-1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">reset</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="built_in">memset</span>(bit,<span class="number">0</span>,<span class="keyword">sizeof</span> bit);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;T[<span class="number">2</span>];</span><br><span class="line"><span class="keyword">int</span> mx;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve1</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> tot[<span class="number">2</span>];</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;(<span class="number">1</span>&lt;&lt;k)&lt;=mx;++k)</span><br><span class="line">	&#123;</span><br><span class="line">		tot[<span class="number">0</span>]=<span class="number">1</span>,tot[<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			sum^=(a[i]&gt;&gt;k)&amp;<span class="number">1</span>;</span><br><span class="line">			ans=add(ans,mul(<span class="number">1</span>&lt;&lt;k,tot[sum^<span class="number">1</span>]));</span><br><span class="line">			++tot[sum];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d "</span>,ans);</span><br><span class="line">&#125;</span><br><span class="line">ll s[MAXN],S;</span><br><span class="line"><span class="keyword">int</span> tot;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve2</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ll t,sum,ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;(<span class="number">1L</span>L&lt;&lt;k)&lt;=S;++k)</span><br><span class="line">	&#123;</span><br><span class="line">		T[<span class="number">0</span>].reset();</span><br><span class="line">		T[<span class="number">1</span>].reset();</span><br><span class="line">		sum=tot=<span class="number">0</span>;</span><br><span class="line">		s[++tot]=sum&amp;((<span class="number">1L</span>L&lt;&lt;k)<span class="number">-1</span>);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			sum+=a[i];</span><br><span class="line">			s[++tot]=sum&amp;((<span class="number">1L</span>L&lt;&lt;k)<span class="number">-1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		sort(s+<span class="number">1</span>,s+<span class="number">1</span>+tot);</span><br><span class="line">		tot=unique(s+<span class="number">1</span>,s+<span class="number">1</span>+tot)-s<span class="number">-1</span>;</span><br><span class="line">		sum=t=<span class="number">0</span>;</span><br><span class="line">		T[(sum&gt;&gt;k)&amp;<span class="number">1</span>].add(lower_bound(s+<span class="number">1</span>,s+<span class="number">1</span>+tot,sum&amp;((<span class="number">1L</span>L&lt;&lt;k)<span class="number">-1</span>))-s);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			sum+=a[i];</span><br><span class="line">			<span class="keyword">int</span> id=(sum&gt;&gt;k)&amp;<span class="number">1</span>,p=lower_bound(s+<span class="number">1</span>,s+<span class="number">1</span>+tot,sum&amp;((<span class="number">1L</span>L&lt;&lt;k)<span class="number">-1</span>))-s;</span><br><span class="line">			t^=T[id].query(p+<span class="number">1</span>,tot);</span><br><span class="line">			t^=T[id^<span class="number">1</span>].query(<span class="number">1</span>,p);</span><br><span class="line">			T[id].add(p);</span><br><span class="line">		&#125;</span><br><span class="line">		ans+=t&lt;&lt;k;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	n=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		a[i]=read();</span><br><span class="line">		mx=max(mx,a[i]);</span><br><span class="line">		S+=a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	solve1();</span><br><span class="line">	solve2();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -515,15 +519,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/线段树/" rel="tag"># 线段树</a>
+            <a href="/tags/位运算/" rel="tag"># 位运算</a>
           
-            <a href="/tags/数学/" rel="tag"># 数学</a>
-          
-            <a href="/tags/树形dp/" rel="tag"># 树形dp</a>
-          
-            <a href="/tags/单调栈/" rel="tag"># 单调栈</a>
-          
-            <a href="/tags/test/" rel="tag"># test</a>
+            <a href="/tags/树状数组/" rel="tag"># 树状数组.</a>
           
         </div>
       
@@ -536,8 +534,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/14/bzoj-2049-洞穴勘测/" rel="next" title="bzoj 2049 洞穴勘测">
-                <i class="fa fa-chevron-left"></i> bzoj 2049 洞穴勘测
+              <a href="/2019/09/04/bzoj-4180-字符串计数/" rel="next" title="bzoj 4180 字符串计数">
+                <i class="fa fa-chevron-left"></i> bzoj 4180 字符串计数
               </a>
             
           </div>
@@ -546,8 +544,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/08/14/Loj-514-模拟只会猜题意/" rel="prev" title="Loj 514 模拟只会猜题意">
-                Loj 514 模拟只会猜题意 <i class="fa fa-chevron-right"></i>
+              <a href="/9102/07/16/NOI2019同步赛游记/" rel="prev" title="置顶-NOI2019同步赛游记">
+                置顶-NOI2019同步赛游记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -596,17 +594,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -911,23 +900,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#tree"><span class="nav-number">1.</span> <span class="nav-text">$tree$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dance"><span class="nav-number">2.</span> <span class="nav-text">$dance$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#seq"><span class="nav-number">3.</span> <span class="nav-text">$seq$</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
