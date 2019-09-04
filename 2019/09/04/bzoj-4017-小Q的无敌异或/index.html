@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="树状数组.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-04T07:14:14.126Z">
+<meta property="og:updated_time" content="2019-09-04T07:21:38.516Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bzoj 4017 小Q的无敌异或">
 <meta name="twitter:description" content="树状数组.">
@@ -440,7 +440,7 @@
                 
               
 
-              <time title="Created: 2019-09-04 10:44:48 / Modified: 15:14:14" itemprop="dateCreated datePublished" datetime="2019-09-04T10:44:48+08:00">2019-09-04</time>
+              <time title="Created: 2019-09-04 10:44:48 / Modified: 15:21:38" itemprop="dateCreated datePublished" datetime="2019-09-04T10:44:48+08:00">2019-09-04</time>
             
 
             
@@ -489,7 +489,7 @@
         <p>树状数组.</p>
 <a id="more"></a>
 <p>对于第一问,将每个二进制位分开计算贡献,变为 $0/1$ 数列,询问有几个区间的异或和为 $1$ ,随便做做.</p>
-<p>对于第二问,仍然将每个二进制为分开算,只需要考虑所有的区间和的第 $i$ 位有奇数个 $1$ 还是偶数个 $1$ .</p>
+<p>对于第二问,仍然将每个二进制位分开算,只需要考虑所有的区间和的第 $i$ 位有奇数个 $1$ 还是偶数个 $1$ .</p>
 <p>记前缀和 $sum(x)=\sum_{i=1}^x a_i​$ ,那么每个区间和都是 $sum(r)-sum(l-1)​$ 的形式.</p>
 <p>从前往后枚举 $r$ ,若 $sum(r)-sum(l-1)$ 第 $i$ 位上为 $1$ ,则只有两种可能.</p>
 <p>一种是 $sum(r)$ 与 $sum(l-1)$ 第 $i$ 位不同,且 $sum(r)\bmod 2^i\ge sum(l-1)\bmod 2^i$ ,即没有向第 $i$ 位借位.</p>
