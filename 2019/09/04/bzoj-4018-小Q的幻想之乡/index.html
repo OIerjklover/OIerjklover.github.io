@@ -144,10 +144,12 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="莫比乌斯反演 + 线性筛.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-05T07:01:48.342Z">
+<meta property="og:image" content="http://yoursite.com/2019/09/04/bzoj-4018-小Q的幻想之乡/formula.png">
+<meta property="og:updated_time" content="2019-09-05T07:14:55.653Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bzoj 4018 小Q的幻想之乡">
 <meta name="twitter:description" content="莫比乌斯反演 + 线性筛.">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/04/bzoj-4018-小Q的幻想之乡/formula.png">
 
 
 
@@ -457,7 +459,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-09-05 15:01:48" itemprop="dateModified" datetime="2019-09-05T15:01:48+08:00">2019-09-05</time>
+                <time title="Modified: 2019-09-05 15:14:55" itemprop="dateModified" datetime="2019-09-05T15:14:55+08:00">2019-09-05</time>
               
             
           </span>
@@ -503,6 +505,7 @@
 <p>由于每次只能走一种路径,并且边是双向的,所以从 $i$ 到 $j$ 的边数就是 $\frac {|i-j|} {\gcd(i,j)}$  .</p>
 <p>于是每次询问要求 $ans=\sum_{i=1}^n \sum_{j=1}^m \frac {|i-j|} {\gcd(i,j)}$ .</p>
 <p>与 $\gcd$ 有关的式子,考虑用莫比乌斯反演那一套操作,假定 $n\le m$ ,开始推式子,</p>
+<p><img src="formula.png" alt></p>
 <p>记 $A=\min(\lfloor \frac n d\rfloor,\lfloor \frac m d\rfloor),B=\max(\lfloor \frac n d\rfloor,\lfloor \frac m d\rfloor)$ .</p>
 <p>则后面那个 $\sum_{i=1}^A \sum_{j=1}^B |i-j|=\frac {(A-1)A(A+1)} 3+\frac {AB(B-A)} 2$ ,<a href="https://www.cnblogs.com/henry-1202/p/10350266.html" target="_blank" rel="noopener">大佬的推导过程</a> .</p>
 <p>前面那一块,需要预处理每个 $d$ 的 $f(d)=\sum_{k|d} k\cdot \mu(k)$ ,这是个积性函数,直接线性筛处理.</p>
