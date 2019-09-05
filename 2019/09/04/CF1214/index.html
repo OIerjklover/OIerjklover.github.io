@@ -137,14 +137,14 @@
 
 
   <meta name="description" content="$Div.1+Div.2$">
-<meta name="keywords" content="贪心,codeforces">
+<meta name="keywords" content="贪心,codeforces,构造">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CF1214">
 <meta property="og:url" content="http://yoursite.com/2019/09/04/CF1214/index.html">
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="$Div.1+Div.2$">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-04T13:31:26.253Z">
+<meta property="og:updated_time" content="2019-09-05T09:15:28.025Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CF1214">
 <meta name="twitter:description" content="$Div.1+Div.2$">
@@ -440,12 +440,24 @@
                 
               
 
-              <time title="Created: 2019-09-04 19:57:11 / Modified: 21:31:26" itemprop="dateCreated datePublished" datetime="2019-09-04T19:57:11+08:00">2019-09-04</time>
+              <time title="Created: 2019-09-04 19:57:11" itemprop="dateCreated datePublished" datetime="2019-09-04T19:57:11+08:00">2019-09-04</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-09-05 17:15:28" itemprop="dateModified" datetime="2019-09-05T17:15:28+08:00">2019-09-05</time>
               
             
           </span>
@@ -496,7 +508,14 @@
 <p>于是只需要判断 $0$ 与 $1$ 是否合法.</p>
 <p>$0$ 就是判断起点能否到终点.</p>
 <p>$1$ 就是判断是否存在一个点 $x$ ,使得每条从起点到终点的路径都经过 $x$ .</p>
-<p>设 $f(x),g(x)$ 分别表示起点到 $x$ 的路径数, $x$ 到终点的路径数,判断是否有 $f(x)\cdot g(x)​$ 等于 起点到终点的路径数.</p>
+<p>设 $f(x),g(x)$ 分别表示起点到 $x$ 的路径数, $x$ 到终点的路径数,判断是否有 $f(x)\cdot g(x)$ 等于 起点到终点的路径数.</p>
+<h3 id="E-Petya-and-Construction-Set"><a href="#E-Petya-and-Construction-Set" class="headerlink" title="E Petya and Construction Set"></a><a href="https://codeforces.com/contest/1214/problem/E" target="_blank" rel="noopener">E Petya and Construction Set</a></h3><p>可以假定 $d_i$ 是从大到小排好序的,否则可以先排序.</p>
+<p>建出一条链,链上节点依次为 $1,3,5,\dots,2i-1$ .</p>
+<p>然后再将偶数编号的节点 $2i$ 依次挂上去,找到链上的第 $i+d_i-1$ 个节点,将 $2i$ 挂在它的旁边即可.</p>
+<p>因为 $d_i$ 是从大到小排好序的,且 $d_i\le n$ ,所以这样做总能构造出合法解.</p>
+<h3 id="F-Employment"><a href="#F-Employment" class="headerlink" title="F Employment"></a><a href="https://codeforces.com/contest/1214/problem/F" target="_blank" rel="noopener">F Employment</a></h3><p>待更.</p>
+<h3 id="G-Feeling-Good"><a href="#G-Feeling-Good" class="headerlink" title="G Feeling Good"></a><a href="https://codeforces.com/contest/1214/problem/G" target="_blank" rel="noopener">G Feeling Good</a></h3><p>待更.</p>
+<h3 id="H-Tiles-Placement"><a href="#H-Tiles-Placement" class="headerlink" title="H Tiles Placement"></a><a href="https://codeforces.com/contest/1214/problem/H" target="_blank" rel="noopener">H Tiles Placement</a></h3><p>待更.</p>
 
       
     </div>
@@ -523,6 +542,8 @@
             <a href="/tags/贪心/" rel="tag"># 贪心</a>
           
             <a href="/tags/codeforces/" rel="tag"># codeforces</a>
+          
+            <a href="/tags/构造/" rel="tag"># 构造</a>
           
         </div>
       
@@ -923,7 +944,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Optimal-Currency-Exchange"><span class="nav-number">1.</span> <span class="nav-text">A Optimal Currency Exchange</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Badges"><span class="nav-number">2.</span> <span class="nav-text">B Badges</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Bad-Sequence"><span class="nav-number">3.</span> <span class="nav-text">C Bad Sequence</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Treasure-Island"><span class="nav-number">4.</span> <span class="nav-text">D Treasure Island</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Optimal-Currency-Exchange"><span class="nav-number">1.</span> <span class="nav-text">A Optimal Currency Exchange</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Badges"><span class="nav-number">2.</span> <span class="nav-text">B Badges</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Bad-Sequence"><span class="nav-number">3.</span> <span class="nav-text">C Bad Sequence</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Treasure-Island"><span class="nav-number">4.</span> <span class="nav-text">D Treasure Island</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-Petya-and-Construction-Set"><span class="nav-number">5.</span> <span class="nav-text">E Petya and Construction Set</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F-Employment"><span class="nav-number">6.</span> <span class="nav-text">F Employment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#G-Feeling-Good"><span class="nav-number">7.</span> <span class="nav-text">G Feeling Good</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#H-Tiles-Placement"><span class="nav-number">8.</span> <span class="nav-text">H Tiles Placement</span></a></li></ol></div>
             
 
           </div>

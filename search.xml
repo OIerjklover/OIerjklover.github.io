@@ -29,10 +29,11 @@
   <entry>
     <title><![CDATA[CF1214]]></title>
     <url>%2F2019%2F09%2F04%2FCF1214%2F</url>
-    <content type="text"><![CDATA[$Div.1+Div.2$ A Optimal Currency Exchange第一种货币只有面值 $1$ 有用,第二种货币只有面值 $5$ 有用. 枚举换了多少个第二种货币,时间复杂度 $O(\frac n {5e})$ . B Badges读懂题后就是两个不等式,手动解一下. C Bad Sequence第一次遇到不合法的 $-1$ 时,将它忽略,最后再放回去,看能否合法. D Treasure Island显然答案 $\le 2$ ,因为我们可以去掉与出发点相邻的两个点. 于是只需要判断 $0$ 与 $1$ 是否合法. $0$ 就是判断起点能否到终点. $1$ 就是判断是否存在一个点 $x$ ,使得每条从起点到终点的路径都经过 $x$ . 设 $f(x),g(x)$ 分别表示起点到 $x$ 的路径数, $x$ 到终点的路径数,判断是否有 $f(x)\cdot g(x)​$ 等于 起点到终点的路径数.]]></content>
+    <content type="text"><![CDATA[$Div.1+Div.2$ A Optimal Currency Exchange第一种货币只有面值 $1$ 有用,第二种货币只有面值 $5$ 有用. 枚举换了多少个第二种货币,时间复杂度 $O(\frac n {5e})$ . B Badges读懂题后就是两个不等式,手动解一下. C Bad Sequence第一次遇到不合法的 $-1$ 时,将它忽略,最后再放回去,看能否合法. D Treasure Island显然答案 $\le 2$ ,因为我们可以去掉与出发点相邻的两个点. 于是只需要判断 $0$ 与 $1$ 是否合法. $0$ 就是判断起点能否到终点. $1$ 就是判断是否存在一个点 $x$ ,使得每条从起点到终点的路径都经过 $x$ . 设 $f(x),g(x)$ 分别表示起点到 $x$ 的路径数, $x$ 到终点的路径数,判断是否有 $f(x)\cdot g(x)$ 等于 起点到终点的路径数. E Petya and Construction Set可以假定 $d_i$ 是从大到小排好序的,否则可以先排序. 建出一条链,链上节点依次为 $1,3,5,\dots,2i-1$ . 然后再将偶数编号的节点 $2i$ 依次挂上去,找到链上的第 $i+d_i-1$ 个节点,将 $2i$ 挂在它的旁边即可. 因为 $d_i$ 是从大到小排好序的,且 $d_i\le n$ ,所以这样做总能构造出合法解. F Employment待更. G Feeling Good待更. H Tiles Placement待更.]]></content>
       <tags>
         <tag>贪心</tag>
         <tag>codeforces</tag>
+        <tag>构造</tag>
       </tags>
   </entry>
   <entry>
