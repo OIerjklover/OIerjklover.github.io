@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="由 $ChitongZ$ 亲自出题.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-05T07:10:28.330Z">
+<meta property="og:updated_time" content="2019-09-05T07:17:44.933Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="test20190905">
 <meta name="twitter:description" content="由 $ChitongZ$ 亲自出题.">
@@ -440,7 +440,7 @@
                 
               
 
-              <time title="Created: 2019-09-05 14:37:45 / Modified: 15:10:28" itemprop="dateCreated datePublished" datetime="2019-09-05T14:37:45+08:00">2019-09-05</time>
+              <time title="Created: 2019-09-05 14:37:45 / Modified: 15:17:44" itemprop="dateCreated datePublished" datetime="2019-09-05T14:37:45+08:00">2019-09-05</time>
             
 
             
@@ -500,8 +500,9 @@
 <p>转移时,枚举 $u​$ 的子节点 $v​$ ,有 $f’(u,i)=\sum_{j\times k=i} f(u,j)\cdot f(v,k)​$ ,然后把 $f’​$ 复制到 $f​$ 里面.</p>
 <p>这样做的时间复杂度是 $O(n\cdot m^2)$ .</p>
 <hr>
-<p>转移形式很像卷积,求出 $m$ 的原根 $g$ ,将 $i,j,k$ 换成 $g$ 的幂次,转移就变成了 $f’(u,i)=\sum_{j+ k=i} f(u,j)\cdot f(v,k)$ .</p>
-<p>此时 $f(u,i)​$ 表示在子树 $u​$ 内选出若干点,乘积在模 $m​$ 意义下为 $g^i​$ 的方案数.</p>
+<p>转移形式很像卷积,求出 $m$ 的原根 $g​$ .</p>
+<p>转移就变成了 $f’(u,i)=\sum_{j+ k=i} f(u,j)\cdot f(v,k)$ .</p>
+<p>此时 $f(u,i)$ 表示在子树 $u$ 内选出若干点,乘积在模 $m$ 意义下为 $g^i​$ 的方案数.</p>
 <p>这样就是卷积的形式了,利用 $NTT$ 进行优化,时间复杂度 $O(n\cdot m\log m)​$ .</p>
 
       
