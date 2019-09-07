@@ -9,6 +9,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[test20190907]]></title>
+    <url>%2F2019%2F09%2F07%2Ftest20190907%2F</url>
+    <content type="text"><![CDATA[没吃成饭. $spongebob$首先可以将 $a_i=0$ 的直线给除去,最后答案加上它们的 $\sum b_i$ . 记 $x_i=-\frac {b_i} {a_i}$ ,则显然答案只会在某个 $x_i$ 处取到,否则往左边与右边走,分别遇到的端点中至少一个不会更劣. $x_i$ 到 $x_{i+1}$ 这一段中的线段斜率都不会变,可以预处理出这样每一段内线段斜率总和,答案变化量也可以立即求出. 扫一遍就可以得到答案,因为需要离散化/排序,时间复杂度 $O(n\log n)$ . $patrick$若 $h_i​$ 与 $h_{i+1}​$ 中一个 $\ge C​$ ,另一个 $&lt;C​$ ,就形成了一个断点. 假定位置 $0$ 和位置 $n+1$ 的高度都是 $0$ ,那么答案就是断点数目的一半. 考虑一对相邻的数 $h_i,h_{i+1}$ ,较小者为 $a$ ,较大者为 $b$ ,那当 $a+1\le C\le b$ 时,这个位置就是一个断点. 于是给这个区间的覆盖数 $+1$ ,查询时计算 $C$ 被覆盖的次数就是断点数目,可以用树状数组维护差分. 修改时,将原来的区间覆盖数 $-1$ ,更新后的区间覆盖数 $+1$ 即可. 时间复杂度 $O(n\log n)$ . $eugene$将每个关系看成一条边,如果有两条一样的边,就可以通过安排将它们抵消掉. 考虑 $c_i=1$ 的情况,此时重边抵消后形成了一张简单图. 若有两条边 $(a,b),(b,c)$ ,则可以合并成一条边 $(a,c)$ ,原来的方案与合并后的方案可以对应. 合并到最后,整张图就是一个点数为 $n$ ,边数为 $\frac n 2$ 的完美匹配,随便安排一下,再还原回去. 如果有边权为 $2$ 的边,就将两种边分开做,只看一种边时,都是一个完美匹配. 此时整张图中两种边构成了若干个 $1,2$ 交错出现的环或链,直接解出每个环或链的方案,再还原回去. 时间复杂度 $O(n\log n)$ .]]></content>
+      <tags>
+        <tag>构造</tag>
+        <tag>差分</tag>
+        <tag>树状数组</tag>
+        <tag>test</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[test20190906]]></title>
     <url>%2F2019%2F09%2F07%2Ftest20190906%2F</url>
     <content type="text"><![CDATA[卡空间是真的毒瘤. $kanade$设那两个数为 $x,y$ .将所有数都异或起来,记得到的结果是 $z=x\mbox{ xor } y$ . $z\not= 0$ ,所以可以找出 $z$ 二进制上为 $1$ 的某一位. 将所有数分成两组,这一位上为 $0$ 的分在一组,这一位上为 $1$ 的分在另一组,那么 $x,y$ 就被分到了不同的组. 将某一组内的数全部异或起来,就得到了 $x,y$ 其中的一个,继而可以求出另一个. $sakura$设 $f(i)$ 表示将节点 $i$ 放上樱花所需要的樱花数目. 在 $dfs$ 时,显然将子节点按照 $f(i)-a(i)$ 从大到小排序,依次放就可以了. $chtolly$设 $f_i$ 表示当前在位置 $i$ ,走到终点的期望时间,则答案为 $f_0$ . 有 $f_0=f_1+1,f_1=f_1$ ,而方程都是线性的,所以可以将所有 $f_i$ 都表示成 $f_i=kf_1+b$ 的形式. 前两项的表达形式已知,一直往后递推,可以得到 $f_{n+1}=1$ 的表示形式,解出 $f_1$ ,也就得到了 $f_0$ .]]></content>
@@ -59,8 +70,8 @@
     <content type="text"><![CDATA[$Div.1+Div.2$ A Optimal Currency Exchange第一种货币只有面值 $1$ 有用,第二种货币只有面值 $5$ 有用. 枚举换了多少个第二种货币,时间复杂度 $O(\frac n {5e})$ . B Badges读懂题后就是两个不等式,手动解一下. C Bad Sequence第一次遇到不合法的 $-1$ 时,将它忽略,最后再放回去,看能否合法. D Treasure Island显然答案 $\le 2$ ,因为我们可以去掉与出发点相邻的两个点. 于是只需要判断 $0$ 与 $1$ 是否合法. $0$ 就是判断起点能否到终点. $1$ 就是判断是否存在一个点 $x$ ,使得每条从起点到终点的路径都经过 $x$ . 设 $f(x),g(x)$ 分别表示起点到 $x$ 的路径数, $x$ 到终点的路径数,判断是否有 $f(x)\cdot g(x)$ 等于 起点到终点的路径数. E Petya and Construction Set可以假定 $d_i$ 是从大到小排好序的,否则可以先排序. 建出一条链,链上节点依次为 $1,3,5,\dots,2i-1$ . 然后再将偶数编号的节点 $2i$ 依次挂上去,找到链上的第 $i+d_i-1$ 个节点,将 $2i$ 挂在它的旁边即可. 因为 $d_i$ 是从大到小排好序的,且 $d_i\le n$ ,所以这样做总能构造出合法解. F Employment待更. G Feeling Good待更. H Tiles Placement待更.]]></content>
       <tags>
         <tag>贪心</tag>
-        <tag>构造</tag>
         <tag>codeforces</tag>
+        <tag>构造</tag>
       </tags>
   </entry>
   <entry>
@@ -182,8 +193,8 @@
     <content type="text"><![CDATA[莫名奇妙被罚了 $6$ 次. A Tenki签到题,注意两个字符串虽然长度都为 $3$ ,但直接这样开会错掉. 1char a[3],b[3]; 要开大一些,可能是因为终止符/空格的问题? 一开始没注意,交上去被罚了一次. B Power Socket签到题,但题意有点难理解. 应该是一开始有 $1$ 个物品,每次可以把 $1$ 个换成 $A$ 个,问至少有 $B$ 个,需要操作多少次,然后就简单了. C Lower签到题,读入后反过来递推即可. D ModSum考试的时候根据样例猜了个结论,令 $P_i=i+1(1\le i&lt;n),P_n=1$ . 这样答案是 $\frac {n(n-1)} 2$ ,然后就过了. E League把每场比赛看做一个点,若 $A$ 必须在 $B$ 之前比赛,就连边 $A\to B$ . 若有环,则无解,否则答案为 $DAG$ 上的最长链. F Engines 其实应该算 POI 原题? 最终的向量一定是由那些在它的方向上投影为正的向量相加得到. 极角排序后扫一圈更新答案即可.]]></content>
       <tags>
         <tag>贪心</tag>
-        <tag>DAG</tag>
         <tag>atcoder</tag>
+        <tag>DAG</tag>
         <tag>拓扑排序</tag>
         <tag>计算几何</tag>
         <tag>极角排序</tag>
@@ -833,8 +844,8 @@
       <tags>
         <tag>贪心</tag>
         <tag>数学</tag>
-        <tag>构造</tag>
         <tag>codeforces</tag>
+        <tag>构造</tag>
         <tag>two pointer</tag>
       </tags>
   </entry>
@@ -1141,10 +1152,10 @@
       <tags>
         <tag>贪心</tag>
         <tag>dp计数</tag>
-        <tag>构造</tag>
-        <tag>DAG</tag>
-        <tag>atcoder</tag>
         <tag>并查集</tag>
+        <tag>构造</tag>
+        <tag>atcoder</tag>
+        <tag>DAG</tag>
       </tags>
   </entry>
   <entry>
@@ -1205,10 +1216,10 @@
     <url>%2F2019%2F06%2F08%2FCF1173%2F</url>
     <content type="text"><![CDATA[$Div.2$ 官方题解 A Nauuo and Votes 签到题. B Nauuo and Chess 构造题. 可以将所有数沿着第一列与最后一行放成一个 $L$ 形.容易验证一定是合法的. 这样构造, $m=\lfloor \frac n 2 \rfloor+1$ .而考虑首尾两个位置,有$$|r_1-r_n|+|c_1-c_n|\geq n-1$$ 而 $|r_1-r_n|\leq m-1,|c_1-c_n|\leq m-1$ ,所以 $2m-2\geq n-1$ , $m$ 为整数,可得到 $m\geq \lfloor \frac n 2 \rfloor+1$ . 所以这样构造一定是一个最优解. C Nauuo and Cards 策略是如果能不打 $0$ 直接完成,就直接完成,否则先打若干 $0$ ,然后再也不打 $0$ . 考虑如果已经打了若干 $0$ ,开始一直打数字牌,那么此时 $1$ 必定在手中, $2$ 必定在手中或在牌堆的第 $1$ 个位置(打了 $1$ 就会被摸到手中), $3$ 必定在手中或在第 $2$ 个位置,以此类推. 如果有一些牌的位置不合要求,那么我们需要先打空白牌来将他们加入到手中或是放到正确的位置. 在手中可以看做位置 $0$ ,记 $p_i$ 为 $i$ 的初始位置,那么答案就是 $n+\max\limits_{i=1}^n (p_i-i+1)$ . $n$ 是因为要连续打出 $1\sim n$ 这些牌,后面的部分是将 $p_i$ 调整到 $i-1$ 所需打出的 $0$ 的数目. 123456789101112131415161718192021222324252627282930313233343536373839404142434445#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;inline int read()&#123; int out=0,fh=1; char jp=getchar(); while ((jp&gt;'9'||jp&lt;'0')&amp;&amp;jp!='-') jp=getchar(); if (jp=='-') fh=-1,jp=getchar(); while (jp&gt;='0'&amp;&amp;jp&lt;='9') out=out*10+jp-'0',jp=getchar(); return out*fh;&#125;const int MAXN=2e5+10;int n,a[MAXN],b[MAXN],p[MAXN];int main()&#123; n=read(); for(int i=1;i&lt;=n;++i) a[i]=read(); for(int i=1;i&lt;=n;++i) p[b[i]=read()]=i; if(p[1]) &#123; int x; for(x=2;p[x]==p[1]+x-1;++x); if(p[x-1]==n) &#123; int y; for(y=x;y&lt;=n &amp;&amp; p[y]&lt;=y-x;++y); if(y&gt;n) &#123; cout&lt;&lt;n-x+1&lt;&lt;endl; return 0; &#125; &#125; &#125; int ans=0; for(int i=1;i&lt;=n;++i) ans=max(ans,p[i]-i+1); cout&lt;&lt;ans+n&lt;&lt;endl; return 0;&#125; D Nauuo and Circle $dp$ 计数. 考虑 $dp$ ,设 $f_u$ 表示子树 $u$ 的方案数,先钦定根节点为 $1$ ,最后答案就是 $n\cdot f_1$ . 画子树时,先要给所有儿子,若不为根,还有自己排序,转移有 $f_u=(|son_u|+[u==1])!\cdot \prod\limits_{v \in son_u}f_v$ . 把 $dp$ 的式子展开,可以发现答案就是 $n\cdot \prod\limits _{i=1}^n deg_i$ , $deg$ 表示度数. 待续…]]></content>
       <tags>
+        <tag>树形dp</tag>
+        <tag>codeforces</tag>
         <tag>dp计数</tag>
         <tag>构造</tag>
-        <tag>codeforces</tag>
-        <tag>树形dp</tag>
       </tags>
   </entry>
   <entry>
@@ -1635,8 +1646,8 @@
       <tags>
         <tag>贪心</tag>
         <tag>线段树</tag>
-        <tag>构造</tag>
         <tag>codeforces</tag>
+        <tag>构造</tag>
         <tag>博弈论</tag>
         <tag>状压dp</tag>
         <tag>dfs序</tag>
@@ -1700,8 +1711,8 @@
         <tag>平衡树</tag>
         <tag>dp计数</tag>
         <tag>矩阵优化</tag>
-        <tag>差分</tag>
         <tag>最短路</tag>
+        <tag>差分</tag>
         <tag>位运算</tag>
         <tag>SAM</tag>
         <tag>容斥原理</tag>
@@ -1717,9 +1728,9 @@
         <tag>二分</tag>
         <tag>线段树</tag>
         <tag>codeforces</tag>
+        <tag>DAG</tag>
         <tag>kmp</tag>
         <tag>tarjan</tag>
-        <tag>DAG</tag>
         <tag>非传统题</tag>
         <tag>floyd判圈</tag>
         <tag>树链剖分</tag>
@@ -1765,8 +1776,8 @@
       <tags>
         <tag>贪心</tag>
         <tag>二分</tag>
-        <tag>构造</tag>
         <tag>codeforces</tag>
+        <tag>构造</tag>
         <tag>概率/期望</tag>
         <tag>矩阵优化</tag>
       </tags>
@@ -1780,8 +1791,8 @@
         <tag>dp计数</tag>
         <tag>树链剖分</tag>
         <tag>矩阵优化</tag>
-        <tag>差分</tag>
         <tag>最短路</tag>
+        <tag>差分</tag>
         <tag>位运算</tag>
         <tag>kdtree</tag>
         <tag>单调栈</tag>
@@ -1813,8 +1824,8 @@
     <content type="text"><![CDATA[$Div.2$ CF1140C Playlist 将元素按 $b$ 从大到小排序,然后从后往前依次加入,每加入一个元素时它的 $b$ 都是当前最小的. 此时需要钦定选择这个元素作为最小的 $b$ ,并在已有元素中选出 $k-1$ 个 $t$ 值最大的. 这个东西用个堆维护一下当前前 $k-1$ 大的 $t$ 值就好了. CF1140D Minimum Triangulation 肯定会有一个很直观的想法:全部都以 $1$ 为一个顶点,然后 $(1,2,3),(1,3,4) \dots (1,n-1,n)$ 这样来剖. 这样做的确是正确的,即权值一定是最小的.为什么呢? 考虑若有 $x&lt;y$ ,那么把方案 $(1,n,x),(n,x,y)$ 换成 $(1,n,y),(1,x,y)$ ,总权值会减小. 于是可以直接将 $x$ 换到 $n-1$ ,然后将 $(1,n-1,n)$ 这个三角形直接割掉,对剩下的 $n-1$ 边形继续做上述操作. 这样做的话,所有的方案就一定是 $(1,2,3),(1,3,4) \dots (1,n-1,n)$ 这样的形式了. 另一个做法是 $O(n^3)$ 的区间 $dp$ ? CF1140E Palindrome-less Arrays 任意位置都不能出现长度 $\geq 3$ 的奇回文串,其实也就等价于不出现长度为 $3$ 的回文串. 也就是说总有 $a_i\not=a_{i+2}$ .这样显然可以奇偶分开算,将两个序列各自的合法方案数目乘起来. 把奇(偶)数位置拿出来,就是要求相邻两个位置都不同的方案数. 把连续的一段 $-1$ 看成一块,考虑每一块 $(a,-1,-1,\dots,-1,b)$ 怎么算方案数.首尾可能会出现没有 $a,b$ 的情况,枚举第一个/最后一个元素,算中间的就可以了(其实这部分细节挺多的?).所以下面都假定 $a,b$ 存在. 每块的方案数只与 $-1$ 的个数 $x$ 以及 $a,b$ 是否相等有关.记 $f(x)$ 表示 $a\not =b$ 时的方案数, $g(x)$ 表示相等时. 若 $x$ 为奇,枚举最中间的元素,就有:$g(x)=g(x/2)^2+(k-1)f(x/2)^2,f(x)=2f(x/2)g(x/2) + (k-2)f(x/2)^2$ . 若 $x$ 为偶,枚举第一个元素即可将 $x$ 变为奇.$g(x)=(k-1)f(x-1),f(x)=g(x-1)+(k-2)f(x-1)$ . 边界显然有 $f(0)=1,g(0)=0$ . 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;inline int read()&#123; int out=0,fh=1; char jp=getchar(); while ((jp&gt;'9'||jp&lt;'0')&amp;&amp;jp!='-') jp=getchar(); if (jp=='-') fh=-1,jp=getchar(); while (jp&gt;='0'&amp;&amp;jp&lt;='9') out=out*10+jp-'0',jp=getchar(); return out*fh;&#125;const int P=998244353;inline int add(int a,int b)&#123; return (a + b) % P;&#125;inline int mul(int a,int b)&#123; return 1LL * a * b % P;&#125;const int MAXN=2e5+10;int k;int f[MAXN],g[MAXN];int F(int);int G(int);int calc(int l,int r,int *a,int n)&#123; if(r&gt;=n) &#123; int len=r-l-1,res=1; if(l&lt;0) --len,res=k; if(len==0) return res; int fx=F(len-1),gx=G(len-1); return mul(res,add(gx,mul(k-1,fx))); &#125; if(l&lt;0) &#123; if(r-l==1) return 1; int fx=F(r-l-2),gx=G(r-l-2); return add(gx,mul(k-1,fx)); &#125; return a[l]==a[r]?G(r-l-1):F(r-l-1);&#125;int solve(int *a,int n)&#123; int res=1,lst=-1; for(int i=0;i&lt;n;++i) &#123; if(a[i]==-1) continue; res=mul(res,calc(lst,i,a,n)); lst=i; &#125; res=mul(res,calc(lst,n,a,n)); return res;&#125;int n,a[MAXN],b[MAXN],siza,sizb;int main()&#123; n=read(); k=read(); for(int i=1;i&lt;=n;++i) &#123; f[i]=g[i]=-1; int x=read(); if(i&amp;1) a[siza++]=x; else b[sizb++]=x; &#125; int ans=1; ans=mul(ans,solve(a,siza)); if(ans) ans=mul(ans,solve(b,sizb)); cout&lt;&lt;ans&lt;&lt;endl; return 0;&#125;int F(int x)&#123; if(!x) return 1; if(f[x]!=-1) return f[x]; int &amp;res=f[x]; if(x&amp;1) &#123; res=mul(2,mul(F(x&gt;&gt;1),G(x&gt;&gt;1))); res=add(res,mul(k-2,mul(F(x&gt;&gt;1),F(x&gt;&gt;1)))); return res; &#125; else return res=add(G(x-1),mul(k-2,F(x-1))); &#125;int G(int x)&#123; if(!x) return 0; if(g[x]!=-1) return g[x]; int &amp;res=g[x]; if(x&amp;1) &#123; res=mul(G(x&gt;&gt;1),G(x&gt;&gt;1)); res=add(res,mul(k-1,mul(F(x&gt;&gt;1),F(x&gt;&gt;1)))); return res; &#125; else return res=mul(k-1,F(x-1));&#125; CF1140F Extending Set of Points 可以发现它的 $Extend$ 操作就是将每三个点加一个点补成一个矩形,直到每个可补的位置都有点为止.这里的三个点必须要有两个点的连线是平行于坐标轴的. 给每个 $x,y$ 坐标都建一个节点,加入 $(x,y)$ 就将对应的两个节点连起来,容易发现每个连通分量的贡献为不同的 $x$ 坐标个数乘上不同的 $y$ 坐标个数,此时的答案就是每个连通分量的贡献之和. 这个东西用个并查集维护,插入点很简单,删除点似乎不太好做?此时可以想到线段树分治,用线段树给每个点影响的时间区间 $(l,r)$ 打上对应的标记就好了. 打好标记,算答案的时候,递归到一个节点时,就让上面的所有标记生效,退出时再撤销就好了. 注意这里有撤销操作,需要避免路径压缩的使用.用按秩合并优化就可以了. 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;inline int read()&#123; int out=0,fh=1; char jp=getchar(); while ((jp&gt;'9'||jp&lt;'0')&amp;&amp;jp!='-') jp=getchar(); if (jp=='-') fh=-1,jp=getchar(); while (jp&gt;='0'&amp;&amp;jp&lt;='9') out=out*10+jp-'0',jp=getchar(); return out*fh;&#125;typedef pair&lt;int,int&gt; pii;const int MAXN=6e5+10;int siz[MAXN],sizx[MAXN],sizy[MAXN];#define tot(x) 1LL*sizx[x]*sizy[x]int fa[MAXN];int Find(int x)&#123; return x==fa[x]?x:Find(fa[x]);&#125;pii stk[MAXN];int tp=0;ll ans=0;void Merge(int x,int y)&#123; x=Find(x),y=Find(y); if(x==y) return; if(siz[x]&lt;siz[y]) swap(x,y); ans-=tot(x); ans-=tot(y); fa[y]=x; siz[x]+=siz[y],sizx[x]+=sizx[y],sizy[x]+=sizy[y]; ans+=tot(x); stk[++tp]=make_pair(x,y);&#125;void Split(int x,int y)&#123; ans-=tot(x); fa[y]=y; siz[x]-=siz[y],sizx[x]-=sizx[y],sizy[x]-=sizy[y]; ans+=tot(x); ans+=tot(y);&#125;int n;map&lt;pii,int&gt; mp;vector&lt;pii&gt; Tree[MAXN&lt;&lt;1];set&lt;pii&gt; s;#define root Tree[o]#define lson Tree[o&lt;&lt;1]#define rson Tree[o&lt;&lt;1|1]void modifiy(int o,int l,int r,int L,int R,pii c)&#123; if(l&gt;R || L&gt;r) return; if(L&lt;=l &amp;&amp; r&lt;=R) &#123; root.push_back(c); return; &#125; int mid=(l+r)&gt;&gt;1; if(L&lt;=mid) modifiy(o&lt;&lt;1,l,mid,L,R,c); if(R&gt;mid) modifiy(o&lt;&lt;1|1,mid+1,r,L,R,c);&#125;void solve(int o,int l,int r)&#123; int curt=tp; int sz=root.size(); for(int i=0;i&lt;sz;++i) Merge(root[i].first,root[i].second); if(l==r) printf("%I64d ",ans); else &#123; int mid=(l+r)&gt;&gt;1; solve(o&lt;&lt;1,l,mid); solve(o&lt;&lt;1|1,mid+1,r); &#125; while(tp&gt;curt) &#123; Split(stk[tp].first,stk[tp].second); --tp; &#125;&#125;int main()&#123; n=read(); for(int i=1;i&lt;=n;++i) &#123; int x=read(),y=read()+300001; fa[x]=x,siz[x]=1,sizx[x]=1; fa[y]=y,siz[y]=1,sizy[y]=1; pii k=make_pair(x,y); if(s.find(k)==s.end()) &#123; mp[k]=i; s.insert(k); &#125; else &#123; modifiy(1,1,n,mp[k],i-1,k); mp[k]=0; s.erase(k); &#125; &#125; set&lt;pii&gt;::iterator it; for(it=s.begin();it!=s.end();++it) &#123; pii k=*it; modifiy(1,1,n,mp[k],n,k); &#125; solve(1,1,n); return 0;&#125;]]></content>
       <tags>
         <tag>贪心</tag>
-        <tag>dp计数</tag>
         <tag>codeforces</tag>
+        <tag>dp计数</tag>
         <tag>并查集</tag>
         <tag>线段树分治</tag>
       </tags>
@@ -1846,10 +1857,10 @@
     <content type="text"><![CDATA[$Div.2$ CF1153B Serval and Toy Bricks 贪心+构造. 能放行 $\max$ 而不爆列 $\max$ 的位置都放行 $\max$ , 能放列 $\max$ 而不爆行 $\max$ 的位置都放列 $\max$ . 这样每个位置显然不会被定为两个不同的值.对于其他有而未放的位置直接都放 $1$ 就好了. 12345678910111213141516171819202122232425262728293031323334353637383940414243444546#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;inline int read()&#123; int out=0,fh=1; char jp=getchar(); while ((jp&gt;'9'||jp&lt;'0')&amp;&amp;jp!='-') jp=getchar(); if (jp=='-') fh=-1,jp=getchar(); while (jp&gt;='0'&amp;&amp;jp&lt;='9') out=out*10+jp-'0',jp=getchar(); return out*fh;&#125;const int MAXN=128;int n,m,H;int a[MAXN],b[MAXN];int c[MAXN][MAXN],h[MAXN][MAXN];int main()&#123; n=read(),m=read(),H=read(); for(int i=1;i&lt;=m;++i) a[i]=read(); for(int i=1;i&lt;=n;++i) b[i]=read(); for(int i=1;i&lt;=n;++i) for(int j=1;j&lt;=m;++j) h[i][j]=read(); for(int i=1;i&lt;=n;++i) &#123; for(int j=1;j&lt;=m;++j) &#123; if(h[i][j]) &#123; if(a[j]&lt;=b[i]) c[i][j]=a[j]; else c[i][j]=b[i]; &#125; printf("%d ",c[i][j]); &#125; puts(""); &#125; return 0;&#125; CF1153C Serval and Parenthesis Sequence 贪心+构造.显然可以将左括号,右括号的权值分别赋为 $1,-1$. 那么容易发现题中限制条件就是权值前缀和 $sum(n)=0,sum(i)&gt;0,\forall i&lt;n$. 将所有未确定的位置赋为 $1$ ,可以算出 $sum(n)=k$ ,需要将 $\frac k 2$ 个位置改为 $-1$. 从后往前贪心改,能改的位置就改.判一下不合法的情况, $k$ 为奇数,负数或不够改. 改完后再从前往后 $check$ 一次就可以了. 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758#include&lt;bits/stdc++.h&gt;#define GG return puts(":("),0;using namespace std;typedef long long ll;inline int read()&#123; int out=0,fh=1; char jp=getchar(); while ((jp&gt;'9'||jp&lt;'0')&amp;&amp;jp!='-') jp=getchar(); if (jp=='-') fh=-1,jp=getchar(); while (jp&gt;='0'&amp;&amp;jp&lt;='9') out=out*10+jp-'0',jp=getchar(); return out*fh;&#125;const int MAXN=3e5+10;int n;char buf[MAXN];int a[MAXN];int main()&#123; n=read(); scanf("%s",buf+1); int k=0,tot=0; for(int i=1;i&lt;=n;++i) &#123; if(buf[i]==')') --k,a[i]=-1; else if(buf[i]=='(') ++k,a[i]=1; else ++k,a[i]=1,++tot; &#125; if(k&lt;0 || k%2==1 || k/2&gt;tot) GG for(int i=n;i&gt;=1 &amp;&amp; k&gt;0;--i) &#123; if(buf[i]=='?') a[i]=-1,k-=2; &#125; int sum=0; for(int i=1;i&lt;n;++i) &#123; sum+=a[i]; if(sum&lt;=0) GG &#125; for(int i=1;i&lt;=n;++i) &#123; if(a[i]==1) putchar('('); else putchar(')'); &#125; puts(""); return 0;&#125; CF1153D Serval and Rooted Tree 树形 $dp$ .(一定思维难度?) 考虑一颗子树,若其中有 $p$ 个叶子节点,任意选择 $p$ 个互不相同的权值,经过最优排列后,这个根节点的权值的相对大小,即排名,一定是确定的,即与选择了哪些权值无关. 那么记 $f_i$ 表示给子树 $i$ 中的叶子节点最优赋值后,节点 $i$ 上的权值是这些叶子节点权值中的第 $f_i$ 大. 对于叶子节点 ,显然 $f_u=1$ . 若操作符为 $\min$ ,可以证明感性理解, $f_u=\sum f_v$ .若操作符为 $\max$ ,可以证明感性理解, $f_u=\min f_v$ ,其中 $v$ 为 $u$ 的儿子. 共有 $k$ 个叶子节点,最后答案即为 $k+1-f_1$ ,即全部可用的权值的第 $f_1$ 大. 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;inline int read()&#123; int out=0,fh=1; char jp=getchar(); while ((jp&gt;'9'||jp&lt;'0')&amp;&amp;jp!='-') jp=getchar(); if (jp=='-') fh=-1,jp=getchar(); while (jp&gt;='0'&amp;&amp;jp&lt;='9') out=out*10+jp-'0',jp=getchar(); return out*fh;&#125;const int MAXN=3e5+10;int head[MAXN],nx[MAXN],to[MAXN],ecnt=0;inline void addedge(int u,int v)&#123; ++ecnt; nx[ecnt]=head[u]; to[ecnt]=v; head[u]=ecnt;&#125;int n;int opt[MAXN],f[MAXN],outdeg[MAXN],k=0;void dfs(int u)&#123; if(!outdeg[u]) &#123; ++k; f[u]=1; return; &#125; if(opt[u]==1) f[u]=MAXN+1; for(int i=head[u];i;i=nx[i]) &#123; int v=to[i]; dfs(v); if(!opt[u]) f[u]+=f[v]; else f[u]=min(f[u],f[v]); &#125;&#125;int main()&#123; n=read(); for(int i=1;i&lt;=n;++i) opt[i]=read(); for(int i=2;i&lt;=n;++i) &#123; int fa=read(); addedge(fa,i); ++outdeg[fa]; &#125; dfs(1); cout&lt;&lt;k+1-f[1]&lt;&lt;endl; return 0;&#125; CF1153F Serval and Bonus Problem 概率/期望,计数, $dp$ . 随便在线段上钦定 $2n$ 个点,分割成 $2n+1$ 段区间,所以每段区间的期望长度就是 $\frac l {2n+1}$ .于是只需要再乘上一段区间至少被 $k$ 条线段覆盖的概率就好了. 设 $f(i,j)$ 表示考虑 $i$ 个端点,第 $i$ 个端点后面的区间恰好被 $j$ 条线段所覆盖的方案数.转移时枚举 $i$ 是作为左端点还是右端点, $O(n^2)$ 大力转移. 最后将所有合法方案数目求和,除以 $f(2n,0)$ 得到概率. 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;inline int read()&#123; int out=0,fh=1; char jp=getchar(); while ((jp&gt;'9'||jp&lt;'0')&amp;&amp;jp!='-') jp=getchar(); if (jp=='-') fh=-1,jp=getchar(); while (jp&gt;='0'&amp;&amp;jp&lt;='9') out=out*10+jp-'0',jp=getchar(); return out*fh;&#125;const int P=998244353;inline int add(int a,int b)&#123; return (a + b) % P;&#125;inline int mul(int a,int b)&#123; return 1LL * a * b % P;&#125;int fpow(int a,int b)&#123; int res=1; while(b) &#123; if(b&amp;1) res=mul(res,a); a=mul(a,a); b&gt;&gt;=1; &#125; return res;&#125;int inv(int x)&#123; return fpow(x,P-2);&#125;const int MAXN=2019&lt;&lt;1;int n,l,k;int fac[MAXN];int f[MAXN][MAXN];int main()&#123; n=read(),k=read(); l=read(); int perl=mul(l,inv(2*n+1)); fac[0]=1; for(int i=1;i&lt;=n;++i) fac[i]=mul(fac[i-1],i); f[0][0]=1; for(int i=0;i&lt;2*n;++i) &#123; for(int j=n&lt;i?n:i;j&gt;=0;--j) &#123; f[i+1][j+1]=add(f[i+1][j+1],f[i][j]); if(j) f[i+1][j-1]=add(f[i+1][j-1],mul(f[i][j],j)); &#125; &#125; int ans=0; for(int i=1;i&lt;2*n;++i) for(int j=k;j&lt;=n;++j) &#123; int tmp=mul(f[i][j],f[2*n-i][j]); tmp=mul(tmp,fac[j]); ans=add(ans,tmp); &#125; cout&lt;&lt;mul(ans,mul(perl,inv(f[2*n][0]))); return 0;&#125;]]></content>
       <tags>
         <tag>贪心</tag>
+        <tag>树形dp</tag>
+        <tag>codeforces</tag>
         <tag>dp计数</tag>
         <tag>构造</tag>
-        <tag>codeforces</tag>
-        <tag>树形dp</tag>
         <tag>概率/期望</tag>
       </tags>
   </entry>
