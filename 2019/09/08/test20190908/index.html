@@ -136,14 +136,18 @@
 
 
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="$T_3$ 貌似可以通过乱搞获得比较可观的分数.">
+<meta name="keywords" content="构造,test">
+<meta property="og:type" content="article">
 <meta property="og:title" content="test20190908">
 <meta property="og:url" content="http://yoursite.com/2019/09/08/test20190908/index.html">
 <meta property="og:site_name" content="JKLover">
+<meta property="og:description" content="$T_3$ 貌似可以通过乱搞获得比较可观的分数.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-08T04:33:39.635Z">
+<meta property="og:updated_time" content="2019-09-08T07:41:00.199Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="test20190908">
+<meta name="twitter:description" content="$T_3$ 貌似可以通过乱搞获得比较可观的分数.">
 
 
 
@@ -436,9 +440,13 @@
                 
               
 
-              <time title="Created: 2019-09-08 12:33:39" itemprop="dateCreated datePublished" datetime="2019-09-08T12:33:39+08:00">2019-09-08</time>
+              <time title="Created: 2019-09-08 12:33:39 / Modified: 15:41:00" itemprop="dateCreated datePublished" datetime="2019-09-08T12:33:39+08:00">2019-09-08</time>
             
 
+            
+              
+
+              
             
           </span>
 
@@ -478,7 +486,25 @@
       
 
       
-        <a id="more"></a>
+        <p>$T_3$ 貌似可以通过乱搞获得比较可观的分数.</p>
+<a id="more"></a>
+<h3 id="tom"><a href="#tom" class="headerlink" title="$tom$"></a>$tom$</h3><p>找一条边断开,分成两颗树,大小分别为 $a,b$ .</p>
+<p>对这两棵树内部分别构造权值,一棵树上权值正负性相同.</p>
+<p>只需要再保证被断掉的边原来连的两个点的权值为 $a,-b$ 即可,可以根据深度来安排权值.</p>
+<h3 id="jerry"><a href="#jerry" class="headerlink" title="$jerry$"></a>$jerry$</h3><p>左括号只有添在负号后面才有用.</p>
+<p>枚举第一个左括号在第 $i$ 个负号后面,再找到第 $i+1$ 个负号.</p>
+<p>则第 $i+1$ 个负号之后的数贡献都可以构造成它的绝对值,前面的贡献都是本身, $O(n)​$ 扫一遍即可.</p>
+<h3 id="speike"><a href="#speike" class="headerlink" title="$speike$"></a>$speike$</h3><p>坐标可以先离散化.</p>
+<p>记 $f(x,y)$ 表示 $(0,0)\to (x,y)$ 的最短路长度,显然不需要往左边走,所以按照 $x$ 递增的顺序求解.</p>
+<p>若没有障碍,一条水平路径上,有 $f(x,y)=f(x-1,y)+1$ .</p>
+<p>遇到障碍的左边界时,水平的路径为了绕过障碍，$f(x, y) = \min(f(x, y + 1), f(x, y − 1))$ .</p>
+<p>上面的讨论没有涉及到障碍的右边界,因此每一个矩形只需要保留左边界即可.</p>
+<p>初始只有 $f(0, 0) = 0$ .</p>
+<p>对于每个障碍 $(x_i, [l, r])$ ,我们找到所有 $l \le y \le r$的 $f(x, y)$ ,并用他们来更新 $f(x_i, l)$ 和 $f(x_i, r)$ .</p>
+<p>处理完所有的障碍后,用剩下的 $f(x, y)$ 更新 $f(X_t, 0)$ 即可得到答案.</p>
+<p>$f$ 可以用一个 $se$t 来保存,根据势能分析,这个 $set$ 的大小不会超过 $n$.</p>
+<p>时间复杂度为 $O(n \log n)$ .</p>
+
       
     </div>
 
@@ -498,6 +524,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/构造/" rel="tag"># 构造</a>
+          
+            <a href="/tags/test/" rel="tag"># test</a>
+          
+        </div>
       
 
       
@@ -568,8 +602,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -876,6 +919,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#tom"><span class="nav-number">1.</span> <span class="nav-text">$tom$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jerry"><span class="nav-number">2.</span> <span class="nav-text">$jerry$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#speike"><span class="nav-number">3.</span> <span class="nav-text">$speike$</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
