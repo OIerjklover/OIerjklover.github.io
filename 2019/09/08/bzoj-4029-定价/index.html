@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="贪心.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-08T12:57:10.157Z">
+<meta property="og:updated_time" content="2019-09-08T13:03:51.555Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bzoj 4029 定价">
 <meta name="twitter:description" content="贪心.">
@@ -440,7 +440,7 @@
                 
               
 
-              <time title="Created: 2019-09-08 20:35:58 / Modified: 20:57:10" itemprop="dateCreated datePublished" datetime="2019-09-08T20:35:58+08:00">2019-09-08</time>
+              <time title="Created: 2019-09-08 20:35:58 / Modified: 21:03:51" itemprop="dateCreated datePublished" datetime="2019-09-08T20:35:58+08:00">2019-09-08</time>
             
 
             
@@ -490,7 +490,7 @@
 <a id="more"></a>
 <p>乍一看像是数位 $dp$ ,仔细想一下其实只需要枚举每个数就可以了.</p>
 <p>暴力枚举定价为 $x$ ,每次用 $x$ 更新答案后,把 $x$ 最低的不为 $0$ 的那一位 $+1$ ,继续枚举,中间的显然都没有 $x$ 优.</p>
-<p>每一位最多被加 $10​$ 次,时间复杂度 $O(T\cdot 10\log R)​$ .</p>
+<p>每一位最多被加 $10$ 次,时间复杂度 $O(T\cdot 10\log^2 R)$ .</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> out=<span class="number">0</span>,fh=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> ((jp&gt;<span class="string">'9'</span>||jp&lt;<span class="string">'0'</span>)&amp;&amp;jp!=<span class="string">'-'</span>)</span><br><span class="line">		jp=getchar();</span><br><span class="line">	<span class="keyword">if</span> (jp==<span class="string">'-'</span>)</span><br><span class="line">		fh=<span class="number">-1</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> (jp&gt;=<span class="string">'0'</span>&amp;&amp;jp&lt;=<span class="string">'9'</span>)</span><br><span class="line">		out=out*<span class="number">10</span>+jp-<span class="string">'0'</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">return</span> out*fh;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf=<span class="number">1e9</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">calc</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(x%<span class="number">10</span>==<span class="number">0</span>)</span><br><span class="line">		x/=<span class="number">10</span>;</span><br><span class="line">	<span class="keyword">int</span> p=(x%<span class="number">10</span>==<span class="number">5</span>);</span><br><span class="line">	<span class="keyword">int</span> a=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(x)</span><br><span class="line">		x/=<span class="number">10</span>,++a;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">2</span>*a-p;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">nxt</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(x%<span class="number">10</span>==<span class="number">0</span>)</span><br><span class="line">		x/=<span class="number">10</span>,++cnt;</span><br><span class="line">	++x;</span><br><span class="line">	<span class="keyword">while</span>(cnt--)</span><br><span class="line">		x*=<span class="number">10</span>;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> T=read();</span><br><span class="line">	<span class="keyword">while</span>(T--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> L=read(),R=read();</span><br><span class="line">		<span class="keyword">int</span> mi=inf,ans,x=L;</span><br><span class="line">		<span class="keyword">while</span>(x&lt;=R)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> val=calc(x);</span><br><span class="line">			<span class="keyword">if</span>(val&lt;mi)</span><br><span class="line">				mi=val,ans=x;</span><br><span class="line">			x=nxt(x);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
@@ -538,8 +538,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/9102/07/16/NOI2019同步赛游记/" rel="prev" title="置顶-NOI2019同步赛游记">
-                置顶-NOI2019同步赛游记 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/09/10/bzoj-5368-真实排名/" rel="prev" title="bzoj 5368 真实排名">
+                bzoj 5368 真实排名 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -606,7 +606,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">202</span>
+                    <span class="site-state-item-count">204</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -835,7 +835,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">105</span>
+                      
+                    
+                    <span class="site-state-item-count">106</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
