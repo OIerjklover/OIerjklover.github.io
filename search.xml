@@ -13,17 +13,20 @@
     <url>%2F2019%2F09%2F10%2Ftest20190910%2F</url>
     <content type="text"><![CDATA[给题面点赞. $move$直接二分 + $hash$ . $cook$把反图建出来,跑一个最大字典序的拓扑序,再把这个序列反过来就是答案. $block$ 摘自原题的解题报告. 暴力来做的话,接口有 $12$ 个位置,状态数为$2^{12} = 4096$ . 这个状态维数显然不能矩阵乘法. 然后消掉所有等价的状态,即旋转,镜像,上下翻转. 比如 $100000000000$ 和 $000000000001$ 这两个的状态的 $dp$ 值,在每一轮都相等,不需要都存下来. 同样的,旋转,镜像,上下翻转都可以消除掉一些. 然后我们发现一些状态值一定是 $0$,比如接口有奇数个块的. 比如将所有块黑白染色,接口处黑色个数不等于白色个数的. 经过这些删除后,只剩下 $95$个状态. 然后直接矩阵乘法就可以了.]]></content>
       <tags>
+        <tag>矩阵优化</tag>
         <tag>拓扑排序</tag>
         <tag>hash</tag>
         <tag>状压dp</tag>
         <tag>test</tag>
-        <tag>矩阵快速幂</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[bzoj 5368 真实排名]]></title>
     <url>%2F2019%2F09%2F10%2Fbzoj-5368-%E7%9C%9F%E5%AE%9E%E6%8E%92%E5%90%8D%2F</url>
-    <content type="text"><![CDATA[]]></content>
+    <content type="text"><![CDATA[分类讨论 + 简单组合计数. 题目描述可以等价为变化之后,分数严格小于 $A_i$ 的人数不变. 分两种情况讨论. 情况一, $A_i$ 没有翻倍. 若其它的某个翻倍的分数原来是 $x$ ,为了使排名不变,必须满足 $2x&lt;A_i$ 或 $x\ge A_i$ . 排序后二分,找出这样的 $x$ 有 $p$ 个,那么这种情况的方案数就是 $p \choose k$ . 情况二, $A_i$ 翻倍. 为了使排名不变,其余 $A_i\le x&lt;2A_i​$ 的数也必须翻倍,另外的数可以随意选择. 排序后二分,找出这样的 $x$ 一共有 $q$ 个,若 $q&lt;k-1$ ,则方案数为 $0$ ,否则为 $n-q-1\choose k-q-1$ . 根据加法原理,把两种情况的方案数加在一起就是答案. 时间复杂度 $O(n\log n)$ . 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;inline int read()&#123; int out=0,fh=1; char jp=getchar(); while ((jp&gt;'9'||jp&lt;'0')&amp;&amp;jp!='-') jp=getchar(); if (jp=='-') fh=-1,jp=getchar(); while (jp&gt;='0'&amp;&amp;jp&lt;='9') out=out*10+jp-'0',jp=getchar(); return out*fh;&#125;const int P=998244353;int add(int a,int b)&#123; return (a+b&gt;=P)?(a+b-P):(a+b);&#125;int mul(int a,int b)&#123; return 1LL * a * b % P;&#125;int fpow(int a,int b)&#123; int res=1; while(b) &#123; if(b&amp;1) res=mul(res,a); a=mul(a,a); b&gt;&gt;=1; &#125; return res;&#125;const int MAXN=1e5+10;int n,k,fac[MAXN],invfac[MAXN];void init_fac()&#123; fac[0]=1; for(int i=1;i&lt;=n;++i) fac[i]=mul(fac[i-1],i); invfac[n]=fpow(fac[n],P-2); for(int i=n-1;i&gt;=0;--i) invfac[i]=mul(invfac[i+1],i+1);&#125;int C(int M,int N)&#123; if(M&lt;0 || N&lt;0 || M&lt;N) return 0; return mul(fac[M],mul(invfac[M-N],invfac[N]));&#125;int A[MAXN],a[MAXN],ans[MAXN];int Binary_Search(int val)&#123; int L=1,R=n,res=0; while(L&lt;=R) &#123; int mid=(L+R)&gt;&gt;1; if(A[mid]&lt;=val) res=mid,L=mid+1; else R=mid-1; &#125; return res;&#125;int calc(int L,int R)//L&lt;=x&lt;=R&#123; if(L&gt;R) return 0; return Binary_Search(R)-Binary_Search(L-1);&#125;void solve()&#123; for(int i=1;i&lt;=n;++i) &#123; int val=A[i]; int p=calc(A[1],(val+1)/2-1)+calc(val,A[n])-1; int q; if(val&lt;=2*val-1) q=calc(val,2*val-1)-1; else q=0; ans[i]=add(C(p,k),C(n-q-1,k-q-1)); &#125;&#125;int main()&#123; n=read(),k=read(); init_fac(); for(int i=1;i&lt;=n;++i) A[i]=a[i]=read(); sort(A+1,A+1+n); solve(); for(int i=1;i&lt;=n;++i) &#123; int pos=lower_bound(A+1,A+1+n,a[i])-A; printf("%d\n",ans[pos]); &#125; return 0;&#125;]]></content>
+      <tags>
+        <tag>STL</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[bzoj 4029 定价]]></title>

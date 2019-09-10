@@ -136,14 +136,18 @@
 
 
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="分类讨论 + 简单组合计数.">
+<meta name="keywords" content="STL">
+<meta property="og:type" content="article">
 <meta property="og:title" content="bzoj 5368 真实排名">
 <meta property="og:url" content="http://yoursite.com/2019/09/10/bzoj-5368-真实排名/index.html">
 <meta property="og:site_name" content="JKLover">
+<meta property="og:description" content="分类讨论 + 简单组合计数.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-10T00:01:47.652Z">
+<meta property="og:updated_time" content="2019-09-10T10:25:32.026Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bzoj 5368 真实排名">
+<meta name="twitter:description" content="分类讨论 + 简单组合计数.">
 
 
 
@@ -436,9 +440,13 @@
                 
               
 
-              <time title="Created: 2019-09-10 08:01:47" itemprop="dateCreated datePublished" datetime="2019-09-10T08:01:47+08:00">2019-09-10</time>
+              <time title="Created: 2019-09-10 08:01:47 / Modified: 18:25:32" itemprop="dateCreated datePublished" datetime="2019-09-10T08:01:47+08:00">2019-09-10</time>
             
 
+            
+              
+
+              
             
           </span>
 
@@ -478,7 +486,23 @@
       
 
       
-        <a id="more"></a>
+        <p>分类讨论 + 简单组合计数.</p>
+<a id="more"></a>
+<p>题目描述可以等价为变化之后,分数严格小于 $A_i$ 的人数不变.</p>
+<p>分两种情况讨论.</p>
+<hr>
+<p>情况一, $A_i$ 没有翻倍.</p>
+<p>若其它的某个翻倍的分数原来是 $x$ ,为了使排名不变,必须满足 $2x&lt;A_i$ 或 $x\ge A_i$ .</p>
+<p>排序后二分,找出这样的 $x$ 有 $p$ 个,那么这种情况的方案数就是 $p \choose k$ .</p>
+<hr>
+<p>情况二, $A_i$ 翻倍.</p>
+<p>为了使排名不变,其余 $A_i\le x&lt;2A_i​$ 的数也必须翻倍,另外的数可以随意选择.</p>
+<p>排序后二分,找出这样的 $x$ 一共有 $q$ 个,若 $q&lt;k-1$ ,则方案数为 $0$ ,否则为 $n-q-1\choose k-q-1$ .</p>
+<hr>
+<p>根据加法原理,把两种情况的方案数加在一起就是答案.</p>
+<p>时间复杂度 $O(n\log n)$ .</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> out=<span class="number">0</span>,fh=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> ((jp&gt;<span class="string">'9'</span>||jp&lt;<span class="string">'0'</span>)&amp;&amp;jp!=<span class="string">'-'</span>)</span><br><span class="line">		jp=getchar();</span><br><span class="line">	<span class="keyword">if</span> (jp==<span class="string">'-'</span>)</span><br><span class="line">		fh=<span class="number">-1</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> (jp&gt;=<span class="string">'0'</span>&amp;&amp;jp&lt;=<span class="string">'9'</span>)</span><br><span class="line">		out=out*<span class="number">10</span>+jp-<span class="string">'0'</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">return</span> out*fh;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> P=<span class="number">998244353</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (a+b&gt;=P)?(a+b-P):(a+b);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mul</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1L</span>L * a * b % P;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fpow</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> res=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>)</span><br><span class="line">			res=mul(res,a);</span><br><span class="line">		a=mul(a,a);</span><br><span class="line">		b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> n,k,fac[MAXN],invfac[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init_fac</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	fac[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">		fac[i]=mul(fac[i<span class="number">-1</span>],i);</span><br><span class="line">	invfac[n]=fpow(fac[n],P<span class="number">-2</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=n<span class="number">-1</span>;i&gt;=<span class="number">0</span>;--i)</span><br><span class="line">		invfac[i]=mul(invfac[i+<span class="number">1</span>],i+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">C</span><span class="params">(<span class="keyword">int</span> M,<span class="keyword">int</span> N)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(M&lt;<span class="number">0</span> || N&lt;<span class="number">0</span> || M&lt;N)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">return</span> mul(fac[M],mul(invfac[M-N],invfac[N]));</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> A[MAXN],a[MAXN],ans[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Binary_Search</span><span class="params">(<span class="keyword">int</span> val)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> L=<span class="number">1</span>,R=n,res=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(L&lt;=R)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> mid=(L+R)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(A[mid]&lt;=val)</span><br><span class="line">			res=mid,L=mid+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			R=mid<span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">calc</span><span class="params">(<span class="keyword">int</span> L,<span class="keyword">int</span> R)</span><span class="comment">//L&lt;=x&lt;=R</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(L&gt;R)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">return</span> Binary_Search(R)-Binary_Search(L<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> val=A[i];</span><br><span class="line">		<span class="keyword">int</span> p=calc(A[<span class="number">1</span>],(val+<span class="number">1</span>)/<span class="number">2</span><span class="number">-1</span>)+calc(val,A[n])<span class="number">-1</span>;</span><br><span class="line">		<span class="keyword">int</span> q;</span><br><span class="line">		<span class="keyword">if</span>(val&lt;=<span class="number">2</span>*val<span class="number">-1</span>)</span><br><span class="line">			q=calc(val,<span class="number">2</span>*val<span class="number">-1</span>)<span class="number">-1</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			q=<span class="number">0</span>;</span><br><span class="line">		ans[i]=add(C(p,k),C(n-q<span class="number">-1</span>,k-q<span class="number">-1</span>));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	n=read(),k=read();</span><br><span class="line">	init_fac();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">		A[i]=a[i]=read();</span><br><span class="line">	sort(A+<span class="number">1</span>,A+<span class="number">1</span>+n);</span><br><span class="line">	solve();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> pos=lower_bound(A+<span class="number">1</span>,A+<span class="number">1</span>+n,a[i])-A;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans[pos]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -498,6 +522,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/STL/" rel="tag"># STL</a>
+          
+        </div>
       
 
       
@@ -817,7 +847,7 @@
                     
                       
                     
-                    <span class="site-state-item-count">106</span>
+                    <span class="site-state-item-count">105</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
