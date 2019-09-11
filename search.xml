@@ -9,6 +9,14 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[test20190911pm]]></title>
+    <url>%2F2019%2F09%2F11%2Ftest20190911pm%2F</url>
+    <content type="text"><![CDATA[$T_3$ 打了 $\mbox{5kb}$ ,前前后后打了 $7$ 个错误版本,还都过了大样例. $string$显然,答案与操作顺序无关,直接把所有 $a$ 移到最前面,这样 $b$ 的个数会翻倍,记录一下 $b$ 的数目即可. $number$直接数位 $dp$ ,注意特判 $k=0,1$ 的情况. $city$先跑一次 $dfs$ ,把环上所有点依次存下来. 考虑用环上的点把所有点分成若干块,每个点属于离它最近的环上的点. 答案分为两种情况,一种情况是两个端点在同一块,这部分贡献就是若干棵子树的直径最大值,仍然用 $dfs$ 求出. 另一种情况是两个端点在不同块,显然要经过环上点. 对环上的第 $i$ 个点,记录 $d(i)$ 表示这个点到它的那一块中的点距离最大值. 枚举断掉环上的哪一条边,环变成一条链,可以钦定一个起点,记 $H(i)$ 表示此时起点到环上第 $i$ 个点的路径长度. 如果此时选择了环上的第 $x,y$ 个点来更新答案,贡献就是 $d(y)+H(y)+d(x)-H(x)$ ,且必须 $x\not= y$ . 用线段树维护一下 $d+H,d-H$ 的最大值,最大值取到的位置 ,次大值,就可以计算出断掉某一条边的贡献. 当断边切换时,所有 $H$ 都会同时减少一个值,原的端点的 $H$ 又加上所有环上边的长度,利用线段树可以维护. 时间复杂度 $O(n\log n)$ .]]></content>
+      <tags>
+        <tag>test</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[test20190911]]></title>
     <url>%2F2019%2F09%2F11%2Ftest20190911%2F</url>
     <content type="text"><![CDATA[$\mbox{difficulty gap}$ 稍微有点大. $tree$树形 $dp$ 入门. 设 $f(u)$ 表示仅操作子树 $u$ 内的点,能获得的最大收益,转移时讨论删不删 $u$ 即可,时间复杂度 $O(n)$ . $xor$$x\mbox{ xor }2x=3x$ ,将 $\mbox{xor}$ 理解为二进制下不进位的加法. 注意到 $x+2x=3x$ ,可以得出, $x$ 与 $2x$ 在二进制下没有某一位都为 $1$ . 而 $2x$ 在二进制下可以视作 $x$ 所有数位左移了一位,于是限制等价于 $x$ 没有两位连续的 $1$ . 做一做数位 $dp$ 求出答案,注意减掉 $x=0$ 的情况. $equ$标准型线性规划,约束数目很少,但变量个数很多. 转成它的对偶线性规划,就变成了 $2$ 个变量和很多约束的线性规划. 写一个半平面交来处理.]]></content>
@@ -157,8 +165,8 @@
     <content type="text"><![CDATA[$Div.1+Div.2$ A Optimal Currency Exchange第一种货币只有面值 $1$ 有用,第二种货币只有面值 $5$ 有用. 枚举换了多少个第二种货币,时间复杂度 $O(\frac n {5e})$ . B Badges读懂题后就是两个不等式,手动解一下. C Bad Sequence第一次遇到不合法的 $-1$ 时,将它忽略,最后再放回去,看能否合法. D Treasure Island显然答案 $\le 2$ ,因为我们可以去掉与出发点相邻的两个点. 于是只需要判断 $0$ 与 $1$ 是否合法. $0$ 就是判断起点能否到终点. $1$ 就是判断是否存在一个点 $x$ ,使得每条从起点到终点的路径都经过 $x$ . 设 $f(x),g(x)$ 分别表示起点到 $x$ 的路径数, $x$ 到终点的路径数,判断是否有 $f(x)\cdot g(x)$ 等于 起点到终点的路径数. E Petya and Construction Set可以假定 $d_i$ 是从大到小排好序的,否则可以先排序. 建出一条链,链上节点依次为 $1,3,5,\dots,2i-1$ . 然后再将偶数编号的节点 $2i$ 依次挂上去,找到链上的第 $i+d_i-1$ 个节点,将 $2i$ 挂在它的旁边即可. 因为 $d_i$ 是从大到小排好序的,且 $d_i\le n$ ,所以这样做总能构造出合法解. F Employment待更. G Feeling Good待更. H Tiles Placement待更.]]></content>
       <tags>
         <tag>贪心</tag>
-        <tag>构造</tag>
         <tag>codeforces</tag>
+        <tag>构造</tag>
       </tags>
   </entry>
   <entry>
@@ -597,8 +605,8 @@
     <content type="text"><![CDATA[$dfs$ + 堆,求第 $k$ 优解. 首先去求第 $k$ 小的子集权值 $val$ ,先将元素权值从小到大排序. 每个子集可以用一个二元组 $(i,j)$ 表示权值为 $i$ ,最大的元素编号为 $j$ . 将它加入优先队列,一个二元组 $(i,j)$ 可以得到 $(i-a_j+a_{j+1},j+1)$ 与 $(i+a_{j+1},j+1)$ . 前者表示不选 $j$ 了,后者表示保留 $j$ .第 $k$ 次取出二元组时对应的权值就是第 $k$ 小的子集权值. 然后要求第 $k$ 小的具体方案,直接 $dfs$ 爆搜,但要保证权值不超过 $val$ . 每次找后面第一个数,使得加入后权值仍不超过 $val$ ,用线段树来找这个数,第 $k$ 次时集合中的数就是答案. 注意除掉空集的贡献. 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;inline int read()&#123; int out=0,fh=1; char jp=getchar(); while ((jp&gt;'9'||jp&lt;'0')&amp;&amp;jp!='-') jp=getchar(); if (jp=='-') fh=-1,jp=getchar(); while (jp&gt;='0'&amp;&amp;jp&lt;='9') out=out*10+jp-'0',jp=getchar(); return out*fh;&#125;const int MAXN=1e6+10;int n,k,a[MAXN],b[MAXN],cnt=0;ll ans[MAXN];typedef pair&lt;ll,int&gt; pli;#define mp make_pairpriority_queue&lt;pli&gt; q;void Find_kth()&#123; sort(b+1,b+1+n); q.push(mp(-b[1],1)); for(int t=1;t&lt;=k;++t) &#123; pli tmp=q.top(); ll i=-tmp.first; int j=tmp.second; q.pop(); ans[t]=i; if(t&lt;k &amp;&amp; j&lt;n) &#123; q.push(mp(-i+b[j]-b[j+1],j+1)); q.push(mp(-i-b[j+1],j+1)); &#125; &#125; for(int i=k;i &amp;&amp; ans[i]==ans[k];--i) ++cnt; printf("%lld\n",ans[k]);&#125;struct SegTree&#123; int Tree[MAXN&lt;&lt;2];#define root Tree[o]#define lson Tree[o&lt;&lt;1]#define rson Tree[o&lt;&lt;1|1] void pushup(int o) &#123; root=min(lson,rson); &#125; void BuildTree(int o,int l,int r) &#123; if(l==r) return (void)(root=a[l]); int mid=(l+r)&gt;&gt;1; BuildTree(o&lt;&lt;1,l,mid); BuildTree(o&lt;&lt;1|1,mid+1,r); pushup(o); &#125; int query(int o,int l,int r,int p,ll v)//位置p之后第一个小于等于v的 &#123; if(p&lt;=l) &#123; if(root&gt;v) return 0; if(l==r) return l; &#125; int mid=(l+r)&gt;&gt;1; if(p&lt;=mid) &#123; int res=query(o&lt;&lt;1,l,mid,p,v); if(res) return res; &#125; return query(o&lt;&lt;1|1,mid+1,r,p,v); &#125;&#125;T;int stk[MAXN],tp=0;void dfs(int p,ll tmp)&#123; if(!cnt) return; if(!tmp) &#123; --cnt; if(!cnt) for(int i=1;i&lt;=tp;++i) printf("%d" ,stk[i]); return; &#125; for(int i=p+1;i&lt;=n;++i) &#123; i=T.query(1,1,n,i,tmp); if(i) &#123; stk[++tp]=i; dfs(i,tmp-a[i]); --tp; &#125; else break; &#125;&#125;void Construct_kth()&#123; T.BuildTree(1,1,n); dfs(0,ans[k]);&#125;int main()&#123; n=read(),k=read()-1; if(!k) return puts("0")&amp;0; for(int i=1;i&lt;=n;++i) a[i]=b[i]=read(); Find_kth(); Construct_kth(); return 0;&#125;]]></content>
       <tags>
         <tag>线段树</tag>
-        <tag>暴力</tag>
         <tag>STL</tag>
+        <tag>暴力</tag>
       </tags>
   </entry>
   <entry>
@@ -931,8 +939,8 @@
       <tags>
         <tag>贪心</tag>
         <tag>数学</tag>
-        <tag>构造</tag>
         <tag>codeforces</tag>
+        <tag>构造</tag>
         <tag>two pointer</tag>
       </tags>
   </entry>
@@ -1304,8 +1312,8 @@
     <content type="text"><![CDATA[$Div.2$ 官方题解 A Nauuo and Votes 签到题. B Nauuo and Chess 构造题. 可以将所有数沿着第一列与最后一行放成一个 $L$ 形.容易验证一定是合法的. 这样构造, $m=\lfloor \frac n 2 \rfloor+1$ .而考虑首尾两个位置,有$$|r_1-r_n|+|c_1-c_n|\geq n-1$$ 而 $|r_1-r_n|\leq m-1,|c_1-c_n|\leq m-1$ ,所以 $2m-2\geq n-1$ , $m$ 为整数,可得到 $m\geq \lfloor \frac n 2 \rfloor+1$ . 所以这样构造一定是一个最优解. C Nauuo and Cards 策略是如果能不打 $0$ 直接完成,就直接完成,否则先打若干 $0$ ,然后再也不打 $0$ . 考虑如果已经打了若干 $0$ ,开始一直打数字牌,那么此时 $1$ 必定在手中, $2$ 必定在手中或在牌堆的第 $1$ 个位置(打了 $1$ 就会被摸到手中), $3$ 必定在手中或在第 $2$ 个位置,以此类推. 如果有一些牌的位置不合要求,那么我们需要先打空白牌来将他们加入到手中或是放到正确的位置. 在手中可以看做位置 $0$ ,记 $p_i$ 为 $i$ 的初始位置,那么答案就是 $n+\max\limits_{i=1}^n (p_i-i+1)$ . $n$ 是因为要连续打出 $1\sim n$ 这些牌,后面的部分是将 $p_i$ 调整到 $i-1$ 所需打出的 $0$ 的数目. 123456789101112131415161718192021222324252627282930313233343536373839404142434445#include&lt;bits/stdc++.h&gt;using namespace std;typedef long long ll;inline int read()&#123; int out=0,fh=1; char jp=getchar(); while ((jp&gt;'9'||jp&lt;'0')&amp;&amp;jp!='-') jp=getchar(); if (jp=='-') fh=-1,jp=getchar(); while (jp&gt;='0'&amp;&amp;jp&lt;='9') out=out*10+jp-'0',jp=getchar(); return out*fh;&#125;const int MAXN=2e5+10;int n,a[MAXN],b[MAXN],p[MAXN];int main()&#123; n=read(); for(int i=1;i&lt;=n;++i) a[i]=read(); for(int i=1;i&lt;=n;++i) p[b[i]=read()]=i; if(p[1]) &#123; int x; for(x=2;p[x]==p[1]+x-1;++x); if(p[x-1]==n) &#123; int y; for(y=x;y&lt;=n &amp;&amp; p[y]&lt;=y-x;++y); if(y&gt;n) &#123; cout&lt;&lt;n-x+1&lt;&lt;endl; return 0; &#125; &#125; &#125; int ans=0; for(int i=1;i&lt;=n;++i) ans=max(ans,p[i]-i+1); cout&lt;&lt;ans+n&lt;&lt;endl; return 0;&#125; D Nauuo and Circle $dp$ 计数. 考虑 $dp$ ,设 $f_u$ 表示子树 $u$ 的方案数,先钦定根节点为 $1$ ,最后答案就是 $n\cdot f_1$ . 画子树时,先要给所有儿子,若不为根,还有自己排序,转移有 $f_u=(|son_u|+[u==1])!\cdot \prod\limits_{v \in son_u}f_v$ . 把 $dp$ 的式子展开,可以发现答案就是 $n\cdot \prod\limits _{i=1}^n deg_i$ , $deg$ 表示度数. 待续…]]></content>
       <tags>
         <tag>树形dp</tag>
-        <tag>构造</tag>
         <tag>codeforces</tag>
+        <tag>构造</tag>
         <tag>dp计数</tag>
       </tags>
   </entry>
@@ -1457,8 +1465,8 @@
     <content type="text"><![CDATA[感觉 $T3$ 很假. $tweak$ 题面有误.题意是每次可以选一条边,权值修改为任意非负整数,问至少改多少条可以使 $1\to n$ 的最短路 $\leq c$ . 显然可以贪心,每次修改时都改成 $0$ .设 $f(i,j)$ 表示 $1\to i$ ,改了 $j$ 条边时的最短路.用 $spfa$ 转移即可. 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384#include&lt;bits/stdc++.h&gt;using namespace std;inline int read()&#123; int x=0,k=1; char ch=getchar(); while(ch&lt;'0'||ch&gt;'9') &#123;if(ch=='-') k=-1;ch=getchar();&#125; while(ch&gt;='0'&amp;&amp;ch&lt;='9') &#123;x=(x&lt;&lt;3)+(x&lt;&lt;1)+ch-'0';ch=getchar();&#125; return k*x;&#125;const int MAXN=1e3+10;int ecnt=0,head[MAXN],to[MAXN],nx[MAXN],val[MAXN];inline void addedge(int u,int v,int w)&#123; ++ecnt; to[ecnt]=v; nx[ecnt]=head[u]; val[ecnt]=w; head[u]=ecnt;&#125;int n,m,c;int f[MAXN][MAXN],tot=0;int vis[MAXN];queue&lt;int&gt; q;void spfa()&#123; memset(f,63,sizeof f); int inf=f[0][0]; f[1][0]=0; vis[1]=1; q.push(1); while(!q.empty()) &#123; int u=q.front(); q.pop(); vis[u]=0; for(int i=head[u];i;i=nx[i]) &#123; int v=to[i]; bool flag=false; for(int j=0;j&lt;=m;++j) &#123; if(f[u][j]&gt;=inf) break; if(f[u][j]&lt;=f[v][j+1]) &#123; f[v][j+1]=f[u][j]; &#125; if(f[u][j]+val[i]&lt;=f[v][j]) &#123; f[v][j]=f[u][j]+val[i]; if(!j) flag=true; &#125; &#125; if(flag &amp;&amp; !vis[v]) &#123; vis[v]=1; q.push(v); &#125; &#125; &#125;&#125;int main()&#123; freopen("tweak.in","r",stdin); freopen("tweak.out","w",stdout); n=read(),m=read(),c=read(); for(int i=1;i&lt;=m;++i) &#123; int u=read(),v=read(),w=read(); addedge(u,v,w); &#125; spfa(); for(int i=0;i&lt;=m;++i) if(f[n][i]&lt;=c) &#123; cout&lt;&lt;i&lt;&lt;endl; return 0; &#125; return 0;&#125; $coins$ 把每个硬币看做多项式 $(x^{a_i}+1)$ ,如果每个硬币都可以用,方案数就是 $\prod (x^{a_i}+1)$ 这个多项式中系数非零的 $x^k(k&gt;0)$ 的个数. 限定某个硬币 $i$ 不能用,只需要在多项式 $\prod (x^{a_i}+1)$ 中把 $(x^{a_i}+1)$ 除去,然后统计答案. 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162#include&lt;bits/stdc++.h&gt;using namespace std;#define ll long longinline int read()&#123; int x=0,k=1; char ch=getchar(); while(ch&lt;'0'||ch&gt;'9') &#123;if(ch=='-') k=-1;ch=getchar();&#125; while(ch&gt;='0'&amp;&amp;ch&lt;='9') &#123;x=(x&lt;&lt;3)+(x&lt;&lt;1)+ch-'0';ch=getchar();&#125; return k*x;&#125;int n,a[101];const int MAXN=3e5+10;ll poly[MAXN],tmp[MAXN];ll stk[MAXN],sk[MAXN];int deg=0,tp=0;int query(int p)&#123; tp=0; int Deg=deg,res=0; while(Deg) &#123; ll s=poly[Deg]; if(!s) &#123; --Deg; continue; &#125; if(!tmp[Deg-p] &amp;&amp; Deg-p) ++res; tmp[Deg-p]+=s; stk[++tp]=Deg-p; poly[Deg-p]-=s; sk[tp]=s; --Deg; &#125; for(int i=1;i&lt;=tp;++i) &#123; tmp[stk[i]]=0; poly[stk[i]]+=sk[i]; &#125; return res;&#125;int main()&#123; freopen("coin.in","r",stdin); freopen("coin.out","w",stdout); n=read(); poly[0]=1; for(int i=1;i&lt;=n;++i) &#123; a[i]=read(); for(int j=deg;j&gt;=0;--j) poly[a[i]+j]+=poly[j]; deg+=a[i]; &#125; for(int i=1;i&lt;=n;++i) printf("%d\n",query(a[i])); return 0;&#125; $cakes$ $std:$ 维护一个堆,存储每种大小的元素数目.每次取出顶部三个,做最多的三元组,把剩余的放回去. 并不知道我的贪心哪里出了问题.]]></content>
       <tags>
         <tag>数学</tag>
-        <tag>最短路</tag>
         <tag>STL</tag>
+        <tag>最短路</tag>
       </tags>
   </entry>
   <entry>
@@ -1733,13 +1741,13 @@
       <tags>
         <tag>贪心</tag>
         <tag>线段树</tag>
-        <tag>构造</tag>
         <tag>codeforces</tag>
+        <tag>构造</tag>
         <tag>博弈论</tag>
         <tag>状压dp</tag>
         <tag>dfs序</tag>
-        <tag>最小生成树</tag>
         <tag>自动机dp</tag>
+        <tag>最小生成树</tag>
       </tags>
   </entry>
   <entry>
@@ -1798,9 +1806,9 @@
         <tag>平衡树</tag>
         <tag>dp计数</tag>
         <tag>矩阵优化</tag>
-        <tag>差分</tag>
         <tag>位运算</tag>
         <tag>最短路</tag>
+        <tag>差分</tag>
         <tag>SAM</tag>
         <tag>容斥原理</tag>
         <tag>数位dp</tag>
@@ -1814,10 +1822,10 @@
         <tag>贪心</tag>
         <tag>二分</tag>
         <tag>线段树</tag>
-        <tag>DAG</tag>
         <tag>codeforces</tag>
         <tag>kmp</tag>
         <tag>tarjan</tag>
+        <tag>DAG</tag>
         <tag>非传统题</tag>
         <tag>floyd判圈</tag>
         <tag>树链剖分</tag>
@@ -1863,8 +1871,8 @@
       <tags>
         <tag>贪心</tag>
         <tag>二分</tag>
-        <tag>构造</tag>
         <tag>codeforces</tag>
+        <tag>构造</tag>
         <tag>概率/期望</tag>
         <tag>矩阵优化</tag>
       </tags>
@@ -1878,9 +1886,9 @@
         <tag>树链剖分</tag>
         <tag>dp计数</tag>
         <tag>矩阵优化</tag>
-        <tag>差分</tag>
         <tag>位运算</tag>
         <tag>最短路</tag>
+        <tag>差分</tag>
         <tag>kdtree</tag>
         <tag>单调栈</tag>
         <tag>棋牌</tag>
@@ -1945,8 +1953,8 @@
       <tags>
         <tag>贪心</tag>
         <tag>树形dp</tag>
-        <tag>构造</tag>
         <tag>codeforces</tag>
+        <tag>构造</tag>
         <tag>dp计数</tag>
         <tag>概率/期望</tag>
       </tags>
