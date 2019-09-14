@@ -136,14 +136,18 @@
 
 
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="分块被卡成暴力.">
+<meta name="keywords" content="线段树,概率&#x2F;期望,最短路,test">
+<meta property="og:type" content="article">
 <meta property="og:title" content="test20190912">
 <meta property="og:url" content="http://yoursite.com/2019/09/12/test20190912/index.html">
 <meta property="og:site_name" content="JKLover">
+<meta property="og:description" content="分块被卡成暴力.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-14T11:10:31.365Z">
+<meta property="og:updated_time" content="2019-09-14T23:42:45.117Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="test20190912">
+<meta name="twitter:description" content="分块被卡成暴力.">
 
 
 
@@ -453,7 +457,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-09-14 19:10:31" itemprop="dateModified" datetime="2019-09-14T19:10:31+08:00">2019-09-14</time>
+                <time title="Modified: 2019-09-15 07:42:45" itemprop="dateModified" datetime="2019-09-15T07:42:45+08:00">2019-09-15</time>
               
             
           </span>
@@ -494,7 +498,21 @@
       
 
       
-        <a id="more"></a>
+        <p>分块被卡成暴力.</p>
+<a id="more"></a>
+<h3 id="road"><a href="#road" class="headerlink" title="$road$"></a>$road$</h3><p>预处理出 $S$ 到每个点的距离, $T$ 到每个点的距离.</p>
+<p>加入一条边 $(u,v)$ 后,可能产生的路径是 $S\to u\to v\to T$ 和 $S\to v\to u\to T$ ,判断一下长度是否减小即可.</p>
+<h3 id="multiset"><a href="#multiset" class="headerlink" title="$multiset$"></a>$multiset$</h3><p>考虑对于所有 $x$ 相同的情况,相当于每次修改一段区间,若为 $0$ ,则 $+1$ ,否则 $\times 2$ .</p>
+<p>用两棵线段树,一棵维护答案,另一颗维护每个位置是否为 $0$ .</p>
+<p>修改时对状态相同的连续段一起操作,每次操作最多增加 $2$ 个连续段,操作次数仍为 $O(n)$ .</p>
+<hr>
+<p>如果有很多种 $x$ ,就给每个 $x$ 开两棵线段树,利用动态开点进行处理.</p>
+<h3 id="tree"><a href="#tree" class="headerlink" title="$tree$"></a>$tree$</h3><p>考虑链的部分,可以设 $f(i,j)$ 表示根节点的标号被继承到 $i$ , $i$ 的子树还有 $j$ 条边时,最后留下根节点标号的概率.</p>
+<p>转移时分类讨论一下删掉哪条边以及被留下的标号.</p>
+<hr>
+<p>从链上拓展到树上,只需要考虑如何合并两个子树的 $dp$ 值.</p>
+<p>其实只要再乘上两个组合数表示删边的顺序就可以了.</p>
+
       
     </div>
 
@@ -514,6 +532,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/线段树/" rel="tag"># 线段树</a>
+          
+            <a href="/tags/概率-期望/" rel="tag"># 概率/期望</a>
+          
+            <a href="/tags/最短路/" rel="tag"># 最短路</a>
+          
+            <a href="/tags/test/" rel="tag"># test</a>
+          
+        </div>
       
 
       
@@ -584,8 +614,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -896,6 +935,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#road"><span class="nav-number">1.</span> <span class="nav-text">$road$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multiset"><span class="nav-number">2.</span> <span class="nav-text">$multiset$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tree"><span class="nav-number">3.</span> <span class="nav-text">$tree$</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
