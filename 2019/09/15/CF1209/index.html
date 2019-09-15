@@ -137,14 +137,14 @@
 
 
   <meta name="description" content="$Div.1+Div.2$">
-<meta name="keywords" content="贪心,codeforces">
+<meta name="keywords" content="贪心,codeforces,状压dp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CF1209">
 <meta property="og:url" content="http://yoursite.com/2019/09/15/CF1209/index.html">
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="$Div.1+Div.2$">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-14T23:55:33.003Z">
+<meta property="og:updated_time" content="2019-09-15T08:41:15.350Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CF1209">
 <meta name="twitter:description" content="$Div.1+Div.2$">
@@ -440,7 +440,7 @@
                 
               
 
-              <time title="Created: 2019-09-15 07:48:19 / Modified: 07:55:33" itemprop="dateCreated datePublished" datetime="2019-09-15T07:48:19+08:00">2019-09-15</time>
+              <time title="Created: 2019-09-15 07:48:19 / Modified: 16:41:15" itemprop="dateCreated datePublished" datetime="2019-09-15T07:48:19+08:00">2019-09-15</time>
             
 
             
@@ -490,7 +490,11 @@
 <a id="more"></a>
 <h3 id="A-Paint-the-Numbers"><a href="#A-Paint-the-Numbers" class="headerlink" title="A Paint the Numbers"></a><a href="https://codeforces.com/contest/1209/problem/A" target="_blank" rel="noopener">A Paint the Numbers</a></h3><p>将所有元素排序,从小到大贪心处理,如果之前有它的因数,就不用新建一块.</p>
 <h3 id="B-Koala-and-Lights"><a href="#B-Koala-and-Lights" class="headerlink" title="B Koala and Lights"></a><a href="https://codeforces.com/contest/1209/problem/B" target="_blank" rel="noopener">B Koala and Lights</a></h3><p>每盏灯的周期是 $2t$ ,所以整个系统的周期不会超过 $\mbox{LCM}(2,4,6,8,10)+5=125$ ,在这个范围内枚举时间即可.</p>
-<h3 id="C-Paint-the-Dights"><a href="#C-Paint-the-Dights" class="headerlink" title="C Paint the Dights"></a><a href="https://codeforces.com/contest/1209/problem/C" target="_blank" rel="noopener">C Paint the Dights</a></h3>
+<h3 id="C-Paint-the-Dights"><a href="#C-Paint-the-Dights" class="headerlink" title="C Paint the Dights"></a><a href="https://codeforces.com/contest/1209/problem/C" target="_blank" rel="noopener">C Paint the Dights</a></h3><p>考虑从 $0$ 到 $9$ 枚举两个序列的分界值 $x$ .</p>
+<p>若 $a_i&gt;x$ ,或 $a_i=x$ ,但之前没有比 $x$ 大的元素出现,就染成 $2$ ,否则染成 $1$ .</p>
+<h3 id="D-Cow-and-Snacks"><a href="#D-Cow-and-Snacks" class="headerlink" title="D Cow and Snacks"></a><a href="https://codeforces.com/contest/1209/problem/D" target="_blank" rel="noopener">D Cow and Snacks</a></h3><p>贪心,每次拿了一个 $(x,y)$ 后,就让含有 $x$ 或 $y$ 的人先来拿,这样最多挤掉一个人,所以是对的.</p>
+<h3 id="E-Rotate-Columns"><a href="#E-Rotate-Columns" class="headerlink" title="E Rotate Columns"></a><a href="https://codeforces.com/contest/1209/problem/E2" target="_blank" rel="noopener">E Rotate Columns</a></h3><p>把每一列按照该列的最大值从大到小排序,只把前 $n$ 列拿出来做状压 $dp$ .</p>
+
       
     </div>
 
@@ -516,6 +520,8 @@
             <a href="/tags/贪心/" rel="tag"># 贪心</a>
           
             <a href="/tags/codeforces/" rel="tag"># codeforces</a>
+          
+            <a href="/tags/状压dp/" rel="tag"># 状压dp</a>
           
         </div>
       
@@ -920,7 +926,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Paint-the-Numbers"><span class="nav-number">1.</span> <span class="nav-text">A Paint the Numbers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Koala-and-Lights"><span class="nav-number">2.</span> <span class="nav-text">B Koala and Lights</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Paint-the-Dights"><span class="nav-number">3.</span> <span class="nav-text">C Paint the Dights</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-Paint-the-Numbers"><span class="nav-number">1.</span> <span class="nav-text">A Paint the Numbers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-Koala-and-Lights"><span class="nav-number">2.</span> <span class="nav-text">B Koala and Lights</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Paint-the-Dights"><span class="nav-number">3.</span> <span class="nav-text">C Paint the Dights</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Cow-and-Snacks"><span class="nav-number">4.</span> <span class="nav-text">D Cow and Snacks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#E-Rotate-Columns"><span class="nav-number">5.</span> <span class="nav-text">E Rotate Columns</span></a></li></ol></div>
             
 
           </div>

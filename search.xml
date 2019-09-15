@@ -22,10 +22,11 @@
   <entry>
     <title><![CDATA[CF1209]]></title>
     <url>%2F2019%2F09%2F15%2FCF1209%2F</url>
-    <content type="text"><![CDATA[$Div.1+Div.2$ A Paint the Numbers将所有元素排序,从小到大贪心处理,如果之前有它的因数,就不用新建一块. B Koala and Lights每盏灯的周期是 $2t$ ,所以整个系统的周期不会超过 $\mbox{LCM}(2,4,6,8,10)+5=125$ ,在这个范围内枚举时间即可. C Paint the Dights]]></content>
+    <content type="text"><![CDATA[$Div.1+Div.2$ A Paint the Numbers将所有元素排序,从小到大贪心处理,如果之前有它的因数,就不用新建一块. B Koala and Lights每盏灯的周期是 $2t$ ,所以整个系统的周期不会超过 $\mbox{LCM}(2,4,6,8,10)+5=125$ ,在这个范围内枚举时间即可. C Paint the Dights考虑从 $0$ 到 $9$ 枚举两个序列的分界值 $x$ . 若 $a_i&gt;x$ ,或 $a_i=x$ ,但之前没有比 $x$ 大的元素出现,就染成 $2$ ,否则染成 $1$ . D Cow and Snacks贪心,每次拿了一个 $(x,y)$ 后,就让含有 $x$ 或 $y$ 的人先来拿,这样最多挤掉一个人,所以是对的. E Rotate Columns把每一列按照该列的最大值从大到小排序,只把前 $n$ 列拿出来做状压 $dp$ .]]></content>
       <tags>
         <tag>贪心</tag>
         <tag>codeforces</tag>
+        <tag>状压dp</tag>
       </tags>
   </entry>
   <entry>
