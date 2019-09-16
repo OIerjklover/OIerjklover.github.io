@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="爆炸场.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-14T12:14:08.392Z">
+<meta property="og:updated_time" content="2019-09-16T12:14:06.181Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="test20190914">
 <meta name="twitter:description" content="爆炸场.">
@@ -440,12 +440,24 @@
                 
               
 
-              <time title="Created: 2019-09-14 18:55:43 / Modified: 20:14:08" itemprop="dateCreated datePublished" datetime="2019-09-14T18:55:43+08:00">2019-09-14</time>
+              <time title="Created: 2019-09-14 18:55:43" itemprop="dateCreated datePublished" datetime="2019-09-14T18:55:43+08:00">2019-09-14</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-09-16 20:14:06" itemprop="dateModified" datetime="2019-09-16T20:14:06+08:00">2019-09-16</time>
               
             
           </span>
@@ -486,24 +498,46 @@
       
 
       
-        <p>爆炸场.</p>
-<a id="more"></a>
-<h3 id="achen"><a href="#achen" class="headerlink" title="$achen$"></a>$achen$</h3><p>没判 $B=n$ ,挂成 $60$ 了.</p>
-<h3 id="tree"><a href="#tree" class="headerlink" title="$tree$"></a>$tree$</h3><p>写了线段树合并,撤销操作顺序写反,挂成 $20$ 了.</p>
-<hr>
-<p>其实我的线段树合并就是拿来判断子树 $u$ 内有没有出现所有颜色,以及所有点除去子树 $u$ 后有没有出现所有颜色的.</p>
-<p>可以用树上差分进行替代,第一个问题可以对每种颜色分别处理,拿出来后按 $dfn$ 排序,相邻的两个点才覆盖.</p>
-<p>第二个问题就等价于子树 $u$ 中每种颜色出现次数都没有达到最大值.</p>
-<p>每种颜色出现次数达到最大值的位置一定是所有该颜色的点的 $LCA$ 到根节点的这些点,打标记后往上面传一下.</p>
-<h3 id="easy"><a href="#easy" class="headerlink" title="$easy$"></a>$easy$</h3><p>暴力写错了,挂成 $10​$ 了.</p>
-<p>记 $dup(l,r)$ 表示区间 $[l,r]$ 内,不是在该区间内第一次出现的数的个数.</p>
-<p>记 $mx(l,r),mi(l,r)$ 分别表示区间 $[l,r]$ 内的最大最小值.</p>
-<p>那么区间 $[l,r]$ 有贡献的充要条件就是 $mx(l,r)-mi(l,r)+dup(l,r)=r-l$ .</p>
-<p>考虑从小到大枚举 $r$ ,线段树维护当前每个 $l$ 的 $mx(l,r)-mi(l,r)+dup(l,r)$ .</p>
-<p>可以用单调栈预处理每个 $r$ 能更新的 $mx,mi$ 区间.</p>
-<p>对于每个位置 $i$ 找出 $a_i$ 上个出现的位置,就可以更新 $dup$ .</p>
-<p>时间复杂度 $O(n\log n)$ .</p>
-
+        <script src="/js/crypto-js.js"></script>
+<script>
+function doDecrypt (pwd, onError) {
+	console.log('in doDecrypt');
+	const txt = document.getElementById('enc_content').innerHTML;
+	let plantext;
+	try {
+		const bytes = CryptoJS.AES.decrypt(txt, pwd);
+		var plaintext = bytes.toString(CryptoJS.enc.Utf8);
+	} catch(err) {
+		if(onError) {
+			onError(err);
+		}
+		return;
+	}
+	document.getElementById('enc_content').innerHTML = plaintext;
+	document.getElementById('enc_content').style.display = 'block';
+	document.getElementById('enc_passwd').style.display = 'none';
+	if(typeof MathJax !== 'undefined') {
+		MathJax.Hub.Queue(
+			['resetEquationNumbers', MathJax.InputJax.TeX],
+			['PreProcess', MathJax.Hub],
+			['Reprocess', MathJax.Hub]
+		);
+	}
+}
+</script>
+<div id="enc_content" style="display:none">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</div>
+<div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<script>
+var onError = function(error) {
+	document.getElementById("enc_error").innerHTML = "password error!"
+};
+function decrypt() {
+var passwd = document.getElementById("enc_pwd_input").value;
+console.log(passwd);
+doDecrypt(passwd, onError);
+}
+</script>
+</div>
       
     </div>
 
@@ -605,17 +639,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -926,23 +951,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#achen"><span class="nav-number">1.</span> <span class="nav-text">$achen$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tree"><span class="nav-number">2.</span> <span class="nav-text">$tree$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#easy"><span class="nav-number">3.</span> <span class="nav-text">$easy$</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       

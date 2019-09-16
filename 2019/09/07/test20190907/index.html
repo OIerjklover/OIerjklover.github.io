@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="没吃成饭.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-07T11:58:46.655Z">
+<meta property="og:updated_time" content="2019-09-16T12:14:45.712Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="test20190907">
 <meta name="twitter:description" content="没吃成饭.">
@@ -440,12 +440,24 @@
                 
               
 
-              <time title="Created: 2019-09-07 17:50:39 / Modified: 19:58:46" itemprop="dateCreated datePublished" datetime="2019-09-07T17:50:39+08:00">2019-09-07</time>
+              <time title="Created: 2019-09-07 17:50:39" itemprop="dateCreated datePublished" datetime="2019-09-07T17:50:39+08:00">2019-09-07</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-09-16 20:14:45" itemprop="dateModified" datetime="2019-09-16T20:14:45+08:00">2019-09-16</time>
               
             
           </span>
@@ -486,28 +498,46 @@
       
 
       
-        <p>没吃成饭.</p>
-<a id="more"></a>
-<h3 id="spongebob"><a href="#spongebob" class="headerlink" title="$spongebob$"></a>$spongebob$</h3><p>首先可以将 $a_i=0$ 的直线给除去,最后答案加上它们的 $\sum b_i$ .</p>
-<p>记 $x_i=-\frac {b_i} {a_i}$ ,则显然答案只会在某个 $x_i$ 处取到,否则往左边与右边走,分别遇到的端点中至少一个不会更劣.</p>
-<p>$x_i$ 到 $x_{i+1}$ 这一段中的线段斜率都不会变,可以预处理出这样每一段内线段斜率总和,答案变化量也可以立即求出.</p>
-<p>扫一遍就可以得到答案,因为需要离散化/排序,时间复杂度 $O(n\log n)$ .</p>
-<h3 id="patrick"><a href="#patrick" class="headerlink" title="$patrick$"></a>$patrick$</h3><p>若 $h_i​$ 与 $h_{i+1}​$ 中一个 $\ge C​$ ,另一个 $&lt;C​$ ,就形成了一个断点.</p>
-<p>假定位置 $0$ 和位置 $n+1$ 的高度都是 $0$ ,那么答案就是断点数目的一半.</p>
-<p>考虑一对相邻的数 $h_i,h_{i+1}$ ,较小者为 $a$ ,较大者为 $b$ ,那当 $a+1\le C\le b$ 时,这个位置就是一个断点.</p>
-<p>于是给这个区间的覆盖数 $+1$ ,查询时计算 $C$ 被覆盖的次数就是断点数目,可以用树状数组维护差分.</p>
-<p>修改时,将原来的区间覆盖数 $-1$ ,更新后的区间覆盖数 $+1$ 即可.</p>
-<p>时间复杂度 $O(n\log n)$ .</p>
-<h3 id="eugene"><a href="#eugene" class="headerlink" title="$eugene$"></a>$eugene$</h3><p>将每个关系看成一条边,如果有两条一样的边,就可以通过安排将它们抵消掉.</p>
-<hr>
-<p>考虑 $c_i=1$ 的情况,此时重边抵消后形成了一张简单图.</p>
-<p>若有两条边 $(a,b),(b,c)$ ,则可以合并成一条边 $(a,c)$ ,原来的方案与合并后的方案可以对应.</p>
-<p>合并到最后,整张图就是一个点数为 $n$ ,边数为 $\frac n 2$ 的完美匹配,随便安排一下,再还原回去.</p>
-<hr>
-<p>如果有边权为 $2$ 的边,就将两种边分开做, $1$ 的边一定会产生一个完美匹配, $2$ 的边会产生一个匹配.</p>
-<p>此时整张图中两种边构成了若干个 $1,2$ 交错出现的环或链,直接解出每个环或链的方案,再还原回去.</p>
-<p>时间复杂度 $O(n\log n)$ .</p>
-
+        <script src="/js/crypto-js.js"></script>
+<script>
+function doDecrypt (pwd, onError) {
+	console.log('in doDecrypt');
+	const txt = document.getElementById('enc_content').innerHTML;
+	let plantext;
+	try {
+		const bytes = CryptoJS.AES.decrypt(txt, pwd);
+		var plaintext = bytes.toString(CryptoJS.enc.Utf8);
+	} catch(err) {
+		if(onError) {
+			onError(err);
+		}
+		return;
+	}
+	document.getElementById('enc_content').innerHTML = plaintext;
+	document.getElementById('enc_content').style.display = 'block';
+	document.getElementById('enc_passwd').style.display = 'none';
+	if(typeof MathJax !== 'undefined') {
+		MathJax.Hub.Queue(
+			['resetEquationNumbers', MathJax.InputJax.TeX],
+			['PreProcess', MathJax.Hub],
+			['Reprocess', MathJax.Hub]
+		);
+	}
+}
+</script>
+<div id="enc_content" style="display:none">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</div>
+<div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<script>
+var onError = function(error) {
+	document.getElementById("enc_error").innerHTML = "password error!"
+};
+function decrypt() {
+var passwd = document.getElementById("enc_pwd_input").value;
+console.log(passwd);
+doDecrypt(passwd, onError);
+}
+</script>
+</div>
       
     </div>
 
@@ -609,17 +639,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -930,23 +951,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#spongebob"><span class="nav-number">1.</span> <span class="nav-text">$spongebob$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#patrick"><span class="nav-number">2.</span> <span class="nav-text">$patrick$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#eugene"><span class="nav-number">3.</span> <span class="nav-text">$eugene$</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       

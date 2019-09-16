@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="$T_3$ 貌似可以通过乱搞获得比较可观的分数.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-08T07:41:00.199Z">
+<meta property="og:updated_time" content="2019-09-16T12:14:58.042Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="test20190908">
 <meta name="twitter:description" content="$T_3$ 貌似可以通过乱搞获得比较可观的分数.">
@@ -440,12 +440,24 @@
                 
               
 
-              <time title="Created: 2019-09-08 12:33:39 / Modified: 15:41:00" itemprop="dateCreated datePublished" datetime="2019-09-08T12:33:39+08:00">2019-09-08</time>
+              <time title="Created: 2019-09-08 12:33:39" itemprop="dateCreated datePublished" datetime="2019-09-08T12:33:39+08:00">2019-09-08</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-09-16 20:14:58" itemprop="dateModified" datetime="2019-09-16T20:14:58+08:00">2019-09-16</time>
               
             
           </span>
@@ -486,25 +498,46 @@
       
 
       
-        <p>$T_3$ 貌似可以通过乱搞获得比较可观的分数.</p>
-<a id="more"></a>
-<h3 id="tom"><a href="#tom" class="headerlink" title="$tom$"></a>$tom$</h3><p>找一条边断开,分成两颗树,大小分别为 $a,b$ .</p>
-<p>对这两棵树内部分别构造权值,一棵树上权值正负性相同.</p>
-<p>只需要再保证被断掉的边原来连的两个点的权值为 $a,-b$ 即可,可以根据深度来安排权值.</p>
-<h3 id="jerry"><a href="#jerry" class="headerlink" title="$jerry$"></a>$jerry$</h3><p>左括号只有添在负号后面才有用.</p>
-<p>枚举第一个左括号在第 $i$ 个负号后面,再找到第 $i+1$ 个负号.</p>
-<p>则第 $i+1$ 个负号之后的数贡献都可以构造成它的绝对值,前面的贡献都是本身, $O(n)​$ 扫一遍即可.</p>
-<h3 id="speike"><a href="#speike" class="headerlink" title="$speike$"></a>$speike$</h3><p>坐标可以先离散化.</p>
-<p>记 $f(x,y)$ 表示 $(0,0)\to (x,y)$ 的最短路长度,显然不需要往左边走,所以按照 $x$ 递增的顺序求解.</p>
-<p>若没有障碍,一条水平路径上,有 $f(x,y)=f(x-1,y)+1$ .</p>
-<p>遇到障碍的左边界时,水平的路径为了绕过障碍，$f(x, y) = \min(f(x, y + 1), f(x, y − 1))$ .</p>
-<p>上面的讨论没有涉及到障碍的右边界,因此每一个矩形只需要保留左边界即可.</p>
-<p>初始只有 $f(0, 0) = 0$ .</p>
-<p>对于每个障碍 $(x_i, [l, r])$ ,我们找到所有 $l \le y \le r$的 $f(x, y)$ ,并用他们来更新 $f(x_i, l)$ 和 $f(x_i, r)$ .</p>
-<p>处理完所有的障碍后,用剩下的 $f(x, y)$ 更新 $f(X_t, 0)$ 即可得到答案.</p>
-<p>$f$ 可以用一个 $se$t 来保存,根据势能分析,这个 $set$ 的大小不会超过 $n$.</p>
-<p>时间复杂度为 $O(n \log n)$ .</p>
-
+        <script src="/js/crypto-js.js"></script>
+<script>
+function doDecrypt (pwd, onError) {
+	console.log('in doDecrypt');
+	const txt = document.getElementById('enc_content').innerHTML;
+	let plantext;
+	try {
+		const bytes = CryptoJS.AES.decrypt(txt, pwd);
+		var plaintext = bytes.toString(CryptoJS.enc.Utf8);
+	} catch(err) {
+		if(onError) {
+			onError(err);
+		}
+		return;
+	}
+	document.getElementById('enc_content').innerHTML = plaintext;
+	document.getElementById('enc_content').style.display = 'block';
+	document.getElementById('enc_passwd').style.display = 'none';
+	if(typeof MathJax !== 'undefined') {
+		MathJax.Hub.Queue(
+			['resetEquationNumbers', MathJax.InputJax.TeX],
+			['PreProcess', MathJax.Hub],
+			['Reprocess', MathJax.Hub]
+		);
+	}
+}
+</script>
+<div id="enc_content" style="display:none">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</div>
+<div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<script>
+var onError = function(error) {
+	document.getElementById("enc_error").innerHTML = "password error!"
+};
+function decrypt() {
+var passwd = document.getElementById("enc_pwd_input").value;
+console.log(passwd);
+doDecrypt(passwd, onError);
+}
+</script>
+</div>
       
     </div>
 
@@ -602,17 +635,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -923,23 +947,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#tom"><span class="nav-number">1.</span> <span class="nav-text">$tom$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jerry"><span class="nav-number">2.</span> <span class="nav-text">$jerry$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#speike"><span class="nav-number">3.</span> <span class="nav-text">$speike$</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       

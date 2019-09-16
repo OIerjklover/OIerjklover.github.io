@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="常数测试场.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-16T06:22:02.994Z">
+<meta property="og:updated_time" content="2019-09-16T12:15:20.024Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="test20190916-am">
 <meta name="twitter:description" content="常数测试场.">
@@ -440,7 +440,7 @@
                 
               
 
-              <time title="Created: 2019-09-16 11:29:16 / Modified: 14:22:02" itemprop="dateCreated datePublished" datetime="2019-09-16T11:29:16+08:00">2019-09-16</time>
+              <time title="Created: 2019-09-16 11:29:16 / Modified: 20:15:20" itemprop="dateCreated datePublished" datetime="2019-09-16T11:29:16+08:00">2019-09-16</time>
             
 
             
@@ -486,14 +486,46 @@
       
 
       
-        <p>常数测试场.</p>
-<a id="more"></a>
-<h3 id="s"><a href="#s" class="headerlink" title="$s$"></a>$s$</h3><p>排序后 $two\ pointer$ 搞一搞.</p>
-<h3 id="ca"><a href="#ca" class="headerlink" title="$ca$"></a>$ca$</h3><p>显然有 $O(n^2\log n)$ 分治 $NTT$ 的做法,但由于常数的影响,实际得分与 $O(n^3)$ 暴力 $dp$ 无差别.</p>
-<p>用 $dp$ 去模拟树的 $dfs$ 过程就能做到 $O(n^2)$ 了.</p>
-<h3 id="pe"><a href="#pe" class="headerlink" title="$pe$"></a>$pe$</h3><p>一个结论是, $k=x+2$ 的某个最优解可以由 $k=x$ 的某个最优解加上两个数得到.</p>
-<p>于是把 $k=1,2$ 处理出来,后面只需要加数,每次贪心地加贡献最大的两个数,利用线段树维护.</p>
-
+        <script src="/js/crypto-js.js"></script>
+<script>
+function doDecrypt (pwd, onError) {
+	console.log('in doDecrypt');
+	const txt = document.getElementById('enc_content').innerHTML;
+	let plantext;
+	try {
+		const bytes = CryptoJS.AES.decrypt(txt, pwd);
+		var plaintext = bytes.toString(CryptoJS.enc.Utf8);
+	} catch(err) {
+		if(onError) {
+			onError(err);
+		}
+		return;
+	}
+	document.getElementById('enc_content').innerHTML = plaintext;
+	document.getElementById('enc_content').style.display = 'block';
+	document.getElementById('enc_passwd').style.display = 'none';
+	if(typeof MathJax !== 'undefined') {
+		MathJax.Hub.Queue(
+			['resetEquationNumbers', MathJax.InputJax.TeX],
+			['PreProcess', MathJax.Hub],
+			['Reprocess', MathJax.Hub]
+		);
+	}
+}
+</script>
+<div id="enc_content" style="display:none">U2FsdGVkX1+fPbBrsuHviiNIvdAdtuJ0OGovfUnWJunGt1n9AoxlrGMDG+uxxJo9hnXL0/x21cKborPaJLvD2l91Zu24PT4jJWNhni+XMONrSh4n9eKAXCFKMSz1l5P420IuonjnbRmbpeZZMDtk3Z5Rl66m0B0PdunDIxHFLNIrn5lScjisT8lrW1YJ2YSut3XEDI4uz0IIIoAGyhVS/5IBPQbxqTCskyt9iN/2AUHQwdp622DeBrcmEWfokg2JbTMnxPNoo3uyxVUmiclKZCHHGUWpWwGDy7G7KYs/3BtxAdZzTKEwi7f+OCtnIxk8PzIE5RltjGAjWG4WGoaXUuOrC7Dk9inHSbxnNHVl/Oxewnjl7gexULUYMjnIzTzdVjZL2Nrv+ZxY5mMTvgSOT5EVTqBXOpwtjnkdwuD1xpcow6wvoQenicU8JLQN6JTEexY3x3Zk4vTLZerrDrtTo/XtlDaJ+N7l5UWnIixO/J54afMWo36iosnDdJFX0y3gyE7Mw8Hc9lQKzMeK2MURquXOSt1W8I0nA5YKgDmSxESXLGg3NASYqIUJil001sIaZz1Rgg5XUxeuVXNEJLfV1VYIAsjSi+1lNnJ9cBEEXNYA8Gj72Gp91c8S5j+NkdUoeCanNBsC6ccTLXFSAdQoafpfUMzcc5JbqLNgQNBRPdqmfWZaC7+wyGsfItjZiocJDJZy5STCgqNzNy0hpxiYUPZ4Szplnng/NzY2vTVAIlewSFTiep4ahMN3Who1Jz86nj2//TZf/wj/SKoGpTk5vF5YXZeWwRKJ6wmnJ6q/F2za6G949qWwmm9vd6oYDtt3UbxmL6hqWugImBuTCLzsP5Mo/wRnzx4d5Uy4e6UbTHAFsuy/LdPhKoxxxy1KY/tXruL5UQ3iUl6iV9K91YRepNy3VV/EzCyv4y2fyWtG9u3WOsADY9zgjkW8eHPRHQStsadzd8JSLm1qTJe6cZ/Rpbl6qC1rm7rOFMG4S765UiM=</div>
+<div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<script>
+var onError = function(error) {
+	document.getElementById("enc_error").innerHTML = "password error!"
+};
+function decrypt() {
+var passwd = document.getElementById("enc_pwd_input").value;
+console.log(passwd);
+doDecrypt(passwd, onError);
+}
+</script>
+</div>
       
     </div>
 
@@ -545,8 +577,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/16/test20190916/" rel="prev" title="test20190916">
-                test20190916 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/09/16/test20190916-pm/" rel="prev" title="test20190916-pm">
+                test20190916-pm <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -595,17 +627,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -916,23 +939,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#s"><span class="nav-number">1.</span> <span class="nav-text">$s$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ca"><span class="nav-number">2.</span> <span class="nav-text">$ca$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pe"><span class="nav-number">3.</span> <span class="nav-text">$pe$</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
