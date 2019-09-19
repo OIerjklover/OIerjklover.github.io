@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<script> 
+	(function(){
+		if(''){
+			if (prompt('Please enter the password') !== ''){
+				alert('Wrong password'); 
+				history.back(); 
+			} 
+		} 
+	})();
+</script>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script> 
+	(function(){
+		if(''){
+			if (prompt('Please enter the password') !== ''){
+				alert('Wrong password'); 
+				history.back(); 
+			} 
+		} 
+	})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<script> 
+	(function(){
+		if(''){
+			if (prompt('Please enter the password') !== ''){
+				alert('Wrong password'); 
+				history.back(); 
+			} 
+		} 
+	})();
+</script>
+<meta name="theme-color" content="#222">
+<script> 
+	(function(){
+		if(''){
+			if (prompt('Please enter the password') !== ''){
+				alert('Wrong password'); 
+				history.back(); 
+			} 
+		} 
+	})();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/myicon-32x32.jpg?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/myicon-16x16.jpg?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="这可能是一套 $noip$ 模拟题.">
+<meta name="keywords" content="李超线段树,test">
+<meta property="og:type" content="article">
+<meta property="og:title" content="test20190919">
+<meta property="og:url" content="http://yoursite.com/2019/09/19/test20190919-pm/index.html">
+<meta property="og:site_name" content="JKLover">
+<meta property="og:description" content="这可能是一套 $noip$ 模拟题.">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-09-19T10:26:43.495Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="test20190919">
+<meta name="twitter:description" content="这可能是一套 $noip$ 模拟题.">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/09/19/test20190919-pm/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>test20190919 | JKLover</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">JKLover</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">夢はここに 思い出は遠くに</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/19/test20190919-pm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JKLover">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JKLover">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">test20190919
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-09-19 18:23:34 / Modified: 18:26:43" itemprop="dateCreated datePublished" datetime="2019-09-19T18:23:34+08:00">2019-09-19</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script src="/js/crypto-js.js"></script>
+<script>
+function doDecrypt (pwd, onError) {
+	console.log('in doDecrypt');
+	const txt = document.getElementById('enc_content').innerHTML;
+	let plantext;
+	try {
+		const bytes = CryptoJS.AES.decrypt(txt, pwd);
+		var plaintext = bytes.toString(CryptoJS.enc.Utf8);
+	} catch(err) {
+		if(onError) {
+			onError(err);
+		}
+		return;
+	}
+	document.getElementById('enc_content').innerHTML = plaintext;
+	document.getElementById('enc_content').style.display = 'block';
+	document.getElementById('enc_passwd').style.display = 'none';
+	if(typeof MathJax !== 'undefined') {
+		MathJax.Hub.Queue(
+			['resetEquationNumbers', MathJax.InputJax.TeX],
+			['PreProcess', MathJax.Hub],
+			['Reprocess', MathJax.Hub]
+		);
+	}
+}
+</script>
+<div id="enc_content" style="display:none">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</div>
+<div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<script>
+var onError = function(error) {
+	document.getElementById("enc_error").innerHTML = "password error!"
+};
+function decrypt() {
+var passwd = document.getElementById("enc_pwd_input").value;
+console.log(passwd);
+doDecrypt(passwd, onError);
+}
+</script>
+</div>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/李超线段树/" rel="tag"># 李超线段树</a>
+          
+            <a href="/tags/test/" rel="tag"># test</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/18/bzoj-4897-成绩单/" rel="next" title="bzoj 4897 成绩单">
+                <i class="fa fa-chevron-left"></i> bzoj 4897 成绩单
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/9102/07/16/NOI2019同步赛游记/" rel="prev" title="置顶-NOI2019同步赛游记">
+                置顶-NOI2019同步赛游记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="JKLover">
+            
+              <p class="site-author-name" itemprop="name">JKLover</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">220</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">107</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                dalao们
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/autoint/" title="https://www.cnblogs.com/autoint/" rel="noopener" target="_blank">autoint</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://gluttony-hs.github.io/" title="https://gluttony-hs.github.io/" rel="noopener" target="_blank">Gluttony</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://chitongz.gitee.io/" title="https://chitongz.gitee.io/" rel="noopener" target="_blank">ChiTongZ</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://dcoitheshadow.github.io/" title="https://dcoitheshadow.github.io/" rel="noopener" target="_blank">TheShadow</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://decorationqwq.com/" title="https://decorationqwq.com/" rel="noopener" target="_blank">decoration</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://orzsiyuan.com/" title="https://orzsiyuan.com/" rel="noopener" target="_blank">Siyuan</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JKLover</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="Total Visitors">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="Total Views">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '0f2a43b3bf8ac1ba787a',
+    clientSecret: 'c271a61a1475cd2dd1bbc48c7fd45058b0d2afea',
+    repo: 'jkloverdcoi.github.io',
+    owner: 'jkloverdcoi',
+    admin: ['jkloverdcoi'],
+    id: md5(location.pathname),
+    
+      language: 'en',
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('Copied');
+        else $(this).text('Copy failed');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('Copy');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+
+</body>
+</html>
