@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="自闭场.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-19T11:41:31.264Z">
+<meta property="og:updated_time" content="2019-09-20T10:43:59.403Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="test20190919-am">
 <meta name="twitter:description" content="自闭场.">
@@ -440,12 +440,24 @@
                 
               
 
-              <time title="Created: 2019-09-19 13:34:24 / Modified: 19:41:31" itemprop="dateCreated datePublished" datetime="2019-09-19T13:34:24+08:00">2019-09-19</time>
+              <time title="Created: 2019-09-19 13:34:24" itemprop="dateCreated datePublished" datetime="2019-09-19T13:34:24+08:00">2019-09-19</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-09-20 18:43:59" itemprop="dateModified" datetime="2019-09-20T18:43:59+08:00">2019-09-20</time>
               
             
           </span>
@@ -486,18 +498,46 @@
       
 
       
-        <p>自闭场.</p>
-<a id="more"></a>
-<h3 id="strong"><a href="#strong" class="headerlink" title="$strong$"></a>$strong$</h3><p>设 $f(i.j)$ 表示长度为 $i$ ,以 $j$ 结尾的不下降子序列的数目,利用树状数组优化转移.</p>
-<p>于是可以算出 $c_i$ ,表示长度为 $i$ 的不下降子序列的数目.</p>
-<p>如果允许删到不下降后还可以继续删,答案为<br>$$<br>ans=\sum_{i=1}^n c_i\cdot (n-i)!<br>$$<br>但实际上存在一些方案,它们在中途删除某个元素后就变成不下降了,但在后面仍被计入贡献,需要减掉重复的部分.</p>
-<p>如果在删掉这 $i$ 个数之前,就已经不降了,说明这些方案全都不合法.</p>
-<p>由于不降序列删掉任意一个数后仍不降,所以就会贡献 $i+1$ 种不合法情况.</p>
-<p>除去这部分的贡献,得到真正的答案.<br>$$<br>ans=\sum_{i=1}^n c_i\cdot (n-i)! -(i+1)\cdot c_{i+1} \cdot (n-i-1)!<br>$$</p>
-<h3 id="come"><a href="#come" class="headerlink" title="$come$"></a>$come$</h3><p>每个人尽可能最大化自己的收益 - 对方的收益.</p>
-<p>这个差值只与最后的相遇位置有关,因为可以对称操作,所以只需要根据 $n$ 的奇偶不同,讨论最中间的 $1$ 或 $2$ 个位置. </p>
-<h3 id="boom"><a href="#boom" class="headerlink" title="$boom$"></a>$boom$</h3><p>将元素按某种方式贪心地排个序,模拟一遍得出答案.</p>
-
+        <script src="/js/crypto-js.js"></script>
+<script>
+function doDecrypt (pwd, onError) {
+	console.log('in doDecrypt');
+	const txt = document.getElementById('enc_content').innerHTML;
+	let plantext;
+	try {
+		const bytes = CryptoJS.AES.decrypt(txt, pwd);
+		var plaintext = bytes.toString(CryptoJS.enc.Utf8);
+	} catch(err) {
+		if(onError) {
+			onError(err);
+		}
+		return;
+	}
+	document.getElementById('enc_content').innerHTML = plaintext;
+	document.getElementById('enc_content').style.display = 'block';
+	document.getElementById('enc_passwd').style.display = 'none';
+	if(typeof MathJax !== 'undefined') {
+		MathJax.Hub.Queue(
+			['resetEquationNumbers', MathJax.InputJax.TeX],
+			['PreProcess', MathJax.Hub],
+			['Reprocess', MathJax.Hub]
+		);
+	}
+}
+</script>
+<div id="enc_content" style="display:none">U2FsdGVkX1/D6In2azTfMZKdw+bd/TMIFswpunHN1jOcAjVkIajNM0+/Q0e5NeOkVkO8FGDOvNZsIjI/CatTe/1tRgJYIhqEUh1Nt0IhexUjEtZKKW9fTjXVAFCHsb1IPnjFKOyya2l374JEA5HvdoZIZHjaX0P/WffWzB7xqXkvCvsVE5ArHlHS1ByPVcxRJQQlbHg3dkOiifbLlVusKNnSdvEHEVkccqyFDxzs+81fhz/28nrfBb8Hl4PdI6FXOxkaPsIW9pC7H6FA4lw0Wr3s2mWas+aBCm/u8L192QsHXzlmdUj+0dahzC5FLmdMttIFVxQpRX4iu9Ot6FXJT3ScZeOUkb7ZB5u5luHNC0EL1tNWW7W/SDzkvgSyQPFFwLzsGQuf3S9CuwSZvoe10lRxDqDNH032tqouxyTnvmreVeIk4sfXUsE6bgOjNI0iQLgSr2gaMwlKac45IsnPzk90lOSZfk5ELQ8+ZPY4DXRRcOmZ11zowV5/J5b5647qkSvQ9lbPyiKg4j0YQRCBQic1G6fR7FC0b0ejM4B+ra+smthN1pwmhe1O43xDw057Ay2t4wB/jlzpqcJw7rb7TP2o1hF6k7ROQwvQTBr/x4VWO6mZSVWjnJeZq535QpG94Uv4Eh/2f1O6iXJNkD9ecHMhx0lQTxILwXTL0Wto2SFDzAOx5vQosE859GRy+RadEdJ/NopKMsQcYoCkqgoqybLC8SlypDXMAF9o29X+T3KkWAoM5njGMNJ7y0sB/im6n2poFIa+5SzPzopdz1ucVbLb1XIp9q2s2NNrZMXilB+k/+3ffpfezVJjAD8CPUsB1o9m/T+1+5JTwwVP46F8MNRt92s35OscuyNagvsm0GN7RdZWrkSqhnbHxrMt6SHciWFxTPAvu6ZD+ps90QsIVUnotYFa6QU9WCm9Xb4WwHi/hDHTh2/zD2Acm/+watSSA4Qg+RzkRVWdiOkQgqMcelv6ntyxZZcX5qP6krhfjs0TfNVo2wHoFweOnWyoeXhg8fx9bQW/1HCCmaaeYztxFWclLv18Mw8pnLQ8J+MsyI3+cIHli1XPAATujYN5N+Z3hDNmSFZ/wCZXayxCd1L6oGcOQ7P7GH+ODTPUtz2ntiTY/DJu6ysxvGKvQulkvPrfSAKkqRs3+vSsG70gc0mBtVM5d1Q9OW37Gdq1LM4MLw7DtYvYeUaMYjGV9WATJ0t6/GfOzt2mlOTeuXkx5cnd/z9qxbFETl8NamPUXl46e3JvMOQuL0gfJ44vThGtEvEInh0oS6bNqAt7N7FUfaR8C8i4U0b+UqO7zDRPfOTYobI4PDoGhipkioIf//hMeDXQi925VFF6DsYdZ49mghMAfA4NhVPdbP6AFDPX3S10YBq6WPDs9KOcldFOOvXOEI8x0UGkz2GC0/wBw/W0pU2ovhJ6LzW7aax83uNmK/d/p8cypf0APEe8i7l9xfYNyIzv97GqvyBoWblh+CepcPDEo/XPqbpf6pl26fvRn21kgPQ3PADIDRyVsPNgurj3QnsSnXohYBlZgIVql850IGMvhCtBuqff4ASI4i6pJVLUCZ4XbJ3K2H0gpd9jpEpZQ20hGW6JXaJSHBEbcpy8cirTtzEwP5Hdvy8b2+t6sSP/9gEIob9+oYX9b+KCLIW7aq9CIJSqbHkChZEJ/SiR4F9hCUTDc4yEoREzgAx1TFAs2FPxLosm3LXQ1wIIfepspYiYKJKlTrXU++V11TxJnOvmshkOOW9craXOQ/WIjzuOwE6nuCndTrDgLrevCb3ls6YBmLNI0SsLHYS3qlCBCLfs2TzBisjv2gRvGgUgrPk3zqHPIoZXhzQgzTGjABP9/9k56u08sMHrY1aChmHsFlGhsoGxkS/JnXDYtQkUvpm8lcw=</div>
+<div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<script>
+var onError = function(error) {
+	document.getElementById("enc_error").innerHTML = "password error!"
+};
+function decrypt() {
+var passwd = document.getElementById("enc_pwd_input").value;
+console.log(passwd);
+doDecrypt(passwd, onError);
+}
+</script>
+</div>
       
     </div>
 
@@ -601,17 +641,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -628,7 +659,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">221</span>
+                    <span class="site-state-item-count">223</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -922,23 +953,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#strong"><span class="nav-number">1.</span> <span class="nav-text">$strong$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#come"><span class="nav-number">2.</span> <span class="nav-text">$come$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#boom"><span class="nav-number">3.</span> <span class="nav-text">$boom$</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
