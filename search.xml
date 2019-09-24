@@ -11,7 +11,7 @@
   <entry>
     <title><![CDATA[test20190924]]></title>
     <url>%2F2019%2F09%2F24%2Ftest20190924%2F</url>
-    <content type="text"><![CDATA[乱搞场. $func$考虑推式子.当 $n&gt;m$ 时,有$$a_n=n-1+\frac 2 n \cdot S_{n-1} \\S_n=n-1+\frac {n+2}{n} S_{n-1} \\\frac{S_n}{(n+1)(n+2)}=\frac {n-1}{(n+1)(n+2)}+\frac {S_{n-1}}{n(n+1)}$$记 $f(n)=\frac {S_n}{(n+1)(n+2)}$ ,得到$$f(n)=f(n-1)+\frac{n-1}{(n+1)(n+2)}$$分块打表处理 $\frac{n-1}{(n+1)(n+2)}$ 的前缀和即可. $ill$考虑写出一个集合 $S$ 的答案.$$\sum_{i\in S}\frac{p_i}{1-p_i} \cdot \prod_{i\in S}(1-p_i)$$记 $x=\sum_{i\in S}\frac{p_i}{1-p_i},y=\prod_{i\in S}(1-p_i)$ . 考虑加入一个 $p_x$ ,答案会增加 $p_x\cdot y\cdot (1-x)$ . 可以贪心地将所有 $p_x$ 从大到小加入,当 $x\ge 1$ 时退出,得到最优解. $mask$经典题目. 带修莫队,二位数点,分块 + 树状数组都比较可做.]]></content>
+    <content type="text"><![CDATA[乱搞场. $func$考虑推式子.当 $n&gt;m$ 时,有$$a_n=n-1+\frac 2 n \cdot S_{n-1} \\S_n=n-1+\frac {n+2}{n} S_{n-1} \\\frac{S_n}{(n+1)(n+2)}=\frac {n-1}{(n+1)(n+2)}+\frac {S_{n-1}}{n(n+1)}$$记 $f(n)=\frac {S_n}{(n+1)(n+2)}$ ,得到$$f(n)=f(n-1)+\frac{n-1}{(n+1)(n+2)}$$分块打表处理 $\frac{n-1}{(n+1)(n+2)}$ 的前缀和即可. $ill$考虑写出一个集合 $S$ 的答案.$$\sum_{i\in S}\frac{p_i}{1-p_i} \cdot \prod_{i\in S}(1-p_i)$$记 $x=\sum_{i\in S}\frac{p_i}{1-p_i},y=\prod_{i\in S}(1-p_i)$ . 考虑加入一个 $p_x$ ,答案会增加 $p_x\cdot y\cdot (1-x)$ . 可以贪心地将所有 $p_x$ 从大到小加入,当 $x\ge 1$ 时退出,得到最优解. $mask$经典题目. 带修莫队,二维数点,分块 + 树状数组都比较可做.]]></content>
       <tags>
         <tag>贪心</tag>
         <tag>莫队</tag>
