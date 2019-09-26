@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="洗键盘场.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-26T07:32:09.267Z">
+<meta property="og:updated_time" content="2019-09-26T07:33:27.189Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="test20190926">
 <meta name="twitter:description" content="洗键盘场.">
@@ -440,7 +440,7 @@
                 
               
 
-              <time title="Created: 2019-09-26 14:28:49 / Modified: 15:32:09" itemprop="dateCreated datePublished" datetime="2019-09-26T14:28:49+08:00">2019-09-26</time>
+              <time title="Created: 2019-09-26 14:28:49 / Modified: 15:33:27" itemprop="dateCreated datePublished" datetime="2019-09-26T14:28:49+08:00">2019-09-26</time>
             
 
             
@@ -486,24 +486,46 @@
       
 
       
-        <p>洗键盘场.</p>
-<a id="more"></a>
-<h3 id="wall"><a href="#wall" class="headerlink" title="$wall$"></a>$wall$</h3><p>手玩,找规律,若当前正六边形边长为 $e$ ,则每多一条边,可以多容纳的点分别是 $e-1,e,e,e,e,e+1$ ,然后边长增大.</p>
-<p>$O(\sqrt n)$ 暴力判一下.</p>
-<h3 id="goods"><a href="#goods" class="headerlink" title="$goods$"></a>$goods$</h3><p>从 $i$ 向 $f_i$ 连边.</p>
-<hr>
-<p>若 $f_i\le i$ ,则形成森林,根节点处为自环,自顶向下拿,每个物品都可以被拿完,答案是所有正的收益之和.</p>
-<hr>
-<p>一般情况下,形成的图是基环内向树.</p>
-<p>若某条环边 $i\to f_i$ 的收益不如另一条树边 $j\to f_i$ 的收益,可以直接将它断掉,就变成了树的情况,直接统计答案.</p>
-<p>否则,可以将环上的物品取到只剩一个,然后选一个环边价值减去树边价值最小的点,将环边断开,再统计答案.</p>
-<h3 id="string"><a href="#string" class="headerlink" title="$string$"></a>$string$</h3><p>枚举 $L,R$ 来确定 $p$ ,只需验证是否合法.</p>
-<p>然后可以进行 $dp$ ,设 $f(i,j)$ 表示区间 $[i,j]$ 是否合法.</p>
-<p>若 $j-i+1$ 是 $len=R-L+1$ 的倍数,则 $f(i,j)$ 就表示这段区间能否被消光.</p>
-<p>否则,要求多余的部分正好是 $p$ 的前缀时, $f(i,j)$ 才为 $1$ .</p>
-<p>转移时考虑第 $j$ 个字符.</p>
-<p>若与之后的零碎字符拼成一段,则<br>$$<br>f(i,j)|=f(i,j-1)\ \&amp; \ [s_j=p_{(j-i\bmod len)+1}]<br>$$<br>若是夹在零碎部分中间的整块,则<br>$$<br>f(i,j)|=f(i,j-k\cdot len)\ \&amp; \ f(j-k\cdot len+1,j)<br>$$<br>时间复杂度 $O(n^4)$ ,可以先通过每种字符的数目直接去掉一部分不合法的情况,并且对 $p$ 记忆化来剪枝.</p>
-
+        <script src="/js/crypto-js.js"></script>
+<script>
+function doDecrypt (pwd, onError) {
+	console.log('in doDecrypt');
+	const txt = document.getElementById('enc_content').innerHTML;
+	let plantext;
+	try {
+		const bytes = CryptoJS.AES.decrypt(txt, pwd);
+		var plaintext = bytes.toString(CryptoJS.enc.Utf8);
+	} catch(err) {
+		if(onError) {
+			onError(err);
+		}
+		return;
+	}
+	document.getElementById('enc_content').innerHTML = plaintext;
+	document.getElementById('enc_content').style.display = 'block';
+	document.getElementById('enc_passwd').style.display = 'none';
+	if(typeof MathJax !== 'undefined') {
+		MathJax.Hub.Queue(
+			['resetEquationNumbers', MathJax.InputJax.TeX],
+			['PreProcess', MathJax.Hub],
+			['Reprocess', MathJax.Hub]
+		);
+	}
+}
+</script>
+<div id="enc_content" style="display:none">U2FsdGVkX18/7SjMLqezTXxMi0Fe5PiO2RbdbPOTTo6TIrQpB71qXbWA1wXxqkyJne/6XHC0IHhClQDraF5vLjaHHL7v3AnHlKT+PehUx0rIcL8yDMo/vcsMVFFY8lo1dtIyXoyjX1crfXFkdZTW4Y0nGb3Di0KNIfboWPPAXuvztFQQBQy4fD2WwnAIB0t4d7xs5xZeKZsC7c8qp2CGrhrYDv35qd0pbysZCwc8uFfJHAs60cMyo/QJO1xQAjGzWhxoJ5SVCzbLqOsO8i3jnHBAKci51hpOXW0ed9cgVGsy+imlMlL1XZo4suY7l7p+L1OOf0jMXFnCqX/viUVq87YB6gkh0TjXBy8yrzaqZ4z9RVu2i+LKDAJOuhkfpsadYjahtl/Bu2yq8Wj9MoluPdHc00ZWWmZhRevet0jamb/dYbD9EzREX+XFv0cEzb9qxj/3/yHnYSLjz4O/4wwgF5E2Lmhn/seOuw2XQ/bVve2uIuvyRWzAX+n88U8cuAjitGLD5Qa0h5bDc/URjdcy/VnUpYvbAzBG3tb15nW6Np8+c86f4nDp9z5POYvYhJ8p2mZXfND1Fz/uSZzmo5kM88RcIebQVDSPt2X1scoGvISq6muflIhPcisftIHXTnDUjOBBJptTuoPifn08HJd4xolkqhhRBdsEkorxmT9ZNQzQUArvfmbfLkQOJNjD3zZ+alTZIOMaBJ/AltGxz4efWNB1Iukl49VKfm61BzE3Xt/xiwP8mik3IKLfvVZZ9YneArZjLF196mAW7bE6taZIDV0dIy0yr5iomOjSFX2BHpZKDR+ue2Mi0lZB21/U7YkdQMTRQGQE/A0GBqMSBuzY/vvOlH5gWLN0ODLPsh2n7kw96FoVEn6PMe8ZJ50XHiCN9Kir3tpoX4ZHRn9ROvmlU2WdssREQoXzatBe4lD48dNorHHopLX75ohC2w7Wk1c3LuY4zKycqgO6+d+XgdPIuUWa3hsny5c8uLdLqIJ3ecTipRCkYKxJsNNNcwIveJMl+tf9/OLfCApkYQwgtnxZrCy9VcbtPEV4Dyz7rnDVW99uq8FpT0aC1fRvFY3GadJhphn8PTNRcHuK4eLW+1H9Sr+Rz69IPPfSle9/XMGovB6qWTkRIy7qzo09bK+ZY5UkA2mSvWEorCoua/9ESa3NPVs5q1tB0eEU5Cbi8vExjb8COfLDXxQuxn8Ij/7KblMlV8//QIN1NwA5eKUJCkCx3anxcOahhe+HDnV2x9HlWYidKOu58wmcJjkOwW0BlBmpOP4LvzkBRVLliKtHSAcJl/An7O1XOWK2eSdzD7rXOAxpd4cbW122dBJtkApFJhxboKYeGxeQT0GY/kGUvLkrBuWYLrvp9ycm8bmlFaAPHgZR9JC655h/UtsLzxCx/sURVB344BKI4EAQsLFyywMOvxOPcVoYVSOpQDk+LR0N3Hzp6Lw4gpYgh6S8FknIEtI6WtxAj1LAIc9ZoEQ2/VKuRnSSVg6WnB6CPpeIalWL5oy41LxO96XcUKx8L+U+QsPXYrBn3afYoYk9oGQuWyL8e2yUogMF6h4FXMfdaDUVp8AdWVvMaBWnMSwsRWT9/muKqGAh2iKAMWuEREYJMps866p0X+EsmNRON9dMN6unJ6P/3oFw3Qeal0qJNzq+scRRd5YU/p4rOVw+lgXe0JlzQq5fzUaVKcY4JLvi9g6x3UvRcd14ZcWNusfSDw9fODyCgj/vm7XtAg3UAqUTFjbZOTtJCNo3pDUpIR54r5pZ68Re+flPiXVzKEjDuxlPtt/ds1PlvxkaLQacsHm7IIv5eSxJQtkK4jFNQ6xyrkb2dd1TdKcBUCSihZk726FsCqhhlYdhVWFuUxLfljn7GKRygd7S9TIzM1KDgjNk8BDDyxECy0tQb6CPVuc+qXReRQ1h6lZeLoKvAaRl1+KszC4EwJYsntr2XIFcPpwIuTqCFM+QncpowZey58KhKaAHaD5kK2ATntLgS7vwcJBUko0jhSFqCXzkCh91qv8YVap5aq7gR7B2hpKNNKJvfX9svdSXBfJVjMSZLaBUZhTAOINgCJmYO6rVlpvH2pHPivVXVbQatAfUfheXqHSxpXXsGzHrCJY5sZHrh6Y4WI76iv74fj4vJk6YZFHTR5gp1E+jcpdn2fTZCEBPYLpYDxXNxkLGSqp6rPuRFqk06LHHagoESrSHsB7W3BKpwJR3ZA0i24gWI7/+e8FgFDFXakdt1ABkJoTypewbdeZp98CRAw7L2dQBs3tt+Topv7EkTRTe6P2K3U+WIuPsBcPd2a8X1qDR5926CL11C0xjHz7Znb3+ikkGdp0QV5lXFK5zsoX1dYPw49gk4O4KsHPDaz59Oaz3</div>
+<div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
+<script>
+var onError = function(error) {
+	document.getElementById("enc_error").innerHTML = "password error!"
+};
+function decrypt() {
+var passwd = document.getElementById("enc_pwd_input").value;
+console.log(passwd);
+doDecrypt(passwd, onError);
+}
+</script>
+</div>
       
     </div>
 
@@ -599,17 +621,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -922,23 +935,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#wall"><span class="nav-number">1.</span> <span class="nav-text">$wall$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#goods"><span class="nav-number">2.</span> <span class="nav-text">$goods$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#string"><span class="nav-number">3.</span> <span class="nav-text">$string$</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
