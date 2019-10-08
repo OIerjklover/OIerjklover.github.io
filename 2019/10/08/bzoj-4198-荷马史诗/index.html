@@ -137,16 +137,16 @@
 
 
   <meta name="description" content="贪心.">
-<meta name="keywords" content="贪心,位运算">
+<meta name="keywords" content="贪心">
 <meta property="og:type" content="article">
-<meta property="og:title" content="bzoj 4245 OR-XOR">
-<meta property="og:url" content="http://yoursite.com/2019/08/24/bzoj-4245-OR-XOR/index.html">
+<meta property="og:title" content="bzoj 4198 荷马史诗">
+<meta property="og:url" content="http://yoursite.com/2019/10/08/bzoj-4198-荷马史诗/index.html">
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="贪心.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-24T01:47:38.847Z">
+<meta property="og:updated_time" content="2019-10-08T14:20:14.727Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="bzoj 4245 OR-XOR">
+<meta name="twitter:title" content="bzoj 4198 荷马史诗">
 <meta name="twitter:description" content="贪心.">
 
 
@@ -155,7 +155,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/08/24/bzoj-4245-OR-XOR/">
+  <link rel="canonical" href="http://yoursite.com/2019/10/08/bzoj-4198-荷马史诗/">
 
 
 
@@ -165,7 +165,7 @@
   };
 </script>
 
-  <title>bzoj 4245 OR-XOR | JKLover</title>
+  <title>bzoj 4198 荷马史诗 | JKLover</title>
   
 
 
@@ -397,7 +397,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/24/bzoj-4245-OR-XOR/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/08/bzoj-4198-荷马史诗/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JKLover">
@@ -414,7 +414,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">bzoj 4245 OR-XOR
+          <h1 class="post-title" itemprop="name headline">bzoj 4198 荷马史诗
 
               
             
@@ -440,7 +440,7 @@
                 
               
 
-              <time title="Created: 2019-08-24 09:31:27 / Modified: 09:47:38" itemprop="dateCreated datePublished" datetime="2019-08-24T09:31:27+08:00">2019-08-24</time>
+              <time title="Created: 2019-10-08 21:55:49 / Modified: 22:20:14" itemprop="dateCreated datePublished" datetime="2019-10-08T21:55:49+08:00">2019-10-08</time>
             
 
             
@@ -488,16 +488,12 @@
       
         <p>贪心.</p>
 <a id="more"></a>
-<p>因为答案的形式是每一段的权值 $\text {or}$ 起来,从高位到低位考虑,贪心地让高位尽可能为 $0$ .</p>
-<p>尝试让答案的第 $i$ 位为 $0$ ,就要求选出的 $m$ 个权值的第 $i$ 位都为 $0$ .</p>
-<p>因为这 $m$ 段是连续的,所以就等价于选出 $m$ 个右端点,且最后一个必须选 $n$ .</p>
-<p>求出原数列的前缀异或和,容易发现这 $m$ 个右端点处的前缀异或和第 $i$ 位都必须为 $0$ .</p>
-<p>于是从高位往低位做,若当前位有至少 $m$ 个可选的位置(必须包含 $n$ ),则这一位对答案的贡献为 $0$, 否则为 $1$ . </p>
-<p>每次贡献为 $0$ 时,将前缀异或和这一位为 $1$ 的位置标记出来,表示以后都不能再选了,否则会使得这一位为 $1$ .</p>
-<blockquote>
-<p>注意要用 $\text{1LL}$ 参与位运算.</p>
-</blockquote>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ll out=<span class="number">0</span>,fh=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> ((jp&gt;<span class="string">'9'</span>||jp&lt;<span class="string">'0'</span>)&amp;&amp;jp!=<span class="string">'-'</span>)</span><br><span class="line">		jp=getchar();</span><br><span class="line">	<span class="keyword">if</span> (jp==<span class="string">'-'</span>)</span><br><span class="line">		fh=<span class="number">-1</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> (jp&gt;=<span class="string">'0'</span>&amp;&amp;jp&lt;=<span class="string">'9'</span>)</span><br><span class="line">		out=out*<span class="number">10</span>+jp-<span class="string">'0'</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">return</span> out*fh;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">5e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line">ll sum[MAXN];</span><br><span class="line"><span class="keyword">bool</span> vis[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>((sum[n]&gt;&gt;k)&amp;<span class="number">1L</span>L)</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">		<span class="keyword">if</span>(!((sum[i]&gt;&gt;k)&amp;<span class="number">1L</span>L) &amp;&amp; !vis[i])</span><br><span class="line">			++cnt;</span><br><span class="line">	<span class="keyword">return</span> cnt&gt;=m;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	n=read(),m=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">		sum[i]=sum[i<span class="number">-1</span>]^read();</span><br><span class="line">	ll ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">62</span>;k&gt;=<span class="number">0</span>;--k)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(check(k))</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">				<span class="keyword">if</span>((sum[i]&gt;&gt;k)&amp;<span class="number">1L</span>L)</span><br><span class="line">					vis[i]=<span class="literal">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			ans|=(<span class="number">1L</span>L&lt;&lt;k);				</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>$k$ 叉 $Huffman$ 树编码问题,可以等价为每次最多合并 $k$ 个果子的合并果子问题.</p>
+<p>这是因为两者的合并树是相同的.</p>
+<p>于是就像合并果子那样贪心,维护一个小根堆,每次取出前 $k$ 小的元素合并,需要先补 $0$ ,使得每次都恰好合并 $k$ 个. </p>
+<p>这道题还需要让最大的长度最小,所以在权值相同时,按照深度从小到大排序,优先合并深度小的.</p>
+<p>时间复杂度 $O(n\log n)$ .</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//%std</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ll out=<span class="number">0</span>,fh=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> ((jp&gt;<span class="string">'9'</span>||jp&lt;<span class="string">'0'</span>)&amp;&amp;jp!=<span class="string">'-'</span>)</span><br><span class="line">		jp=getchar();</span><br><span class="line">	<span class="keyword">if</span> (jp==<span class="string">'-'</span>)</span><br><span class="line">		fh=<span class="number">-1</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> (jp&gt;=<span class="string">'0'</span>&amp;&amp;jp&lt;=<span class="string">'9'</span>)</span><br><span class="line">		out=out*<span class="number">10</span>+jp-<span class="string">'0'</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">return</span> out*fh;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;ll,<span class="keyword">int</span>&gt; pli;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mp make_pair</span></span><br><span class="line"><span class="keyword">int</span> n,k,mx=<span class="number">0</span>;</span><br><span class="line">ll ans=<span class="number">0</span>;</span><br><span class="line">priority_queue&lt;pli&gt; q;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	n=read(),k=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">		q.push(mp(-read(),<span class="number">-1</span>));</span><br><span class="line">	<span class="keyword">while</span>((n<span class="number">-1</span>)%(k<span class="number">-1</span>))</span><br><span class="line">	&#123;</span><br><span class="line">		q.push(mp(<span class="number">-0</span>,<span class="number">-1</span>));</span><br><span class="line">		++n;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(q.size()&gt;<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		ll val=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> mxd=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=k;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			val-=(q.top()).first;</span><br><span class="line">			mxd=max(mxd,-(q.top()).second);</span><br><span class="line">			q.pop();</span><br><span class="line">		&#125;</span><br><span class="line">		q.push(mp(-val,-mxd<span class="number">-1</span>));</span><br><span class="line">		ans+=val;</span><br><span class="line">		mx=max(mx,mxd);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>&lt;&lt;mx&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -523,8 +519,6 @@
           
             <a href="/tags/贪心/" rel="tag"># 贪心</a>
           
-            <a href="/tags/位运算/" rel="tag"># 位运算</a>
-          
         </div>
       
 
@@ -536,8 +530,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/24/bzoj-4299-FRBSUM/" rel="next" title="bzoj 4299 FRBSUM">
-                <i class="fa fa-chevron-left"></i> bzoj 4299 FRBSUM
+              <a href="/2019/10/08/bzoj-3211-花神游历各国/" rel="next" title="bzoj 3211 花神游历各国">
+                <i class="fa fa-chevron-left"></i> bzoj 3211 花神游历各国
               </a>
             
           </div>
@@ -546,8 +540,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/08/25/Japanese-Student-Championship-2019-Qualification/" rel="prev" title="Japanese Student Championship 2019 Qualification">
-                Japanese Student Championship 2019 Qualification <i class="fa fa-chevron-right"></i>
+              <a href="/9102/07/16/NOI2019同步赛游记/" rel="prev" title="置顶-NOI2019同步赛游记">
+                置顶-NOI2019同步赛游记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
