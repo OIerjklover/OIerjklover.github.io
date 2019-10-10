@@ -136,18 +136,18 @@
 
 
 
-  <meta name="description" content="不会写暴力场.">
-<meta name="keywords" content="贪心,dp计数,树状数组,test">
+  <meta name="description" content="$Dilworth$ 定理.">
+<meta name="keywords" content="DAG">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test20190922">
-<meta property="og:url" content="http://yoursite.com/2019/09/22/test20190922/index.html">
+<meta property="og:title" content="bzoj 3997 组合数学">
+<meta property="og:url" content="http://yoursite.com/2019/10/10/bzoj-3997-组合数学/index.html">
 <meta property="og:site_name" content="JKLover">
-<meta property="og:description" content="不会写暴力场.">
+<meta property="og:description" content="$Dilworth$ 定理.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-22T11:27:39.360Z">
+<meta property="og:updated_time" content="2019-10-10T06:47:13.268Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="test20190922">
-<meta name="twitter:description" content="不会写暴力场.">
+<meta name="twitter:title" content="bzoj 3997 组合数学">
+<meta name="twitter:description" content="$Dilworth$ 定理.">
 
 
 
@@ -155,7 +155,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/09/22/test20190922/">
+  <link rel="canonical" href="http://yoursite.com/2019/10/10/bzoj-3997-组合数学/">
 
 
 
@@ -165,7 +165,7 @@
   };
 </script>
 
-  <title>test20190922 | JKLover</title>
+  <title>bzoj 3997 组合数学 | JKLover</title>
   
 
 
@@ -397,7 +397,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/22/test20190922/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/10/bzoj-3997-组合数学/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JKLover">
@@ -414,7 +414,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">test20190922
+          <h1 class="post-title" itemprop="name headline">bzoj 3997 组合数学
 
               
             
@@ -440,7 +440,7 @@
                 
               
 
-              <time title="Created: 2019-09-22 18:09:18 / Modified: 19:27:39" itemprop="dateCreated datePublished" datetime="2019-09-22T18:09:18+08:00">2019-09-22</time>
+              <time title="Created: 2019-10-10 14:20:30 / Modified: 14:47:13" itemprop="dateCreated datePublished" datetime="2019-10-10T14:20:30+08:00">2019-10-10</time>
             
 
             
@@ -486,46 +486,14 @@
       
 
       
-        <script src="/js/crypto-js.js"></script>
-<script>
-function doDecrypt (pwd, onError) {
-	console.log('in doDecrypt');
-	const txt = document.getElementById('enc_content').innerHTML;
-	let plantext;
-	try {
-		const bytes = CryptoJS.AES.decrypt(txt, pwd);
-		var plaintext = bytes.toString(CryptoJS.enc.Utf8);
-	} catch(err) {
-		if(onError) {
-			onError(err);
-		}
-		return;
-	}
-	document.getElementById('enc_content').innerHTML = plaintext;
-	document.getElementById('enc_content').style.display = 'block';
-	document.getElementById('enc_passwd').style.display = 'none';
-	if(typeof MathJax !== 'undefined') {
-		MathJax.Hub.Queue(
-			['resetEquationNumbers', MathJax.InputJax.TeX],
-			['PreProcess', MathJax.Hub],
-			['Reprocess', MathJax.Hub]
-		);
-	}
-}
-</script>
-<div id="enc_content" style="display:none">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</div>
-<div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
-<script>
-var onError = function(error) {
-	document.getElementById("enc_error").innerHTML = "password error!"
-};
-function decrypt() {
-var passwd = document.getElementById("enc_pwd_input").value;
-console.log(passwd);
-doDecrypt(passwd, onError);
-}
-</script>
-</div>
+        <p>$Dilworth$ 定理.</p>
+<a id="more"></a>
+<p>图是一张 $DAG$ ,根据 $Dilworth$ 定理,它的最小链覆盖数就等于最长反链长度.</p>
+<p>一条反链中的任意两点间都不存在边,所以一定是从左下到右上的一条链.</p>
+<p>设 $f(i,j)$ 表示用了以 $(i,j)$ 为右上角的矩阵中的点,最长反链的长度.</p>
+<p>从左下到右上进行 $dp$ 即可.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//%std</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> out=<span class="number">0</span>,fh=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> ((jp&gt;<span class="string">'9'</span>||jp&lt;<span class="string">'0'</span>)&amp;&amp;jp!=<span class="string">'-'</span>)</span><br><span class="line">		jp=getchar();</span><br><span class="line">	<span class="keyword">if</span> (jp==<span class="string">'-'</span>)</span><br><span class="line">		fh=<span class="number">-1</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> (jp&gt;=<span class="string">'0'</span>&amp;&amp;jp&lt;=<span class="string">'9'</span>)</span><br><span class="line">		out=out*<span class="number">10</span>+jp-<span class="string">'0'</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">return</span> out*fh;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">1e3</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,val[MAXN][MAXN];</span><br><span class="line">ll f[MAXN][MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> T=read();</span><br><span class="line">	<span class="keyword">while</span>(T--)</span><br><span class="line">	&#123;</span><br><span class="line">		n=read(),m=read();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;++j)</span><br><span class="line">				val[i][j]=read();</span><br><span class="line">		<span class="built_in">memset</span>(f,<span class="number">0</span>,<span class="keyword">sizeof</span> f);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=n;i&gt;=<span class="number">1</span>;--i)</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;++j)</span><br><span class="line">				&#123;</span><br><span class="line">					f[i][j]=<span class="number">0</span>;</span><br><span class="line">					f[i][j]=max(f[i][j],f[i+<span class="number">1</span>][j]);</span><br><span class="line">					f[i][j]=max(f[i][j],f[i][j<span class="number">-1</span>]);</span><br><span class="line">					f[i][j]=max(f[i][j],f[i+<span class="number">1</span>][j<span class="number">-1</span>]+val[i][j]);					</span><br><span class="line">				&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,f[<span class="number">1</span>][m]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -548,13 +516,7 @@ doDecrypt(passwd, onError);
       
         <div class="post-tags">
           
-            <a href="/tags/贪心/" rel="tag"># 贪心</a>
-          
-            <a href="/tags/dp计数/" rel="tag"># dp计数</a>
-          
-            <a href="/tags/树状数组/" rel="tag"># 树状数组</a>
-          
-            <a href="/tags/test/" rel="tag"># test</a>
+            <a href="/tags/DAG/" rel="tag"># DAG</a>
           
         </div>
       
@@ -567,8 +529,8 @@ doDecrypt(passwd, onError);
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/21/test20190921/" rel="next" title="test20190921">
-                <i class="fa fa-chevron-left"></i> test20190921
+              <a href="/2019/10/10/CF1168A-Increasing-by-Modulo/" rel="next" title="CF1168A Increasing by Modulo">
+                <i class="fa fa-chevron-left"></i> CF1168A Increasing by Modulo
               </a>
             
           </div>
@@ -577,8 +539,8 @@ doDecrypt(passwd, onError);
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/23/bzoj-4543-Hotel加强版/" rel="prev" title="bzoj 4543 Hotel加强版">
-                bzoj 4543 Hotel加强版 <i class="fa fa-chevron-right"></i>
+              <a href="/9102/07/16/NOI2019同步赛游记/" rel="prev" title="置顶-NOI2019同步赛游记">
+                置顶-NOI2019同步赛游记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
