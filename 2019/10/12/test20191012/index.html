@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="数数场.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-12T07:07:58.673Z">
+<meta property="og:updated_time" content="2019-10-12T07:22:16.177Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="test20191012">
 <meta name="twitter:description" content="数数场.">
@@ -440,7 +440,7 @@
                 
               
 
-              <time title="Created: 2019-10-12 14:13:25 / Modified: 15:07:58" itemprop="dateCreated datePublished" datetime="2019-10-12T14:13:25+08:00">2019-10-12</time>
+              <time title="Created: 2019-10-12 14:13:25 / Modified: 15:22:16" itemprop="dateCreated datePublished" datetime="2019-10-12T14:13:25+08:00">2019-10-12</time>
             
 
             
@@ -500,16 +500,17 @@
 <p>具体做法是,设 $f(u,t)$ 表示以 $u$ 为根,大小为 $t$ 的连通块的数目,转移时大力合并自己与儿子的信息.</p>
 <p>第二维要开到 $n​$ ,所以时间复杂度是 $O(n^2)​$ 的.</p>
 </blockquote>
-<p>考虑 $|P|^i$ 的组合意义,有一个比较套路的推式子的方法.<br>$$<br>\begin{aligned}<br>ans_i&amp;=\sum_P |P|^i\\<br>&amp;=\sum_P \sum_{j=1}^i {|P|\choose j} \cdot j! \cdot\begin{Bmatrix}i\j\end{Bmatrix} \\<br>&amp;=\sum_{j=1}^i j!\cdot \begin{Bmatrix}i\j\end{Bmatrix}\sum_P {|P|\choose j}<br>\end{aligned}<br>$$<br>解释一下, $|P|^i$ 可以看做是有 $i$ 个元素,每个元素有 $|P|$ 种选法的可重排列的方案数.</p>
+<p>考虑 $|P|^i$ 的组合意义,有一个比较套路的推式子的方法.<br>$$<br>\begin{aligned}<br>ans_i&amp;=\sum_P |P|^i\\<br>&amp;=\sum_P \sum_{j=1}^i {|P|\choose j} \cdot j! \cdot\begin{Bmatrix}i \ j\end{Bmatrix} \\<br>&amp;=\sum_{j=1}^i j!\cdot \begin{Bmatrix}i \ j\end{Bmatrix}\sum_P {|P|\choose j}<br>\end{aligned}<br>$$<br>解释一下, $|P|^i$ 可以看做是有 $i$ 个元素,每个元素有 $|P|$ 种选法的可重排列的方案数.</p>
 <p>枚举 $j$ ,表示钦定这个可重排列中一共出现了 $j$ 种不同的元素.</p>
 <p>首先需要选出这 $j$ 种元素,贡献为 ${|P|\choose j}$ .</p>
-<p>再对于这 $i$ 个位置,将它们划分成 $j$ 类,类别相同的位置放相同的元素,贡献为第二类斯特林数 $\begin{Bmatrix}i\j\end{Bmatrix}$ .</p>
+<p>再对于这 $i$ 个位置,将它们划分成 $j$ 类,类别相同的位置放相同的元素,贡献为第二类斯特林数 $\begin{Bmatrix}i \ j\end{Bmatrix}$ .</p>
 <p>还需要为这 $j$ 个类别钦定一个标号,贡献为 $j!$ ,因为第二类斯特林数算的是分成 $j$ 个无标号类别的方案数.</p>
 <p>用乘法原理将它们乘起来,就得到了第二个等号后的式子.</p>
 <p>交换一下求和顺序,就得到的最后那个式子.</p>
 <p>此时再进行 $dp$ ,设 $f(u,t)$ 表示以 $u$ 为根的所有连通块的 $\sum {|P| \choose |t|}$ .</p>
 <p>预处理组合数和斯特林数,转移时仍然暴力合并自己与子树的信息.</p>
 <p>这样一来,第二维只用开到 $k$ ,所以时间复杂度变为了 $O(nk)$ .</p>
+<h3 id="gcd"><a href="#gcd" class="headerlink" title="$gcd$"></a>$gcd$</h3><p>需要注意到最优情况下,前缀 $gcd$ 一定是形如 $2^x3^y$ 的数,其中 $x\in \mathbb N,y\in{0,1}$ .</p>
 
       
     </div>
@@ -962,7 +963,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#dfs"><span class="nav-number">1.</span> <span class="nav-text">$dfs$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#city"><span class="nav-number">2.</span> <span class="nav-text">$city$</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#dfs"><span class="nav-number">1.</span> <span class="nav-text">$dfs$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#city"><span class="nav-number">2.</span> <span class="nav-text">$city$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gcd"><span class="nav-number">3.</span> <span class="nav-text">$gcd$</span></a></li></ol></div>
             
 
           </div>
