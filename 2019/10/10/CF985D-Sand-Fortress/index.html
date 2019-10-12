@@ -145,7 +145,7 @@
 <meta property="og:description" content="二分答案.">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://yoursite.com/2019/10/10/CF985D-Sand-Fortress/1.png">
-<meta property="og:updated_time" content="2019-10-11T03:33:01.779Z">
+<meta property="og:updated_time" content="2019-10-12T09:02:41.248Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CF985D Sand Fortress">
 <meta name="twitter:description" content="二分答案.">
@@ -459,7 +459,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-10-11 11:33:01" itemprop="dateModified" datetime="2019-10-11T11:33:01+08:00">2019-10-11</time>
+                <time title="Modified: 2019-10-12 17:02:41" itemprop="dateModified" datetime="2019-10-12T17:02:41+08:00">2019-10-12</time>
               
             
           </span>
@@ -515,6 +515,9 @@
 <p>由于最后一个位置必须是 $1$ ,且第一个位置的所以 $k$ 个位置最优的方案一定是先上升,再下降到 $1$ .</p>
 <p>感性理解一下.</p>
 <p><img src="1.png" alt></p>
+<p>判断一下直接这样放,第一个元素的位置是不是 $\le H$ 的,否则就只能从 $H$ 开始依次递减摆放.</p>
+<p>如果二分答案的上界设为 $n$ ,对等差数列求和时会爆掉 $\rm long\ long$ .</p>
+<p>可以对称的放,即高度从 $1$ 到某个 $x$ ,再到 $1$ .于是可以将上界设到 $2\sqrt n$ .</p>
 
       
     </div>
