@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="$Div.2$">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-18T01:16:50.318Z">
+<meta property="og:updated_time" content="2019-10-18T01:25:48.857Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CF1236">
 <meta name="twitter:description" content="$Div.2$">
@@ -440,7 +440,7 @@
                 
               
 
-              <time title="Created: 2019-10-18 07:50:23 / Modified: 09:16:50" itemprop="dateCreated datePublished" datetime="2019-10-18T07:50:23+08:00">2019-10-18</time>
+              <time title="Created: 2019-10-18 07:50:23 / Modified: 09:25:48" itemprop="dateCreated datePublished" datetime="2019-10-18T07:50:23+08:00">2019-10-18</time>
             
 
             
@@ -505,8 +505,7 @@
 <h3 id="F-Alice-and-the-Cactus"><a href="#F-Alice-and-the-Cactus" class="headerlink" title="F Alice and the Cactus"></a><a href="https://codeforces.com/contest/1236/problem/F" target="_blank" rel="noopener">F Alice and the Cactus</a></h3><p>对于一棵仙人掌,每个点最多在一个环上,删掉某些点后,每个点仍然在最多一个环上.</p>
 <p>记点数为 $a$ ,边数为 $b$ ,环的数目为 $c$ ,于是连通块数目 $X=a-b+c$ .</p>
 <p>方差可以看做 $E(X^2)-E(X)$ ,而 $X^2$ 可以拆成 $a^2+b^2+c^2-2ab-2bc+2ac$ . </p>
-<p>根据期望的线性性,答案就等于 $E(a^2)+E(b^2)+E(c^2)-E(2ab)-E(2bc)+2E(ac)-E(a)+E(b)-E(c)$ .</p>
-<p>把这 $9$ 种情况的贡献都统计进去,需要计算逆元,时间复杂度 $O(n\log P)$ .</p>
+<p>根据期望的线性性,答案为<br>$$<br>E(a^2)+E(b^2)+E(c^2)-E(2ab)-E(2bc)+2E(ac)-E(a)+E(b)-E(c)<br>$$<br>把这 $9​$ 种情况的贡献都统计进去,需要计算逆元,时间复杂度 $O(n\log P)​$ .</p>
 
       
     </div>
