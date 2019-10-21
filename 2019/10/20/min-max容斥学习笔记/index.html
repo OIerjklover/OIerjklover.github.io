@@ -136,18 +136,18 @@
 
 
 
-  <meta name="description" content="min-max 容斥学习笔记.">
+  <meta name="description" content="$$\max(S)=\sum_{T\subseteq S,T\neq \emptyset} (-1)^{|T|-1}\cdot \min(T) \\\min(S)=\sum_{T\subseteq S,T\neq \emptyset} (-1)^{|T|-1}\cdot \max(T)$$">
 <meta name="keywords" content="学习笔记,min-max 容斥">
 <meta property="og:type" content="article">
 <meta property="og:title" content="min-max 容斥学习笔记">
 <meta property="og:url" content="http://yoursite.com/2019/10/20/min-max容斥学习笔记/index.html">
 <meta property="og:site_name" content="JKLover">
-<meta property="og:description" content="min-max 容斥学习笔记.">
+<meta property="og:description" content="$$\max(S)=\sum_{T\subseteq S,T\neq \emptyset} (-1)^{|T|-1}\cdot \min(T) \\\min(S)=\sum_{T\subseteq S,T\neq \emptyset} (-1)^{|T|-1}\cdot \max(T)$$">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-20T12:04:37.529Z">
+<meta property="og:updated_time" content="2019-10-21T07:20:20.486Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="min-max 容斥学习笔记">
-<meta name="twitter:description" content="min-max 容斥学习笔记.">
+<meta name="twitter:description" content="$$\max(S)=\sum_{T\subseteq S,T\neq \emptyset} (-1)^{|T|-1}\cdot \min(T) \\\min(S)=\sum_{T\subseteq S,T\neq \emptyset} (-1)^{|T|-1}\cdot \max(T)$$">
 
 
 
@@ -440,12 +440,24 @@
                 
               
 
-              <time title="Created: 2019-10-20 19:25:18 / Modified: 20:04:37" itemprop="dateCreated datePublished" datetime="2019-10-20T19:25:18+08:00">2019-10-20</time>
+              <time title="Created: 2019-10-20 19:25:18" itemprop="dateCreated datePublished" datetime="2019-10-20T19:25:18+08:00">2019-10-20</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-10-21 15:20:20" itemprop="dateModified" datetime="2019-10-21T15:20:20+08:00">2019-10-21</time>
               
             
           </span>
@@ -486,10 +498,10 @@
       
 
       
-        <p>min-max 容斥学习笔记.</p>
+        <p>$$<br>\max(S)=\sum_{T\subseteq S,T\neq \emptyset} (-1)^{|T|-1}\cdot \min(T) \\<br>\min(S)=\sum_{T\subseteq S,T\neq \emptyset} (-1)^{|T|-1}\cdot \max(T)<br>$$</p>
 <a id="more"></a>
-<p>记 $\min(S)$ 表示非空集合 $S$ 中元素的最小值, $\max(S)$ 表示非空集合 $S$ 中元素的最大值.</p>
-<p>则有式子<br>$$<br>\max(S)=\sum_{T\subseteq S,T\neq \emptyset} (-1)^{|T|-1}\cdot \min(T) \\<br>\min(S)=\sum_{T\subseteq S,T\neq \emptyset} (-1)^{|T|-1}\cdot \max(T)<br>$$<br>只用证第一个等式,将所有元素取反即可得到第二个等式.</p>
+<p>其中 $\min(S)$ 表示非空集合 $S$ 中元素的最小值, $\max(S)$ 表示非空集合 $S$ 中元素的最大值.</p>
+<p>只用证第一个等式,将所有元素取反即可得到第二个等式.</p>
 <p>假设这个容斥系数是 $f(|T|)$ ,则需要证明 $f(x)=(-1)^{x-1}​$ .</p>
 <p>考虑集合 $S$ 中第 $x+1​$ 大的元素,它对等式左右两边的贡献应当是相等的.<br>$$<br>[x=0]=\sum_{i=0}^{x}{x\choose i}\cdot f(i+1)<br>$$<br>对这个等式二项式反演.<br>$$<br>\begin{aligned}<br>f(x+1)&amp;=\sum_{i=0}^x(-1)^{x-i}{x\choose i}\cdot [i=0]\\<br>&amp;=(-1)^x<br>\end{aligned}<br>$$<br>得证.</p>
 <p>这个式子对于概率/期望同样成立,常用于将期望中的 $\max$ 转化为 $\min​$ 进行处理.</p>
@@ -609,7 +621,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">271</span>
+                    <span class="site-state-item-count">273</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
