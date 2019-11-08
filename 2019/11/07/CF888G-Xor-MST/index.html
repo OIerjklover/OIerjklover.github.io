@@ -136,14 +136,18 @@
 
 
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="$Boruvka$ 算法求解最小生成树.">
+<meta name="keywords" content="Trie,Boruvka">
+<meta property="og:type" content="article">
 <meta property="og:title" content="CF888G Xor-MST">
 <meta property="og:url" content="http://yoursite.com/2019/11/07/CF888G-Xor-MST/index.html">
 <meta property="og:site_name" content="JKLover">
+<meta property="og:description" content="$Boruvka$ 算法求解最小生成树.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-07T10:28:48.736Z">
+<meta property="og:updated_time" content="2019-11-08T08:18:31.069Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CF888G Xor-MST">
+<meta name="twitter:description" content="$Boruvka$ 算法求解最小生成树.">
 
 
 
@@ -440,6 +444,22 @@
             
 
             
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-11-08 16:18:31" itemprop="dateModified" datetime="2019-11-08T16:18:31+08:00">2019-11-08</time>
+              
+            
           </span>
 
           
@@ -478,7 +498,29 @@
       
 
       
-        <a id="more"></a>
+        <p>$Boruvka$ 算法求解最小生成树.</p>
+<a id="more"></a>
+<blockquote>
+<p>有一张 $n$ 个点的完全图,其中第 $i$ 个点有一个权值 $a_i$ ,两个点 $i,j$ 之间的边权为 $a_i\oplus a_j$ .</p>
+<p>需要求出这张完全图的最小生成树的权值.</p>
+<p>$n\le 2\times 10^5,0\le a_i&lt;2^{30}$ .</p>
+</blockquote>
+<p>利用 $Boruvka​$ 算法求解.</p>
+<ul>
+<li>这个算法需要进行若干轮,初始时每个点是一个独立的连通块.</li>
+<li>每一轮中,对于每个连通块,找到边权 $w$ 最小的边 $e=(u,v,w)$ ,满足 $u$ 在该块内,而 $v​$ 不在该块内.</li>
+<li>将这些边都加入图中,利用并查集维护连通性.</li>
+<li>当加入了 $n-1$ 条边后,就得到了一棵最小生成树.</li>
+<li>每轮暴力枚举每条边,而每做一轮,连通块数目至少减少为原来的一半,所以时间复杂度为 $O((m+n)\log n)$ .</li>
+</ul>
+<p>这个算法的瓶颈在于对于每个连通块找出连出去的边中,边权最小的那条边.</p>
+<p>可以利用 $Trie$ 树优化这个找边过程,时间复杂度优化到 $O(n\log a\log n)$ .</p>
+<blockquote>
+<p>这类套路题大概是每个点有点权,任意两点之间的边权由二者的点权决定,需要求最小生成树.</p>
+<p>做法大致都和这道题类似,尝试去优化找最优边的过程.</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//%std</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> endl <span class="meta-string">'\n'</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> out=<span class="number">0</span>,fh=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> ((jp&gt;<span class="string">'9'</span>||jp&lt;<span class="string">'0'</span>)&amp;&amp;jp!=<span class="string">'-'</span>)</span><br><span class="line">		jp=getchar();</span><br><span class="line">	<span class="keyword">if</span> (jp==<span class="string">'-'</span>)</span><br><span class="line">		fh=<span class="number">-1</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> (jp&gt;=<span class="string">'0'</span>&amp;&amp;jp&lt;=<span class="string">'9'</span>)</span><br><span class="line">		out=out*<span class="number">10</span>+jp-<span class="string">'0'</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">return</span> out*fh;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">2e5</span>+<span class="number">10</span>,K=<span class="number">30</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf=<span class="number">0x7fffffff</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Trie</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> idx;</span><br><span class="line">	Trie()&#123;idx=<span class="number">1</span>;&#125;</span><br><span class="line">	<span class="keyword">int</span> ch[MAXN*K][<span class="number">2</span>],val[MAXN*K],id[MAXN*K];</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">ins</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> v,<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> u=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=K<span class="number">-1</span>;i&gt;=<span class="number">0</span>;--i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> c=(x&gt;&gt;i)&amp;<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(!ch[u][c])</span><br><span class="line">				ch[u][c]=++idx;</span><br><span class="line">			u=ch[u][c];</span><br><span class="line">			val[u]+=v;</span><br><span class="line">		&#125;</span><br><span class="line">		id[u]=k;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> u=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=K<span class="number">-1</span>;i&gt;=<span class="number">0</span>;--i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> c=(x&gt;&gt;i)&amp;<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(val[ch[u][c]])</span><br><span class="line">				u=ch[u][c];</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				u=ch[u][c^<span class="number">1</span>];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> id[u];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;T;</span><br><span class="line"><span class="keyword">int</span> n,m=<span class="number">0</span>,a[MAXN],fa[MAXN],p[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Find</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> fa[x]==x?x:fa[x]=Find(fa[x]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> fa[x]&lt;fa[y];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		p[i]=fa[i]=i;</span><br><span class="line">		T.ins(a[i],<span class="number">1</span>,i);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; mi[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	n=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">		a[i]=read();</span><br><span class="line">	sort(a+<span class="number">1</span>,a+<span class="number">1</span>+n);</span><br><span class="line">	n=unique(a+<span class="number">1</span>,a+<span class="number">1</span>+n)-a<span class="number">-1</span>;</span><br><span class="line">	init();</span><br><span class="line">	ll ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(m&lt;n<span class="number">-1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">			fa[i]=Find(i);</span><br><span class="line">		sort(p+<span class="number">1</span>,p+<span class="number">1</span>+n);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">			mi[i]=make_pair(i,inf);</span><br><span class="line">		<span class="keyword">int</span> Fa;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">1</span>,r;l&lt;=n;++l)</span><br><span class="line">		&#123;</span><br><span class="line">			Fa=fa[p[l]];</span><br><span class="line">			r=l;</span><br><span class="line">			<span class="keyword">while</span>(r+<span class="number">1</span>&lt;n &amp;&amp; fa[p[r+<span class="number">1</span>]]==Fa)</span><br><span class="line">				++r;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=l;i&lt;=r;++i)</span><br><span class="line">				T.ins(a[p[i]],<span class="number">-1</span>,p[i]);</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=l;i&lt;=r;++i)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">int</span> x=p[i];</span><br><span class="line">				<span class="keyword">int</span> y=T.query(a[x]);</span><br><span class="line">				<span class="keyword">if</span>((a[x]^a[y])&lt;mi[Fa].second)</span><br><span class="line">					mi[Fa]=make_pair(y,a[x]^a[y]);	</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=l;i&lt;=r;++i)</span><br><span class="line">				T.ins(a[p[i]],<span class="number">1</span>,p[i]);</span><br><span class="line">			l=r;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> x=Find(i),y=Find(mi[i].first);</span><br><span class="line">			<span class="keyword">if</span>(x==y)</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			fa[x]=y;</span><br><span class="line">			ans+=mi[i].second;</span><br><span class="line">			++m;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -498,6 +540,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Trie/" rel="tag"># Trie</a>
+          
+            <a href="/tags/Boruvka/" rel="tag"># Boruvka</a>
+          
+        </div>
       
 
       
@@ -851,7 +901,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">123</span>
+                      
+                    
+                    <span class="site-state-item-count">124</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
