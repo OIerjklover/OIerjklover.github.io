@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="min-max 容斥 + 树形背包.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-09T03:12:09.040Z">
+<meta property="og:updated_time" content="2019-11-09T05:40:15.664Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XJOI 开放模拟赛Day2 paint">
 <meta name="twitter:description" content="min-max 容斥 + 树形背包.">
@@ -440,7 +440,7 @@
                 
               
 
-              <time title="Created: 2019-11-09 10:52:46 / Modified: 11:12:09" itemprop="dateCreated datePublished" datetime="2019-11-09T10:52:46+08:00">2019-11-09</time>
+              <time title="Created: 2019-11-09 10:52:46 / Modified: 13:40:15" itemprop="dateCreated datePublished" datetime="2019-11-09T10:52:46+08:00">2019-11-09</time>
             
 
             
@@ -494,7 +494,7 @@
 <p>即,若记 $p(S)=\sum_{i} [\exists j\in S,dis(i,j)\le 1]$ 表示集合 $S$ 能覆盖的点的数目,则 $\min(S)=\frac{n}{p(S)}$ .</p>
 <p>而 $p(S)$ 有效的取值只会有 $n$ 种,尝试对于每个 $x$ 求出 $p(S)=x$ 的方案数,再统计答案.</p>
 <p>可以用树形背包来求,具体地,设 $f(i,j,0/1,0/1,0/1)$ 表示考虑了子树 $i$ 内的点,覆盖了 $j$ 个点,集合 $S$ 的大小是偶数/奇数,根节点 $i$ 在 $S$ 中/不在 $S$ 中,根节点 $i$ 被覆盖了/没被覆盖 时的方案数.</p>
-<p>合并 $u$ 和它的某个儿子 $v$ 的信息后,被覆盖的点数是两棵子树中被覆盖的点数之和,还可能加上 $u$ 或者 $v$ .<br>$$<br>f(u,x,a,b,c)\times f(v,y,A,B,C)\to f(u,x+y+[c=0\and B=1]+[C=0\and b=1],a\oplus A,b,c\or B)<br>$$<br>时间复杂度 $O(n^2)$ .</p>
+<p>合并 $u$ 和它的某个儿子 $v$ 的信息后,被覆盖的点数是两棵子树中被覆盖的点数之和,还可能加上 $u$ 或者 $v$ .<br>$$<br>f(u,x,a,b,c)\times f(v,y,A,B,C)\\<br>\to f(u,x+y+[c=0\land B=1]+[C=0\land b=1],a\oplus A,b,c\lor B)<br>$$<br>时间复杂度 $O(n^2)$ .</p>
 
       
     </div>

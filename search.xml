@@ -11,7 +11,7 @@
   <entry>
     <title><![CDATA[XJOI 开放模拟赛Day2 paint]]></title>
     <url>%2F2019%2F11%2F09%2FXJOI-%E5%BC%80%E6%94%BE%E6%A8%A1%E6%8B%9F%E8%B5%9BDay2-paint%2F</url>
-    <content type="text"><![CDATA[min-max 容斥 + 树形背包. 记 $\max(S)$ 表示集合 $S$ 中的点都变成黑色的期望需要的时间. 记 $\min(S)​$ 表示集合 $S​$ 中的点至少有一个变成黑色的期望需要的时间. 则根据 min-max 容斥,有$$\max(S)=\sum_{T\subseteq S,T\neq \emptyset }(-1)^{|T|-1} \cdot \min(T)$$点数比较大,暴力去算每个 $\min(S)​$ 不可取,但可以注意到 $\min(S)​$ 只与集合 $S​$ 中的点覆盖的点的数目有关. 即,若记 $p(S)=\sum_{i} [\exists j\in S,dis(i,j)\le 1]$ 表示集合 $S$ 能覆盖的点的数目,则 $\min(S)=\frac{n}{p(S)}$ . 而 $p(S)$ 有效的取值只会有 $n$ 种,尝试对于每个 $x$ 求出 $p(S)=x$ 的方案数,再统计答案. 可以用树形背包来求,具体地,设 $f(i,j,0/1,0/1,0/1)$ 表示考虑了子树 $i$ 内的点,覆盖了 $j$ 个点,集合 $S$ 的大小是偶数/奇数,根节点 $i$ 在 $S$ 中/不在 $S$ 中,根节点 $i$ 被覆盖了/没被覆盖 时的方案数. 合并 $u$ 和它的某个儿子 $v$ 的信息后,被覆盖的点数是两棵子树中被覆盖的点数之和,还可能加上 $u$ 或者 $v$ .$$f(u,x,a,b,c)\times f(v,y,A,B,C)\to f(u,x+y+[c=0\and B=1]+[C=0\and b=1],a\oplus A,b,c\or B)$$时间复杂度 $O(n^2)$ .]]></content>
+    <content type="text"><![CDATA[min-max 容斥 + 树形背包. 记 $\max(S)$ 表示集合 $S$ 中的点都变成黑色的期望需要的时间. 记 $\min(S)​$ 表示集合 $S​$ 中的点至少有一个变成黑色的期望需要的时间. 则根据 min-max 容斥,有$$\max(S)=\sum_{T\subseteq S,T\neq \emptyset }(-1)^{|T|-1} \cdot \min(T)$$点数比较大,暴力去算每个 $\min(S)​$ 不可取,但可以注意到 $\min(S)​$ 只与集合 $S​$ 中的点覆盖的点的数目有关. 即,若记 $p(S)=\sum_{i} [\exists j\in S,dis(i,j)\le 1]$ 表示集合 $S$ 能覆盖的点的数目,则 $\min(S)=\frac{n}{p(S)}$ . 而 $p(S)$ 有效的取值只会有 $n$ 种,尝试对于每个 $x$ 求出 $p(S)=x$ 的方案数,再统计答案. 可以用树形背包来求,具体地,设 $f(i,j,0/1,0/1,0/1)$ 表示考虑了子树 $i$ 内的点,覆盖了 $j$ 个点,集合 $S$ 的大小是偶数/奇数,根节点 $i$ 在 $S$ 中/不在 $S$ 中,根节点 $i$ 被覆盖了/没被覆盖 时的方案数. 合并 $u$ 和它的某个儿子 $v$ 的信息后,被覆盖的点数是两棵子树中被覆盖的点数之和,还可能加上 $u$ 或者 $v$ .$$f(u,x,a,b,c)\times f(v,y,A,B,C)\\\to f(u,x+y+[c=0\land B=1]+[C=0\land b=1],a\oplus A,b,c\lor B)$$时间复杂度 $O(n^2)$ .]]></content>
       <tags>
         <tag>树形dp</tag>
         <tag>概率/期望</tag>
