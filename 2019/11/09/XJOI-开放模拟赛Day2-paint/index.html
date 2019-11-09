@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="min-max 容斥 + 树形背包.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-09T05:40:15.664Z">
+<meta property="og:updated_time" content="2019-11-09T06:24:43.019Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XJOI 开放模拟赛Day2 paint">
 <meta name="twitter:description" content="min-max 容斥 + 树形背包.">
@@ -440,7 +440,7 @@
                 
               
 
-              <time title="Created: 2019-11-09 10:52:46 / Modified: 13:40:15" itemprop="dateCreated datePublished" datetime="2019-11-09T10:52:46+08:00">2019-11-09</time>
+              <time title="Created: 2019-11-09 10:52:46 / Modified: 14:24:43" itemprop="dateCreated datePublished" datetime="2019-11-09T10:52:46+08:00">2019-11-09</time>
             
 
             
@@ -488,6 +488,12 @@
       
         <p>min-max 容斥 + 树形背包.</p>
 <a id="more"></a>
+<blockquote>
+<p>有一棵 $n$ 个节点的树,初始每个节点都是白色的.</p>
+<p>每次操作会从 $n$ 个节点中等概率随机选出一个点,将这个点以及与它相邻的点染为黑色.</p>
+<p>问期望多少次操作后所有点都变成黑色.在模 $998244353$ 意义下求解.</p>
+<p>$n\le 1000$ .</p>
+</blockquote>
 <p>记 $\max(S)$ 表示集合 $S$ 中的点都变成黑色的期望需要的时间.</p>
 <p>记 $\min(S)​$ 表示集合 $S​$ 中的点至少有一个变成黑色的期望需要的时间.</p>
 <p>则根据 min-max 容斥,有<br>$$<br>\max(S)=\sum_{T\subseteq S,T\neq \emptyset }(-1)^{|T|-1} \cdot \min(T)<br>$$<br>点数比较大,暴力去算每个 $\min(S)​$ 不可取,但可以注意到 $\min(S)​$ 只与集合 $S​$ 中的点覆盖的点的数目有关.</p>
@@ -545,8 +551,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/9102/07/16/NOI2019同步赛游记/" rel="prev" title="置顶-NOI2019同步赛游记">
-                置顶-NOI2019同步赛游记 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/11/09/bzoj-3990-排序/" rel="prev" title="bzoj 3990 排序">
+                bzoj 3990 排序 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -613,7 +619,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">311</span>
+                    <span class="site-state-item-count">312</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
