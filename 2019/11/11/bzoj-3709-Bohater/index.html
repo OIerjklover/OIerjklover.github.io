@@ -136,14 +136,18 @@
 
 
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="贪心.">
+<meta name="keywords" content="贪心">
+<meta property="og:type" content="article">
 <meta property="og:title" content="bzoj 3709 Bohater">
 <meta property="og:url" content="http://yoursite.com/2019/11/11/bzoj-3709-Bohater/index.html">
 <meta property="og:site_name" content="JKLover">
+<meta property="og:description" content="贪心.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-11T08:30:32.050Z">
+<meta property="og:updated_time" content="2019-11-11T12:25:35.409Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bzoj 3709 Bohater">
+<meta name="twitter:description" content="贪心.">
 
 
 
@@ -436,7 +440,7 @@
                 
               
 
-              <time title="Created: 2019-11-11 16:30:31 / Modified: 16:30:32" itemprop="dateCreated datePublished" datetime="2019-11-11T16:30:31+08:00">2019-11-11</time>
+              <time title="Created: 2019-11-11 16:30:31 / Modified: 20:25:35" itemprop="dateCreated datePublished" datetime="2019-11-11T16:30:31+08:00">2019-11-11</time>
             
 
             
@@ -482,7 +486,14 @@
       
 
       
-        <a id="more"></a>
+        <p>贪心.</p>
+<a id="more"></a>
+<p>首先可以对于 $d\le a$ 的怪物,按照 $d$ 从小到大的顺序,能打的都打掉.</p>
+<p>对于剩下的怪,如果能打完,那么最后剩下的血量是确定的,与顺序无关.</p>
+<p>倒着看,相当于是撤销掉血药的恢复,再撤销掉受到怪物的伤害,即先 $-a$ ,再 $+d$ .</p>
+<p>那么把剩下的怪按照 $a$ 从大到小排序,能打的都打掉就可以了,前后两个阶段其实是对称的.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//%std</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> endl <span class="meta-string">'\n'</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> out=<span class="number">0</span>,fh=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> ((jp&gt;<span class="string">'9'</span>||jp&lt;<span class="string">'0'</span>)&amp;&amp;jp!=<span class="string">'-'</span>)</span><br><span class="line">		jp=getchar();</span><br><span class="line">	<span class="keyword">if</span> (jp==<span class="string">'-'</span>)</span><br><span class="line">		fh=<span class="number">-1</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> (jp&gt;=<span class="string">'0'</span>&amp;&amp;jp&lt;=<span class="string">'9'</span>)</span><br><span class="line">		out=out*<span class="number">10</span>+jp-<span class="string">'0'</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">return</span> out*fh;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> n,p=<span class="number">0</span>,q=<span class="number">0</span>;</span><br><span class="line">ll cur;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Monster</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> a,d,id;</span><br><span class="line">	<span class="keyword">bool</span> type;</span><br><span class="line">	<span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> Monster &amp;rhs) <span class="keyword">const</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> type?d&lt;rhs.d:a&gt;rhs.a;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;x[MAXN],y[MAXN];</span><br><span class="line"><span class="keyword">int</span> ans[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	sort(x+<span class="number">1</span>,x+<span class="number">1</span>+p);</span><br><span class="line">	sort(y+<span class="number">1</span>,y+<span class="number">1</span>+q);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=p;++i)</span><br><span class="line">		<span class="keyword">if</span>(cur&lt;=x[i].d)</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			cur+=x[i].a-x[i].d,ans[i]=x[i].id;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=q;++i)</span><br><span class="line">		<span class="keyword">if</span>(cur&lt;=y[i].d)</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			cur+=y[i].a-y[i].d,ans[i+p]=y[i].id;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	n=read(),cur=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		Monster tmp;</span><br><span class="line">		tmp.d=read(),tmp.a=read(),tmp.id=i;</span><br><span class="line">		<span class="keyword">if</span>(tmp.d&lt;=tmp.a)</span><br><span class="line">			tmp.type=<span class="literal">true</span>,x[++p]=tmp;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			tmp.type=<span class="literal">false</span>,y[++q]=tmp;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">bool</span> f=check();</span><br><span class="line">	<span class="built_in">puts</span>(f?<span class="string">"TAK"</span>:<span class="string">"NIE"</span>);</span><br><span class="line">	<span class="keyword">if</span>(f)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d "</span>,ans[i]);</span><br><span class="line">	<span class="built_in">puts</span>(<span class="string">""</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -502,6 +513,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/贪心/" rel="tag"># 贪心</a>
+          
+        </div>
       
 
       

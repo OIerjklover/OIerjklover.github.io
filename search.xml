@@ -11,7 +11,10 @@
   <entry>
     <title><![CDATA[bzoj 3709 Bohater]]></title>
     <url>%2F2019%2F11%2F11%2Fbzoj-3709-Bohater%2F</url>
-    <content type="text"><![CDATA[]]></content>
+    <content type="text"><![CDATA[贪心. 首先可以对于 $d\le a$ 的怪物,按照 $d$ 从小到大的顺序,能打的都打掉. 对于剩下的怪,如果能打完,那么最后剩下的血量是确定的,与顺序无关. 倒着看,相当于是撤销掉血药的恢复,再撤销掉受到怪物的伤害,即先 $-a$ ,再 $+d$ . 那么把剩下的怪按照 $a$ 从大到小排序,能打的都打掉就可以了,前后两个阶段其实是对称的. 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566//%std#include&lt;bits/stdc++.h&gt;#define endl '\n'using namespace std;typedef long long ll;inline int read()&#123; int out=0,fh=1; char jp=getchar(); while ((jp&gt;'9'||jp&lt;'0')&amp;&amp;jp!='-') jp=getchar(); if (jp=='-') fh=-1,jp=getchar(); while (jp&gt;='0'&amp;&amp;jp&lt;='9') out=out*10+jp-'0',jp=getchar(); return out*fh;&#125;const int MAXN=1e5+10;int n,p=0,q=0;ll cur;struct Monster&#123; int a,d,id; bool type; bool operator &lt; (const Monster &amp;rhs) const &#123; return type?d&lt;rhs.d:a&gt;rhs.a; &#125;&#125;x[MAXN],y[MAXN];int ans[MAXN];bool check()&#123; sort(x+1,x+1+p); sort(y+1,y+1+q); for(int i=1;i&lt;=p;++i) if(cur&lt;=x[i].d) return false; else cur+=x[i].a-x[i].d,ans[i]=x[i].id; for(int i=1;i&lt;=q;++i) if(cur&lt;=y[i].d) return false; else cur+=y[i].a-y[i].d,ans[i+p]=y[i].id; return true;&#125;int main()&#123; n=read(),cur=read(); for(int i=1;i&lt;=n;++i) &#123; Monster tmp; tmp.d=read(),tmp.a=read(),tmp.id=i; if(tmp.d&lt;=tmp.a) tmp.type=true,x[++p]=tmp; else tmp.type=false,y[++q]=tmp; &#125; bool f=check(); puts(f?"TAK":"NIE"); if(f) for(int i=1;i&lt;=n;++i) printf("%d ",ans[i]); puts(""); return 0;&#125;]]></content>
+      <tags>
+        <tag>贪心</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[test20191111]]></title>
