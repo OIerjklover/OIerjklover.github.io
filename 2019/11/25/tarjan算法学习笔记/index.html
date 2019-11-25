@@ -1,0 +1,1671 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<script> 
+	(function(){
+		if(''){
+			if (prompt('Please enter the password') !== ''){
+				alert('Wrong password'); 
+				history.back(); 
+			} 
+		} 
+	})();
+</script>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script> 
+	(function(){
+		if(''){
+			if (prompt('Please enter the password') !== ''){
+				alert('Wrong password'); 
+				history.back(); 
+			} 
+		} 
+	})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<script> 
+	(function(){
+		if(''){
+			if (prompt('Please enter the password') !== ''){
+				alert('Wrong password'); 
+				history.back(); 
+			} 
+		} 
+	})();
+</script>
+<meta name="theme-color" content="#222">
+<script> 
+	(function(){
+		if(''){
+			if (prompt('Please enter the password') !== ''){
+				alert('Wrong password'); 
+				history.back(); 
+			} 
+		} 
+	})();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/myicon-32x32.jpg?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/myicon-16x16.jpg?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"hide","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="发现自己根本不会 $tarjan$ ,于是来学一学.">
+<meta name="keywords" content="tarjan,学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tarjan算法学习笔记">
+<meta property="og:url" content="http://yoursite.com/2019/11/25/tarjan算法学习笔记/index.html">
+<meta property="og:site_name" content="JKLover">
+<meta property="og:description" content="发现自己根本不会 $tarjan$ ,于是来学一学.">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-25T14:01:13.904Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="tarjan算法学习笔记">
+<meta name="twitter:description" content="发现自己根本不会 $tarjan$ ,于是来学一学.">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/11/25/tarjan算法学习笔记/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>tarjan算法学习笔记 | JKLover</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">JKLover</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">夢はここに 思い出は遠くに</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/25/tarjan算法学习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JKLover">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JKLover">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">tarjan算法学习笔记
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-11-25 15:26:44 / Modified: 22:01:13" itemprop="dateCreated datePublished" datetime="2019-11-25T15:26:44+08:00">2019-11-25</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>发现自己根本不会 $tarjan$ ,于是来学一学.</p>
+<a id="more"></a>
+<p>$tarjan$ 算法的几个不同应用中,都有建出 $dfs$ 树的过程.</p>
+<p>若无特殊说明, $dfn$ 表示每个点的 $dfs$ 序, $low$ 表示这个点以及它的所有子孙连的所有点中 $dfn​$ 的最小值.</p>
+<p>在无向图中,由父亲走来的那条边不被用作更新 $low​$ .</p>
+<h2 id="强连通分量"><a href="#强连通分量" class="headerlink" title="强连通分量"></a>强连通分量</h2><p>对于一个有向图的子图,若子图中的任意两个点可以互相到达,则称这个子图为强连通子图.</p>
+<p>强连通分量, $SCC$ ,是极大的强连通子图,即无法通过拓展得到更大的强连通子图.</p>
+<p>可以利用 $tarjan​$ 算法求出每个点所在的强连通分量.</p>
+<p>$dfs$ 时不断将当前节点入栈.</p>
+<p>回溯时,若当前节点 $u$ 满足 $dfn(u)=low(u)$ ,则不断弹栈.将这些点都归入一个新的 $SCC$ 中,直到将 $u$ 也弹出.</p>
+<h2 id="割点"><a href="#割点" class="headerlink" title="割点"></a>割点</h2><p>无向图中,若去掉节点 $u$ 以及所有与它关联的边后,连通块的数目增加,则称 $u$ 为割点.</p>
+<p>可以利用 $tarjan$ 算法求出所有割点.</p>
+<p>$dfs$ 时,若节点 $u$ 为其所在连通块的根,则当它的度数 $&gt;1$ 时, $u$ 是割点.</p>
+<p>若节点 $u$ 不为根,则当存在一个儿子 $v$ ,满足 $low(v)\ge dfn(u)$ 时, $u$ 是割点.</p>
+<h2 id="桥"><a href="#桥" class="headerlink" title="桥"></a>桥</h2><p>无向图中,若去掉边 $(u,v)​$ 后,连通块的数目增加,则称边 $(u,v)​$ 为桥.</p>
+<p>可以利用 $tarjan$ 算法求出所有桥.</p>
+<p>$dfs$ 回溯时,若 $dfn(u)=low(u)$ ,则边 $(u,fa_u)$ 是桥.</p>
+<h2 id="边双连通分量"><a href="#边双连通分量" class="headerlink" title="边双连通分量"></a>边双连通分量</h2><p>对于一个无向图的连通子图,若任意两点间存在两条边不相交的路径,则称这个子图为边的双连通子图.</p>
+<blockquote>
+<p> 这也等价于删掉这个子图中的任意一条边后,这个子图仍然连通,即子图内部不存在桥.</p>
+</blockquote>
+<p>边双连通分量, $e-DCC$ ,简称边双,是极大的边的双连通子图,即无法通过拓展得到边更多的边的双联通子图.</p>
+<p>每个点只会属于一个边双,所以每条边也只会属于一个边双.</p>
+<p>可以利用 $tarjan$ 算法求出每个点所在的边双.</p>
+<p>若先将所有桥求出,则把所有桥删掉后,剩下的每个连通块就是边双了.</p>
+<p>这个过程可以不显式的进行,在 $dfs$ 时,不断将点入栈,若 $dfn(u)=low(u)$ ,说明 $u$ 的父亲边是桥.</p>
+<p>不断弹栈,将这些点归入一个新的边双,直到 $u$ 也被弹出.</p>
+<h3 id="bzoj-1718-Redundant-Paths"><a href="#bzoj-1718-Redundant-Paths" class="headerlink" title="bzoj 1718 Redundant Paths"></a><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1718" target="_blank" rel="noopener">bzoj 1718 Redundant Paths</a></h3><p>将每个边双缩点,由于原图连通,最后会形成一棵树.</p>
+<p>若这棵无向树有 $k$ 个叶子,则只需要将这些叶子两两连一条边,答案为 $\lceil \frac k 2\rceil$ .</p>
+<p>由于有重边,所以在跑 $tarjan$ 时不记录父亲节点,而是记录从父亲节点来的边的编号.</p>
+<p>时间复杂度 $O(m)​$ .</p>
+<p><a href="https://paste.ubuntu.com/p/V6XYmghV3M/" target="_blank" rel="noopener">code</a></p>
+<h3 id="bzoj-4435-Juice-Junctions"><a href="#bzoj-4435-Juice-Junctions" class="headerlink" title="bzoj 4435 Juice Junctions"></a><a href="https://www.lydsy.com/JudgeOnline/show.php?id=4435" target="_blank" rel="noopener">bzoj 4435 Juice Junctions</a></h3><p>由于每个点的度数不超过 $3$ ,所以两个点之间的流量只可能是 $0,1,2,3$ ,依次进行判断.</p>
+<p>若 $S,T$ 不在同一个连通块,流量为 $0$ .</p>
+<p>若 $S,T$ 在一个连通块,但不在一个边双中,流量为 $1$ .</p>
+<p>只需要区分 $2$ 和 $3$ ,其实它们分别表示了 $S,T$ 之间有 $2/3$ 条边不相交的路径.</p>
+<p>暴力枚举断掉一条边,求出断掉这条边后每个点所在的边双.</p>
+<p>若所有的 $m+1$ 种情况下, $S,T$ 所在的边双都一样,则答案为 $3$ ,否则为 $2$ ,这可以利用 $hash$ 进行判断.</p>
+<p>时间复杂度 $O(m^2)$ .</p>
+<p><a href="https://paste.ubuntu.com/p/SJfCszfBMQ/" target="_blank" rel="noopener">code</a></p>
+<h3 id="bzoj-3590-Quare"><a href="#bzoj-3590-Quare" class="headerlink" title="bzoj 3590 Quare"></a><a href="https://www.lydsy.com/JudgeOnline/show.php?id=3590" target="_blank" rel="noopener">bzoj 3590 Quare</a></h3><p>要用最小的代价把整张图连成一个边双,考虑边双的形成方式,可以这样进行理解.</p>
+<p>单独的一个点是一个边双,在一个边双上加入一条链,满足链的首尾都在这个边双中,可以得到更大的边双.</p>
+<p>于是可以用状压 $dp$ 来处理这个过程.</p>
+<p>设 $f(S)$ 表示将集合 $S$ 中的点连成一个边双的最小花费.</p>
+<p>设 $g(S,i,j)$ 表示将集合 $S$ 中的点连成一条首尾是 $i,j$ 的链的最小花费.</p>
+<p>转移时枚举这条链,还需要把这条链接进当前的边双中.</p>
+<p>设 $h(S,i,0)$ 表示从 $i$ 向 $S$ 中的某一个点连一条边的最小花费.</p>
+<p>由于这条链可能只有 $1$ 个点,所以还要设 $h(S,i,1)$ 表示次小花费.</p>
+<p>转移时,枚举链的首尾以及链包含的所有点,枚举它接进的边双含有的点.<br>$$<br>f(S)+g(T,i,j)+h(S,i)+h(S,j)\to f(S+T),i\neq j,S\cup T=\emptyset \\<br>f(S)+g(T,i,i)+h(S,i)+g(S,i)\to f(S+T),S\cup T=\emptyset<br>$$<br>需要预处理出 $g,h$ ,瓶颈在 $g$ 的预处理上,时间复杂度 $O(3^n\cdot n^4)$ ,但显然跑不满.</p>
+<p><a href="https://paste.ubuntu.com/p/QJNS69xj9n/" target="_blank" rel="noopener">code</a></p>
+<h2 id="点双连通分量"><a href="#点双连通分量" class="headerlink" title="点双连通分量"></a>点双连通分量</h2><p>对于一个无向图的连通子图,若任意两点间存在两条除起点终点外点不相交的路径,则称这个子图为点的双连通子图.</p>
+<blockquote>
+<p> 这也等价于删掉这个子图中的任意一个点后,这个子图仍然连通,即子图内部不存在割点.</p>
+</blockquote>
+<p>点双连通分量, $v-DCC$ ,简称点双,是极大的点的双连通子图,即无法通过拓展得到点更多的点的双联通子图.</p>
+<p>原图中的每个割点可能属于多个点双,但每条边只会属于一个点双.</p>
+<p>可以利用 $tarjan$ 算法求出每条边所在的点双.</p>
+<p>在 $dfs$ 时不断将边入栈,当通过边 $(u,v)$ 发现 $low(v)\ge dfn(u)$ ,就找到了一个割点 $u$ .</p>
+<p>不断弹栈,将弹出的边归入一个新的点双,直到边 $(u,v)​$ 也被弹出.</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/tarjan/" rel="tag"># tarjan</a>
+          
+            <a href="/tags/学习笔记/" rel="tag"># 学习笔记</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/24/CF1261/" rel="next" title="CF1261">
+                <i class="fa fa-chevron-left"></i> CF1261
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/9102/11/13/置顶-CSP2019游记/" rel="prev" title="置顶-CSP2019游记">
+                置顶-CSP2019游记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="JKLover">
+            
+              <p class="site-author-name" itemprop="name">JKLover</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">322</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">125</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                dalao们
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/autoint/" title="https://www.cnblogs.com/autoint/" rel="noopener" target="_blank">autoint</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://hs-blog.cf/" title="https://hs-blog.cf/" rel="noopener" target="_blank">Gluttony</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://chitongz.tk/" title="https://chitongz.tk/" rel="noopener" target="_blank">ChiTongZ</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://dcoitheshadow.github.io/" title="https://dcoitheshadow.github.io/" rel="noopener" target="_blank">TheShadow</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/wzxbeliever/" title="https://www.cnblogs.com/wzxbeliever/" rel="noopener" target="_blank">wzxbeliever</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://decorationqwq.com/" title="https://decorationqwq.com/" rel="noopener" target="_blank">decoration</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://orzsiyuan.com/" title="https://orzsiyuan.com/" rel="noopener" target="_blank">Siyuan</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#强连通分量"><span class="nav-number">1.</span> <span class="nav-text">强连通分量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#割点"><span class="nav-number">2.</span> <span class="nav-text">割点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#桥"><span class="nav-number">3.</span> <span class="nav-text">桥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#边双连通分量"><span class="nav-number">4.</span> <span class="nav-text">边双连通分量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-1718-Redundant-Paths"><span class="nav-number">4.1.</span> <span class="nav-text">bzoj 1718 Redundant Paths</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-4435-Juice-Junctions"><span class="nav-number">4.2.</span> <span class="nav-text">bzoj 4435 Juice Junctions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-3590-Quare"><span class="nav-number">4.3.</span> <span class="nav-text">bzoj 3590 Quare</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#点双连通分量"><span class="nav-number">5.</span> <span class="nav-text">点双连通分量</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JKLover</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="Total Visitors">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="Total Views">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '0f2a43b3bf8ac1ba787a',
+    clientSecret: 'c271a61a1475cd2dd1bbc48c7fd45058b0d2afea',
+    repo: 'jkloverdcoi.github.io',
+    owner: 'jkloverdcoi',
+    admin: ['jkloverdcoi'],
+    id: md5(location.pathname),
+    
+      language: 'en',
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+<script>
+  $('.highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('Copied');
+        else $(this).text('Copy failed');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('Copy');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+
+</body>
+</html>
