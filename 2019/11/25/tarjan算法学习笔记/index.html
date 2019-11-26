@@ -144,10 +144,13 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="发现自己根本不会 $tarjan$ ,于是来学一学.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-25T14:01:13.904Z">
+<meta property="og:image" content="http://yoursite.com/2019/11/25/tarjan算法学习笔记/tree.png">
+<meta property="og:image" content="http://yoursite.com/2019/11/25/tarjan算法学习笔记/box.png">
+<meta property="og:updated_time" content="2019-11-26T13:16:02.575Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tarjan算法学习笔记">
 <meta name="twitter:description" content="发现自己根本不会 $tarjan$ ,于是来学一学.">
+<meta name="twitter:image" content="http://yoursite.com/2019/11/25/tarjan算法学习笔记/tree.png">
 
 
 
@@ -440,12 +443,24 @@
                 
               
 
-              <time title="Created: 2019-11-25 15:26:44 / Modified: 22:01:13" itemprop="dateCreated datePublished" datetime="2019-11-25T15:26:44+08:00">2019-11-25</time>
+              <time title="Created: 2019-11-25 15:26:44" itemprop="dateCreated datePublished" datetime="2019-11-25T15:26:44+08:00">2019-11-25</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-11-26 21:16:02" itemprop="dateModified" datetime="2019-11-26T21:16:02+08:00">2019-11-26</time>
               
             
           </span>
@@ -490,7 +505,7 @@
 <a id="more"></a>
 <p>$tarjan$ 算法的几个不同应用中,都有建出 $dfs$ 树的过程.</p>
 <p>若无特殊说明, $dfn$ 表示每个点的 $dfs$ 序, $low$ 表示这个点以及它的所有子孙连的所有点中 $dfn​$ 的最小值.</p>
-<p>在无向图中,由父亲走来的那条边不被用作更新 $low​$ .</p>
+<p>在无向图中,由父亲走来的那条边不被用作更新 $low$ ,也不用判断点是否已经入队.</p>
 <h2 id="强连通分量"><a href="#强连通分量" class="headerlink" title="强连通分量"></a>强连通分量</h2><p>对于一个有向图的子图,若子图中的任意两个点可以互相到达,则称这个子图为强连通子图.</p>
 <p>强连通分量, $SCC$ ,是极大的强连通子图,即无法通过拓展得到更大的强连通子图.</p>
 <p>可以利用 $tarjan​$ 算法求出每个点所在的强连通分量.</p>
@@ -508,7 +523,7 @@
 <p> 这也等价于删掉这个子图中的任意一条边后,这个子图仍然连通,即子图内部不存在桥.</p>
 </blockquote>
 <p>边双连通分量, $e-DCC$ ,简称边双,是极大的边的双连通子图,即无法通过拓展得到边更多的边的双联通子图.</p>
-<p>每个点只会属于一个边双,所以每条边也只会属于一个边双.</p>
+<p>每个点只会属于一个边双,除了桥之外,其他每条边也只会属于一个边双.</p>
 <p>可以利用 $tarjan$ 算法求出每个点所在的边双.</p>
 <p>若先将所有桥求出,则把所有桥删掉后,剩下的每个连通块就是边双了.</p>
 <p>这个过程可以不显式的进行,在 $dfs$ 时,不断将点入栈,若 $dfn(u)=low(u)$ ,说明 $u$ 的父亲边是桥.</p>
@@ -536,6 +551,16 @@
 <p>由于这条链可能只有 $1$ 个点,所以还要设 $h(S,i,1)$ 表示次小花费.</p>
 <p>转移时,枚举链的首尾以及链包含的所有点,枚举它接进的边双含有的点.<br>$$<br>f(S)+g(T,i,j)+h(S,i)+h(S,j)\to f(S+T),i\neq j,S\cup T=\emptyset \\<br>f(S)+g(T,i,i)+h(S,i)+g(S,i)\to f(S+T),S\cup T=\emptyset<br>$$<br>需要预处理出 $g,h$ ,瓶颈在 $g$ 的预处理上,时间复杂度 $O(3^n\cdot n^4)$ ,但显然跑不满.</p>
 <p><a href="https://paste.ubuntu.com/p/QJNS69xj9n/" target="_blank" rel="noopener">code</a></p>
+<h3 id="bzoj-4229-选择"><a href="#bzoj-4229-选择" class="headerlink" title="bzoj 4229 选择"></a><a href="https://www.lydsy.com/JudgeOnline/show.php?id=4229" target="_blank" rel="noopener">bzoj 4229 选择</a></h3><p>把所有操作离线下来,倒着做,就变成了加边的同时动态维护边双信息.</p>
+<p>利用 $LCT$ 维护边双森林,加边时,若两点未连通,就直接连起来,否则就把这两点路径上的所有点缩成一个边双.</p>
+<p>每次要用到一个点时,都改成用它所在边双的那个超级点,这样能够保证 $dfs$ 总复杂度为 $O(n)$ .</p>
+<p>用并查集维护每个点所在的边双以及原图的连通性.</p>
+<p>时间复杂度 $O(n\log n)​$ .</p>
+<p><a href="https://paste.ubuntu.com/p/jPny8hX5Ym/" target="_blank" rel="noopener">code</a></p>
+<h3 id="bzoj-2959-长跑"><a href="#bzoj-2959-长跑" class="headerlink" title="bzoj 2959 长跑"></a><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=2959" target="_blank" rel="noopener">bzoj 2959 长跑</a></h3><p>把每个边双缩成一个点,这个超级点的点权为原来所有的点点权之和.</p>
+<p>可以发现,答案就是两个点所在边双路径上的超级点权值之和.</p>
+<p>由于要支持加边操作,需要用 $LCT$ 动态维护边双,时间复杂度 $O(n\log n)​$ .</p>
+<p><a href="https://paste.ubuntu.com/p/vF4YhMmstV/" target="_blank" rel="noopener">code</a></p>
 <h2 id="点双连通分量"><a href="#点双连通分量" class="headerlink" title="点双连通分量"></a>点双连通分量</h2><p>对于一个无向图的连通子图,若任意两点间存在两条除起点终点外点不相交的路径,则称这个子图为点的双连通子图.</p>
 <blockquote>
 <p> 这也等价于删掉这个子图中的任意一个点后,这个子图仍然连通,即子图内部不存在割点.</p>
@@ -544,7 +569,35 @@
 <p>原图中的每个割点可能属于多个点双,但每条边只会属于一个点双.</p>
 <p>可以利用 $tarjan$ 算法求出每条边所在的点双.</p>
 <p>在 $dfs$ 时不断将边入栈,当通过边 $(u,v)$ 发现 $low(v)\ge dfn(u)$ ,就找到了一个割点 $u$ .</p>
-<p>不断弹栈,将弹出的边归入一个新的点双,直到边 $(u,v)​$ 也被弹出.</p>
+<p>不断弹栈,将弹出的边归入一个新的点双,直到边 $(u,v)$ 也被弹出.</p>
+<h2 id="广义圆方树"><a href="#广义圆方树" class="headerlink" title="广义圆方树"></a>广义圆方树</h2><p>在无向图中利用 $tarjan$ 算法求出所有点双,对于每个点双建一个方点,原来的点是圆点.</p>
+<p>每个方点向这个点双中所有圆点连边,在圆点上维护这个点的信息,方点上维护这个点双的信息.</p>
+<p>这样就可以处理一些与无向图路径,或点双有关的问题了.贴一张网上找来的图.</p>
+<p><img src="tree.png" alt></p>
+<p>严格来说,这样形成的新图其实是一个森林,树的数目是原图中连通块的数目.</p>
+<p>显然,圆点只会与方点相邻,方点只会与圆点相邻,若两个方点有公共的相邻圆点,则这个圆点代表这两个点双的割点.</p>
+<blockquote>
+<p>注意有圆点和方点,要开两倍的空间.</p>
+</blockquote>
+<h3 id="bzoj-1123-BLO"><a href="#bzoj-1123-BLO" class="headerlink" title="bzoj 1123 BLO"></a><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=1123" target="_blank" rel="noopener">bzoj 1123 BLO</a></h3><p>把圆方树建出来,去掉一个圆点 $u$ ,增加的不能互通的点对数目就是两端都是圆点,且经过 $u$ 的路径数目.</p>
+<p><a href="https://paste.ubuntu.com/p/sGYpfNdqsQ/" target="_blank" rel="noopener">code</a></p>
+<h3 id="bzoj-3331-压力"><a href="#bzoj-3331-压力" class="headerlink" title="bzoj 3331 压力"></a><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=3331" target="_blank" rel="noopener">bzoj 3331 压力</a></h3><p>考虑把圆方树建出来,那么两个圆点之间的必经点,就是圆方树上两点路径上的所有圆点.</p>
+<p>用树上差分打下标记就可以处理了.</p>
+<p><a href="https://paste.ubuntu.com/p/Mb9GFyJNKn/" target="_blank" rel="noopener">code</a></p>
+<h3 id="bzoj-5138-Push-a-Box"><a href="#bzoj-5138-Push-a-Box" class="headerlink" title="bzoj 5138 Push a Box"></a><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=5138" target="_blank" rel="noopener">bzoj 5138 Push a Box</a></h3><p>枚举第一步怎么推之后,状态数只有 $O(nm)$ ,只用记录箱子的位置以及人在箱子的哪一个相邻块上.</p>
+<p>转移时,有两种决策,一种是推一步箱子,另一种是不移动箱子,走到另一个与箱子相邻的块上.</p>
+<p>如下图,当前箱子在黑色格子 $w$ ,人在红色格子 $u$ ,要走到绿色格子 $v$ .</p>
+<p><img src="box.png" alt></p>
+<p>障碍的位置是不变的,一开始就可以直接处理掉,只建出有用的边.</p>
+<p>而箱子的位置是可以变化的,这等价于每次询问断掉箱子所在的点 $w$ 后 $u$ 与 $v$ 是否连通.</p>
+<p>当没有断掉 $w$ 时, $u\to w\to v$ 是一条合法路径,所以断掉 $w$ 后两者连通,等价于原来 $u,v$ 在一个点双中.</p>
+<p>建出圆方树,则等价于询问在树上是否有 $dis(u,v)= 2$ ,这只可能是祖孙或者兄弟关系,简单判一下即可.</p>
+<p>时间复杂度 $O(nm)​$ .</p>
+<p><a href="https://paste.ubuntu.com/p/mxJmxJzt6W/" target="_blank" rel="noopener">code</a></p>
+<h3 id="bzoj-5463-铁人两项"><a href="#bzoj-5463-铁人两项" class="headerlink" title="bzoj 5463 铁人两项"></a><a href="https://www.lydsy.com/JudgeOnline/problem.php?id=5463" target="_blank" rel="noopener">bzoj 5463 铁人两项</a></h3><p>考虑建出圆方树,若枚举 $s,f$ ,则合法的 $c$ 的数目就是 $s$ 到 $f$ 经过的所有点双的点数和减去 $s,f$ 这两个点.</p>
+<p>将方点权值设为其代表点双的点数,圆点权值设为 $-1$ ,则合法的 $c$ 的数目就是圆方树上 $s$ 到 $f$ 路径的点权和.</p>
+<p>考虑枚举每个点作为 $c​$ 的贡献,就是它的权值与经过它的两端都是圆点的路径数目之积.</p>
+<p><a href="https://paste.ubuntu.com/p/WkQ2K8tGHz/" target="_blank" rel="noopener">code</a></p>
 
       
     </div>
@@ -593,8 +646,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/9102/11/13/置顶-CSP2019游记/" rel="prev" title="置顶-CSP2019游记">
-                置顶-CSP2019游记 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/11/26/AGC035-Skolem-XOR-Tree/" rel="prev" title="AGC035 Skolem XOR Tree">
+                AGC035 Skolem XOR Tree <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -670,7 +723,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">322</span>
+                    <span class="site-state-item-count">323</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1015,7 +1068,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#强连通分量"><span class="nav-number">1.</span> <span class="nav-text">强连通分量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#割点"><span class="nav-number">2.</span> <span class="nav-text">割点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#桥"><span class="nav-number">3.</span> <span class="nav-text">桥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#边双连通分量"><span class="nav-number">4.</span> <span class="nav-text">边双连通分量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-1718-Redundant-Paths"><span class="nav-number">4.1.</span> <span class="nav-text">bzoj 1718 Redundant Paths</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-4435-Juice-Junctions"><span class="nav-number">4.2.</span> <span class="nav-text">bzoj 4435 Juice Junctions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-3590-Quare"><span class="nav-number">4.3.</span> <span class="nav-text">bzoj 3590 Quare</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#点双连通分量"><span class="nav-number">5.</span> <span class="nav-text">点双连通分量</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#强连通分量"><span class="nav-number">1.</span> <span class="nav-text">强连通分量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#割点"><span class="nav-number">2.</span> <span class="nav-text">割点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#桥"><span class="nav-number">3.</span> <span class="nav-text">桥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#边双连通分量"><span class="nav-number">4.</span> <span class="nav-text">边双连通分量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-1718-Redundant-Paths"><span class="nav-number">4.1.</span> <span class="nav-text">bzoj 1718 Redundant Paths</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-4435-Juice-Junctions"><span class="nav-number">4.2.</span> <span class="nav-text">bzoj 4435 Juice Junctions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-3590-Quare"><span class="nav-number">4.3.</span> <span class="nav-text">bzoj 3590 Quare</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-4229-选择"><span class="nav-number">4.4.</span> <span class="nav-text">bzoj 4229 选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-2959-长跑"><span class="nav-number">4.5.</span> <span class="nav-text">bzoj 2959 长跑</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#点双连通分量"><span class="nav-number">5.</span> <span class="nav-text">点双连通分量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#广义圆方树"><span class="nav-number">6.</span> <span class="nav-text">广义圆方树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-1123-BLO"><span class="nav-number">6.1.</span> <span class="nav-text">bzoj 1123 BLO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-3331-压力"><span class="nav-number">6.2.</span> <span class="nav-text">bzoj 3331 压力</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-5138-Push-a-Box"><span class="nav-number">6.3.</span> <span class="nav-text">bzoj 5138 Push a Box</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-5463-铁人两项"><span class="nav-number">6.4.</span> <span class="nav-text">bzoj 5463 铁人两项</span></a></li></ol></li></ol></div>
             
 
           </div>
