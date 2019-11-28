@@ -147,7 +147,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/11/25/tarjan算法学习笔记/tree.png">
 <meta property="og:image" content="http://yoursite.com/2019/11/25/tarjan算法学习笔记/box.png">
 <meta property="og:image" content="http://yoursite.com/2019/11/25/tarjan算法学习笔记/cactus.png">
-<meta property="og:updated_time" content="2019-11-27T14:00:19.891Z">
+<meta property="og:updated_time" content="2019-11-28T11:48:42.050Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tarjan算法学习笔记">
 <meta name="twitter:description" content="发现自己根本不会 $tarjan​$ ,于是来学一学.">
@@ -461,7 +461,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-11-27 22:00:19" itemprop="dateModified" datetime="2019-11-27T22:00:19+08:00">2019-11-27</time>
+                <time title="Modified: 2019-11-28 19:48:42" itemprop="dateModified" datetime="2019-11-28T19:48:42+08:00">2019-11-28</time>
               
             
           </span>
@@ -633,6 +633,30 @@
 <p> 考虑当询问在同一个环上,但都不是代表点的两个点的距离时,不特判 $lca$ 是方点就会出错.</p>
 </blockquote>
 <p><a href="https://paste.ubuntu.com/p/4X9f4c6SbN/" target="_blank" rel="noopener">code</a></p>
+<h3 id="Uoj-189-火车司机出秦川"><a href="#Uoj-189-火车司机出秦川" class="headerlink" title="Uoj 189 火车司机出秦川"></a><a href="http://uoj.ac/problem/189" target="_blank" rel="noopener">Uoj 189 火车司机出秦川</a></h3><p>把圆方树建出来,对于每次询问,建出所有关键点的虚树.</p>
+<p>需要考虑的贡献分为两部分.</p>
+<ul>
+<li><p>对于虚树上的每条边,代表了圆方树上的一条链,考虑计算出这条链的贡献.</p>
+</li>
+<li><p>对于虚树上的每个方点,需要算出对应的环上有哪些连续段被计入了贡献.</p>
+</li>
+</ul>
+<p>用树状数组维护每个点到根的树边长度总和 $f$ ,到根的最短路长度 $g$ ,到根的最长路长度 $h$ .</p>
+<p>每个环的权值前缀和也需要用树状数组进行维护,这里可以用指针分配内存来实现开多个树状数组.</p>
+<p>考虑通过树上差分打标记的方式,判断虚树上每条边有没有被计入最短路/最长路的贡献.</p>
+<p>如果只计入了其中一者,则贡献为对应的 $g$ 或 $h$ ,如果两者都被计入,则贡献为 $g+h-f$ . </p>
+<p>对于每条路径 $(x,y)$ ,先求出它们的 $lca$ ,若 $lca$ 是圆点,则直接打标记.</p>
+<p>否则,把进入 $lca$ 的那两个圆点 $p_x,p_y$ 拿出来,对于路径 $(x,p_x),(y,p_y)$ 打标记,而对 $lca​$ 这个方点特殊处理.</p>
+<p>根据询问是最短路/最长路,可以求出这个方点上的 $1$ 或 $2​$ 段区间有贡献,将区间记在这个方点上.</p>
+<p>最后对每个方点,将这个方点上的区间排序取并,通过维护的环的权值前缀和计算贡献.</p>
+<p>对于修改操作,分树边和环边两种情况讨论.</p>
+<ul>
+<li>若修改的是树边,则会影响子树内的 $f,g,h$ .</li>
+<li>若修改的是环边,则会影响环的权值前缀和,环上某一段子树的 $f,g$ ,另一段子树的 $f,h$ .</li>
+</ul>
+<p>在对应的树状数组上进行修改即可.</p>
+<p>时间复杂度 $O(S\log n)$ .</p>
+<p><a href="https://paste.ubuntu.com/p/j5HSNCDRBD/" target="_blank" rel="noopener">code</a></p>
 
       
     </div>
@@ -1107,7 +1131,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#强连通分量"><span class="nav-number">1.</span> <span class="nav-text">强连通分量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#割点"><span class="nav-number">2.</span> <span class="nav-text">割点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#桥"><span class="nav-number">3.</span> <span class="nav-text">桥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#边双连通分量"><span class="nav-number">4.</span> <span class="nav-text">边双连通分量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-1718-Redundant-Paths"><span class="nav-number">4.1.</span> <span class="nav-text">bzoj 1718 Redundant Paths</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-4435-Juice-Junctions"><span class="nav-number">4.2.</span> <span class="nav-text">bzoj 4435 Juice Junctions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-3590-Quare"><span class="nav-number">4.3.</span> <span class="nav-text">bzoj 3590 Quare</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-4229-选择"><span class="nav-number">4.4.</span> <span class="nav-text">bzoj 4229 选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-2959-长跑"><span class="nav-number">4.5.</span> <span class="nav-text">bzoj 2959 长跑</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#点双连通分量"><span class="nav-number">5.</span> <span class="nav-text">点双连通分量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-2730-矿场搭建"><span class="nav-number">5.1.</span> <span class="nav-text">bzoj 2730 矿场搭建</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#广义圆方树"><span class="nav-number">6.</span> <span class="nav-text">广义圆方树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-1123-BLO"><span class="nav-number">6.1.</span> <span class="nav-text">bzoj 1123 BLO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-3331-压力"><span class="nav-number">6.2.</span> <span class="nav-text">bzoj 3331 压力</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-5138-Push-a-Box"><span class="nav-number">6.3.</span> <span class="nav-text">bzoj 5138 Push a Box</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-5463-铁人两项"><span class="nav-number">6.4.</span> <span class="nav-text">bzoj 5463 铁人两项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#仙人掌和圆方树"><span class="nav-number">7.</span> <span class="nav-text">仙人掌和圆方树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-4316-小C的独立集"><span class="nav-number">7.1.</span> <span class="nav-text">bzoj 4316 小C的独立集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-1023-cactus"><span class="nav-number">7.2.</span> <span class="nav-text">bzoj 1023 cactus</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-2125-最短路"><span class="nav-number">7.3.</span> <span class="nav-text">bzoj 2125 最短路</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#强连通分量"><span class="nav-number">1.</span> <span class="nav-text">强连通分量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#割点"><span class="nav-number">2.</span> <span class="nav-text">割点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#桥"><span class="nav-number">3.</span> <span class="nav-text">桥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#边双连通分量"><span class="nav-number">4.</span> <span class="nav-text">边双连通分量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-1718-Redundant-Paths"><span class="nav-number">4.1.</span> <span class="nav-text">bzoj 1718 Redundant Paths</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-4435-Juice-Junctions"><span class="nav-number">4.2.</span> <span class="nav-text">bzoj 4435 Juice Junctions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-3590-Quare"><span class="nav-number">4.3.</span> <span class="nav-text">bzoj 3590 Quare</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-4229-选择"><span class="nav-number">4.4.</span> <span class="nav-text">bzoj 4229 选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-2959-长跑"><span class="nav-number">4.5.</span> <span class="nav-text">bzoj 2959 长跑</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#点双连通分量"><span class="nav-number">5.</span> <span class="nav-text">点双连通分量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-2730-矿场搭建"><span class="nav-number">5.1.</span> <span class="nav-text">bzoj 2730 矿场搭建</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#广义圆方树"><span class="nav-number">6.</span> <span class="nav-text">广义圆方树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-1123-BLO"><span class="nav-number">6.1.</span> <span class="nav-text">bzoj 1123 BLO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-3331-压力"><span class="nav-number">6.2.</span> <span class="nav-text">bzoj 3331 压力</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-5138-Push-a-Box"><span class="nav-number">6.3.</span> <span class="nav-text">bzoj 5138 Push a Box</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-5463-铁人两项"><span class="nav-number">6.4.</span> <span class="nav-text">bzoj 5463 铁人两项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#仙人掌和圆方树"><span class="nav-number">7.</span> <span class="nav-text">仙人掌和圆方树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-4316-小C的独立集"><span class="nav-number">7.1.</span> <span class="nav-text">bzoj 4316 小C的独立集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-1023-cactus"><span class="nav-number">7.2.</span> <span class="nav-text">bzoj 1023 cactus</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj-2125-最短路"><span class="nav-number">7.3.</span> <span class="nav-text">bzoj 2125 最短路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Uoj-189-火车司机出秦川"><span class="nav-number">7.4.</span> <span class="nav-text">Uoj 189 火车司机出秦川</span></a></li></ol></li></ol></div>
             
 
           </div>
