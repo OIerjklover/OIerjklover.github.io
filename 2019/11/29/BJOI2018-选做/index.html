@@ -137,14 +137,14 @@
 
 
   <meta name="description" content="老张觉得比较简单,但我都不会做.">
-<meta name="keywords" content="构造,STL,树状数组">
+<meta name="keywords" content="线段树,构造,概率&#x2F;期望,STL,树状数组">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BJOI2018 选做">
 <meta property="og:url" content="http://yoursite.com/2019/11/29/BJOI2018-选做/index.html">
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="老张觉得比较简单,但我都不会做.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-29T09:32:50.908Z">
+<meta property="og:updated_time" content="2019-12-03T07:14:57.773Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BJOI2018 选做">
 <meta name="twitter:description" content="老张觉得比较简单,但我都不会做.">
@@ -440,12 +440,24 @@
                 
               
 
-              <time title="Created: 2019-11-29 14:48:08 / Modified: 17:32:50" itemprop="dateCreated datePublished" datetime="2019-11-29T14:48:08+08:00">2019-11-29</time>
+              <time title="Created: 2019-11-29 14:48:08" itemprop="dateCreated datePublished" datetime="2019-11-29T14:48:08+08:00">2019-11-29</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-12-03 15:14:57" itemprop="dateModified" datetime="2019-12-03T15:14:57+08:00">2019-12-03</time>
               
             
           </span>
@@ -488,7 +500,7 @@
       
         <p>老张觉得比较简单,但我都不会做.</p>
 <a id="more"></a>
-<h3 id="求和"><a href="#求和" class="headerlink" title="求和"></a>求和</h3><p>把每个点到根的 $k$ 种权值和全部预处理出来,每次求出 $lca$ 回答询问.</p>
+<h3 id="求和"><a href="#求和" class="headerlink" title="求和"></a>求和</h3><p>把每个点到根的 $k$ 种权值和全部预处理出来,每次求出 $lca​$ 回答询问.</p>
 <p>时间复杂度 $O(nk+m\log n)$ .</p>
 <p><a href="https://loj.ac/submission/684732" target="_blank" rel="noopener">code</a></p>
 <h3 id="二进制"><a href="#二进制" class="headerlink" title="二进制"></a>二进制</h3><p>考虑给定一个二进制串,如何判断能否重排成 $3$ 的倍数.</p>
@@ -523,6 +535,29 @@
 <p>再对于每个连通块判断其是否为偶环,或恰有两个度数为 $3$ 的点,且两者间的路径长度为 $2,2,k$ ,其中 $k$ 为偶数.</p>
 <p>时间复杂度 $O(m)$ .</p>
 <p><a href="https://loj.ac/submission/684731" target="_blank" rel="noopener">code</a></p>
+<h3 id="双人猜数游戏"><a href="#双人猜数游戏" class="headerlink" title="双人猜数游戏"></a>双人猜数游戏</h3><h3 id="链上二次游戏"><a href="#链上二次游戏" class="headerlink" title="链上二次游戏"></a>链上二次游戏</h3><p>询问长度在 $[L,R]$ 内的链的权值和时,用长度 $\le R$ 的答案减去长度 $\le L-1$ 的答案.</p>
+<p>于是只需要考虑如何计算长度 $\le k$ 的链的权值和.</p>
+<p>考虑每个点的贡献,分情况讨论一下每个点会被算多少次,显然用线段树维护 $\sum a_i,\sum a_i\cdot i,\sum a_i \cdot i^2​$ 即可.</p>
+<p>时间复杂度 $O(n+m\log n)$ .</p>
+<p><a href="https://loj.ac/submission/687798" target="_blank" rel="noopener">code</a></p>
+<h3 id="治疗之雨"><a href="#治疗之雨" class="headerlink" title="治疗之雨"></a>治疗之雨</h3><blockquote>
+<p>这个是暗影打击装甲被削之前出的题…</p>
+</blockquote>
+<p>先特判答案为 $-1$ 的情况.</p>
+<ul>
+<li>当 $k=0$ 时,答案为 $-1$ .</li>
+<li>当 $m=0$ 时,若血量上限 $n&gt;1$ ,且每次扣血 $k=1$ ,答案也为 $-1$ .</li>
+</ul>
+<p>对于剩下的情况,设 $E(i)$ 表示当前有 $i​$ 点血,被打暗影打击装甲打死期望需要的回合数.</p>
+<p>由于 $E(0)=0$ ,所以可以不用考虑转移到 $E(0)$ ,也不用处理血量被打成负数的问题.</p>
+<p>设 $f(i)$ 表示 $k$ 个暗影打击装甲攻击后,恰好对英雄造成 $i$ 点伤害的概率,容易预处理出来.<br>$$<br>f(i)=\frac{ {k\choose i}\cdot m^{k-i} } { (m+1)^k }<br>$$<br>设 $g(i,j)​$ 表示当前血量为 $i​$ ,一轮后血量变成 $j​$ 的概率,讨论一下 $i​$ 是否为 $n​$ ,就可以根据 $f(i-j)​$ 算出它. </p>
+<p>于是对于血量 $i&lt;n$ 的 $E(i)$ ,有转移<br>$$<br>E(i)=\sum_{j=1}^i E(j)\cdot g(i,j)+E(i+1)\cdot g(i,i+1)+1<br>$$<br>对于 $i=n$ 的情况,有转移<br>$$<br>E(i)=\sum_{j=1}^{i} E(j)\cdot g(i,j)+1<br>$$<br>直接做高斯消元,复杂度是 $O(n^3)$ 的.</p>
+<p>它虽然不是稀疏矩阵,但注意到每次最多回 $1$ 点血,即, $E(i)$ 要转移到 $j&gt;i$ 的 $E(j)$ ,只可能是 $E(i+1)$ .</p>
+<p>于是就可以像树上高斯消元那样搞一搞,将每个 $E(i)$ 都表示成 $k\cdot E(1)+b$ 的形式.</p>
+<p>根据转移方程<br>$$<br>E(i)=\sum_{j=1}^i E(j)\cdot g(i,j)+E(i+1)\cdot g(i,i+1)+1<br>$$<br>可以从前往后依次求出每个 $E(i)$ 的 $k,b$ .</p>
+<p>而 $E(n)$ 的转移方程还没有用,把所有 $E(i)$ 代入到 $E(n)$ 的转移方程中,就可以解出 $E(1)$ ,代入求得 $E(p)$ .</p>
+<p>时间复杂度 $O(T\cdot n^2)$ .</p>
+<p><a href="https://loj.ac/submission/687863" target="_blank" rel="noopener">code</a></p>
 
       
     </div>
@@ -546,7 +581,11 @@
       
         <div class="post-tags">
           
+            <a href="/tags/线段树/" rel="tag"># 线段树</a>
+          
             <a href="/tags/构造/" rel="tag"># 构造</a>
+          
+            <a href="/tags/概率-期望/" rel="tag"># 概率/期望</a>
           
             <a href="/tags/STL/" rel="tag"># STL</a>
           
@@ -650,7 +689,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">334</span>
+                    <span class="site-state-item-count">335</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -923,7 +962,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">127</span>
+                      
+                    
+                    <span class="site-state-item-count">128</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -999,7 +1040,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#求和"><span class="nav-number">1.</span> <span class="nav-text">求和</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二进制"><span class="nav-number">2.</span> <span class="nav-text">二进制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#染色"><span class="nav-number">3.</span> <span class="nav-text">染色</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#求和"><span class="nav-number">1.</span> <span class="nav-text">求和</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二进制"><span class="nav-number">2.</span> <span class="nav-text">二进制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#染色"><span class="nav-number">3.</span> <span class="nav-text">染色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双人猜数游戏"><span class="nav-number">4.</span> <span class="nav-text">双人猜数游戏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链上二次游戏"><span class="nav-number">5.</span> <span class="nav-text">链上二次游戏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#治疗之雨"><span class="nav-number">6.</span> <span class="nav-text">治疗之雨</span></a></li></ol></div>
             
 
           </div>
