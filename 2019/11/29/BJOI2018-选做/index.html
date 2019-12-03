@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="老张觉得比较简单,但我都不会做.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-03T07:14:57.773Z">
+<meta property="og:updated_time" content="2019-12-03T08:35:58.976Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BJOI2018 选做">
 <meta name="twitter:description" content="老张觉得比较简单,但我都不会做.">
@@ -457,7 +457,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-03 15:14:57" itemprop="dateModified" datetime="2019-12-03T15:14:57+08:00">2019-12-03</time>
+                <time title="Modified: 2019-12-03 16:35:58" itemprop="dateModified" datetime="2019-12-03T16:35:58+08:00">2019-12-03</time>
               
             
           </span>
@@ -535,13 +535,27 @@
 <p>再对于每个连通块判断其是否为偶环,或恰有两个度数为 $3$ 的点,且两者间的路径长度为 $2,2,k$ ,其中 $k$ 为偶数.</p>
 <p>时间复杂度 $O(m)$ .</p>
 <p><a href="https://loj.ac/submission/684731" target="_blank" rel="noopener">code</a></p>
-<h3 id="双人猜数游戏"><a href="#双人猜数游戏" class="headerlink" title="双人猜数游戏"></a>双人猜数游戏</h3><h3 id="链上二次游戏"><a href="#链上二次游戏" class="headerlink" title="链上二次游戏"></a>链上二次游戏</h3><p>询问长度在 $[L,R]$ 内的链的权值和时,用长度 $\le R$ 的答案减去长度 $\le L-1$ 的答案.</p>
+<h3 id="双人猜数游戏"><a href="#双人猜数游戏" class="headerlink" title="双人猜数游戏"></a>双人猜数游戏</h3><blockquote>
+<p>手玩了两个小时,喜提 $4$ 分.</p>
+</blockquote>
+<p>按照题目中给的优先级枚举 $a,b$ 作为答案,尝试检验.</p>
+<p>设 $f(i,a,b)$ 表示询问了 $i$ 次,若 $m=a,n=b$ ,则它们是否会被猜出来.</p>
+<p>$i=1$ 时是边界情况,分情况讨论一下.</p>
+<ul>
+<li>如果第一次问的是 Alice ,那么能猜出来,当且仅当把 $ab$ 拆成两个 $\ge s$ 的数字之积时方案唯一.</li>
+<li>如果第一次问的是 Bob,那么能猜出来,当且仅当把 $a+b$ 拆成两个 $\ge s$ 的数字之和时方案唯一.</li>
+</ul>
+<p>对于 $i&gt;1$ 的情况,根据奇偶性判断这次是问的谁.</p>
+<p>从可能的数对 $(x,y)$ 中找出 $f(i-1,x,y)$ 为 $0$ 的个数,若只有 $1$ 个,就可以把它猜出来了.</p>
+<p>同时,若另一个人在第 $i+1​$ 回合也能猜出这个数对,那么它就是答案了.</p>
+<p><a href="http://www.pig66.com/uploadfile/2018/0616/20180616044158979.jpg" target="_blank" rel="noopener">code</a></p>
+<h3 id="链上二次游戏"><a href="#链上二次游戏" class="headerlink" title="链上二次游戏"></a>链上二次游戏</h3><p>询问长度在 $[L,R]$ 内的链的权值和时,用长度 $\le R$ 的答案减去长度 $\le L-1$ 的答案.</p>
 <p>于是只需要考虑如何计算长度 $\le k$ 的链的权值和.</p>
 <p>考虑每个点的贡献,分情况讨论一下每个点会被算多少次,显然用线段树维护 $\sum a_i,\sum a_i\cdot i,\sum a_i \cdot i^2​$ 即可.</p>
 <p>时间复杂度 $O(n+m\log n)$ .</p>
 <p><a href="https://loj.ac/submission/687798" target="_blank" rel="noopener">code</a></p>
 <h3 id="治疗之雨"><a href="#治疗之雨" class="headerlink" title="治疗之雨"></a>治疗之雨</h3><blockquote>
-<p>这个是暗影打击装甲被削之前出的题…</p>
+<p>这个是暗影打击装甲被削之前出的题.</p>
 </blockquote>
 <p>先特判答案为 $-1$ 的情况.</p>
 <ul>
