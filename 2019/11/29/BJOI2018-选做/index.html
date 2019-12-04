@@ -137,14 +137,14 @@
 
 
   <meta name="description" content="老张觉得比较简单,但我都不会做.">
-<meta name="keywords" content="线段树,构造,概率&#x2F;期望,STL,树状数组">
+<meta name="keywords" content="线段树,STL,树状数组,构造,概率&#x2F;期望">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BJOI2018 选做">
 <meta property="og:url" content="http://yoursite.com/2019/11/29/BJOI2018-选做/index.html">
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="老张觉得比较简单,但我都不会做.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-03T08:35:58.976Z">
+<meta property="og:updated_time" content="2019-12-03T11:55:20.802Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BJOI2018 选做">
 <meta name="twitter:description" content="老张觉得比较简单,但我都不会做.">
@@ -457,7 +457,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-03 16:35:58" itemprop="dateModified" datetime="2019-12-03T16:35:58+08:00">2019-12-03</time>
+                <time title="Modified: 2019-12-03 19:55:20" itemprop="dateModified" datetime="2019-12-03T19:55:20+08:00">2019-12-03</time>
               
             
           </span>
@@ -562,7 +562,7 @@
 <li>当 $k=0$ 时,答案为 $-1$ .</li>
 <li>当 $m=0$ 时,若血量上限 $n&gt;1$ ,且每次扣血 $k=1$ ,答案也为 $-1$ .</li>
 </ul>
-<p>对于剩下的情况,设 $E(i)$ 表示当前有 $i​$ 点血,被打暗影打击装甲打死期望需要的回合数.</p>
+<p>对于剩下的情况,设 $E(i)$ 表示当前有 $i$ 点血,被暗影打击装甲打死期望需要的回合数.</p>
 <p>由于 $E(0)=0$ ,所以可以不用考虑转移到 $E(0)$ ,也不用处理血量被打成负数的问题.</p>
 <p>设 $f(i)$ 表示 $k$ 个暗影打击装甲攻击后,恰好对英雄造成 $i$ 点伤害的概率,容易预处理出来.<br>$$<br>f(i)=\frac{ {k\choose i}\cdot m^{k-i} } { (m+1)^k }<br>$$<br>设 $g(i,j)​$ 表示当前血量为 $i​$ ,一轮后血量变成 $j​$ 的概率,讨论一下 $i​$ 是否为 $n​$ ,就可以根据 $f(i-j)​$ 算出它. </p>
 <p>于是对于血量 $i&lt;n$ 的 $E(i)$ ,有转移<br>$$<br>E(i)=\sum_{j=1}^i E(j)\cdot g(i,j)+E(i+1)\cdot g(i,i+1)+1<br>$$<br>对于 $i=n$ 的情况,有转移<br>$$<br>E(i)=\sum_{j=1}^{i} E(j)\cdot g(i,j)+1<br>$$<br>直接做高斯消元,复杂度是 $O(n^3)$ 的.</p>
@@ -597,13 +597,13 @@
           
             <a href="/tags/线段树/" rel="tag"># 线段树</a>
           
-            <a href="/tags/构造/" rel="tag"># 构造</a>
-          
-            <a href="/tags/概率-期望/" rel="tag"># 概率/期望</a>
-          
             <a href="/tags/STL/" rel="tag"># STL</a>
           
             <a href="/tags/树状数组/" rel="tag"># 树状数组</a>
+          
+            <a href="/tags/构造/" rel="tag"># 构造</a>
+          
+            <a href="/tags/概率-期望/" rel="tag"># 概率/期望</a>
           
         </div>
       
@@ -703,7 +703,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">335</span>
+                    <span class="site-state-item-count">336</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -978,7 +978,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">128</span>
+                      
+                    
+                    <span class="site-state-item-count">129</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
