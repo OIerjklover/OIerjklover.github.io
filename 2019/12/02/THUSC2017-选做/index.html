@@ -137,17 +137,20 @@
 
 
   <meta name="description" content="老张觉得比较简单,但我都不会做.">
-<meta name="keywords" content="随机化,斯坦纳树">
+<meta name="keywords" content="BM,常系数线性递推,状压dp,burnside,随机化,斯坦纳树,线段树连边,费用流">
 <meta property="og:type" content="article">
 <meta property="og:title" content="THUSC2017 选做">
 <meta property="og:url" content="http://yoursite.com/2019/12/02/THUSC2017-选做/index.html">
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="老张觉得比较简单,但我都不会做.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-03T11:57:10.777Z">
+<meta property="og:image" content="http://yoursite.com/2019/12/02/THUSC2017-选做/pigeon.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/12/02/THUSC2017-选做/pigeon.jpg">
+<meta property="og:updated_time" content="2019-12-05T14:00:08.023Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="THUSC2017 选做">
 <meta name="twitter:description" content="老张觉得比较简单,但我都不会做.">
+<meta name="twitter:image" content="http://yoursite.com/2019/12/02/THUSC2017-选做/pigeon.jpg">
 
 
 
@@ -457,7 +460,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-03 19:57:10" itemprop="dateModified" datetime="2019-12-03T19:57:10+08:00">2019-12-03</time>
+                <time title="Modified: 2019-12-05 22:00:08" itemprop="dateModified" datetime="2019-12-05T22:00:08+08:00">2019-12-05</time>
               
             
           </span>
@@ -512,6 +515,42 @@
 <p>注意用斯坦纳树处理点权将集合 $S$ 拆成 $S1,S-S1$ 时,会将根节点的点权多算一次,需要减掉.</p>
 </blockquote>
 <p><a href="https://loj.ac/submission/688127" target="_blank" rel="noopener">code</a></p>
+<h3 id="杜老师"><a href="#杜老师" class="headerlink" title="杜老师"></a>杜老师</h3><p><img src="pigeon.jpg" alt></p>
+<h3 id="换桌"><a href="#换桌" class="headerlink" title="换桌"></a>换桌</h3><p>考虑先建出一个费用流的模型.</p>
+<p>从源点 $S$ 向每个人所在的点连边,流量为 $1$ ,费用为 $0$ .</p>
+<p>把同一张桌子的所有点连成一个环,每条边流量为 $\inf$ ,费用为 $0$ .</p>
+<p>每个人所在的点向每张桌子对应的点连边,流量为 $1$ ,费用为换桌子需要的代价.</p>
+<p>每个点向汇点 $T$ 连边,流量为 $1$ ,费用为 $0$ .</p>
+<p>这个图的点数 $|E|$ 是 $O(nm)$ 的,但边数 $|V|$ 是 $O(n^2m)$ 的,无法通过.</p>
+<p>注意到每个人可以去的桌子是一段区间,可以用线段树来优化建边.</p>
+<p>因为换桌子的花费有绝对值,所以可以拆成左右两边来做.</p>
+<p>开 $2m$ 棵线段树,每个位置有 $2$ 棵线段树,一棵表示向左换桌子的,另一棵表示向右换桌子的.</p>
+<p>向左换桌子的线段树,第 $i​$ 个叶子的出边有个额外费用 $-2i​$ ,向右的线段树额外费用为 $2i​$ .</p>
+<p>注意要限制对应的两个叶子总流量 $\le 1​$ .</p>
+<p>在第 $j​$ 张桌子时,往左边连的边有额外费用 $2j​$ ,往右边连的边有额外费用 $-2j​$ .</p>
+<p>仍然把同一张桌子上的叶子节点连成一个环,每条边流量为 $\inf$ ,费用为 $0$ ,这样就考虑了换位置的贡献.</p>
+<p>边数被优化到了 $O(m\cdot n\log n)​$ ,跑最小费用最大流就可以了.</p>
+<p><a href="http://www.pig66.com/uploadfile/2018/0616/20180616044158979.jpg" target="_blank" rel="noopener">code</a></p>
+<h3 id="大魔法师"><a href="#大魔法师" class="headerlink" title="大魔法师"></a>大魔法师</h3><p>用线段树给每段区间维护一个列向量<br>$$<br>\begin{bmatrix}\sum A\\ \sum B \\ \sum C \\ len \end{bmatrix}<br>$$<br>其中 $len$ 表示这个区间的长度.</p>
+<p>修改标记可以统一成一个 $4\times 4$ 的转移矩阵,然后就变成线段树的一些基本操作了.</p>
+<p>时间复杂度 $O(n\log n\cdot k^3)$ ,其中 $k=4$ .</p>
+<p><a href="https://loj.ac/submission/689657" target="_blank" rel="noopener">code</a></p>
+<h3 id="如果奇迹有颜色"><a href="#如果奇迹有颜色" class="headerlink" title="如果奇迹有颜色"></a>如果奇迹有颜色</h3><p>考虑 $Burnside$ 引理,记 $f(i)$ 表示不考虑同构时长度为 $i$ 的合法环的方案数.</p>
+<p>则答案为<br>$$<br>ans=\frac{\sum_{i=1}^n f(\gcd(i,n))}{n}=\frac{\sum_{d|n}\varphi(\frac n d)\cdot f(d)}{n}<br>$$<br>于是需要快速求出 $f(d)$ .</p>
+<p>考虑暴力状压 $dp$ ,先枚举一个 $s$ 表示开头 $m-1$ 个点的颜色状态.</p>
+<p>记 $g(i,t)$ 表示已经给 $i$ 个点染了色,最后 $m-1$ 个点的颜色状态用 $t$ 表示的方案数.</p>
+<p>最后判断每个 $g(i,t)$ 的尾部是否能和首部的 $s$ 接在一起,若合法,就计入 $f(i)$ .</p>
+<p>每次转移需要枚举当前的点染哪个颜色,每次转移的复杂度是 $O(m)$ .</p>
+<p>于是得出状压 $dp$ 的总时间复杂度 $O(n\cdot m^{2m-1})$ .</p>
+<p>直接 $dp$ 复杂度显然爆炸,可以在本地把每个 $m$ 对应的前 $1000$ 项 $f(i)$ 打出来,用 $BM$ 求线性递推式.</p>
+<p>发现当 $m=7$ 时,线性递推式的长度为 $k=410$ .</p>
+<p>于是需要写一个 $O(k^2\log n)$ 的线性递推.</p>
+<p>将 $n$ 质因子分解后, $O(\frac {\sqrt n}{\ln n})$ 枚举所有 $d$ ,总时间复杂度 $O(k^2\sqrt n)$ .</p>
+<blockquote>
+<p>最后一个点要特判一下,因为 $n$ 的因数比较多,常数大.</p>
+</blockquote>
+<p><a href="https://loj.ac/submission/632070" target="_blank" rel="noopener">code</a></p>
+<h3 id="宇宙广播"><a href="#宇宙广播" class="headerlink" title="宇宙广播"></a>宇宙广播</h3><p><img src="pigeon.jpg" alt></p>
 
       
     </div>
@@ -535,9 +574,21 @@
       
         <div class="post-tags">
           
+            <a href="/tags/BM/" rel="tag"># BM</a>
+          
+            <a href="/tags/常系数线性递推/" rel="tag"># 常系数线性递推</a>
+          
+            <a href="/tags/状压dp/" rel="tag"># 状压dp</a>
+          
+            <a href="/tags/burnside/" rel="tag"># burnside</a>
+          
             <a href="/tags/随机化/" rel="tag"># 随机化</a>
           
             <a href="/tags/斯坦纳树/" rel="tag"># 斯坦纳树</a>
+          
+            <a href="/tags/线段树连边/" rel="tag"># 线段树连边</a>
+          
+            <a href="/tags/费用流/" rel="tag"># 费用流</a>
           
         </div>
       
@@ -914,7 +965,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">129</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">131</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -990,7 +1045,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#巧克力"><span class="nav-number">1.</span> <span class="nav-text">巧克力</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#巧克力"><span class="nav-number">1.</span> <span class="nav-text">巧克力</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#杜老师"><span class="nav-number">2.</span> <span class="nav-text">杜老师</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#换桌"><span class="nav-number">3.</span> <span class="nav-text">换桌</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大魔法师"><span class="nav-number">4.</span> <span class="nav-text">大魔法师</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如果奇迹有颜色"><span class="nav-number">5.</span> <span class="nav-text">如果奇迹有颜色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#宇宙广播"><span class="nav-number">6.</span> <span class="nav-text">宇宙广播</span></a></li></ol></div>
             
 
           </div>
