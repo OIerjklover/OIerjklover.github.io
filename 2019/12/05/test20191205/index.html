@@ -147,7 +147,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/12/05/test20191205/pigeon.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/12/05/test20191205/pigeon.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/12/05/test20191205/pigeon.jpg">
-<meta property="og:updated_time" content="2019-12-05T07:52:55.842Z">
+<meta property="og:updated_time" content="2019-12-05T08:03:10.529Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="test20191205">
 <meta name="twitter:description" content="被虐了.">
@@ -444,7 +444,7 @@
                 
               
 
-              <time title="Created: 2019-12-05 15:46:02 / Modified: 15:52:55" itemprop="dateCreated datePublished" datetime="2019-12-05T15:46:02+08:00">2019-12-05</time>
+              <time title="Created: 2019-12-05 15:46:02 / Modified: 16:03:10" itemprop="dateCreated datePublished" datetime="2019-12-05T15:46:02+08:00">2019-12-05</time>
             
 
             
@@ -495,6 +495,9 @@
 <h3 id="split"><a href="#split" class="headerlink" title="$split$"></a>$split$</h3><p><img src="pigeon.jpg" alt></p>
 <h3 id="pal"><a href="#pal" class="headerlink" title="$pal$"></a>$pal$</h3><p><img src="pigeon.jpg" alt></p>
 <h3 id="rev"><a href="#rev" class="headerlink" title="$rev$"></a>$rev$</h3><p><img src="pigeon.jpg" alt></p>
+<p>如果是 01 序列,可以分治来做,每次从中间剖开,把左边的 $1$ 和右边的 $0$ 换过来.</p>
+<p>每做一次分治可以分出一个数,操作次数 $O(a \cdot n\log n)$ ,其中 $a$ 表示不同的权值数目.</p>
+<p>考虑对值域也进行分治,从高到低区分权值的每个二进制位,操作次数为 $O(\log a\cdot n\log n)$ .</p>
 
       
     </div>

@@ -11,7 +11,7 @@
   <entry>
     <title><![CDATA[test20191205]]></title>
     <url>%2F2019%2F12%2F05%2Ftest20191205%2F</url>
-    <content type="text"><![CDATA[被虐了. $split$ $pal$ $rev$]]></content>
+    <content type="text"><![CDATA[被虐了. $split$ $pal$ $rev$ 如果是 01 序列,可以分治来做,每次从中间剖开,把左边的 $1$ 和右边的 $0$ 换过来. 每做一次分治可以分出一个数,操作次数 $O(a \cdot n\log n)$ ,其中 $a$ 表示不同的权值数目. 考虑对值域也进行分治,从高到低区分权值的每个二进制位,操作次数为 $O(\log a\cdot n\log n)$ .]]></content>
       <tags>
         <tag>test</tag>
       </tags>
