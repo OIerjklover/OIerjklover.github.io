@@ -136,21 +136,18 @@
 
 
 
-  <meta name="description" content="老张觉得比较简单,但我都不会做.">
-<meta name="keywords" content="BM,常系数线性递推,状压dp,burnside,随机化,斯坦纳树,线段树连边,费用流">
+  <meta name="description" content="老张觉得比较简单,但我一道都不会做.">
+<meta name="keywords" content="计算几何,BM,常系数线性递推,状压dp,提交答案,随机化,斯坦纳树,费用流,线段树连边,burnside,高斯消元">
 <meta property="og:type" content="article">
 <meta property="og:title" content="THUSC2017 选做">
 <meta property="og:url" content="http://yoursite.com/2019/12/02/THUSC2017-选做/index.html">
 <meta property="og:site_name" content="JKLover">
-<meta property="og:description" content="老张觉得比较简单,但我都不会做.">
+<meta property="og:description" content="老张觉得比较简单,但我一道都不会做.">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/2019/12/02/THUSC2017-选做/pigeon.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/12/02/THUSC2017-选做/pigeon.jpg">
-<meta property="og:updated_time" content="2019-12-05T14:00:08.023Z">
+<meta property="og:updated_time" content="2019-12-06T12:52:50.336Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="THUSC2017 选做">
-<meta name="twitter:description" content="老张觉得比较简单,但我都不会做.">
-<meta name="twitter:image" content="http://yoursite.com/2019/12/02/THUSC2017-选做/pigeon.jpg">
+<meta name="twitter:description" content="老张觉得比较简单,但我一道都不会做.">
 
 
 
@@ -460,7 +457,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-05 22:00:08" itemprop="dateModified" datetime="2019-12-05T22:00:08+08:00">2019-12-05</time>
+                <time title="Modified: 2019-12-06 20:52:50" itemprop="dateModified" datetime="2019-12-06T20:52:50+08:00">2019-12-06</time>
               
             
           </span>
@@ -501,7 +498,7 @@
       
 
       
-        <p>老张觉得比较简单,但我都不会做.</p>
+        <p>老张觉得比较简单,但我一道都不会做.</p>
 <a id="more"></a>
 <h3 id="巧克力"><a href="#巧克力" class="headerlink" title="巧克力"></a>巧克力</h3><p>如果颜色数目比较少,可以暴力枚举是哪 $k$ 种颜色作为连通块中必须包含的颜色.</p>
 <p>二分一个美味度作为中位数,大于它的赋值为 $1001$ ,小于等于它的赋值为 $999$ .</p>
@@ -515,13 +512,28 @@
 <p>注意用斯坦纳树处理点权将集合 $S$ 拆成 $S1,S-S1$ 时,会将根节点的点权多算一次,需要减掉.</p>
 </blockquote>
 <p><a href="https://loj.ac/submission/688127" target="_blank" rel="noopener">code</a></p>
-<h3 id="杜老师"><a href="#杜老师" class="headerlink" title="杜老师"></a>杜老师</h3><p><img src="pigeon.jpg" alt></p>
+<h3 id="杜老师"><a href="#杜老师" class="headerlink" title="杜老师"></a>杜老师</h3><p>把 $[L,R]$ 内的数可能含有的 $m$ 个质因数找出来,若选了 $x$ ,则 $x$ 含有的奇数次方的质因子出现次数会异或上 $1$ .</p>
+<p>于是可以把每个数看成一个 $m$ 位的二进制数,现在要选出一些数,让它们异或起来为 $0$ .</p>
+<p>方案数显然为 $2^k$ ,其中 $k$ 表示自由元的个数.</p>
+<p>由于是异或方程,所以可以用线性基来代替高斯消元,最后的 $k$ 就是 $R-L+1$ 减去线性基的大小.</p>
+<p>异或运算可以用 bitset 进行优化.</p>
+<p>直接这样做,时间复杂度是 $O((R-L+1)\cdot \frac{R}{32})$ ,可以获得 $50$ 分.</p>
+<hr>
+<p>优化一下,注意到每个数最多会有一个大于 $\sqrt R$ 的质因子,所以一个 $&gt; \sqrt R$ 的质因子一旦出现,线性基里就肯定有它.</p>
+<p>于是线性基只需要维护 $\le \sqrt R$ 的质因子.</p>
+<p>对于最大质因子相同且 $&gt;\sqrt R$  的一堆数,只需要把第一个插到线性基里面,后面的异或上它再插进去.</p>
+<p>时间复杂度优化到了 $O((R-L+1)\cdot \frac{\sqrt R}{32})$ ,可以获得 $70$ 分.</p>
+<hr>
+<p>正解比较神仙,由于 $R\le 10^7$ ,所以当 $R-L&gt;6000$ 时,就认为线性基的大小就是 $[L,R]$ 内所有质数的个数.</p>
+<p>当 $R-L\le 6000​$ 时,就用上面那个算法来做.</p>
+<p><a href="https://github.com/jkloverdcoi/THUSC2017/blob/master/day1/dls/dls.pdf" target="_blank" rel="noopener">官方题解的证明</a></p>
+<p><a href="https://loj.ac/submission/690242" target="_blank" rel="noopener">code</a></p>
 <h3 id="换桌"><a href="#换桌" class="headerlink" title="换桌"></a>换桌</h3><p>考虑先建出一个费用流的模型.</p>
 <p>从源点 $S$ 向每个人所在的点连边,流量为 $1$ ,费用为 $0$ .</p>
 <p>把同一张桌子的所有点连成一个环,每条边流量为 $\inf$ ,费用为 $0$ .</p>
 <p>每个人所在的点向每张桌子对应的点连边,流量为 $1$ ,费用为换桌子需要的代价.</p>
 <p>每个点向汇点 $T$ 连边,流量为 $1$ ,费用为 $0$ .</p>
-<p>这个图的点数 $|E|$ 是 $O(nm)$ 的,但边数 $|V|$ 是 $O(n^2m)$ 的,无法通过.</p>
+<p>这个图的点数 $|V|$ 是 $O(nm)$ 的,但边数 $|E|$ 是 $O(n^2m)$ 的,可以获得 $70$ 分.</p>
 <p>注意到每个人可以去的桌子是一段区间,可以用线段树来优化建边.</p>
 <p>因为换桌子的花费有绝对值,所以可以拆成左右两边来做.</p>
 <p>开 $2m$ 棵线段树,每个位置有 $2$ 棵线段树,一棵表示向左换桌子的,另一棵表示向右换桌子的.</p>
@@ -529,8 +541,8 @@
 <p>注意要限制对应的两个叶子总流量 $\le 1​$ .</p>
 <p>在第 $j​$ 张桌子时,往左边连的边有额外费用 $2j​$ ,往右边连的边有额外费用 $-2j​$ .</p>
 <p>仍然把同一张桌子上的叶子节点连成一个环,每条边流量为 $\inf$ ,费用为 $0$ ,这样就考虑了换位置的贡献.</p>
-<p>边数被优化到了 $O(m\cdot n\log n)​$ ,跑最小费用最大流就可以了.</p>
-<p><a href="http://www.pig66.com/uploadfile/2018/0616/20180616044158979.jpg" target="_blank" rel="noopener">code</a></p>
+<p>边数被优化到了 $O(m\cdot n\log n)​$ ,跑个 zkw 费用流就可以过了.</p>
+<p><a href="https://img2018.cnblogs.com/blog/1516579/201912/1516579-20191206120001377-1862316940.jpg" target="_blank" rel="noopener">code</a></p>
 <h3 id="大魔法师"><a href="#大魔法师" class="headerlink" title="大魔法师"></a>大魔法师</h3><p>用线段树给每段区间维护一个列向量<br>$$<br>\begin{bmatrix}\sum A\\ \sum B \\ \sum C \\ len \end{bmatrix}<br>$$<br>其中 $len$ 表示这个区间的长度.</p>
 <p>修改标记可以统一成一个 $4\times 4$ 的转移矩阵,然后就变成线段树的一些基本操作了.</p>
 <p>时间复杂度 $O(n\log n\cdot k^3)$ ,其中 $k=4$ .</p>
@@ -550,7 +562,19 @@
 <p>最后一个点要特判一下,因为 $n$ 的因数比较多,常数大.</p>
 </blockquote>
 <p><a href="https://loj.ac/submission/632070" target="_blank" rel="noopener">code</a></p>
-<h3 id="宇宙广播"><a href="#宇宙广播" class="headerlink" title="宇宙广播"></a>宇宙广播</h3><p><img src="pigeon.jpg" alt></p>
+<h3 id="宇宙广播"><a href="#宇宙广播" class="headerlink" title="宇宙广播"></a>宇宙广播</h3><blockquote>
+<p>不懂为啥要出成提答题,方便调精度?</p>
+</blockquote>
+<p>设公切面为 $\sum_{i=0}^{K-1} a_i\cdot x_i=d​$ ,并保证 $\sum_{i=0}^{K-1} a_i^2=1​$ .</p>
+<p>考虑 $K​$ 维空间中一个点 $(x_0,x_1,\dots,x_{K-1})​$ 到这个公切面的距离<br>$$<br>dis=\frac{|d-\sum_{i=0}^{K-1} a_i\cdot x_i|}{\sqrt{\sum_{i=0}^{K-1} a_i^2}}<br>$$<br>保证了分母为 $1$ ,所以这个点到公切面的距离就是 $|d-\sum_{i=0}^{K-1} a_i\cdot x_i|$ .</p>
+<p>每个球的球心到公切面的距离都是这个球的半径.</p>
+<p>所以对于第 $j$ 个球,可以得到方程 $|d-\sum_{i=0}^{K-1} a_i\cdot x_{j,i}|=r_j$ .</p>
+<p>共有 $K$ 个这样的方程,暴力枚举每个方程绝对值取正号还是负号.</p>
+<p>确定符号后高斯消元解出每个 $k_i,b_i$ ,表示 $a_i=k_i\cdot d+b_i$ 将所有的 $a_i$ 代入 $\sum_{i=0}^{K-1} a_i^2=1$ 就可以解出 $d$ 了.</p>
+<p>解出 $d$ 后,这个公切面也就确定了,只需要再对每个球,求出公切面与这个球的切点.</p>
+<p>用高斯消元解一个法向量 $\vec {n}$ 出来,把球心沿着/逆着这个法向量移动 $r$ 的距离,检验一下哪个在平面上,它就是切点了.</p>
+<p>时间复杂度 $O(2^K\cdot K^3)​$ .</p>
+<p><a href="https://img2018.cnblogs.com/blog/1516579/201912/1516579-20191206120001377-1862316940.jpg" target="_blank" rel="noopener">code</a></p>
 
       
     </div>
@@ -574,21 +598,27 @@
       
         <div class="post-tags">
           
+            <a href="/tags/计算几何/" rel="tag"># 计算几何</a>
+          
             <a href="/tags/BM/" rel="tag"># BM</a>
           
             <a href="/tags/常系数线性递推/" rel="tag"># 常系数线性递推</a>
           
             <a href="/tags/状压dp/" rel="tag"># 状压dp</a>
           
-            <a href="/tags/burnside/" rel="tag"># burnside</a>
+            <a href="/tags/提交答案/" rel="tag"># 提交答案</a>
           
             <a href="/tags/随机化/" rel="tag"># 随机化</a>
           
             <a href="/tags/斯坦纳树/" rel="tag"># 斯坦纳树</a>
           
+            <a href="/tags/费用流/" rel="tag"># 费用流</a>
+          
             <a href="/tags/线段树连边/" rel="tag"># 线段树连边</a>
           
-            <a href="/tags/费用流/" rel="tag"># 费用流</a>
+            <a href="/tags/burnside/" rel="tag"># burnside</a>
+          
+            <a href="/tags/高斯消元/" rel="tag"># 高斯消元</a>
           
         </div>
       
@@ -688,7 +718,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">337</span>
+                    <span class="site-state-item-count">338</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
