@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="提交答案.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-09T14:14:08.836Z">
+<meta property="og:updated_time" content="2019-12-10T12:03:00.285Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Loj 2989 NOIP十合一">
 <meta name="twitter:description" content="提交答案.">
@@ -440,12 +440,24 @@
                 
               
 
-              <time title="Created: 2019-12-09 11:37:18 / Modified: 22:14:08" itemprop="dateCreated datePublished" datetime="2019-12-09T11:37:18+08:00">2019-12-09</time>
+              <time title="Created: 2019-12-09 11:37:18" itemprop="dateCreated datePublished" datetime="2019-12-09T11:37:18+08:00">2019-12-09</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-12-10 20:03:00" itemprop="dateModified" datetime="2019-12-10T20:03:00+08:00">2019-12-10</time>
               
             
           </span>
@@ -495,9 +507,6 @@
 <p>若走 $u\to u+1\to u+2$ ,长度为 $1$ ,走 $u\to u+2$ ,长度为 $0$ .</p>
 <p>那么可以得到答案为 ${(v-u)/2\choose w}$ .</p>
 <p>模数不是质数,把它分解成 $2^{12}\times 3^8$ 后分开做,大概和拓展 Lucas 的做法差不多,最后 crt 合并.</p>
-<blockquote>
-<p>数据似乎有锅?</p>
-</blockquote>
 <h3 id="测试点-2"><a href="#测试点-2" class="headerlink" title="测试点 2"></a>测试点 2</h3><p>特点: 图是一条 $1\sim n$ 的链,链上边权为 $0$ ,每个点再向自己连出自环,自环有边权.每次询问的 $u$ 都为 $1$ .</p>
 <p>设 $f(i,j)$ 表示从 $1$ 走到 $i$ ,路径边权和为 $j$ 的方案数.</p>
 <p>注意一个自环可以走多次,所以是一个完全背包.</p>
@@ -517,13 +526,17 @@
 <blockquote>
 <p>本机大概跑了 10s.</p>
 </blockquote>
-<h3 id="测试点-6"><a href="#测试点-6" class="headerlink" title="测试点 6"></a>测试点 6</h3><p>特点: 所有的边权都是 $1$ .</p>
+<h3 id="测试点-6-8-10"><a href="#测试点-6-8-10" class="headerlink" title="测试点 6,8,10"></a>测试点 6,8,10</h3><p>特点: 所有的边权都是 $1$ .</p>
 <p>先处理出邻接矩阵 $A$ ,其中 $A_{i,j}$ 表示从 $i$ 到 $j$ ,经过 $1$ 条边的方案数.</p>
 <p>那么根据矩阵乘法的定义,容易发现 $A^w_{i,j}$ 就表示从 $i$ 到 $j$ ,经过 $w$ 条边的方案数,即边权和为 $w$ 的方案数.</p>
+<p>倍增预处理出 $A^1,A^2,A^4\dots$ ,询问时,只用 $A^w$ 和 $u$ 那一列的向量乘起来的贡献就可以了.</p>
+<p>时间复杂度 $O(n^3\log w+q\cdot n^2\log w)$ .</p>
+<blockquote>
+<p>其实有多项式的更优做法,不过反正是提答题,就咕了.</p>
+</blockquote>
 <h3 id="测试点-7"><a href="#测试点-7" class="headerlink" title="测试点 7"></a>测试点 7</h3><p>特点: 绝大部分边权都是 $1$ ,只有很少的边权为 $2$ .</p>
-<p>对于每条边权为 $2$ 的边,新建一个点,把这条边拆成两条边权为 $1$ 的边.</p>
-<p>拆完之后点数恰好为 $200$ ,用测试点 6 的做法就可以了.</p>
-
+<p>对于每条边权为 $2$ 的边,新建一个点,把这条边拆成两条边权为 $1$ 的边,然后就和测试点 6,8,10 一样了.</p>
+<h3 id="测试点-9"><a href="#测试点-9" class="headerlink" title="测试点 9"></a>测试点 9</h3>
       
     </div>
 
@@ -646,7 +659,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">345</span>
+                    <span class="site-state-item-count">346</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1003,7 +1016,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#测试点-1"><span class="nav-number">1.</span> <span class="nav-text">测试点 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试点-2"><span class="nav-number">2.</span> <span class="nav-text">测试点 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试点-3"><span class="nav-number">3.</span> <span class="nav-text">测试点 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试点-4"><span class="nav-number">4.</span> <span class="nav-text">测试点 4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试点-5"><span class="nav-number">5.</span> <span class="nav-text">测试点 5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试点-6"><span class="nav-number">6.</span> <span class="nav-text">测试点 6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试点-7"><span class="nav-number">7.</span> <span class="nav-text">测试点 7</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#测试点-1"><span class="nav-number">1.</span> <span class="nav-text">测试点 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试点-2"><span class="nav-number">2.</span> <span class="nav-text">测试点 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试点-3"><span class="nav-number">3.</span> <span class="nav-text">测试点 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试点-4"><span class="nav-number">4.</span> <span class="nav-text">测试点 4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试点-5"><span class="nav-number">5.</span> <span class="nav-text">测试点 5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试点-6-8-10"><span class="nav-number">6.</span> <span class="nav-text">测试点 6,8,10</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试点-7"><span class="nav-number">7.</span> <span class="nav-text">测试点 7</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试点-9"><span class="nav-number">8.</span> <span class="nav-text">测试点 9</span></a></li></ol></div>
             
 
           </div>
