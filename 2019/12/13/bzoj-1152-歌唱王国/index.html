@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="概率生成函数 + kmp.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-13T23:59:07.239Z">
+<meta property="og:updated_time" content="2019-12-14T00:24:15.027Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bzoj 1152 歌唱王国">
 <meta name="twitter:description" content="概率生成函数 + kmp.">
@@ -457,7 +457,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-14 07:59:07" itemprop="dateModified" datetime="2019-12-14T07:59:07+08:00">2019-12-14</time>
+                <time title="Modified: 2019-12-14 08:24:15" itemprop="dateModified" datetime="2019-12-14T08:24:15+08:00">2019-12-14</time>
               
             
           </span>
@@ -500,6 +500,18 @@
       
         <p>概率生成函数 + kmp.</p>
 <a id="more"></a>
+<blockquote>
+<p>概率生成函数: 无情的复读机器人,通过生成函数的方法简化运算.</p>
+<p>定义概率生成函数 $F(x)=\sum_{i=0}^{\infty} P(X=i) x^i$ ,其中 $P(X=i)$ 表示随机变量 $X$ 为 $i$ 的概率.</p>
+<p>显然有 $F(1)=\sum_i P(X=i)=1$ .</p>
+<p>期望 $E(X)=\sum_i i\cdot P(X=i)=F’(1)$ .</p>
+<p>方差 $Var(X)=E(x^2)-E(x)^2=\sum_i i^2\cdot P(X=i)-(F’(1))^2=F’’(1)+F’(1)-(F’(1))^2$ .</p>
+</blockquote>
+<p>记字符集大小为 $m$ ,字符串长度为 $n$ .</p>
+<p>设 $f_i$ 表示结束时随机序列的长度,其概率生成函数为 $F(x)$ .</p>
+<p>设 $g_i$ 为随机序列长度达到 $i$ 还没结束的概率,其普通生成函数为 $G(x)$ .</p>
+<p>如果在一个未结束的序列后加一个数字,可能结束,也可能没结束, $1$ 是初始时序列为空的情况.<br>$$<br>F(x)+G(x)=1+G(x)\cdot x \quad (1)<br>$$<br>如果在一个未结束的序列后加上给定的序列,则一定会结束,也可能没添加完就结束了,此时已有序列一定是 border .</p>
+<p>设 $a_i$ 表示给定序列的前缀 $i$ 是否为它的 border .<br>$$<br>G(x)\cdot (\frac{1}{m}x)^n=\sum_{i=1}^n a_i\cdot F(x)\cdot (\frac{1}{m}x)^{n-i}<br>\quad(2)<br>$$<br>要求的是 $F’(1)$ ,将 $(1)$ 式两边对 $x$ 求导后代入 $x=1$ ,得到<br>$$<br>F’(x)+G’(x)=x\cdot G’(x)+G(x) \<br>F’(1)=G(1)<br>$$<br>将 $x=1$ 代入 $(2)$ 式,得到<br>$$<br>G(1)=\sum_{i=1}^n a_i\cdot F(1) \cdot m^i \<br>F’(1)=\sum_{i=1}^n a_i\cdot m^i<br>$$<br>于是只需用 kmp 判断给定序列的每个前缀是不是它的 border 就可以了.</p>
 <blockquote>
 <p>用 %04d 可以达到题目要求的输出效果,当然也可以自己写一下输出.</p>
 </blockquote>
