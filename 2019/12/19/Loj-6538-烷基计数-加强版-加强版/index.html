@@ -136,18 +136,18 @@
 
 
 
-  <meta name="description" content="容斥原理 + NTT .">
-<meta name="keywords" content="容斥原理,多项式">
+  <meta name="description" content="Burnside 引理 + 牛顿迭代.">
+<meta name="keywords" content="多项式,Burnside&#x2F;Polya,牛顿迭代">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Loj 6608 无意识的石子堆">
-<meta property="og:url" content="http://yoursite.com/2019/12/18/Loj-6608-无意识的石子堆/index.html">
+<meta property="og:title" content="Loj 6538 烷基计数 加强版 加强版">
+<meta property="og:url" content="http://yoursite.com/2019/12/19/Loj-6538-烷基计数-加强版-加强版/index.html">
 <meta property="og:site_name" content="JKLover">
-<meta property="og:description" content="容斥原理 + NTT .">
+<meta property="og:description" content="Burnside 引理 + 牛顿迭代.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-18T14:09:49.210Z">
+<meta property="og:updated_time" content="2019-12-19T12:06:45.783Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Loj 6608 无意识的石子堆">
-<meta name="twitter:description" content="容斥原理 + NTT .">
+<meta name="twitter:title" content="Loj 6538 烷基计数 加强版 加强版">
+<meta name="twitter:description" content="Burnside 引理 + 牛顿迭代.">
 
 
 
@@ -155,7 +155,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/12/18/Loj-6608-无意识的石子堆/">
+  <link rel="canonical" href="http://yoursite.com/2019/12/19/Loj-6538-烷基计数-加强版-加强版/">
 
 
 
@@ -165,7 +165,7 @@
   };
 </script>
 
-  <title>Loj 6608 无意识的石子堆 | JKLover</title>
+  <title>Loj 6538 烷基计数 加强版 加强版 | JKLover</title>
   
 
 
@@ -397,7 +397,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/18/Loj-6608-无意识的石子堆/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/19/Loj-6538-烷基计数-加强版-加强版/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JKLover">
@@ -414,7 +414,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Loj 6608 无意识的石子堆
+          <h1 class="post-title" itemprop="name headline">Loj 6538 烷基计数 加强版 加强版
 
               
             
@@ -440,7 +440,7 @@
                 
               
 
-              <time title="Created: 2019-12-18 21:39:20 / Modified: 22:09:49" itemprop="dateCreated datePublished" datetime="2019-12-18T21:39:20+08:00">2019-12-18</time>
+              <time title="Created: 2019-12-19 16:39:37 / Modified: 20:06:45" itemprop="dateCreated datePublished" datetime="2019-12-19T16:39:37+08:00">2019-12-19</time>
             
 
             
@@ -486,14 +486,20 @@
       
 
       
-        <p>容斥原理 + NTT .</p>
+        <p>Burnside 引理 + 牛顿迭代.</p>
 <a id="more"></a>
-<p>每行必须有 $2$ 个石子,考虑枚举 $k$ 列有 $2$ 个石子,则有 $2(n-k)$ 列有 $1$ 个石子.</p>
-<p>记 $S(k)$ 表示选出了这 $2n-k$ 列后放入石子的方案数,则<br>$$<br>ans=\sum_{k=0}^n \binom{m}{k} \binom{m-k}{2(n-k)} \cdot S(k)<br>$$<br>可以转化成二分图模型,左边有 $n$ 个点,度数均为 $2$ ,右边有 $k$ 个点度数为 $2$ ,有 $2(n-k)$ 个点度数为 $1$ .</p>
-<p>那么 $S(k)$ 就是这样的二分图的数目.</p>
-<p>将每个度数为 $2$ 的点拆成两个点,直接在这 $4n$ 个点中连边,再去掉出现了重边的方案数.</p>
-<p>考虑容斥,枚举有 $i$ 条重边,得到</p>
-<p>$$<br>S(k)=\frac{1}{2^{n+k}} \sum_{i=0}^n (-1)^i \binom{n}{i} \binom{k}{i} i!\cdot 2^i\cdot (2n-2i)!<br>$$<br>这可以用 NTT 做一次卷积直接算出,时间复杂度 $O(n\log n)​$ .</p>
+<p>就是求每个节点的儿子个数 $\le 3$ 的有根树数目.</p>
+<p>记答案的生成函数为 $F(x)$ ,直接 $F(x)=1+F(x)^3$ 显然是错的,因为可能出现同构的情况.</p>
+<p>考虑 Burnside 引理,对 $3$ 个儿子的置换有 $6$ 种.</p>
+<p>对于 $(1,2,3)​$ 这 $1​$ 种置换,每种方案都是不动点.</p>
+<p>对于 $(1,3,2),(3,2,1),(2,1,3)$ 这 $3$ 种置换,只有在置换中成环的两棵子树相同的方案才是不动点.</p>
+<p>对于 $(2,3,1),(3,1,2)$ 这 $2​$ 种置换,只有三棵子树都相同的方案才是不动点.</p>
+<p>根据 Burnside 引理,本质不同的方案数是各个置换的不动点数目平均数,得到<br>$$<br>F(x)=1+x\frac{F(x)^3+3F(x^2)F(x)+2F(x^3)}{6}<br>$$<br>考虑牛顿迭代解出这个方程,设 $G(F(x))=x\frac{F(x)^3+3F(x^2)F(x)+2F(x^3)}{6}-F(x)+1$ .</p>
+<p>若当前已知了 $F(x)\bmod x^n$ ,要求出 $F(x)\bmod x^{2n}$ ,可以发现 $F(x^2)\bmod x^{2n},F(x^3)\bmod x^{2n}$ 也已知了.</p>
+<p>于是可以直接把它们看做常量,记 $A(x)=F(x^2)\bmod x^{2n},B(x)=F(x^3)\bmod x^{2n}$ .</p>
+<p>注意是对 $F(x)​$ 求导,所以 $x​$ 也可以看做常量.</p>
+<p>得到 $G’(F(x))=x\frac{3F(x)^2+3A(x)}{6}-1$ ,代入牛顿迭代公式 $F(x)=F_0(x)-\frac{G(F_0(x))}{G’(F_0(x))}$ ,<br>$$<br>F(x)=F_0(x)-\frac{x(F_0(x)^3+3A(x)F_0(x)+2B(x))-6F_0(x)+6}{x(3F_0(x)^2+3A(x))-6}<br>$$<br>时间复杂度 $O(n\log n)​$ .</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//%std</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> endl <span class="meta-string">'\n'</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> out=<span class="number">0</span>,fh=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> ((jp&gt;<span class="string">'9'</span>||jp&lt;<span class="string">'0'</span>)&amp;&amp;jp!=<span class="string">'-'</span>)</span><br><span class="line">		jp=getchar();</span><br><span class="line">	<span class="keyword">if</span> (jp==<span class="string">'-'</span>)</span><br><span class="line">		fh=<span class="number">-1</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> (jp&gt;=<span class="string">'0'</span>&amp;&amp;jp&lt;=<span class="string">'9'</span>)</span><br><span class="line">		out=out*<span class="number">10</span>+jp-<span class="string">'0'</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">return</span> out*fh;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> P=<span class="number">998244353</span>,G=<span class="number">3</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (a+b&gt;=P)?(a+b-P):(a+b);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">inc</span><span class="params">(<span class="keyword">int</span> &amp;a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	a=add(a,b);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mul</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1L</span>L * a * b % P;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fpow</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> res=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(b)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(b&amp;<span class="number">1</span>)</span><br><span class="line">			res=mul(res,a);</span><br><span class="line">		a=mul(a,a);</span><br><span class="line">		b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">4e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> rev[MAXN],omega[MAXN],inv[MAXN],curn=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(curn==n)</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i)</span><br><span class="line">		rev[i]=(rev[i&gt;&gt;<span class="number">1</span>]&gt;&gt;<span class="number">1</span>)|((i&amp;<span class="number">1</span>)*(n&gt;&gt;<span class="number">1</span>));</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">2</span>;l&lt;=n;l&lt;&lt;=<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		omega[l]=fpow(G,(P<span class="number">-1</span>)/l);</span><br><span class="line">		inv[l]=fpow(omega[l],P<span class="number">-2</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	curn=n;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFT</span><span class="params">(<span class="keyword">int</span> *a,<span class="keyword">int</span> n,<span class="keyword">bool</span> invflag)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	init(n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i)</span><br><span class="line">		<span class="keyword">if</span>(i&lt;rev[i])</span><br><span class="line">			swap(a[i],a[rev[i]]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">2</span>;l&lt;=n;l&lt;&lt;=<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> m=l&gt;&gt;<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">int</span> gi=omega[l];</span><br><span class="line">		<span class="keyword">if</span>(invflag)</span><br><span class="line">			gi=inv[l];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> *p=a;p!=a+n;p+=l)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> g=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;++i)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">int</span> t=mul(g,p[i+m]);</span><br><span class="line">				p[i+m]=add(p[i],P-t);</span><br><span class="line">				p[i]=add(p[i],t);</span><br><span class="line">				g=mul(g,gi);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(invflag)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> invn=fpow(n,P<span class="number">-2</span>);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i)</span><br><span class="line">			a[i]=mul(a[i],invn);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">NTT</span><span class="params">(<span class="keyword">int</span> *A,<span class="keyword">int</span> *B,<span class="keyword">int</span> *C,<span class="keyword">int</span> lenA,<span class="keyword">int</span> lenB)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> lenC=lenA+lenB<span class="number">-1</span>,n=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(n&lt;lenC)</span><br><span class="line">		n&lt;&lt;=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> a[MAXN],b[MAXN];</span><br><span class="line">	copy(A,A+lenA,a);</span><br><span class="line">	fill(a+lenA,a+n,<span class="number">0</span>);</span><br><span class="line">	copy(B,B+lenB,b);</span><br><span class="line">	fill(b+lenB,b+n,<span class="number">0</span>);</span><br><span class="line">	DFT(a,n,<span class="literal">false</span>);</span><br><span class="line">	DFT(b,n,<span class="literal">false</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i)</span><br><span class="line">		C[i]=mul(a[i],b[i]);</span><br><span class="line">	DFT(C,n,<span class="literal">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PolyInverse</span><span class="params">(<span class="keyword">int</span> *A,<span class="keyword">int</span> *B,<span class="keyword">int</span> N)</span> <span class="comment">// B=A^(-1)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(n&lt;N)</span><br><span class="line">		n&lt;&lt;=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> res[MAXN],tmp[MAXN];</span><br><span class="line">	fill(A+N,A+n,<span class="number">0</span>);</span><br><span class="line">	res[<span class="number">0</span>]=fpow(A[<span class="number">0</span>],P<span class="number">-2</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i&lt;&lt;=<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		NTT(A,res,tmp,i,i);</span><br><span class="line">		NTT(tmp,res,tmp,i,i);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;i;++j)</span><br><span class="line">			res[j]=add(mul(<span class="number">2</span>,res[j]),P-tmp[j]);</span><br><span class="line">	&#125;</span><br><span class="line">	copy(res,res+N,B);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> *F,<span class="keyword">int</span> N)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(n&lt;N)</span><br><span class="line">		n&lt;&lt;=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> A[MAXN],B[MAXN],F0[MAXN],up[MAXN],down[MAXN];</span><br><span class="line">	F[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i&lt;&lt;=<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;i;++j)</span><br><span class="line">			F0[j]=F[j];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;i;j+=<span class="number">2</span>)</span><br><span class="line">			A[j]=F0[j/<span class="number">2</span>];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;i;j+=<span class="number">3</span>)</span><br><span class="line">			B[j]=F0[j/<span class="number">3</span>];</span><br><span class="line">			</span><br><span class="line">		NTT(F0,F0,up,i,i);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;i;++j)</span><br><span class="line">			inc(up[j],mul(<span class="number">3</span>,A[j]));</span><br><span class="line">		NTT(F0,up,up,i,i);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;i;++j)</span><br><span class="line">			inc(up[j],mul(<span class="number">2</span>,B[j]));</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=i<span class="number">-1</span>;j&gt;=<span class="number">1</span>;--j)</span><br><span class="line">			up[j]=up[j<span class="number">-1</span>];</span><br><span class="line">		up[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;i;++j)</span><br><span class="line">			inc(up[j],P-mul(<span class="number">6</span>,F0[j]));</span><br><span class="line">		inc(up[<span class="number">0</span>],<span class="number">6</span>);</span><br><span class="line">			</span><br><span class="line">		NTT(F0,F0,down,i,i);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;i;++j)</span><br><span class="line">			down[j]=add(mul(<span class="number">3</span>,down[j]),mul(<span class="number">3</span>,A[j]));</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=i<span class="number">-1</span>;j&gt;=<span class="number">1</span>;--j)</span><br><span class="line">			down[j]=down[j<span class="number">-1</span>];			</span><br><span class="line">		down[<span class="number">0</span>]=P<span class="number">-6</span>;</span><br><span class="line">		PolyInverse(down,down,i);</span><br><span class="line">		</span><br><span class="line">		NTT(up,down,up,i,i);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;i;++j)</span><br><span class="line">			F[j]=add(F0[j],P-up[j]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> F[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n=read();</span><br><span class="line">	solve(F,n+<span class="number">1</span>);</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;F[n]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -517,9 +523,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/容斥原理/" rel="tag"># 容斥原理</a>
-          
             <a href="/tags/多项式/" rel="tag"># 多项式</a>
+          
+            <a href="/tags/Burnside-Polya/" rel="tag"># Burnside/Polya</a>
+          
+            <a href="/tags/牛顿迭代/" rel="tag"># 牛顿迭代</a>
           
         </div>
       
@@ -532,8 +540,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/12/18/test20191218/" rel="next" title="test20191218">
-                <i class="fa fa-chevron-left"></i> test20191218
+              <a href="/2019/12/18/Loj-6609-无意识的石子堆-加强版/" rel="next" title="Loj 6609 无意识的石子堆 加强版">
+                <i class="fa fa-chevron-left"></i> Loj 6609 无意识的石子堆 加强版
               </a>
             
           </div>
@@ -542,8 +550,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/9102/11/13/置顶-CSP2019游记/" rel="prev" title="置顶-CSP2019游记">
-                置顶-CSP2019游记 <i class="fa fa-chevron-right"></i>
+              <a href="/9102/12/19/置顶-THUWC2019-2游记/" rel="prev" title="置顶-THUWC2019-2游记">
+                置顶-THUWC2019-2游记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -610,7 +618,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">364</span>
+                    <span class="site-state-item-count">366</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

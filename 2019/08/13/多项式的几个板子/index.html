@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="多项式的几个板子,代码也放在一起了.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-09T02:02:00.694Z">
+<meta property="og:updated_time" content="2019-12-19T13:09:03.334Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多项式的几个板子">
 <meta name="twitter:description" content="多项式的几个板子,代码也放在一起了.">
@@ -457,7 +457,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-09 10:02:00" itemprop="dateModified" datetime="2019-12-09T10:02:00+08:00">2019-12-09</time>
+                <time title="Modified: 2019-12-19 21:09:03" itemprop="dateModified" datetime="2019-12-19T21:09:03+08:00">2019-12-19</time>
               
             
           </span>
@@ -507,13 +507,16 @@
 <p>因为 $A\cdot B\equiv 1(\mbox{mod}\ x^n)$ ,所以有 $B-B’\equiv 0(\mbox{mod}\ x^{\frac n 2})$ .</p>
 <p>即 $B-B’=C\cdot x^{\frac n 2}$ ,所以 $B^2-2\cdot B\cdot B’+B’^2\equiv 0(\mbox{mod}\ x^n)$ .</p>
 <p>两边同乘 $A$ ,得到 $B-2B’+A\cdot B’^2\equiv 0(\mbox{mod}\ x^n)$ .</p>
-<p>于是可以得到 $B\equiv 2B’-A\cdot B’^2(\mbox{mod}\ x^n)$ . 由上过程可以看出,多项式 $A$ 有逆元的充要条件是常数项 $A_0$ 有逆元.</p>
+<p>于是可以得到 $B\equiv 2B’-A\cdot B’^2(\mbox{mod}\ x^n)$ . 可以看出,多项式 $A$ 有逆元的充要条件是常数项 $A_0$ 有逆元.</p>
 <p>时间复杂度为 $\Theta(n\log n)$ .</p>
 <p>实现时可以把递归改成迭代,常数会优秀许多.</p>
+<h3 id="Luogu-4721-分治FFT"><a href="#Luogu-4721-分治FFT" class="headerlink" title="Luogu 4721 分治FFT"></a><a href="https://www.luogu.com.cn/problem/P4721" target="_blank" rel="noopener">Luogu 4721 分治FFT</a></h3><p>可以考虑 cdq 分治,每次处理 $[l,mid)$ 对 $[mid,r)$ 的贡献,时间复杂度 $O(n\log^2 n)$ .</p>
+<p>另一个做法是记 $F,G$ 分别表示数列 $f,g$ 的生成函数,将它们卷起来,可以发现 $F(x)G(x)=F(x)-F(0)$ .</p>
+<p>则 $F(x)=\frac{F(0)}{1-G(x)}$ ,写个多项式求逆,时间复杂度 $O(n\log n)$ .</p>
 <h3 id="Luogu-P4512-多项式除法-多项式取模"><a href="#Luogu-P4512-多项式除法-多项式取模" class="headerlink" title="Luogu P4512 多项式除法/多项式取模"></a><a href="https://www.luogu.org/problem/P4512" target="_blank" rel="noopener">Luogu P4512 多项式除法/多项式取模</a></h3><p>给定一个 $n$ 次多项式 $A$ ,一个 $m$ 次多项式 $B$ ,满足 $m\le n$ ,求多项式 $D,R$ ,使得,<br>$$<br>A(x)=D(x)B(x)+R(x)<br>$$<br>并且 $\deg (D)\le n-m,\deg (R)&lt;m$ .</p>
 <p>尝试先消去余式 $R(x)$ 的影响,考虑多项式的 <strong>系数反转</strong> ,即对于一个 $n$ 次多项式 $A$ ,<br>$$<br>A^R(x)=x^n\cdot A(\frac 1 x)<br>$$<br>如 $A(x)=x^3+2x^2+3x+4$ ,则 $A^R(x)=x^3\cdot A(\frac 1 x)=4x^3+3x^2+2x+1$ .</p>
 <p>我们要求满足 $A(x)=D(x)B(x)+R(x)$ 的 $D,R$ ,如果将 $x$ 全部用 $\frac 1 x$ 替换,等式仍然成立.</p>
-<p>替换后再同时乘上 $x^n$ ,由于 $\deg(D)\le n-m,\deg(R)&lt;m$ ,将 $D,R$ 次数分别看做 $n-m,m-1$ ,不足用 $0$ 补.</p>
+<p>替换后同时乘上 $x^n$ ,由于 $\deg(D)\le n-m,\deg(R)&lt;m$ ,将 $D,R$ 次数分别看做 $n-m,m-1$ ,用 $0$ 补够.</p>
 <p>于是可以得到,<br>$$<br>A^R(x)=D^R(x)B^R(x)+x^{n-m+1}\cdot R^R(x)<br>$$<br>我们将上面的等式两边都对 $x^{n-m+1}$ 取模, $x^{n-m+1}\cdot R^R(x)$ 就被消去了,于是得到,<br>$$<br>A^R(x)\equiv D^R(x)B^R(x) (\mbox{mod}\ x^{n-m+1})<br>$$<br>对 $B^R(x)$ 用一次多项式求逆,再用一次多项式乘法求得模 $x^{n-m+1}$ 意义下的 $D^R(x)$ .</p>
 <p>由于 $\deg (D)\le n-m$ ,反转后 $\deg (D^R)\le n-m$ .所以模意义下求得的 $D^R(x)$ 就是真实的 $D^R(x)$ .</p>
 <p>再系数反转求得 $D(x)$ ,回代 $A(x)=D(x)B(x)+R(x)$ 得到 $R(x)$ .</p>
@@ -543,7 +546,8 @@
 <p>时间复杂度为 $O(n\log n)$ ,由于可以实现类似解方程的操作,所以用途比较广泛.</p>
 <p>如实现多项式开根,就可以直接设 $G(x)=x^2-A$ .</p>
 <h3 id="Luogu-P4726-多项式-exp"><a href="#Luogu-P4726-多项式-exp" class="headerlink" title="Luogu P4726 多项式 $\exp$"></a><a href="https://www.luogu.org/problem/P4726" target="_blank" rel="noopener">Luogu P4726 多项式 $\exp$</a></h3><p>给定项数为 $n$ 的多项式 $A(x)$ ,在 $\mbox{mod} \ x^n$ 意义下求多项式 $B(x)$ ,使得 $B(x)\equiv \exp(A(x))\ (\mbox{mod} \ x^n)$ .</p>
-<p>取对数,得到 $\ln B\equiv A \ (\mbox{mod} \ x^n)$ ,令 $G(x)=\ln x-A$ ,则问题等价于求解 $F(x)$ ,使得 $G(F(x))\equiv 0(\mbox{mod}\ x^n)$ .</p>
+<p>取对数,得到 $\ln B\equiv A \ (\mbox{mod} \ x^n)$ ,令 $G(x)=\ln x-A$ .</p>
+<p>则问题等价于求解 $F(x)$ ,使得 $G(F(x))\equiv 0(\mbox{mod}\ x^n)$ .</p>
 <p>直接套用牛顿迭代的那一套理论,得到<br>$$<br>F\equiv (1-{\ln (F_0)+A})\cdot F_0\ (\mbox{mod}\ x^n)<br>$$<br>递归求解,当 $n=1$ 时,令 $F_0(x)=\exp a_0$ 即可.一般会保证多项式 $A$ 的常数项 $a_0=0$ .</p>
 <h3 id="Luogu-P5245-多项式快速幂"><a href="#Luogu-P5245-多项式快速幂" class="headerlink" title="Luogu P5245 多项式快速幂"></a><a href="https://www.luogu.com.cn/problem/P5245" target="_blank" rel="noopener">Luogu P5245 多项式快速幂</a></h3><p>给定项数为 $n$ 的多项式 $A(x)$ ,正整数 $k$ .</p>
 <p>在 $\mbox{mod}\ x^n$ 下求多项式 $B(x)$ ,使得 $B(x)\equiv A^k(x)\ (\mbox{mod} \ x^n)$ .</p>
@@ -681,7 +685,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">364</span>
+                    <span class="site-state-item-count">366</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1044,7 +1048,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Luogu-P4238-多项式求逆"><span class="nav-number">1.</span> <span class="nav-text">Luogu P4238 多项式求逆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Luogu-P4512-多项式除法-多项式取模"><span class="nav-number">2.</span> <span class="nav-text">Luogu P4512 多项式除法/多项式取模</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Luogu-P4728-多项式-ln"><span class="nav-number">3.</span> <span class="nav-text">Luogu P4728 多项式 $\ln$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式牛顿迭代"><span class="nav-number">4.</span> <span class="nav-text">多项式牛顿迭代</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Luogu-P4726-多项式-exp"><span class="nav-number">5.</span> <span class="nav-text">Luogu P4726 多项式 $\exp$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Luogu-P5245-多项式快速幂"><span class="nav-number">6.</span> <span class="nav-text">Luogu P5245 多项式快速幂</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Loj-150-挑战多项式"><span class="nav-number">7.</span> <span class="nav-text">Loj 150 挑战多项式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Luogu-P4238-多项式求逆"><span class="nav-number">1.</span> <span class="nav-text">Luogu P4238 多项式求逆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Luogu-4721-分治FFT"><span class="nav-number">2.</span> <span class="nav-text">Luogu 4721 分治FFT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Luogu-P4512-多项式除法-多项式取模"><span class="nav-number">3.</span> <span class="nav-text">Luogu P4512 多项式除法/多项式取模</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Luogu-P4728-多项式-ln"><span class="nav-number">4.</span> <span class="nav-text">Luogu P4728 多项式 $\ln$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式牛顿迭代"><span class="nav-number">5.</span> <span class="nav-text">多项式牛顿迭代</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Luogu-P4726-多项式-exp"><span class="nav-number">6.</span> <span class="nav-text">Luogu P4726 多项式 $\exp$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Luogu-P5245-多项式快速幂"><span class="nav-number">7.</span> <span class="nav-text">Luogu P5245 多项式快速幂</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Loj-150-挑战多项式"><span class="nav-number">8.</span> <span class="nav-text">Loj 150 挑战多项式</span></a></li></ol></div>
             
 
           </div>
