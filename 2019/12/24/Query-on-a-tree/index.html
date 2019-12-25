@@ -139,14 +139,14 @@
   <meta name="description" content="QTREE 系列.">
 <meta name="keywords" content="主席树,线段树,树链剖分,LCT,倍增,动态点分治">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Query-on-a-tree">
+<meta property="og:title" content="Query on a tree">
 <meta property="og:url" content="http://yoursite.com/2019/12/24/Query-on-a-tree/index.html">
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="QTREE 系列.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-24T20:59:09.902Z">
+<meta property="og:updated_time" content="2019-12-25T03:40:36.268Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Query-on-a-tree">
+<meta name="twitter:title" content="Query on a tree">
 <meta name="twitter:description" content="QTREE 系列.">
 
 
@@ -165,7 +165,7 @@
   };
 </script>
 
-  <title>Query-on-a-tree | JKLover</title>
+  <title>Query on a tree | JKLover</title>
   
 
 
@@ -414,7 +414,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Query-on-a-tree
+          <h1 class="post-title" itemprop="name headline">Query on a tree
 
               
             
@@ -457,7 +457,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-25 04:59:09" itemprop="dateModified" datetime="2019-12-25T04:59:09+08:00">2019-12-25</time>
+                <time title="Modified: 2019-12-25 11:40:36" itemprop="dateModified" datetime="2019-12-25T11:40:36+08:00">2019-12-25</time>
               
             
           </span>
@@ -500,24 +500,27 @@
       
         <p>QTREE 系列.</p>
 <a id="more"></a>
-<h3 id="QTREE1"><a href="#QTREE1" class="headerlink" title="QTREE1"></a><a href="https://www.luogu.com.cn/problem/SP375" target="_blank" rel="noopener">QTREE1</a></h3><p>树剖维护即可,注意 LCA 连向它父亲的边不能被计入贡献.</p>
-<p>利用重链上 dfn 连续这条性质,在查询的时候不加入 LCA 就可以了.</p>
+<h3 id="QTREE1"><a href="#QTREE1" class="headerlink" title="QTREE1"></a><a href="https://www.luogu.com.cn/problem/SP375" target="_blank" rel="noopener">QTREE1</a></h3><p>树剖维护即可,注意 LCA 连向它父亲的边不能被计入贡献.利用重链上 dfn 连续这条性质,就可以做到了.</p>
 <p>时间复杂度 $O(n\log n)$ .</p>
-<h3 id="QTREE2"><a href="#QTREE2" class="headerlink" title="QTREE2"></a><a href="https://www.luogu.com.cn/problem/SP913" target="_blank" rel="noopener">QTREE2</a></h3><p>预处理出父亲的倍增数组,每个点的深度以及到根的距离</p>
-<p>第一问找出 LCA  计算一下就可以了.</p>
+<p><a href="https://paste.ubuntu.com/p/rwVhGfgNdF/" target="_blank" rel="noopener">code</a></p>
+<h3 id="QTREE2"><a href="#QTREE2" class="headerlink" title="QTREE2"></a><a href="https://www.luogu.com.cn/problem/SP913" target="_blank" rel="noopener">QTREE2</a></h3><p>预处理出父亲的倍增数组,每个点的深度以及到根的距离.第一问找出 LCA  计算一下就可以了.</p>
 <p>第二问可以从深度大的往上跳,如果跳到 LCA 还没结束,就换另一个点来跳.</p>
 <p>跳的时候要记录跳过了几个点,更换跳的点的时候要处理 $k$ 的变化.</p>
 <p>时间复杂度 $O(n\log n)$ .</p>
+<p><a href="https://paste.ubuntu.com/p/mkNphCBQGC/" target="_blank" rel="noopener">code</a></p>
 <h3 id="QTREE3"><a href="#QTREE3" class="headerlink" title="QTREE3"></a><a href="https://www.luogu.com.cn/problem/SP1487" target="_blank" rel="noopener">QTREE3</a></h3><p>把 dfn 看作下标,则这个询问等价于询问一段区间内的第 $k$ 大.</p>
 <p>没有修改操作,把权值离散化后建出主席树来回答询问即可.</p>
 <p>时间复杂度 $O(n\log n)$ .</p>
-<h3 id="QTREE4"><a href="#QTREE4" class="headerlink" title="QTREE4"></a><a href="https://www.luogu.com.cn/problem/SP2666" target="_blank" rel="noopener">QTREE4</a></h3><p>和 <a href="[https://jkloverdcoi.github.io/2019/12/03/%E5%8A%A8%E6%80%81%E7%82%B9%E5%88%86%E6%B2%BB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/](https://jkloverdcoi.github.io/2019/12/03/动态点分治学习笔记/">捉迷藏</a>) 那题一模一样,可以用动态点分治来做,时间复杂度 $O(n\log^2 n)$ .</p>
-<h3 id="QTREE5"><a href="#QTREE5" class="headerlink" title="QTREE5"></a><a href="https://www.luogu.com.cn/problem/SP2939" target="_blank" rel="noopener">QTREE5</a></h3><p>和 QTREE4 大同小异,仍然考虑动态点分治.</p>
+<p><a href="https://paste.ubuntu.com/p/C9Qf35g4br/" target="_blank" rel="noopener">code</a></p>
+<h3 id="QTREE4"><a href="#QTREE4" class="headerlink" title="QTREE4"></a><a href="https://www.luogu.com.cn/problem/SP2666" target="_blank" rel="noopener">QTREE4</a></h3><p>和 <a href="https://jkloverdcoi.github.io/2019/12/03/动态点分治学习笔记/" target="_blank" rel="noopener">捉迷藏</a> 那题一模一样,可以用动态点分治来做,时间复杂度 $O(n\log^2 n)$ .</p>
+<p><a href="https://paste.ubuntu.com/p/ywT5HNzqRk/" target="_blank" rel="noopener">code</a></p>
+<h3 id="QTREE5"><a href="#QTREE5" class="headerlink" title="QTREE5"></a><a href="https://www.luogu.com.cn/problem/SP2939" target="_blank" rel="noopener">QTREE5</a></h3><p>和 QTREE4 大同小异,其实可以看做是 QTREE4 的一个弱化版.仍然考虑动态点分治.</p>
 <p>给每个分治中心开一个 set ,维护它管辖的所有白点到它的距离,以及它们的编号.</p>
 <p>修改时在点分树跳,把经过的每个 set 的信息更新一下.</p>
-<p>询问时在点分树上跳,若 $v$ 自己是最小值,则用次小值更新答案,否则用最小值更新答案.</p>
-<p>这样会将一些自交的链也统计进去,但由于是询问 $\min$ ,不会影响答案正确性.</p>
+<p>询问时在点分树上跳,不断用 set 中的最小值来更新最小距离.</p>
+<p>这样会将一些自交的链也统计进去,但由于是询问 $\min​$ ,不会影响答案正确性.</p>
 <p>时间复杂度 $O(n\log^2 n)$ .</p>
+<p><a href="https://paste.ubuntu.com/p/bGcRj9Nh9Q/" target="_blank" rel="noopener">code</a></p>
 <h3 id="QTREE6"><a href="#QTREE6" class="headerlink" title="QTREE6"></a><a href="https://www.luogu.com.cn/problem/SP16549" target="_blank" rel="noopener">QTREE6</a></h3><p>开两棵 LCT ,分别维护白点,黑点的信息,询问的答案就是 $u$ 所在的连通块大小.</p>
 <p>这可以通过维护虚儿子的大小和得出.</p>
 <p>修改时,需要将 $u$ 在某棵 LCT 中断掉,在另一棵 LCT 中加入,如果每次暴力修改,会被菊花图卡掉.</p>
@@ -527,10 +530,11 @@
 <p>于是还需要把根给去掉,在 findroot(u) 找到根后,把它 Splay 上来,它的右儿子就是 $u$ 所在的子树.</p>
 <p>需要给原图加一个虚点,表示原图树根的父亲.</p>
 <p>时间复杂度 $O(n\log n)$ .</p>
-<p><a href="https://paste.ubuntu.com/p/PQxMkSNMY2/" target="_blank" rel="noopener">code</a></p>
+<p><a href="https://paste.ubuntu.com/p/7xWQ5sK35d/" target="_blank" rel="noopener">code</a></p>
 <h3 id="QTREE7"><a href="#QTREE7" class="headerlink" title="QTREE7"></a><a href="https://www.luogu.com.cn/problem/SP16580" target="_blank" rel="noopener">QTREE7</a></h3><p>和 QTREE6 大同小异,只是把连通块大小换成了连通块内点权最大值.</p>
 <p>用 multiset 维护虚儿子贡献上来的最大值,其它部分同 QTREE6 .</p>
 <p>时间复杂度 $O(n\log^2 n)$ .</p>
+<p><a href="https://paste.ubuntu.com/p/3rmmW4DwWX/" target="_blank" rel="noopener">code</a></p>
 
       
     </div>
@@ -587,8 +591,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/12/24/Loj-2230-大融合/" rel="prev" title="Loj-2230-大融合">
-                Loj-2230-大融合 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/12/24/Loj-2230-大融合/" rel="prev" title="Loj 2230 大融合">
+                Loj 2230 大融合 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
