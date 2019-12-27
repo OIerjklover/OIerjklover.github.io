@@ -144,12 +144,13 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="LCT + 扫喵线.">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2019/12/27/bzoj-4573-大森林/cover.png">
 <meta property="og:image" content="http://yoursite.com/2019/12/27/bzoj-4573-大森林/tree.png">
-<meta property="og:updated_time" content="2019-12-27T03:56:56.404Z">
+<meta property="og:updated_time" content="2019-12-27T07:08:53.452Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bzoj 4573 大森林">
 <meta name="twitter:description" content="LCT + 扫喵线.">
-<meta name="twitter:image" content="http://yoursite.com/2019/12/27/bzoj-4573-大森林/tree.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/12/27/bzoj-4573-大森林/cover.png">
 
 
 
@@ -442,7 +443,7 @@
                 
               
 
-              <time title="Created: 2019-12-27 09:56:54 / Modified: 11:56:56" itemprop="dateCreated datePublished" datetime="2019-12-27T09:56:54+08:00">2019-12-27</time>
+              <time title="Created: 2019-12-27 09:56:54 / Modified: 15:08:53" itemprop="dateCreated datePublished" datetime="2019-12-27T09:56:54+08:00">2019-12-27</time>
             
 
             
@@ -489,6 +490,7 @@
 
       
         <p>LCT + 扫喵线.</p>
+<img src="/2019/12/27/bzoj-4573-大森林/cover.png">
 <a id="more"></a>
 <p>有时间和树的编号两个维度,一起维护不太可做,考虑去掉一个维度.</p>
 <p>注意到长出的子节点编号只与操作次数有关,可以让每次都给所有树生长出一个新点.</p>
@@ -499,7 +501,7 @@
 <p>每次修改生长节点时,新建一个虚点,生长点的时候,新建一个实点接在最近的虚点上,把所有虚点按时间顺序串起来.</p>
 <p>类似扫描线,从前往后处理每一棵树的形态,并回答询问,修改生长节点操作在 $l$ 处生效,在 $r+1$ 处失效.</p>
 <p>简单画了一下,实心点是实点,空心点是虚点,虚点下面栽的子树就是后面生长出来的实点.</p>
-<p><img src="tree.png" alt></p>
+<img src="/2019/12/27/bzoj-4573-大森林/tree.png" title="示意图">
 <p>生效时,就把它的虚点栽到 $x$ 这个实点下面,这样后面长出来的点都在 $x$ 的子树中了.</p>
 <p>失效时,就把它的虚点给移回去,即移回所有虚点按时间串好的那条链上.</p>
 <p>回答询问时,将虚点权值设为 $0$ ,实点权值设为 $1$ ,答案就是两点路径上点权和 $-1$ .</p>
