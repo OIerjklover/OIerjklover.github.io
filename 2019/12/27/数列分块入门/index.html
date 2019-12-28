@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="发现自己分块学得太垃圾,于是来入个门.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-27T14:18:30.846Z">
+<meta property="og:updated_time" content="2019-12-28T02:48:55.723Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数列分块入门">
 <meta name="twitter:description" content="发现自己分块学得太垃圾,于是来入个门.">
@@ -440,12 +440,24 @@
                 
               
 
-              <time title="Created: 2019-12-27 21:01:49 / Modified: 22:18:30" itemprop="dateCreated datePublished" datetime="2019-12-27T21:01:49+08:00">2019-12-27</time>
+              <time title="Created: 2019-12-27 21:01:49" itemprop="dateCreated datePublished" datetime="2019-12-27T21:01:49+08:00">2019-12-27</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-12-28 10:48:55" itemprop="dateModified" datetime="2019-12-28T10:48:55+08:00">2019-12-28</time>
               
             
           </span>
@@ -494,35 +506,86 @@
 <h3 id="数列分块入门-1"><a href="#数列分块入门-1" class="headerlink" title="数列分块入门 1"></a><a href="https://loj.ac/problem/6277" target="_blank" rel="noopener">数列分块入门 1</a></h3><blockquote>
 <p>区间加,单点查询元素的值.</p>
 </blockquote>
-<p>分块,对于每一块维护一个加法标记 tag ,表示这块内实际的值在 a 的基础上还要加上 tag.</p>
-<p>修改时,对于整块的部分,更新它们的 tag ,对于边角部分,暴力修改 a.</p>
-<p>询问时,实际的值就为 a+tag .</p>
+<p>分块,对于每一块维护一个加法标记 $tag$ ,表示这块内实际的值在 $a$ 的基础上还要加上 $tag$.</p>
+<p>修改时,对于整块的部分,更新它们的 $tag$ ,对于边角部分,暴力修改 $a$.</p>
+<p>询问时,实际的值就为 $a+tag$ .</p>
 <p>时间复杂度 $O(n\sqrt n)$ ,空间复杂度 $O(n)$ .</p>
 <p><a href="https://loj.ac/submission/707725" target="_blank" rel="noopener">code</a></p>
 <h3 id="数列分块入门-2"><a href="#数列分块入门-2" class="headerlink" title="数列分块入门 2"></a><a href="https://loj.ac/problem/6278" target="_blank" rel="noopener">数列分块入门 2</a></h3><blockquote>
 <p>区间加,询问区间内 $\le x$ 的元素数目.</p>
 </blockquote>
-<p>分块,对于每一块维护一个加法标记 tag ,表示这块内实际的值还要加上 tag .</p>
-<p>对于每一块维护一个数组 b ,表示这一块内的元素排序后的结果.</p>
-<p>修改时,对于整块的部分,更新它们的 tag ,由于相对大小关系不变,所以不用重构 b .</p>
-<p>对于边角部分,暴力修改后重构 b .</p>
-<p>询问时,对于整块的部分,在 b 中二分出 $&lt; x$ 的元素数目,对于边角的部分,暴力统计.</p>
+<p>分块,对于每一块维护一个加法标记 $tag$ ,表示这块内实际的值还要加上 $tag$ .</p>
+<p>对于每一块维护一个数组 $b$ ,表示这一块内的元素排序后的结果.</p>
+<p>修改时,对于整块的部分,更新它们的 $tag$ ,由于相对大小关系不变,所以不用重构 b .</p>
+<p>对于边角部分,暴力修改后重构 $b$ .</p>
+<p>询问时,对于整块的部分,在 $b$ 中二分出 $&lt; x$ 的元素数目,对于边角的部分,暴力统计.</p>
 <p>时间复杂度 $O(n\sqrt n\log n)​$ ,空间复杂度 $O(n)​$ .</p>
 <p><a href="https://loj.ac/submission/707739" target="_blank" rel="noopener">code</a></p>
 <h3 id="数列分块入门-3"><a href="#数列分块入门-3" class="headerlink" title="数列分块入门 3"></a><a href="https://loj.ac/problem/6279" target="_blank" rel="noopener">数列分块入门 3</a></h3><blockquote>
 <p>区间加,询问区间内最大的 $&lt; x$ 的元素.</p>
 </blockquote>
 <p>直接把 $2$ 的做法搬过来,把计数改成求前驱就可以了.</p>
-<p>时间复杂度 $O(n\sqrt n\log n)$ ,空间复杂度 $O(n)$ .</p>
+<p>时间复杂度 $O(n\sqrt n\log n)$ ,空间复杂度 $O(n)​$ .</p>
+<p><a href="https://loj.ac/submission/707754" target="_blank" rel="noopener">code</a></p>
 <h3 id="数列分块入门-4"><a href="#数列分块入门-4" class="headerlink" title="数列分块入门 4"></a><a href="https://loj.ac/problem/6280/" target="_blank" rel="noopener">数列分块入门 4</a></h3><blockquote>
 <p>区间加,区间求和.</p>
 </blockquote>
-<p>分块,对于每一块维护一个加法标记 tag ,表示这块内实际的值在 a 的基础上还要加上 tag.</p>
-<p>对于每一块维护一个 sum ,表示这块内实际所有元素的和.</p>
-<p>修改时,对于整块的部分,更新它们的 tag 和 sum,对于边角部分,暴力修改 a 和 sum .</p>
-<p>询问时,对于整块的部分,利用 sum 更新答案,对于边角部分,暴力用每个 a+tag 更新答案.</p>
+<p>分块,对于每一块维护一个加法标记 $tag$ ,表示这块内实际的值在 $a$ 的基础上还要加上 $tag$.</p>
+<p>对于每一块维护一个 $sum$ ,表示这块内实际所有元素的和.</p>
+<p>修改时,对于整块的部分,更新它们的 $tag$ 和 $sum$,对于边角部分,暴力修改 $a$ 和 $sum$ .</p>
+<p>询问时,对于整块的部分,利用 $sum$ 更新答案,对于边角部分,暴力用每个 $a+tag$ 更新答案.</p>
 <p>时间复杂度 $O(n\sqrt n)$ ,空间复杂度 $O(n)$ .</p>
 <p><a href="https://loj.ac/submission/707782" target="_blank" rel="noopener">code</a></p>
+<h3 id="数列分块入门-5"><a href="#数列分块入门-5" class="headerlink" title="数列分块入门 5"></a><a href="https://loj.ac/problem/6281" target="_blank" rel="noopener">数列分块入门 5</a></h3><blockquote>
+<p>区间开方(向下取整),区间求和.</p>
+</blockquote>
+<p>分块,对于每一块维护一个 $flag$ ,表示这一块内的元素是否全为 $0,1$ ,维护一个 $sum$ 表示块内元素之和.</p>
+<p>修改时,对于整块的部分,若已经全为 $0,1$ ,则直接跳过,否则暴力对每个元素开方,更新 $sum$ ,重新判断是否全为 $0,1$ .</p>
+<p>对于边角部分,暴力开方,更新 $sum$ ,重新判断其所在块是否全为 $0,1$ .</p>
+<p>一个大小为 $x$ 的数最多被开方 $O(\log \log x)$ 次就会变成 $1$ .</p>
+<p>时间复杂度 $O(n\sqrt n \log \log a)$ ,空间复杂度 $O(n)$ .</p>
+<p><a href="https://loj.ac/submission/707859" target="_blank" rel="noopener">code</a></p>
+<h3 id="数列分块入门-6"><a href="#数列分块入门-6" class="headerlink" title="数列分块入门 6"></a><a href="https://loj.ac/problem/6282" target="_blank" rel="noopener">数列分块入门 6</a></h3><blockquote>
+<p>单点插入,单点查询元素的值,数据随机生成.</p>
+</blockquote>
+<p>分块,对每一块开一个 vector 维护块内的元素,并记录该块内共有多少个元素.</p>
+<p>插入时,先暴力找出插入的位置在哪一块,再插入到该块的 vector 中.</p>
+<p>询问时,先暴力找出询问的位置在哪一块,再在该块的 vector 中询问.</p>
+<p>每进行 $\sqrt n$ 次操作后,对整个数列重构一次.</p>
+<p>定期重构保证每块的大小为 $O(\sqrt n)$ ,所以找块,插入 vector 的复杂度均为 $O(\sqrt n)$ ,共操作了 $O(n)$ 次.</p>
+<p>而每次重构的时间复杂度为 $O(n)$ ,重构次数为 $\sqrt n​$ . </p>
+<p>时间复杂度 $O(n\sqrt n)$ ,空间复杂度 $O(n)$ .</p>
+<p><a href="https://loj.ac/submission/707875" target="_blank" rel="noopener">code</a></p>
+<h3 id="数列分块入门-7"><a href="#数列分块入门-7" class="headerlink" title="数列分块入门 7"></a><a href="https://loj.ac/problem/6283" target="_blank" rel="noopener">数列分块入门 7</a></h3><blockquote>
+<p>区间乘法,区间加法,单点查询元素模质数的值.</p>
+</blockquote>
+<p>分块,对于每一块维护两个标记 $k,b​$ ,表示该块内元素实际的值是 $k \times a+b​$ .</p>
+<p>修改时,对于整块部分,直接修改标记.</p>
+<p>对于边角部分,暴力修改,先把它所在块的 $a​$ 都改成实际值,把标记清空,再修改.</p>
+<p>询问时,答案就是 $k \times a+b​$  .</p>
+<p>时间复杂度 $O(n\sqrt n)$ ,空间复杂度 $O(n)$ .</p>
+<p><a href="https://loj.ac/submission/707915" target="_blank" rel="noopener">code</a></p>
+<h3 id="数列分块入门-8"><a href="#数列分块入门-8" class="headerlink" title="数列分块入门 8"></a><a href="https://loj.ac/problem/6284" target="_blank" rel="noopener">数列分块入门 8</a></h3><blockquote>
+<p>区间询问等于 $c$ 的元素数目,然后将这个区间所有数改为 $c$ .</p>
+</blockquote>
+<p>分块,对每一块维护一个 $flag$ 表示该块内元素是否相同,维护一个 val 表示若相同,则这个值是多少.</p>
+<p>询问时,对于整块部分,若块内元素都相同,则直接判断它是否与 $c$ 相同,若不同,则对每个元素暴力判断.</p>
+<p>对于边角部分,先把标记下放,再对于每个元素暴力判断.</p>
+<p>修改时,对于整块部分,直接让 $val=c$ ,对于边角部分,先把标记下放,再暴力修改,修改完再后判断块内元素是否相同.</p>
+<p>每次修改最多会让 $2​$ 个原来元素相同的块变为元素不同的块,均摊下来每次操作复杂度还是 $O(\sqrt n)​$ .</p>
+<p>时间复杂度 $O(n\sqrt n)$ ,空间复杂度 $O(n)$ .</p>
+<p><a href="https://loj.ac/submission/707942" target="_blank" rel="noopener">code</a></p>
+<h3 id="数列分块入门-9"><a href="#数列分块入门-9" class="headerlink" title="数列分块入门 9"></a><a href="https://loj.ac/problem/6285" target="_blank" rel="noopener">数列分块入门 9</a></h3><blockquote>
+<p>区间询问最小的众数.</p>
+</blockquote>
+<p>分块,并把元素离散化一下.</p>
+<p>预处理 $f(i,j)$ 表示从第 $i$ 块到第 $j$ 块这些数的众数,可以先枚举 $i$ ,每加入一个元素时检查它是否为当前的众数.</p>
+<p>询问时,答案只可能是整块部分的 $f$ ,或者在边角部分中出现过的数字.</p>
+<p>枚举边角部分的每个数,考虑它能否成为众数,需要计算出它在询问区间 $[l,r]$ 中出现的次数.</p>
+<p>可以先预处理一个 $sum(i,x)$ 表示前 $i$ 块中 $x$ 出现的次数,就可以得到整块部分中 $x$ 出现的次数.</p>
+<p>再开一个桶,记录边角部分每个数出现的次数.</p>
+<p>时间复杂度 $O(n\log n+n\sqrt n)$ ,空间复杂度 $O(n\sqrt n)$ .</p>
+<p><a href="https://loj.ac/submission/708011" target="_blank" rel="noopener">code</a></p>
 
       
     </div>
@@ -1011,7 +1074,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数列分块入门-1"><span class="nav-number">1.</span> <span class="nav-text">数列分块入门 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数列分块入门-2"><span class="nav-number">2.</span> <span class="nav-text">数列分块入门 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数列分块入门-3"><span class="nav-number">3.</span> <span class="nav-text">数列分块入门 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数列分块入门-4"><span class="nav-number">4.</span> <span class="nav-text">数列分块入门 4</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数列分块入门-1"><span class="nav-number">1.</span> <span class="nav-text">数列分块入门 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数列分块入门-2"><span class="nav-number">2.</span> <span class="nav-text">数列分块入门 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数列分块入门-3"><span class="nav-number">3.</span> <span class="nav-text">数列分块入门 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数列分块入门-4"><span class="nav-number">4.</span> <span class="nav-text">数列分块入门 4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数列分块入门-5"><span class="nav-number">5.</span> <span class="nav-text">数列分块入门 5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数列分块入门-6"><span class="nav-number">6.</span> <span class="nav-text">数列分块入门 6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数列分块入门-7"><span class="nav-number">7.</span> <span class="nav-text">数列分块入门 7</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数列分块入门-8"><span class="nav-number">8.</span> <span class="nav-text">数列分块入门 8</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数列分块入门-9"><span class="nav-number">9.</span> <span class="nav-text">数列分块入门 9</span></a></li></ol></div>
             
 
           </div>
