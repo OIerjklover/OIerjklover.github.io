@@ -513,7 +513,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX19dfmYTSukjvFOSluNRxIaniUi+iw0NGq1Sjv43ADXewGksKSTgmqq3n/2q9OPCgyvkaCtB7AD1POu2RYS6MKxERzcsJZEvNzgfog6Fr4oZpzTMCabX8E/khCuIfdmLeL8Rhb/nCbkRfb0P/YZbk58GyQ+BdyPD2uc3hPwPWK8/3PvCQyAtwZwZMayiGSzbdwrUdADPnLKxWh5+pSu0UvWQAf8j+hunYfeWpFa9isvmhabqbc0ZEUrJphKXLYBmWjB5ZB5n4px7wwrn5gilKTjNmsLYH1bg2bJXDHNuuXbmy2kyfvy9baAstX4zhhVY+fUUPFXWfZ8XMqJrHBEuZEojPvBh7giJEiNFZQkyA6uhtlI7xBmTBcr57gQWkgISBNVjluruCSeOf+6Xl6FxAuiQNL9JwQXXsfPzne3u9s2fMVTWzz1iSRWIP5dK7mW8gC5jaODMww2NaPesL8YXu3M+mLGOv3mEUSmSe5H/IwOg7Oak4fB8vRWoNlSOjq/lALBFHyWUGbdP4TEIhU8+bCS/gTPAlpbnixy/69buhGyhDKJ89vtj/EOaIL53AhdH5mb2BUsor4vncYdrUXRFGz+QPET+fq/R8gdAKsEuCnl7QI8cz3vOm091U0AUvZ5Q4gO8gOkVxK8yPuohstgEQxmQBGfbmzgAzi8coN5ZD4cMWE1SauaUCu6YfqZU2ceTt49YQVpHZezhOsWQxl5Kln1gSs0sloHSffjQZMzWxicJJTAbsUUVJ5WOKLy+d4URGhH+jzXm7R62Rz6FLqrKiX+kXH5V/uQEAr6s1ncQrOso+oQAFu6mw53IKMvc8JdReYuvtyQPq+G6InVKMOnMHtbuaL5ZcB9JLiNccG9S7gD4zjLxuxVvxcfSQM6O2BaA2/zAfH9LCq2M8hhFoeSzlcJhx9B5+FMv8XNxQZLW0HNLZmIPkdeYS3HtawhAng3VSjeyt5nZ4wJ0bXLAbbaLNw1/DQ8Gszd7Qps=</div>
+<div id="enc_content" style="display:none">U2FsdGVkX19J6X38bZwjBXNFAxI7Yat+BkgcHne0zoXh8jlxBG1hnKUVCAnp7gn5/lejmJLG9W276kYcx3ySTzgwKQWQfyu+GIM0Q5D0fb9E4WPkpjsvE5TMT4FXp8E0zLHAih8t5oJETWMov2Fy6a/z2aWFNF4MhAM2a+L3+urTuHm3zit3nHp2yslnx7lxEJZZ8QmNR6N35Id526IBM56so2W3adL8XFm5ecr/DfQWAaS/iscdDdUQNzEdOzsP+/CKy2YfeKM0u490sL1pcyIBa71/2EQqNiTqHn+MmH3FyI+Ifubyk7fNQ4Q4HswMX1XP5UPqmsgm3SQDVFIDBvXRt7h0KLKUXzYFAfC2Et7sBS7nOr0vXKhr0z8M9xgUdkR7Do3t0j99ZXe/vGbcfxWCGCpzJISeFnwR+HluNnVs/M52LBvWbhEQbU8Q5e2y6G2P936dqi5J4s14d0/OmGUilEaj2qdzL3sb/cYwjwW1AQljbq4awvNyxjpGE6ZzIH0h58HnN4TYQkLt3hXrFQT+GLT4Q964fkh2HsQ8Yi78BIUxsr/TLHor0Y0jAUu4/6HmosKb/4XN/cY9+UImW8wNIzf4w68KxubeUrS4amAuwrJBfAGCMokqdfQVUXa+qjvNHj+K5knOIJ+J6RrfjHsbVOxD5t0wa40alhkmABi/rWCaYBTr6EtM7R1xQ89ELXADK2QM2/ybvIsVoc6u6qQAHVb3M63eq66JYn9ApvnLpefYz3DZj+W3uDseV5TwJIgZxm7HBrr+369U+aynCv21H19mQLeVHEkukww1dECbM1MXgpnKAxsI2a+s23ukI58MpQBRhEGNyC5W51y1RUEWYoFM6F6Wln4URbvHo8s7yVZ1KW4P31v99W+4FaCVxXLkRDuUqwozlfHrs6Dw36prz+VoEai4Oi1y789T5QEwQLhlamX25hzlj/kHHQPZKKDPid5myLK/yIB0b0KdphxNq6sXlINRfEISfGM2B5w=</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -645,7 +645,7 @@ doDecrypt(passwd, onError);
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">377</span>
+                    <span class="site-state-item-count">379</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -932,7 +932,11 @@ doDecrypt(passwd, onError);
                     
                       
                     
-                    <span class="site-state-item-count">134</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">136</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -1019,7 +1023,7 @@ doDecrypt(passwd, onError);
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
