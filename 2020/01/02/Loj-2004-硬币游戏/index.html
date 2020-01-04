@@ -136,18 +136,18 @@
 
 
 
-  <meta name="description" content="AC 自动机 + 高斯消元.">
-<meta name="keywords" content="概率&#x2F;期望,AC自动机,高斯消元">
+  <meta name="description" content="字符串 hash + 高斯消元.">
+<meta name="keywords" content="概率&#x2F;期望,hash,高斯消元">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Loj 2004 硬币游戏">
 <meta property="og:url" content="http://yoursite.com/2020/01/02/Loj-2004-硬币游戏/index.html">
 <meta property="og:site_name" content="JKLover">
-<meta property="og:description" content="AC 自动机 + 高斯消元.">
+<meta property="og:description" content="字符串 hash + 高斯消元.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-01-02T13:55:56.237Z">
+<meta property="og:updated_time" content="2020-01-03T13:51:47.958Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Loj 2004 硬币游戏">
-<meta name="twitter:description" content="AC 自动机 + 高斯消元.">
+<meta name="twitter:description" content="字符串 hash + 高斯消元.">
 
 
 
@@ -440,12 +440,24 @@
                 
               
 
-              <time title="Created: 2020-01-02 21:50:39 / Modified: 21:55:56" itemprop="dateCreated datePublished" datetime="2020-01-02T21:50:39+08:00">2020-01-02</time>
+              <time title="Created: 2020-01-02 21:50:39" itemprop="dateCreated datePublished" datetime="2020-01-02T21:50:39+08:00">2020-01-02</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-01-03 21:51:47" itemprop="dateModified" datetime="2020-01-03T21:51:47+08:00">2020-01-03</time>
               
             
           </span>
@@ -486,8 +498,14 @@
       
 
       
-        <p>AC 自动机 + 高斯消元.</p>
+        <p>字符串 hash + 高斯消元.</p>
 <a id="more"></a>
+<p>设第 $i$ 个串的答案为 $P(i)$ ,如果直接对于 AC 自动机上每个节点列出方程高斯消元,复杂度 $O((nm)^3)$ ,过不去.</p>
+<p>由于只需要求出 $n$ 个终止节点的 $P(i)​$ ,可以尝试优化,减少方程的个数.</p>
+<p>只需要求出向后匹配 $m$ 个字符,想匹配 $s_i$ ,却提前匹配到 $s_j​$ 的贡献.</p>
+<p>这要求 $s_j$ 长度为 $m$ 的后缀与 $s_i$ 长度为 $m$ 的前缀相同,用字符串 hash 判断,于是 AC 自动机也可以省掉了.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//%std</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> endl <span class="meta-string">'\n'</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> out=<span class="number">0</span>,fh=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> ((jp&gt;<span class="string">'9'</span>||jp&lt;<span class="string">'0'</span>)&amp;&amp;jp!=<span class="string">'-'</span>)</span><br><span class="line">		jp=getchar();</span><br><span class="line">	<span class="keyword">if</span> (jp==<span class="string">'-'</span>)</span><br><span class="line">		fh=<span class="number">-1</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">while</span> (jp&gt;=<span class="string">'0'</span>&amp;&amp;jp&lt;=<span class="string">'9'</span>)</span><br><span class="line">		out=out*<span class="number">10</span>+jp-<span class="string">'0'</span>,jp=getchar();</span><br><span class="line">	<span class="keyword">return</span> out*fh;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">315</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ull;</span><br><span class="line"><span class="keyword">const</span> ull Base=<span class="number">137</span>;</span><br><span class="line">ull Hash[MAXN][MAXN],pw[MAXN];</span><br><span class="line"><span class="function">ull <span class="title">calc</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> Hash[x][r]-Hash[x][l<span class="number">-1</span>]*pw[r-l+<span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">double</span> bin[MAXN],a[MAXN][MAXN];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Gauss</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;=n;++j)</span><br><span class="line">			<span class="keyword">if</span>(<span class="built_in">fabs</span>(a[j][i])&gt;<span class="built_in">fabs</span>(a[i][i]))</span><br><span class="line">				swap(a[i][i],a[j][i]);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;=n;++j)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">double</span> tmp=a[j][i]/a[i][i];</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k=i;k&lt;=n+<span class="number">1</span>;++k)</span><br><span class="line">				a[j][k]-=a[i][k]*tmp;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=n;i&gt;=<span class="number">1</span>;--i)</span><br><span class="line">	&#123;</span><br><span class="line">		a[i][n+<span class="number">1</span>]/=a[i][i];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=i<span class="number">-1</span>;j&gt;=<span class="number">1</span>;--j)</span><br><span class="line">			a[j][n+<span class="number">1</span>]-=a[j][i]*a[i][n+<span class="number">1</span>];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="keyword">char</span> buf[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	n=read(),m=read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%s"</span>,buf+<span class="number">1</span>);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;++j)</span><br><span class="line">			Hash[i][j]=Hash[i][j<span class="number">-1</span>]*Base+buf[j]-<span class="string">'A'</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	bin[<span class="number">0</span>]=<span class="number">1.0</span>;</span><br><span class="line">	pw[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;++i)</span><br><span class="line">		bin[i]=bin[i<span class="number">-1</span>]*<span class="number">0.5</span>,pw[i]=pw[i<span class="number">-1</span>]*Base;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;++j)</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=m;++k)</span><br><span class="line">				<span class="keyword">if</span>(calc(i,<span class="number">1</span>,k)==calc(j,m-k+<span class="number">1</span>,m))</span><br><span class="line">					a[i][j]+=bin[m-k];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">	&#123;</span><br><span class="line">		a[i][n+<span class="number">1</span>]-=bin[m];</span><br><span class="line">		a[n+<span class="number">1</span>][i]=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	a[n+<span class="number">1</span>][n+<span class="number">2</span>]=<span class="number">1</span>;</span><br><span class="line">	Gauss(n+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%.10lf\n"</span>,a[i][n+<span class="number">2</span>]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -512,7 +530,7 @@
           
             <a href="/tags/概率-期望/" rel="tag"># 概率/期望</a>
           
-            <a href="/tags/AC自动机/" rel="tag"># AC自动机</a>
+            <a href="/tags/hash/" rel="tag"># hash</a>
           
             <a href="/tags/高斯消元/" rel="tag"># 高斯消元</a>
           
@@ -605,7 +623,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">382</span>
+                    <span class="site-state-item-count">385</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
