@@ -145,7 +145,7 @@
 <meta property="og:description" content="去 大佬的博客 学习了一下相关知识.">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://yoursite.com/2019/08/13/五边形数定理-学习笔记/pic.png">
-<meta property="og:updated_time" content="2019-12-18T13:15:38.815Z">
+<meta property="og:updated_time" content="2020-01-09T11:04:38.968Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="五边形数定理学习笔记">
 <meta name="twitter:description" content="去 大佬的博客 学习了一下相关知识.">
@@ -459,7 +459,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-18 21:15:38" itemprop="dateModified" datetime="2019-12-18T21:15:38+08:00">2019-12-18</time>
+                <time title="Modified: 2020-01-09 19:04:38" itemprop="dateModified" datetime="2020-01-09T19:04:38+08:00">2020-01-09</time>
               
             
           </span>
@@ -515,21 +515,20 @@
 </li>
 </ol>
 <h3 id="五边形数定理"><a href="#五边形数定理" class="headerlink" title="五边形数定理"></a>五边形数定理</h3><h3 id="五边形数"><a href="#五边形数" class="headerlink" title="五边形数"></a>五边形数</h3><p><img src="pic.png" alt></p>
-<p>$f_1=1,f_n=f_{n-1}+3n-2$ .对差分求前缀和,得到 $f_n=\frac{n(3n-1)} 2$ .</p>
+<p>$f_1=1,f_n=f_{n-1}+3n-2​$ .对差分求前缀和,得到 $f_n=\frac{n(3n-1)} 2​$ .</p>
 <blockquote>
-<p> $1,5,12,22,35,51,70,92,117,145,176,210,247,287\dots$</p>
+<p> $1,5,12,22,35,51,70,92,117,145,176,210,247,287\dots​$</p>
 </blockquote>
 <h3 id="广义五边形数"><a href="#广义五边形数" class="headerlink" title="广义五边形数"></a>广义五边形数</h3><p>在公式 $f_n=\frac{n(3n-1)} 2$ 中, $n$ 取 $0,1,-1,2,-2\dots$ </p>
 <blockquote>
 <p>$0,1,2,5,7,12,15,22,26,35,40,51,57,70,77,92,100,117,126\dots$</p>
 </blockquote>
 <h3 id="欧拉函数"><a href="#欧拉函数" class="headerlink" title="欧拉函数"></a>欧拉函数</h3><p>$$<br>\phi(x)=\prod_{i=1}^{+\infty} (1-x^i)<br>$$</p>
-<p>值得一提的是,上面这个函数就是我们在数论中经常使用的 $\varphi(x)$ 的展开形式.</p>
-<p>它仅在 $|x|&lt; 1$ 时收敛,但这里作为形式幂级数,我们不考虑它的敛散性.</p>
+<p>它仅在 $|x|&lt; 1​$ 时收敛,但这里作为形式幂级数,我们不考虑它的敛散性.</p>
 <h3 id="五边形数定理-1"><a href="#五边形数定理-1" class="headerlink" title="五边形数定理"></a>五边形数定理</h3><p>$$<br>\begin{aligned}<br>\phi(x)&amp;=1-x-x^2+x^5+x^7-x^{12}-x^{15}\dots \\<br>&amp;=1+\sum_{i=1}^{+\infty}(-1)^i(x^{i(3i-1)/2}+x^{-i(-3i-1)/2})<br>\end{aligned}<br>$$</p>
-<p>$x^{i(3i-1)/2}$ , $x^{-i(-3i-1)/2}$ 的次数分别是相邻的两个广义五边形数.</p>
-<h3 id="五边形数定理与整数划分"><a href="#五边形数定理与整数划分" class="headerlink" title="五边形数定理与整数划分"></a>五边形数定理与整数划分</h3><p>写出整数划分问题的生成函数 $G(x)$ ,显然,<br>$$<br>\begin{aligned}<br>G(x)&amp;=\prod_{i=1}^{+\infty}(1+x^i+x^{2i}+x^{3i}+\dots) \\<br>&amp;=\prod_{i=1}^{+\infty}\frac 1 {1-x^i}<br>\end{aligned}<br>$$<br>发现 $G\times \phi=1$ .把多项式乘法暴力展开,观察系数,可以得到递推式<br>$$<br>G(1)=1,G(n)=G(n-1)+G(n-2)-G(n-5)-G(n-7)+\dots<br>$$<br>因为广义五边形数的级别是 $n^2$ 的,所以直接递推的时间复杂度为 $O(n\sqrt n)$ .</p>
-<p>也可以直接在模 $x^{n+1}$ 意义下对 $\phi$ 求逆得到 $G$ ,时间复杂度 $O(n\log n)$.</p>
+<p>$x^{i(3i-1)/2}​$ , $x^{-i(-3i-1)/2}​$ 的次数分别是相邻的两个广义五边形数.</p>
+<h3 id="五边形数定理与整数划分"><a href="#五边形数定理与整数划分" class="headerlink" title="五边形数定理与整数划分"></a>五边形数定理与整数划分</h3><p>写出整数划分问题的生成函数 $G(x)​$ ,显然,<br>$$<br>\begin{aligned}<br>G(x)&amp;=\prod_{i=1}^{+\infty}(1+x^i+x^{2i}+x^{3i}+\dots) \\<br>&amp;=\prod_{i=1}^{+\infty}\frac 1 {1-x^i}<br>\end{aligned}<br>$$<br>发现 $G\times \phi=1​$ .把多项式乘法暴力展开,观察系数,可以得到递推式<br>$$<br>G(1)=1,G(n)=G(n-1)+G(n-2)-G(n-5)-G(n-7)+\dots<br>$$<br>因为广义五边形数的级别是 $n^2​$ 的,所以直接递推的时间复杂度为 $O(n\sqrt n)​$ .</p>
+<p>也可以直接在模 $x^{n+1}​$ 意义下对 $\phi​$ 求逆得到 $G​$ ,时间复杂度 $O(n\log n)​$.</p>
 <h4 id="Loj-6268-分拆数"><a href="#Loj-6268-分拆数" class="headerlink" title="Loj 6268 分拆数"></a><a href="https://loj.ac/problem/6268" target="_blank" rel="noopener">Loj 6268 分拆数</a></h4><p>模板题,对 $\phi$ 求逆得到 $G$ .</p>
 <p><a href="https://loj.ac/submission/701602" target="_blank" rel="noopener">code</a></p>
 
@@ -657,7 +656,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">396</span>
+                    <span class="site-state-item-count">397</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
