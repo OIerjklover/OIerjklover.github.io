@@ -136,18 +136,18 @@
 
 
 
-  <meta name="description" content="常数测试场.">
-<meta name="keywords" content="线段树,多项式,two pointer,test">
+  <meta name="description" content="背包 dp .">
+<meta name="keywords" content="dp计数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test20190916-am">
-<meta property="og:url" content="http://yoursite.com/2019/09/16/test20190916-am/index.html">
+<meta property="og:title" content="Loj 3051 皮配">
+<meta property="og:url" content="http://yoursite.com/2020/05/06/Loj-3051-皮配/index.html">
 <meta property="og:site_name" content="JKLover">
-<meta property="og:description" content="常数测试场.">
+<meta property="og:description" content="背包 dp .">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-16T12:19:22.876Z">
+<meta property="og:updated_time" content="2020-05-06T13:17:17.400Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="test20190916-am">
-<meta name="twitter:description" content="常数测试场.">
+<meta name="twitter:title" content="Loj 3051 皮配">
+<meta name="twitter:description" content="背包 dp .">
 
 
 
@@ -155,7 +155,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/09/16/test20190916-am/">
+  <link rel="canonical" href="http://yoursite.com/2020/05/06/Loj-3051-皮配/">
 
 
 
@@ -165,7 +165,7 @@
   };
 </script>
 
-  <title>test20190916-am | JKLover</title>
+  <title>Loj 3051 皮配 | JKLover</title>
   
 
 
@@ -397,7 +397,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/16/test20190916-am/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/06/Loj-3051-皮配/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JKLover">
@@ -414,7 +414,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">test20190916-am
+          <h1 class="post-title" itemprop="name headline">Loj 3051 皮配
 
               
             
@@ -440,7 +440,7 @@
                 
               
 
-              <time title="Created: 2019-09-16 11:29:16 / Modified: 20:19:22" itemprop="dateCreated datePublished" datetime="2019-09-16T11:29:16+08:00">2019-09-16</time>
+              <time title="Created: 2020-05-06 21:07:20 / Modified: 21:17:17" itemprop="dateCreated datePublished" datetime="2020-05-06T21:07:20+08:00">2020-05-06</time>
             
 
             
@@ -486,46 +486,19 @@
       
 
       
-        <script src="/js/crypto-js.js"></script>
-<script>
-function doDecrypt (pwd, onError) {
-	console.log('in doDecrypt');
-	const txt = document.getElementById('enc_content').innerHTML;
-	let plantext;
-	try {
-		const bytes = CryptoJS.AES.decrypt(txt, pwd);
-		var plaintext = bytes.toString(CryptoJS.enc.Utf8);
-	} catch(err) {
-		if(onError) {
-			onError(err);
-		}
-		return;
-	}
-	document.getElementById('enc_content').innerHTML = plaintext;
-	document.getElementById('enc_content').style.display = 'block';
-	document.getElementById('enc_passwd').style.display = 'none';
-	if(typeof MathJax !== 'undefined') {
-		MathJax.Hub.Queue(
-			['resetEquationNumbers', MathJax.InputJax.TeX],
-			['PreProcess', MathJax.Hub],
-			['Reprocess', MathJax.Hub]
-		);
-	}
-}
-</script>
-<div id="enc_content" style="display:none">U2FsdGVkX1+VJBZoQGQHbZFfg15VWdBHVjOUPLUrfnX6LtKb3vE4nyZbUBm96uxOW3gw/XwkrAiLULQaKFSzONX/mMdVdvdiYmJNYtQs4pWN7WjRdW91kH5Xh+SsY2GfuFXzEn5miXc4FZOyQ/c93uH2wy16f9fCMeMJ+ppzxmv8zTx4xNBEkx6TBg10m5N6VGNWP6qyy/48zT9p/9cFr2pVBF4MztsG+vq6LFhVEutec5KYatz1tEuhGLObRP3fIxecE4V5HEkUCOhfltx7Xbjd/A5CAdxHupj9e94AOd2B3QLGjla2jjcf+A6D0VIcGjb7tm9/isOARbXmDqIc4EDHENkIAf2mxC1kLSamgcYqD7qUGqnWfs2/S+ftjWWmceCpZT+4GBRvQyVgMTYIaeciw2daQariDwFJwmtylZIjfEZ8/TJKuJbONy5Xks8EpR3AoUmfjbkYT8pZfpOhJYJaZVTeihuqfERLTVAWYmWiqo658cUSeE5nqMiKYe+yDNwf+rwXYEy0d35TNk0D/jWVWz3K74OM8pci1Vkc83KKON6CqmlGXXo3+Nfs0TQVm6M0/STa7uxr3UDugfghpyVDy0fU53zu+0fXTwH2SKatHwKNzcz1vguOeXWnpCxeCysFNrLVSVjUgaERJlU5s1yTLzsjYIWvILWtkxlqvVxBrLdCEcwt4mOJopqy4D/o6PuUjCdweLXcu63WHsKaWpj0B2eLWZLRcGBNxUqIOB22HPiRmyBL/vYWEUCxju5/xc2LV7wGbEpGaVKzJJZ8PPrTuknGz2qthCz3PV8EHlIb30anerduE0EpdcZhus8kY+Hbi0jQFul7ZF85qUGTfNT+xjsMLiOLhmyUmzvO8k8CcOkbH1AIGbzofl9ou7dkP8CQoadiqwsAb+t3BT+1UT0usBvtAID0Pa8FOqbAhxwrZFxkjpRQDzSCGeAcAkn4vZwwN4HElrNZsQV4mfEzQUHm2QEumB7QVx4kr5KTJlU=</div>
-<div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
-<script>
-var onError = function(error) {
-	document.getElementById("enc_error").innerHTML = "password error!"
-};
-function decrypt() {
-var passwd = document.getElementById("enc_pwd_input").value;
-console.log(passwd);
-doDecrypt(passwd, onError);
-}
-</script>
-</div>
+        <p>背包 dp .</p>
+<a id="more"></a>
+<p>如果直接裸上一个背包计数,那么阵营和派系两种限制的状态都要记录.</p>
+<p>即,设 $f(i,x,y)$ 表示考虑了前 $i$ 个城市的所有学校,加入蓝阵营的有 $x$ 人,加入鸭派系的有 $y$ 人的方案数.</p>
+<p>时间复杂度 $O(nm^2)​$ ,无法通过.</p>
+<p>注意到有限制的学校数目 $k$ 比较小,可以将有限制的学校和没有限制的学校分开处理.</p>
+<p>设 $f(i,x,y)$ 表示考虑了前 $i$ 个包含某个有限制学校的城市,加入蓝阵营的有 $x$ 人,加入鸭派系的有 $y$ 人的方案数.</p>
+<p>而对于没有限制的学校,可以发现学校选择的派系是不影响城市选择的阵营的,可以分开 dp ,最后将方案数相乘.</p>
+<p>设 $g(i,x)$ 表示考虑了前 $i$ 个没有限制学校的城市,加入蓝阵营的有 $x$ 人的方案数.</p>
+<p>设 $h(i,y)$ 表示考虑了前 $i$ 个没有限制学校的城市,加入鸭派系的有 $y$ 人的方案数.</p>
+<p>最后统计答案时,每个 $f(x,y)$ 对应的合法的 $g,h$ 都是一段区间,处理出前缀和后即可统计贡献.</p>
+<p>时间复杂度 $O(km^2+nm)$ ,可以通过本题.</p>
+
       
     </div>
 
@@ -548,13 +521,7 @@ doDecrypt(passwd, onError);
       
         <div class="post-tags">
           
-            <a href="/tags/线段树/" rel="tag"># 线段树</a>
-          
-            <a href="/tags/多项式/" rel="tag"># 多项式</a>
-          
-            <a href="/tags/two-pointer/" rel="tag"># two pointer</a>
-          
-            <a href="/tags/test/" rel="tag"># test</a>
+            <a href="/tags/dp计数/" rel="tag"># dp计数</a>
           
         </div>
       
@@ -567,8 +534,8 @@ doDecrypt(passwd, onError);
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/15/CF1215/" rel="next" title="CF1215">
-                <i class="fa fa-chevron-left"></i> CF1215
+              <a href="/2020/05/06/暴力多项式操作/" rel="next" title="暴力多项式操作">
+                <i class="fa fa-chevron-left"></i> 暴力多项式操作
               </a>
             
           </div>
@@ -577,8 +544,8 @@ doDecrypt(passwd, onError);
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/16/test20190916-pm/" rel="prev" title="test20190916-pm">
-                test20190916-pm <i class="fa fa-chevron-right"></i>
+              <a href="/9102/12/19/置顶-THUWC2020游记/" rel="prev" title="置顶 THUWC2020游记">
+                置顶 THUWC2020游记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
