@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="暴力技巧.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-05-06T03:18:53.353Z">
+<meta property="og:updated_time" content="2020-05-16T07:23:42.438Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="暴力多项式操作">
 <meta name="twitter:description" content="暴力技巧.">
@@ -440,12 +440,24 @@
                 
               
 
-              <time title="Created: 2020-05-06 11:14:01 / Modified: 11:18:53" itemprop="dateCreated datePublished" datetime="2020-05-06T11:14:01+08:00">2020-05-06</time>
+              <time title="Created: 2020-05-06 11:14:01" itemprop="dateCreated datePublished" datetime="2020-05-06T11:14:01+08:00">2020-05-06</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-05-16 15:23:42" itemprop="dateModified" datetime="2020-05-16T15:23:42+08:00">2020-05-16</time>
               
             
           </span>
@@ -489,8 +501,14 @@
         <p>暴力技巧.</p>
 <a id="more"></a>
 <p>有时候需要做多项式求逆, $\exp,\ln$ ,模数不是 NTT 模数,但多项式长度比较小,就不用写 MTT ,可以用暴力代替.</p>
-<h3 id="暴力-exp"><a href="#暴力-exp" class="headerlink" title="暴力 $\exp$"></a>暴力 $\exp$</h3><p>已知多项式 $A$ ,需要求出 $B=\exp(A)​$ .<br>$$<br>B=\exp(A) \\<br>B’=\exp(A)\cdot A’\\<br>$$</p>
-<h3 id="暴力-ln"><a href="#暴力-ln" class="headerlink" title="暴力 $\ln$"></a>暴力 $\ln$</h3>
+<h3 id="暴力-exp"><a href="#暴力-exp" class="headerlink" title="暴力 $\exp$"></a>暴力 $\exp$</h3><p>已知多项式 $A​$ ,需要求出 $B=\exp(A)​$ .<br>$$<br>B=\exp(A) \\<br>B’=\exp(A)\cdot A’\\<br>B’=B\cdot A’ \\<br>B=\int B\cdot A’<br>$$</p>
+<p>求出 $B$ 的第 $i$ 项系数后,可以暴力卷积求出 $\int B\cdot A’$ 的第 $i$ 项系数,也就算出了 $B$ 的第 $i+1$ 项系数.</p>
+<p>时间复杂度 $O(n^2)$ .</p>
+<h3 id="暴力多项式求逆"><a href="#暴力多项式求逆" class="headerlink" title="暴力多项式求逆"></a>暴力多项式求逆</h3><p>已知多项式 $A$ ,需要求出 $B=A^{-1}$ .</p>
+<p>因为 $A\cdot B=1$ ,所以根据 $A$ 的系数和 $B$ 的前 $i-1$ 项系数可以直接解出 $B$ 的第 $i$ 项系数.</p>
+<p>时间复杂度 $O(n^2)$ .</p>
+<h3 id="暴力-ln"><a href="#暴力-ln" class="headerlink" title="暴力 $\ln$"></a>暴力 $\ln$</h3><p>已知多项式 $A$ ,需要求出 $B=\ln A$ .<br>$$<br>B=\ln A\\<br>B’=\frac{A’}{A} \\<br>B=\int \frac{A’}{A}<br>$$<br>用暴力多项式求逆算出 $A^{-1}$ 即可,时间复杂度 $O(n^2)$ .</p>
+
       
     </div>
 
@@ -613,7 +631,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">446</span>
+                    <span class="site-state-item-count">448</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1006,7 +1024,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#暴力-exp"><span class="nav-number">1.</span> <span class="nav-text">暴力 $\exp$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#暴力-ln"><span class="nav-number">2.</span> <span class="nav-text">暴力 $\ln$</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#暴力-exp"><span class="nav-number">1.</span> <span class="nav-text">暴力 $\exp$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#暴力多项式求逆"><span class="nav-number">2.</span> <span class="nav-text">暴力多项式求逆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#暴力-ln"><span class="nav-number">3.</span> <span class="nav-text">暴力 $\ln$</span></a></li></ol></div>
             
 
           </div>
