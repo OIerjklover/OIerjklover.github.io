@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="随机化 + 分块维护 hash 表.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-05-10T02:42:20.854Z">
+<meta property="og:updated_time" content="2020-05-18T14:07:37.541Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Loj 6187 Odd">
 <meta name="twitter:description" content="随机化 + 分块维护 hash 表.">
@@ -440,12 +440,24 @@
                 
               
 
-              <time title="Created: 2020-05-10 08:45:41 / Modified: 10:42:20" itemprop="dateCreated datePublished" datetime="2020-05-10T08:45:41+08:00">2020-05-10</time>
+              <time title="Created: 2020-05-10 08:45:41" itemprop="dateCreated datePublished" datetime="2020-05-10T08:45:41+08:00">2020-05-10</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-05-18 22:07:37" itemprop="dateModified" datetime="2020-05-18T22:07:37+08:00">2020-05-18</time>
               
             
           </span>
@@ -494,8 +506,8 @@
 <p>记 $p(x)$ 表示 $[x,r]$ 所有出现过的数权值异或和,在加入 $r$ 时给 $[lst(a_r)+1,r]$ 内的 $p$ 异或上 $a_r​$ 的权值.</p>
 <p>记前缀和 $s(x)$ 表示 $[1,x]$ 内所有数的异或和,在加入 $r$ 时只用计算出 $s(r)$ ,对前面的 $r$ 无影响.</p>
 <p>若区间 $[l,r]$ 合法,则有 $p(l)=s(r)\oplus s(l-1)$ ,即 $p(l)\oplus s(l-1)=s(r)$ .</p>
-<p>对每个位置 $l$ 维护出 $val(l)=p(l)\oplus s(l-1)$ ,修改时会给某个区间异或上一个 $v$ ,询问时询问内区间有几个 $v$ . </p>
-<p>可以用分块 + hash 表维护,修改时整块打标记,边角暴力重构,询问时整块直接询问 hash 表,边角暴力重构后再询问.</p>
+<p>给每个 $l$ 维护出 $val(l)=p(l)\oplus s(l-1)$ ,修改时会给某个区间异或上一个 $v$ ,询问时询问内区间有几个 $v$ . </p>
+<p>用分块 + hash 表维护,修改时整块打标记,边角暴力重构,询问时整块直接询问 hash 表,边角暴力重构后再询问.</p>
 <p>时间复杂度 $O(n\sqrt n)$ .</p>
 <blockquote>
 <p>有一个很有用的剪枝,询问时,若边角块没有标记,就可以不用重构.</p>
@@ -617,7 +629,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">449</span>
+                    <span class="site-state-item-count">453</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -934,7 +946,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">149</span>
+                      
+                    
+                    <span class="site-state-item-count">150</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
