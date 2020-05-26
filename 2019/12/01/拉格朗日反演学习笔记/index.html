@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="若两个多项式 $F(x),G(x)$ ,都满足常数项为 $0$ , $1$ 次项不为 $0$ ,且两者互为复合逆,即, $G(F(x))=x$ ,则有 $$[x^n] F(x)=\frac 1 n [x^{-1}] \frac{1}{G^n(x)} \\[x^n] F(x)=\frac 1 n [x^{n-1}] (\frac{x}{G(x)})^n$$ 两个式子是等价的,在计算中常用第二个式子.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-01T03:32:27.769Z">
+<meta property="og:updated_time" content="2020-05-24T13:29:27.743Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="拉格朗日反演学习笔记">
 <meta name="twitter:description" content="若两个多项式 $F(x),G(x)$ ,都满足常数项为 $0$ , $1$ 次项不为 $0$ ,且两者互为复合逆,即, $G(F(x))=x$ ,则有 $$[x^n] F(x)=\frac 1 n [x^{-1}] \frac{1}{G^n(x)} \\[x^n] F(x)=\frac 1 n [x^{n-1}] (\frac{x}{G(x)})^n$$ 两个式子是等价的,在计算中常用第二个式子.">
@@ -440,12 +440,24 @@
                 
               
 
-              <time title="Created: 2019-12-01 10:18:22 / Modified: 11:32:27" itemprop="dateCreated datePublished" datetime="2019-12-01T10:18:22+08:00">2019-12-01</time>
+              <time title="Created: 2019-12-01 10:18:22" itemprop="dateCreated datePublished" datetime="2019-12-01T10:18:22+08:00">2019-12-01</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-05-24 21:29:27" itemprop="dateModified" datetime="2020-05-24T21:29:27+08:00">2020-05-24</time>
               
             
           </span>
@@ -489,8 +501,8 @@
         <p>若两个多项式 $F(x),G(x)$ ,都满足常数项为 $0$ , $1$ 次项不为 $0$ ,且两者互为复合逆,即, $G(F(x))=x$ ,则有</p>
 <p>$$<br>[x^n] F(x)=\frac 1 n [x^{-1}] \frac{1}{G^n(x)} \\<br>[x^n] F(x)=\frac 1 n [x^{n-1}] (\frac{x}{G(x)})^n<br>$$</p>
 <p>两个式子是等价的,在计算中常用第二个式子.</p>
-<p>得到 $G(x)$ 后,用多项式求逆 + 多项式快速幂,可以在 $O(n\log n)$ 的时间复杂度内求出 $F(x)​$ .</p>
-<a id="more"></a>
+<p>得到 $G(x)$ 后,用多项式求逆 + 多项式快速幂,可以在 $O(n\log n)$ 的时间复杂度内求出 $F(x)$ .</p>
+<p>拓展拉格朗日反演:<br>$$<br>[x^n]H(F(x))=\frac 1 n[x^{n-1}]H’(x)(\frac x {G(x)})^n<br>$$<br><a id="more"></a></p>
 <p>证明:</p>
 <p>设 $F(x)$ 的各项系数为 $a_i$ ,即 $F(x)=\sum_{i} a_ix^i​$ .</p>
 <p>由于 $F(x),G(x)​$ 互为复合逆,代入 $F(G(x))=x​$ ,得到<br>$$<br>\sum_{i} a_i G^i(x) =x<br>$$<br>两边同时对 $x​$ 求导,得到<br>$$<br>\sum_{i} a_i\cdot i\cdot G^{i-1}(x)\cdot G’(x)=1<br>$$<br>两边同时除以 $G^n(x)$ ,得到<br>$$<br>\sum_{i} a_i\cdot i\cdot G^{i-n-1}(x)\cdot G’(x)=\frac{1}{G^n(x)}<br>$$<br>取 $x$ 的 $-1$ 次项,<br>$$<br>[x^{-1}] \sum_{i} a_i\cdot i\cdot G^{i-n-1}(x)\cdot G’(x)=[x^{-1}]\frac{1}{G^n(x)}<br>$$<br>对于那些 $i\neq n$ 的项,注意到 $G^{i-n-1}(x)\cdot G’(x)=\frac{1}{i-n} (G^{i-n})’(x)$ ,是个多项式.</p>
@@ -619,7 +631,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">458</span>
+                    <span class="site-state-item-count">460</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
