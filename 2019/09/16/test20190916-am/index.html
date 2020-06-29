@@ -513,7 +513,7 @@ function doDecrypt (pwd, onError) {
 	}
 }
 </script>
-<div id="enc_content" style="display:none">U2FsdGVkX1+TnXJA0+80UBq2x2WlRoNA2gbvT7JoUkeW6eqCERawhMoPjXccJiIsC2CtYyMRFh5RWL5bnaXgceHWJrTA8uPoFmtAgbSb2b7/LSHwmN5pEIVsy/0hFIzB4u9TLCUPIl41tIgTlixcz8sBGF9lDz1W0oMHf0szNkPmxVbzsC5WxEd4jHl3smgpdmWyPQvTr21hzY0UGkMypYEp2UvmOsyi5EdqoWtOpvCYbIqyp0dH5czqzvkB11rThtlIlOjR93LVOGp/7TEHspIMHNTkQ5Oc9szCDMjWiPF2Why67mg9XzbvEUwih7Q+PnaPnaze25Zo4QaJf7dcvf/wNirujORQnreZNXIoRDqc9UiNDTtK4OkVyp2nowsfP+vPaiN481/U8SgAZrrnbk8v1Km7orBTIW5cumiBiLNQB0REljK7yb1DempGD9ZO73RDtSLc61AH5km/GxMkfSgii85B0rid0U3XUwIQVdZyabVh2TuxMoFPRs0w8YPq3qjYg3l9PA+1wyu02o+E8Vs9FM1odzsmfBa0hyx07fUDoM/Cl7kYq+nif7gHqUZUnKmqnIfI9hNKb84lxCPbzyqgDr222JfKXzwhWTuKdtOWc7Wd0R9UuOZ9Xn1om+7JCt2Hq0uLNDYCAzVqaXOFwve4Xg33e/Ovkzd1iJGe0d7mNQJrnO+MX2R6gEC0v2c/d7d/TtJo4TdtkFuPui1Qk07hL/YKm9jelAMV7evjYAXLC4tDzgwaA8L8G17aNr4G0YpQfHvPcGM9ERvzTf9OTbncANzirHmz1/8Vt6G1PEQy9LJGuxaxV4MbOSedB0+3LfZqsOOx+Z/QSmqlhkmCSgmUUu29+5j5ws4X3SLEJw0h3qATS97OfnMl+AV62R2DHQDpwu/OVJ0ly3/tZqXLEJKwHg+jj0kKlSzNA/xW7qM+1LytV7nP9/VeWCLA82jmeh0TUFklTPu87I3doX1czxamM/PRIdpbspz8zStfAec=</div>
+<div id="enc_content" style="display:none">U2FsdGVkX1+RE2ZRoVWu2FHZMT1vUlGth1GURjrSq8gIfsjKrsP1ZOm+bHvNBXgD5cU4Xx8akhmGzLJ60FGRf0NCi9oKU33oLl0zXpupjwHEgppfZID3hQx6itsV6eCyt+hAxYV4q59qrKbRd8VcTQXXswrddPV/E/50DTtmP7MIpxDE7O4aVOnAhQlBUrKENTfUkWxE8hFfEl7g3aHZKGNi4WjbCWIsv393IVeppMzI+4goXQ73LwfvrRBfclTKcZoNv7HyWp+FcrrUYLuthOft7VGUYJSUDGgpqkwxSLUIQSP4wg96vfhFXs8pKZGtapxyIG/p0/sopZKRVgXSgH2xLsfgLbqA6qU5Rc1dZ14Rgb4vcymaGG713/OaL3liTwBd3EGmjjbQi0HrYmGelA0aD2Mg9Wy+hd8EFA3STzmRQfgdgnJJQRIme8YU5/Ip575m9YXYGVl+P4AUoE5wS8eKXh6DS994NRVEN2MUzvlRYtB2s8Cu27YylhxlzwPPXSA2eC/9+d7jN9XL53HTFsQ5AAtWFvvkUcmctk7qdCjaLKru1MJbTHm3Writ/SSMvSnTYGfDeOBxdxd9kcsr5RI3Qp93Atu/kuzQWDidi+fxXQ4gXE51Bmb1BwjsrC0Y2g/lpwglAR36LUjESc3NJEfKvERUi20iEvZ2ZmWGNz6Ygt/hqoHDa5fbYiNaFbrj3NhSAmcHvbv95RxkI/Lw7cGqY5vdyXN2t5VbluqYy4LU4hITkEGnpmN84xUv9/X3NL/9kyllKM+po2BalOvchj0APw46BoBCBIZxqKkzxIKxbpoT6KV/HoQxRvMfusm/pPyXMqsmJQSvAVpXk7B15G50VdoUjVGX2JeHWXrEsYXKC04g7rJkHlEyPLFSI0xzgnhQmPhcSksKWR34JN6LlRwcsgASifyRvgfd5KpPGQ5hYwJcvFyQXciFg8DXW0j3OcV82bLDjrmSZRKKBnbNndMc8fmfRxsE2PdN13hnAmY=</div>
 <div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
 <script>
 var onError = function(error) {
@@ -645,7 +645,7 @@ doDecrypt(passwd, onError);
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">488</span>
+                    <span class="site-state-item-count">489</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1014,7 +1014,15 @@ doDecrypt(passwd, onError);
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://www.cnblogs.com/DeNeRATe/" title="https://www.cnblogs.com/DeNeRATe/" rel="noopener" target="_blank">DeNeRATe</a>
+                    <a href="https://denerate-cool.github.io/DeNeRATe.github.io/" title="https://denerate-cool.github.io/DeNeRATe.github.io/" rel="noopener" target="_blank">DeNeRATe</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://alansblog.ink/" title="http://alansblog.ink/" rel="noopener" target="_blank">AlanTuring</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/ldxcaicai/" title="https://www.cnblogs.com/ldxcaicai/" rel="noopener" target="_blank">ldx</a>
                   </li>
                 
               </ul>

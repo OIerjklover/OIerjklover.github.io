@@ -143,7 +143,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="2020 省选题目乱做.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-06-20T07:59:44.023Z">
+<meta property="og:updated_time" content="2020-06-24T11:20:10.508Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="各省省选题目乱做">
 <meta name="twitter:description" content="2020 省选题目乱做.">
@@ -456,7 +456,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-06-20 15:59:44" itemprop="dateModified" datetime="2020-06-20T15:59:44+08:00">2020-06-20</time>
+                <time title="Modified: 2020-06-24 19:20:10" itemprop="dateModified" datetime="2020-06-24T19:20:10+08:00">2020-06-24</time>
               
             
           </span>
@@ -504,12 +504,25 @@
 <p>1v1 大战.</p>
 </blockquote>
 <h3 id="封印"><a href="#封印" class="headerlink" title="封印"></a><a href="https://loj.ac/problem/3298" target="_blank" rel="noopener">封印</a></h3><p>对 $t$ 建出后缀自动机,将 $s$ 放上去匹配,对于 $s$ 的每个前缀能处理出它最长的是 $t$ 的子串的后缀.<br>这些后缀可以表示成 $n$ 个区间 $[l_i,r_i]$ ,对于每次询问 $[L,R]$ ,显然只需要考虑这 $n$ 个区间的贡献.<br>考虑所有 $l_i\le L$ 的区间,它们对答案的贡献是 $\min(\max(r_i,L-1),R)-L+1$ ,预处理前缀最大的 $r_i$ 即可.<br>记 $p=\max_{l_i\le L}\lbrace\min(\max(r_i,L-1),R)\rbrace$ ,考虑 $p&lt;r_i\le R$ 的区间,贡献是 $r_i-l_1+1$ ,预处理 ST 表即可.<br>对于 $r_i&gt;R$ 的区间,它们的贡献会在 $r_i=R$ 处算上,对于 $l_i&gt;L,r_i\le p$ 的区间,都没有从 $L$ 到 $p​$ 长,就不用考虑.<br><a href="https://loj.ac/submission/840672" target="_blank" rel="noopener">code</a></p>
-<h2 id="联合省选-A-卷"><a href="#联合省选-A-卷" class="headerlink" title="联合省选 A 卷"></a>联合省选 A 卷</h2><h3 id="冰火战士"><a href="#冰火战士" class="headerlink" title="冰火战士"></a><a href="https://loj.ac/problem/3299" target="_blank" rel="noopener">冰火战士</a></h3><p>首先可以将权值全部离散化,考虑有两个函数 $f(x),g(x)$ 表示当温度为 $x$ 时,冰,火能参战的人的总能量.<br>那么当温度为 $x$ 时,显然消耗总能量为 $2\times\min(f(x),g(x))$ .<br>而 $f$ 是不降的, $g$ 是不增的,只需要找到 $f$ 第一次比 $g$ 大的位置 $p$ ,答案只会在 $p-1$ 和 $p$ 处取到.<br>考虑如何找到 $p$ ,用线段树维护这两个函数在每个位置的值,在线段树上二分,每次看一下往哪边走即可.<br>时间复杂度 $O(n\log n)​$ .</p>
-<h3 id="组合数问题"><a href="#组合数问题" class="headerlink" title="组合数问题"></a><a href="https://loj.ac/problem/3300" target="_blank" rel="noopener">组合数问题</a></h3><p>给的多项式 $f(k)$ 可以直接拆成 $m+1$ 个单项式做,每个单项式只需要算下面这个东西:<br>$$<br>\sum_{k=0}^n x^k\binom n k\cdot k^m<br>$$<br>直接用第二类斯特林数将自然数幂展开成组合数.<br>$$<br>\begin{aligned}<br>ans&amp;=\sum_{k=0}^nx^k\binom n k\sum_{i=0}^m {m\brace i}i!\binom k i \\<br>&amp;=\sum_{i=0}^m{m\brace i}i!\sum_{k=0}^n x^k\binom n k\binom k i\\<br>&amp;=\sum_{i=0}^m{m\brace i}i!\binom n i\sum_{k=0}^n x^k\binom{n-i}{k-i} \\<br>&amp;=\sum_{i=0}^m{m\brace i}n^{\underline i} x^i\sum_{k=i}^{n-i}x^{k-i}\binom{n-i}{k-i}\\<br>&amp;=\sum_{i=0}^m{m\brace i}n^{\underline i} x^i(x+1)^{n-i}<br>\end{aligned}<br>$$<br>对于每个单项式可以 $O(m)$ 求其贡献,时间复杂度 $O(m^2)$ .</p>
+<h2 id="联合省选-A-卷"><a href="#联合省选-A-卷" class="headerlink" title="联合省选 A 卷"></a>联合省选 A 卷</h2><h3 id="冰火战士"><a href="#冰火战士" class="headerlink" title="冰火战士"></a><a href="https://loj.ac/problem/3299" target="_blank" rel="noopener">冰火战士</a></h3><p>首先可以将权值全部离散化,考虑有两个函数 $f(x),g(x)$ 表示当温度为 $x$ 时,冰,火能参战的人的总能量.<br>那么当温度为 $x$ 时,显然消耗总能量为 $2\times\min(f(x),g(x))$ .<br>而 $f$ 是不降的, $g$ 是不增的,只需要找到 $f$ 第一次比 $g$ 大的位置和 $f$ 最后一个比 $g$ 小的位置,二者中必有最优解.<br>考虑如何找出这些位置,用线段树维护这两个函数在每个位置的值,在线段树上二分,每次看一下往哪边走即可.<br>由于要输出最高的最优温度,所以最后还需要在线段树上向右拓展一下,找到最高的最优温度.<br>时间复杂度 $O(n\log n)​$ .<br><a href="https://loj.ac/submission/843249" target="_blank" rel="noopener">code</a></p>
+<h3 id="组合数问题"><a href="#组合数问题" class="headerlink" title="组合数问题"></a><a href="https://loj.ac/problem/3300" target="_blank" rel="noopener">组合数问题</a></h3><p>给的多项式 $f(k)$ 可以直接拆成 $m+1$ 个单项式做,每个单项式只需要算下面这个东西:<br>$$<br>\sum_{k=0}^n x^k\binom n k\cdot k^m<br>$$<br>直接用第二类斯特林数将自然数幂展开成组合数.<br>$$<br>\begin{aligned}<br>ans&amp;=\sum_{k=0}^nx^k\binom n k\sum_{i=0}^m {m\brace i}i!\binom k i \\<br>&amp;=\sum_{i=0}^m{m\brace i}i!\sum_{k=0}^n x^k\binom n k\binom k i\\<br>&amp;=\sum_{i=0}^m{m\brace i}i!\binom n i\sum_{k=0}^n x^k\binom{n-i}{k-i} \\<br>&amp;=\sum_{i=0}^m{m\brace i}n^{\underline i} x^i\sum_{k=i}^{n-i}x^{k-i}\binom{n-i}{k-i}\\<br>&amp;=\sum_{i=0}^m{m\brace i}n^{\underline i} x^i(x+1)^{n-i}<br>\end{aligned}<br>$$<br>对于每个单项式可以 $O(m)$ 求其贡献,时间复杂度 $O(m^2)$ .<br><a href="https://loj.ac/submission/843259" target="_blank" rel="noopener">code</a> (代码偷懒写的 $O(m^2\log P)$)</p>
 <h3 id="魔法商店"><a href="#魔法商店" class="headerlink" title="魔法商店"></a><a href="https://loj.ac/problem/3301" target="_blank" rel="noopener">魔法商店</a></h3><blockquote>
 <p>2018 年集训队论文 - 浅谈保序回归问题.</p>
 </blockquote>
-<p>首先可以注意到求出权值最大/最小的合法集合是一个带权拟阵求最大/最小权值极大独立集的问题.<br>若集合 $A$ 外的元素 $x$ 能替换 $A$ 内的元素 $y$ ,则必须满足调整后的权值 $v_x\ge v_y$ .<br>若集合 $B$ 外的元素 $x$ 能替换 $B$ 内的元素 $y$ ,则必须满足调整后的权值 $v_x\le v_y$ .<br>于是就形成了若干个偏序关系,转化成了 $L_2​$ 问题,具体解法可以参考相关论文.</p>
+<p>首先可以注意到求出权值最大/最小的合法集合是一个带权拟阵求最大/最小权值极大独立组的问题.<br>若集合 $A$ 外的元素 $x$ 能替换 $A$ 内的元素 $y$ ,则必须满足调整后的权值 $v_x\ge v_y$ .<br>若集合 $B$ 外的元素 $x$ 能替换 $B$ 内的元素 $y$ ,则必须满足调整后的权值 $v_x\le v_y$ .<br>于是就形成了若干个偏序关系,转化成了保序回归 $L_2​$ 问题,具体解法可以参考相关论文.<br><del>代码先鸽着.</del></p>
+<h3 id="信号传递"><a href="#信号传递" class="headerlink" title="信号传递"></a><a href="https://loj.ac/problem/3302" target="_blank" rel="noopener">信号传递</a></h3><p>考虑状压 dp ,从小到大依次确定每个信号站在 $S$ 序列中的编号,记录哪些编号已经被确定.<br>两个相邻的数会产生贡献,这个贡献可以拆到每个位置上分别计算,预处理一下贡献的系数即可.<br>自己不会与自己产生贡献,贡献系数只会有 $m\times 2^{m-1}$ 种,空间就能开下了,时间复杂度 $O(m2^m)$ .<br><a href="https://loj.ac/submission/843261" target="_blank" rel="noopener">code</a></p>
+<h3 id="树"><a href="#树" class="headerlink" title="树"></a><a href="https://loj.ac/problem/3303" target="_blank" rel="noopener">树</a></h3><blockquote>
+<p>AGC044C 再放送.</p>
+</blockquote>
+<p>用 01 Trie 树维护子树 $x$ 内所有的 $v_i+d(i,x)$ .<br>需要实现插入一个数,合并两棵 Trie ,给插入的数整体 $+1$ , 询问插入的数异或和这些操作.<br>整体 $+1$ 有一个 trick, 将 Trie 树反着建,即先走低位,再走高位,修改时先对 $1$ 的方向递归修改,然后交换左右儿子.<br>合并就直接像线段树那样合并就行了,全局异或和可以在修改和合并的时候顺便维护一下,时间复杂度 $O(n\log n)$ .<br>注意因为有 $+1$ 操作, Trie 树中实际可能出现的最大值是 $v+n-1$ ,而不是 $v$ .<br><a href="https://loj.ac/submission/843256" target="_blank" rel="noopener">code</a></p>
+<h3 id="作业题"><a href="#作业题" class="headerlink" title="作业题"></a><a href="https://loj.ac/problem/3304" target="_blank" rel="noopener">作业题</a></h3><p>先枚举一个因子,只保留权值是它倍数的边计算贡献,最后把答案反演出来.<br>于是瓶颈在于算所有生成树边权之和.<br>考虑每条边被计算了多少次,这可以用矩阵树定理转换为求一个余子式的值.<br>要求每条边的贡献,做一次矩阵求逆搞出伴随矩阵就行了.<br>具体一点的描述可以看 <a href="https://www.cnblogs.com/nealchen/p/adjugate-matrix.html" target="_blank" rel="noopener">这里</a> ,把图当成有向图,强制让 $n$ 作为根,求生成内向树数目,也就是原图的生成树数目.<br>也可以将每条边的权值看作 $1+wx$ ,在 $\bmod x^2$ 意义下求行列式,最后一次项的系数就是所有生成树边权之和.<br>复杂度是 $O(n^4\max \sigma_0(w_i)$ ,可以剪下枝,如果保留某些边后图不连通,就不用计算了.<br><a href="https://loj.ac/submission/843258" target="_blank" rel="noopener">code</a></p>
+<h2 id="联合省选-B-卷"><a href="#联合省选-B-卷" class="headerlink" title="联合省选 B 卷"></a>联合省选 B 卷</h2><blockquote>
+<p>和 A 卷相同的题就不再写了.</p>
+</blockquote>
+<h3 id="卡牌游戏"><a href="#卡牌游戏" class="headerlink" title="卡牌游戏"></a><a href="https://loj.ac/problem/3305" target="_blank" rel="noopener">卡牌游戏</a></h3><p>显然从第二个位置开始,选取那些前缀和 $&gt;0$ 的位置,将它们的前缀和加入答案即可.<br><a href="https://loj.ac/submission/843539" target="_blank" rel="noopener">code</a></p>
+<h3 id="信息传递"><a href="#信息传递" class="headerlink" title="信息传递"></a><a href="https://loj.ac/problem/3306" target="_blank" rel="noopener">信息传递</a></h3><p>把询问离线下来挂在每个点上,做一次点分治即可统计出答案.<br>如果强制在线,则可以考虑在每个分治中心把信息存下来, 询问时在点分树上跳即可,空间复杂度会多一个 $\log​$ .<br><a href="https://loj.ac/submission/843585" target="_blank" rel="noopener">code</a></p>
+<h3 id="幸运数字"><a href="#幸运数字" class="headerlink" title="幸运数字"></a><a href="https://loj.ac/problem/3308" target="_blank" rel="noopener">幸运数字</a></h3><p>显然每种优惠都可以拆到不超过 $2​$ 个区间上进行贡献,端点离散化后打上差分标记,最后扫一遍统计答案即可.<br>由于还要输出要求的最优位置,还要额外处理一些细节.<br><a href="https://loj.ac/submission/844206" target="_blank" rel="noopener">code</a></p>
+<h3 id="丁香之路"><a href="#丁香之路" class="headerlink" title="丁香之路"></a><a href="https://loj.ac/problem/3310" target="_blank" rel="noopener">丁香之路</a></h3><p>枚举 $t$ ,考虑第 $t$ 个人的答案.<br>假定已经确定了每条边要走多少次,那么这个方案合法当且仅当它们能构成 $s\to t$ 的欧拉路.<br>问题可以归纳为,已经加了 $m$ 条给定边,此时 $s,t$ 以及其他有度数的点形成集合 $S$ ,还要加若干条边(每条边可以被加多次),使得每个点度数满足各自的奇偶性要求,且 $S$ 内所有点连通,最小化加入的所有边权值总和.<br>不难发现,我们新加的边中只会用到 $(x,x+1)$ 的边,其他边可以被组合出来,于是只用再考虑这 $n-1$ 条边.<br>此时还需要连奇数条边的点显然有偶数个,我们将它们按顺序两两串起来,就满足了度数的限制.<br>此时 $S$ 集合中的点仍可能不连通,需要将各个连通块用边连起来,并且为了满足度数限制,选到的边都要走两次.<br>由于可能会用到 $S$ 外的点来使 $S$ 连通,直接做是斯坦纳树问题,不是 MST 问题,需要进一步观察图的性质.<br>若 $x$ 不在集合 $S$ 中,则 $(x-1,x),(x,x+1)$ 这两条边一定是同时被选或同时不被选,可以缩在一起,缩完之后的边一定都是连接 $S$ 连通块之间的边,用这些边做一次 MST 即可,由于权值不会达到 $n$ ,对它们的排序可以用计数排序.<br>时间复杂度 $O(n^2\alpha(n))$ .<br><a href="https://loj.ac/submission/844103" target="_blank" rel="noopener">code</a></p>
 
       
     </div>
@@ -550,8 +563,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/9102/12/19/置顶-THUWC2020游记/" rel="prev" title="置顶 THUWC2020游记">
-                置顶 THUWC2020游记 <i class="fa fa-chevron-right"></i>
+              <a href="/9202/06/29/置顶-SCOI2020-游记/" rel="prev" title="置顶 SCOI2020游记">
+                置顶 SCOI2020游记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -627,7 +640,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">488</span>
+                    <span class="site-state-item-count">489</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -996,7 +1009,15 @@
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://www.cnblogs.com/DeNeRATe/" title="https://www.cnblogs.com/DeNeRATe/" rel="noopener" target="_blank">DeNeRATe</a>
+                    <a href="https://denerate-cool.github.io/DeNeRATe.github.io/" title="https://denerate-cool.github.io/DeNeRATe.github.io/" rel="noopener" target="_blank">DeNeRATe</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://alansblog.ink/" title="http://alansblog.ink/" rel="noopener" target="_blank">AlanTuring</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/ldxcaicai/" title="https://www.cnblogs.com/ldxcaicai/" rel="noopener" target="_blank">ldx</a>
                   </li>
                 
               </ul>
@@ -1022,7 +1043,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#BJOI"><span class="nav-number">1.</span> <span class="nav-text">BJOI</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#封印"><span class="nav-number">1.1.</span> <span class="nav-text">封印</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#联合省选-A-卷"><span class="nav-number">2.</span> <span class="nav-text">联合省选 A 卷</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#冰火战士"><span class="nav-number">2.1.</span> <span class="nav-text">冰火战士</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组合数问题"><span class="nav-number">2.2.</span> <span class="nav-text">组合数问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#魔法商店"><span class="nav-number">2.3.</span> <span class="nav-text">魔法商店</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#BJOI"><span class="nav-number">1.</span> <span class="nav-text">BJOI</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#封印"><span class="nav-number">1.1.</span> <span class="nav-text">封印</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#联合省选-A-卷"><span class="nav-number">2.</span> <span class="nav-text">联合省选 A 卷</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#冰火战士"><span class="nav-number">2.1.</span> <span class="nav-text">冰火战士</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组合数问题"><span class="nav-number">2.2.</span> <span class="nav-text">组合数问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#魔法商店"><span class="nav-number">2.3.</span> <span class="nav-text">魔法商店</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#信号传递"><span class="nav-number">2.4.</span> <span class="nav-text">信号传递</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#树"><span class="nav-number">2.5.</span> <span class="nav-text">树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作业题"><span class="nav-number">2.6.</span> <span class="nav-text">作业题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#联合省选-B-卷"><span class="nav-number">3.</span> <span class="nav-text">联合省选 B 卷</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#卡牌游戏"><span class="nav-number">3.1.</span> <span class="nav-text">卡牌游戏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#信息传递"><span class="nav-number">3.2.</span> <span class="nav-text">信息传递</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#幸运数字"><span class="nav-number">3.3.</span> <span class="nav-text">幸运数字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#丁香之路"><span class="nav-number">3.4.</span> <span class="nav-text">丁香之路</span></a></li></ol></li></ol></div>
             
 
           </div>
