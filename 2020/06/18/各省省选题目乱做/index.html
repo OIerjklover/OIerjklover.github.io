@@ -143,7 +143,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="2020 省选题目乱做.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-06-30T12:03:43.734Z">
+<meta property="og:updated_time" content="2020-06-30T12:32:03.330Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="各省省选题目乱做">
 <meta name="twitter:description" content="2020 省选题目乱做.">
@@ -456,7 +456,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-06-30 20:03:43" itemprop="dateModified" datetime="2020-06-30T20:03:43+08:00">2020-06-30</time>
+                <time title="Modified: 2020-06-30 20:32:03" itemprop="dateModified" datetime="2020-06-30T20:32:03+08:00">2020-06-30</time>
               
             
           </span>
@@ -547,7 +547,7 @@
 <h3 id="行走"><a href="#行走" class="headerlink" title="行走"></a>行走</h3><blockquote>
 <p>在三维空间中随机游走.<br>初始在 $(0,0,0)$ ,每一步会从 $ (x,y,z)$ 等概率走到<br>$$<br>(x+1,y+1,z+1),(x+1,y,z),(x,y+1,z),(x,y,z+1),\\<br>(x-1,y,z),(x,y-1,z),(x,y,z-1),(x-1,y-1,z-1)<br>$$<br>这八个点中的一个.<br>有 $m$ 次询问,每次询问走了 $t$ 步后,在 $(a,b,c)$ 的概率.<br>$a,b,c$ 可能是通配符, 表示并不关心这一维的坐标,保证 $a,b,c$ 不会同时是通配符 .<br>答案对 $998244353$ 取模, $1\le m\le 2\times 10^5,0\le t,|a|,|b|,|c|\le 2\times 10^5$ ,恰好有一个通配符的询问不超过 $50$ 个.</p>
 </blockquote>
-<h4 id="Case-1-恰好有-2-个通配符"><a href="#Case-1-恰好有-2-个通配符" class="headerlink" title="Case 1: 恰好有 2 个通配符"></a>Case 1: 恰好有 2 个通配符</h4><p>可以先将通配符换到 $b,c​$ 上,答案为<br>$$<br>\begin{aligned}<br>ans&amp;=4^{-t}[x^a] (x+2+x^{-1})^t \\<br>&amp;=4^{-t}[x^{a+t}] (x^2+2x+1)^t \\<br>&amp;=4^{-t}[x^{a+t}] (x+1)^{2t} \\<br>&amp;=4^{-t}\binom{2t}{a+t}<br>\end{aligned}<br>$$<br>单次询问时间复杂度 $O(1)$ .</p>
+<h4 id="Case-1-恰好有-2-个通配符"><a href="#Case-1-恰好有-2-个通配符" class="headerlink" title="Case 1: 恰好有 2 个通配符"></a>Case 1: 恰好有 2 个通配符</h4><p>可以先将通配符换到 $b,c​$ 上,答案为<br>$$<br>\begin{aligned}<br>ans&amp;=2^{-t}[x^a] (x+2+x^{-1})^t \\<br>&amp;=2^{-t}[x^{a+t}] (x^2+2x+1)^t \\<br>&amp;=2^{-t}[x^{a+t}] (x+1)^{2t} \\<br>&amp;=2^{-t}\binom{2t}{a+t}<br>\end{aligned}<br>$$<br>单次询问时间复杂度 $O(1)$ .</p>
 <h4 id="Case-2-恰好有-1-个通配符"><a href="#Case-2-恰好有-1-个通配符" class="headerlink" title="Case 2: 恰好有 1 个通配符"></a>Case 2: 恰好有 1 个通配符</h4><p>可以先将通配符换到 $c$ 上,答案为<br>$$<br>\begin{aligned}<br>ans&amp;=8^{-t}[x^ay^b] (xy+x+y+1+x^{-1}+y^{-1}+1+x^{-1}y^{-1})^t\\<br>&amp;=8^{-t}[x^ay^b] ((x+1)(y+1)+(x^{-1}+1)(y^{-1}+1))^t\\<br>&amp;=8^{-t}[x^ay^b]\sum_{i=0}^t \binom t i(x+1)^i(x^{-1}+1)^{t-i}(y+1)^i(y^{-1}+i)^{t-i}\\<br>&amp;=8^{-t}\sum_{i=0}^t\binom t i[x^{a+t-i}] (x+1)^t\cdot[y^{b+t-i}] (y+1)^t\\<br>&amp;=8^{-t}\sum_{i=0}^t\binom t i\binom{t}{a+t-i}\binom{t}{b+t-i}<br>\end{aligned}<br>$$<br>单次询问时间复杂度 $O(t)$ .</p>
 <h4 id="Case-3-没有通配符"><a href="#Case-3-没有通配符" class="headerlink" title="Case 3: 没有通配符"></a>Case 3: 没有通配符</h4><p>答案为<br>$$<br>\begin{aligned}<br>ans&amp;=8^{-t}[x^ay^bz^c] (xyz+x+y+z+x^{-1}+y^{-1}+z^{-1}+x^{-1}y^{-1}z^{-1})^t\\<br>&amp;=8^{-t}[x^{a+t}y^{b+t}z^{c+t}] (x^2y^2z^2+x^2yz+xy^2z+xyz^2+yz+xz+xy+1)^t \\<br>&amp;=8^{-t}[x^{a+t}y^{b+t}z^{c+t}] (xy+1)^t(xz+1)^t(yz+1)^t<br>\end{aligned}<br>$$<br>若 $xy,xz,yz​$ 分别选了 $k_1,k_2,k_3​$ 个,则有 $k_1+k_2=a+t,k_1+k_3=b+t,k_2+k_3=c+t​$ ,可以直接解出 $k_1,k_2,k_3​$ 的值,根据二项式定理,答案即为 $8^{-t}\binom t {k_1}\binom t {k_2}\binom t {k_3}​$ .<br>单次询问时间复杂度 $O(1)​$ .</p>
 <h3 id="FG"><a href="#FG" class="headerlink" title="FG"></a>FG</h3><blockquote>
@@ -598,8 +598,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/9202/06/29/置顶-SCOI2020-游记/" rel="prev" title="置顶 SCOI2020游记">
-                置顶 SCOI2020游记 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/07/01/Hdu-4532-湫秋系列故事——安排座位/" rel="prev" title="Hdu 4532 湫秋系列故事——安排座位">
+                Hdu 4532 湫秋系列故事——安排座位 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -675,7 +675,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">489</span>
+                    <span class="site-state-item-count">491</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

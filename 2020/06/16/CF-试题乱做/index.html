@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="记录最近乱做的一些 CF 题目.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-06-21T10:45:46.305Z">
+<meta property="og:updated_time" content="2020-07-01T13:25:56.007Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CF 试题乱做">
 <meta name="twitter:description" content="记录最近乱做的一些 CF 题目.">
@@ -457,7 +457,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-06-21 18:45:46" itemprop="dateModified" datetime="2020-06-21T18:45:46+08:00">2020-06-21</time>
+                <time title="Modified: 2020-07-01 21:25:56" itemprop="dateModified" datetime="2020-07-01T21:25:56+08:00">2020-07-01</time>
               
             
           </span>
@@ -549,6 +549,12 @@
 <p>给定一个长度为 $n$ 的整数序列 $a$ ,满足每个元素的因子个数不超过 $7$ .<br>你需要选出一个最短的非空子序列,使得子序列内元素乘积是平方数,输出这个长度,或判断无解.<br>$1\le n\le 10^5,1\le a_i\le 10^6$ .</p>
 </blockquote>
 <p>由 $\sigma_0(a_i)\le 7$ 可以推出 $\omega(a_i)\le 2$ .<br>将 $a_i$ 质因数分解,次数是偶数的质因子没有贡献,可以直接忽略.<br>若还剩两个质因子 $x,y$ ,则在 $x,y$ 之间连边,若还剩 $1$ 个质因子 $x$ ,则在 $1,x$ 之间连边,若没有剩下,说明答案为 $1$ .<br>那么就得到了一张由 $1$ 和所有质数为结点的无向图,这张图上每一个环都对应了一个合法方案,只需要找出最小环.<br>枚举 $s$ 作为环的起点进行 bfs, 若某条边 $(x,y)$ 满足 $x,y$ 都被访问过,就有个长度为 $dis(x)+dis(y)+1$ 的环.<br>再优化一下,不难发现一个环一定包含了 $\le \sqrt {\max a_i}$ 的数,只枚举它们作为起点 bfs 即可.<br>时间复杂度 $O(n\sqrt {\max a_i})$ .<br><a href="https://codeforces.com/problemset/submission/1325/84376667" target="_blank" rel="noopener">code</a></p>
+<h3 id="1043F-Make-It-One"><a href="#1043F-Make-It-One" class="headerlink" title="1043F Make It One"></a><a href="https://codeforces.ml/problemset/problem/1043/F" target="_blank" rel="noopener">1043F Make It One</a></h3><blockquote>
+<p>给定 $n$ 个正整数 $a_1,a_2,\dots,a_n$ ,需要选出一个非空子集,使得集合内的数 $\gcd$ 为 $1$ ,输出最少选多少个数.<br>$1\le n,a_i\le 3\times 10^5$ .</p>
+</blockquote>
+<p>记 $t(x)$ 表示有几个数是 $x$ 的倍数,记 $dp(i,j)$ 表示选 $i$ 个数使得它们的 $\gcd$ 为 $j$ 的方案数,转移有</p>
+<p>$$<br>dp(i,j)=\binom{t(j)}{i}-\sum_{k\ge 2} dp(i,j\cdot k)<br>$$</p>
+<p>对于每个 $i$ ,计算出所有 $dp(i,j)$ 需要 $O(n\log n)$ 的时间,但特判掉无解的情况后,答案显然不会太大.<br>考虑集合中开始只有一个数,加入新的数时,一定要让 $\gcd$ 的某个质因子次数减到 $0$ 才有用,否则可以不加入它.<br>于是可以得出当有解时,答案不会超过 $\omega(a)+1$ ,只用在这个范围内枚举 $i$ 即可,时间复杂度 $O(\omega(a)\cdot n\log n)$ .<br><a href="https://codeforces.ml/problemset/submission/1043/85623472" target="_blank" rel="noopener">code</a></p>
 
       
     </div>
@@ -672,7 +678,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">489</span>
+                    <span class="site-state-item-count">491</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1075,7 +1081,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1361B-Johnny-and-Grandmaster"><span class="nav-number">1.</span> <span class="nav-text">1361B Johnny and Grandmaster</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1361C-Johnny-and-Megan’s-Necklace"><span class="nav-number">2.</span> <span class="nav-text">1361C Johnny and Megan’s Necklace</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#508D-Tanya-and-Password"><span class="nav-number">3.</span> <span class="nav-text">508D Tanya and Password</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#342E-Xenia-and-Tree"><span class="nav-number">4.</span> <span class="nav-text">342E Xenia and Tree</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#512D-Fox-And-Travelling"><span class="nav-number">5.</span> <span class="nav-text">512D Fox And Travelling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#449D-Jzzhu-and-Numbers"><span class="nav-number">6.</span> <span class="nav-text">449D Jzzhu and Numbers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#55D-Beautiful-Numbers"><span class="nav-number">7.</span> <span class="nav-text">55D Beautiful Numbers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#449C-Jzzhu-and-Apples"><span class="nav-number">8.</span> <span class="nav-text">449C Jzzhu and Apples</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1368E-Ski-Accident"><span class="nav-number">9.</span> <span class="nav-text">1368E Ski Accident</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10D-LCIS"><span class="nav-number">10.</span> <span class="nav-text">10D LCIS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#986C-AND-Graph"><span class="nav-number">11.</span> <span class="nav-text">986C AND Graph</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1325E-Ehab’s-REAL-Number-Theory-Problem"><span class="nav-number">12.</span> <span class="nav-text">1325E Ehab’s REAL Number Theory Problem</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1361B-Johnny-and-Grandmaster"><span class="nav-number">1.</span> <span class="nav-text">1361B Johnny and Grandmaster</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1361C-Johnny-and-Megan’s-Necklace"><span class="nav-number">2.</span> <span class="nav-text">1361C Johnny and Megan’s Necklace</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#508D-Tanya-and-Password"><span class="nav-number">3.</span> <span class="nav-text">508D Tanya and Password</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#342E-Xenia-and-Tree"><span class="nav-number">4.</span> <span class="nav-text">342E Xenia and Tree</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#512D-Fox-And-Travelling"><span class="nav-number">5.</span> <span class="nav-text">512D Fox And Travelling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#449D-Jzzhu-and-Numbers"><span class="nav-number">6.</span> <span class="nav-text">449D Jzzhu and Numbers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#55D-Beautiful-Numbers"><span class="nav-number">7.</span> <span class="nav-text">55D Beautiful Numbers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#449C-Jzzhu-and-Apples"><span class="nav-number">8.</span> <span class="nav-text">449C Jzzhu and Apples</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1368E-Ski-Accident"><span class="nav-number">9.</span> <span class="nav-text">1368E Ski Accident</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10D-LCIS"><span class="nav-number">10.</span> <span class="nav-text">10D LCIS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#986C-AND-Graph"><span class="nav-number">11.</span> <span class="nav-text">986C AND Graph</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1325E-Ehab’s-REAL-Number-Theory-Problem"><span class="nav-number">12.</span> <span class="nav-text">1325E Ehab’s REAL Number Theory Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1043F-Make-It-One"><span class="nav-number">13.</span> <span class="nav-text">1043F Make It One</span></a></li></ol></div>
             
 
           </div>
