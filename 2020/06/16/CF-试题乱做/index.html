@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="记录最近乱做的一些 CF 题目.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-07-01T13:25:56.007Z">
+<meta property="og:updated_time" content="2020-07-03T13:38:16.143Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CF 试题乱做">
 <meta name="twitter:description" content="记录最近乱做的一些 CF 题目.">
@@ -457,7 +457,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-07-01 21:25:56" itemprop="dateModified" datetime="2020-07-01T21:25:56+08:00">2020-07-01</time>
+                <time title="Modified: 2020-07-03 21:38:16" itemprop="dateModified" datetime="2020-07-03T21:38:16+08:00">2020-07-03</time>
               
             
           </span>
@@ -555,6 +555,10 @@
 <p>记 $t(x)$ 表示有几个数是 $x$ 的倍数,记 $dp(i,j)$ 表示选 $i$ 个数使得它们的 $\gcd$ 为 $j$ 的方案数,转移有</p>
 <p>$$<br>dp(i,j)=\binom{t(j)}{i}-\sum_{k\ge 2} dp(i,j\cdot k)<br>$$</p>
 <p>对于每个 $i$ ,计算出所有 $dp(i,j)$ 需要 $O(n\log n)$ 的时间,但特判掉无解的情况后,答案显然不会太大.<br>考虑集合中开始只有一个数,加入新的数时,一定要让 $\gcd$ 的某个质因子次数减到 $0$ 才有用,否则可以不加入它.<br>于是可以得出当有解时,答案不会超过 $\omega(a)+1$ ,只用在这个范围内枚举 $i$ 即可,时间复杂度 $O(\omega(a)\cdot n\log n)$ .<br><a href="https://codeforces.ml/problemset/submission/1043/85623472" target="_blank" rel="noopener">code</a></p>
+<h3 id="367E-Sereja-and-Intervals"><a href="#367E-Sereja-and-Intervals" class="headerlink" title="367E Sereja and Intervals"></a><a href="https://codeforces.ml/problemset/problem/367/E" target="_blank" rel="noopener">367E Sereja and Intervals</a></h3><blockquote>
+<p>给定 $n,m,x$ ,要构造出一个长度为 $n$ 的序列,每个元素是一个 $1\le l\le r\le m$ 的区间,需要满足没有区间完全包含另一个区间,且至少有一个区间的左端点为 $x$ ,求合法方案数,答案对 $10^9+7$ 取模, $1\le n\times m\le 10^5$ .</p>
+</blockquote>
+<p>区间之间不能相互包含,则肯定没有两个区间是完全相同的,可以先不考虑顺序,求出方案数后乘上 $n!$ .<br>依次考虑 $1$ 到 $m$ 的每个数,每个数显然最多作为一次左端点,最多作为一次右端点,设 $dp(i,j,k)$ 表示考虑了前 $i$ 个数,还有 $j$ 个左端点未被匹配,已经匹配了 $k$ 个区间,转移时枚举这个数是否作为左右端点,是否和之前的端点匹配,因为区间不能有包含关系,所以若与之前剩下的端点匹配,方案是唯一的.当考虑到 $x$ 时,强制让它作为左端点即可.<br>时间复杂度 $O(n^2m)$ ,当 $n&gt;m$ 时显然无解,所以复杂度为 $O(nm\sqrt {nm})​$ ,可以通过.<br><a href="https://codeforces.ml/contest/367/submission/85856113" target="_blank" rel="noopener">code</a></p>
 
       
     </div>
@@ -678,7 +682,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">492</span>
+                    <span class="site-state-item-count">494</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1081,7 +1085,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1361B-Johnny-and-Grandmaster"><span class="nav-number">1.</span> <span class="nav-text">1361B Johnny and Grandmaster</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1361C-Johnny-and-Megan’s-Necklace"><span class="nav-number">2.</span> <span class="nav-text">1361C Johnny and Megan’s Necklace</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#508D-Tanya-and-Password"><span class="nav-number">3.</span> <span class="nav-text">508D Tanya and Password</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#342E-Xenia-and-Tree"><span class="nav-number">4.</span> <span class="nav-text">342E Xenia and Tree</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#512D-Fox-And-Travelling"><span class="nav-number">5.</span> <span class="nav-text">512D Fox And Travelling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#449D-Jzzhu-and-Numbers"><span class="nav-number">6.</span> <span class="nav-text">449D Jzzhu and Numbers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#55D-Beautiful-Numbers"><span class="nav-number">7.</span> <span class="nav-text">55D Beautiful Numbers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#449C-Jzzhu-and-Apples"><span class="nav-number">8.</span> <span class="nav-text">449C Jzzhu and Apples</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1368E-Ski-Accident"><span class="nav-number">9.</span> <span class="nav-text">1368E Ski Accident</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10D-LCIS"><span class="nav-number">10.</span> <span class="nav-text">10D LCIS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#986C-AND-Graph"><span class="nav-number">11.</span> <span class="nav-text">986C AND Graph</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1325E-Ehab’s-REAL-Number-Theory-Problem"><span class="nav-number">12.</span> <span class="nav-text">1325E Ehab’s REAL Number Theory Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1043F-Make-It-One"><span class="nav-number">13.</span> <span class="nav-text">1043F Make It One</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1361B-Johnny-and-Grandmaster"><span class="nav-number">1.</span> <span class="nav-text">1361B Johnny and Grandmaster</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1361C-Johnny-and-Megan’s-Necklace"><span class="nav-number">2.</span> <span class="nav-text">1361C Johnny and Megan’s Necklace</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#508D-Tanya-and-Password"><span class="nav-number">3.</span> <span class="nav-text">508D Tanya and Password</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#342E-Xenia-and-Tree"><span class="nav-number">4.</span> <span class="nav-text">342E Xenia and Tree</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#512D-Fox-And-Travelling"><span class="nav-number">5.</span> <span class="nav-text">512D Fox And Travelling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#449D-Jzzhu-and-Numbers"><span class="nav-number">6.</span> <span class="nav-text">449D Jzzhu and Numbers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#55D-Beautiful-Numbers"><span class="nav-number">7.</span> <span class="nav-text">55D Beautiful Numbers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#449C-Jzzhu-and-Apples"><span class="nav-number">8.</span> <span class="nav-text">449C Jzzhu and Apples</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1368E-Ski-Accident"><span class="nav-number">9.</span> <span class="nav-text">1368E Ski Accident</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10D-LCIS"><span class="nav-number">10.</span> <span class="nav-text">10D LCIS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#986C-AND-Graph"><span class="nav-number">11.</span> <span class="nav-text">986C AND Graph</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1325E-Ehab’s-REAL-Number-Theory-Problem"><span class="nav-number">12.</span> <span class="nav-text">1325E Ehab’s REAL Number Theory Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1043F-Make-It-One"><span class="nav-number">13.</span> <span class="nav-text">1043F Make It One</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#367E-Sereja-and-Intervals"><span class="nav-number">14.</span> <span class="nav-text">367E Sereja and Intervals</span></a></li></ol></div>
             
 
           </div>
