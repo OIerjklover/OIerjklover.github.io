@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="$$\sum_{i=0}^n A^i\binom{n-i}{k}=\sum_{i=0}^n(A-1)^i\binom{n+1}{i+k+1}$$ 其中 $A,n,k$ 均为正整数,特别地,当 $A=1$ 时,等式右端 $(A-1)^0$ 应视作 $1$ .">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-07-06T08:07:53.803Z">
+<meta property="og:updated_time" content="2020-07-08T13:04:02.263Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一个恒等式的组合意义证明">
 <meta name="twitter:description" content="$$\sum_{i=0}^n A^i\binom{n-i}{k}=\sum_{i=0}^n(A-1)^i\binom{n+1}{i+k+1}$$ 其中 $A,n,k$ 均为正整数,特别地,当 $A=1$ 时,等式右端 $(A-1)^0$ 应视作 $1$ .">
@@ -440,12 +440,24 @@
                 
               
 
-              <time title="Created: 2020-07-06 15:40:14 / Modified: 16:07:53" itemprop="dateCreated datePublished" datetime="2020-07-06T15:40:14+08:00">2020-07-06</time>
+              <time title="Created: 2020-07-06 15:40:14" itemprop="dateCreated datePublished" datetime="2020-07-06T15:40:14+08:00">2020-07-06</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-07-08 21:04:02" itemprop="dateModified" datetime="2020-07-08T21:04:02+08:00">2020-07-08</time>
               
             
           </span>
@@ -496,7 +508,7 @@
 <p>若最后一个第一类球放入了前 $A-1$ 个盒子,那么我们选出 $i+k$ 个球,其中前 $i$ 个球表示放入前 $A-1$ 个盒子的球,后 $k$ 个球表示第二类球,贡献为 $\sum(A-1)^i \binom{n}{i+k}$.</p>
 <p>若最后一个第一类球放入了最后一个盒子,那么我们选出 $i+1+k$ 个球,其中前 $i$ 个球表示放入前 $A-1$ 个盒子的球,第 $i+1$ 个球表示最后一个第一类球,后 $k$ 个球表示第二类球,贡献为 $\sum(A-1)^i \binom{n}{i+1+k}$ .</p>
 <p>第一类球需要形成一个前缀,此时前缀中空出的位置一定是放入最后一个盒子的第一类球.</p>
-<p>将两类贡献求和即可得到右式 $\sum^n(A-1)^i\binom{n+1}{i+k+1}$ ,从而证明了右式也是问题的答案,得出左式和右式相等.</p>
+<p>将两类贡献求和即可得到右式 $\sum_{i=0}^n(A-1)^i\binom{n+1}{i+k+1}$ ,从而证明了右式也是问题的答案,得出左式和右式相等.</p>
 <h3 id="运用"><a href="#运用" class="headerlink" title="运用"></a>运用</h3><p>当 $n$ 很大, $k$ 较小时,直接用左式计算,时间复杂度是 $O(n-k)$ 的.</p>
 <p>而右式可以通过简单处理变成二项式定理的形式,可以用总和减掉另外 $k$ 项的贡献求得答案,时间复杂度 $O(k)$ .</p>
 
