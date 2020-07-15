@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="记录最近乱做的一些 CF 题目.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-07-13T12:26:23.132Z">
+<meta property="og:updated_time" content="2020-07-14T12:31:22.184Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CF 试题乱做">
 <meta name="twitter:description" content="记录最近乱做的一些 CF 题目.">
@@ -457,7 +457,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-07-13 20:26:23" itemprop="dateModified" datetime="2020-07-13T20:26:23+08:00">2020-07-13</time>
+                <time title="Modified: 2020-07-14 20:31:22" itemprop="dateModified" datetime="2020-07-14T20:31:22+08:00">2020-07-14</time>
               
             
           </span>
@@ -618,6 +618,10 @@
 <p>给出一个 $n$ 个点的有根树,为每个点分配一个 $[1,D]$ 内的正整数作为权值,需要满足每个点的权值不大于其父亲的权值,求合法的方案数, $1\le n\le 3000,1\le D\le 10^9$ ,答案对 $10^9+7$ 取模.</p>
 </blockquote>
 <p>答案是关于 $D$ 的 $n$ 次多项式,可以考虑归纳证明.<br>当 $n=1$ 时显然成立,否则我们记各个子树大小分别为 $a_1,a_2\dots a_k$ , 枚举根的权值为 $i$ ,得到方案数为<br>$$<br>\sum_{i=1}^D\prod_{j=1}^k f(a_j,i)<br>$$<br>根据我们的归纳假设,可知 $f(a,x)$ 是一个关于 $x$ 的 $a$ 次多项式,因为 $\sum a_j=n-1$ ,那么每个 $\prod_{j=1}^k f(a_j,i)$ 都是关于 $i$ 的 $n-1$ 次多项式,于是方案数可以写成 $\sum_{k=0}^{n-1}c_k \sum_{i=1}^D i^k$ 的形式,这显然是关于 $D$ 的 $n$ 次多项式.<br>于是只需要暴力 dp 出 $D=1,2,\dots,n-1$ 时的答案,然后做拉格朗日插值即可,时间复杂度 $O(n^2)​$ .<br><a href="https://codeforces.com/problemset/submission/995/86746688" target="_blank" rel="noopener">code</a></p>
+<h3 id="283E-Cow-Tennis-Tournament"><a href="#283E-Cow-Tennis-Tournament" class="headerlink" title="283E Cow Tennis Tournament"></a><a href="https://codeforces.com/problemset/problem/283/E" target="_blank" rel="noopener">283E Cow Tennis Tournament</a></h3><blockquote>
+<p>有一张 $n$ 个点的竞赛图,初始时每条边都由编号较大的指向编号较小的,有 $k$ 次操作,每次操作给出 $[l,r]$ ,表示对于所有 $u,v\in[l,r],u\neq v$ ,翻转边 $(u,v)$ 的方向.问所有操作结束后图中三元环的数目. $3\le n\le 10^5,1\le k\le 10^5$ .</p>
+</blockquote>
+<p>竞赛图的三元环个数是经典问题了,补集转化可知答案为 $\binom n 3-\sum_{i=1}^n \binom{outdeg_i}{2}$ ,其中 $outdeg_i$ 表示 $i$ 的出度.<br>于是只需要求出最后每个点的出度,考虑将所有操作按照 $l$ 排序,从左往右依次计算每个位置 $i$ 的答案,先将 $l\le i$ 的翻转操作全部执行,将 $r=i-1$ 的翻转操作全部撤销,然后询问 $&lt;i$ 的位置有多少个数被翻转了偶数次, $&gt;i$ 的位置有多少个数翻转了奇数次,相加即为 $i$ 的出度,不难发现修改和询问可以用线段树支持,时间复杂度 $O(n\log n)​$ .<br><a href="https://codeforces.com/problemset/submission/283/86830100" target="_blank" rel="noopener">code</a></p>
 
       
     </div>
@@ -741,7 +745,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">494</span>
+                    <span class="site-state-item-count">496</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1098,19 +1102,11 @@
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="http://chitongz.cn/" title="http://chitongz.cn/" rel="noopener" target="_blank">ChiTongZ</a>
+                    <a href="https://cnblogs.com/theshadow" title="https://cnblogs.com/theshadow" rel="noopener" target="_blank">TheShadow</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://dcoitheshadow.github.io/" title="https://dcoitheshadow.github.io/" rel="noopener" target="_blank">TheShadow</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://www.cnblogs.com/wzxbeliever/" title="https://www.cnblogs.com/wzxbeliever/" rel="noopener" target="_blank">wzxbeliever</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://denerate-cool.github.io/DeNeRATe.github.io/" title="https://denerate-cool.github.io/DeNeRATe.github.io/" rel="noopener" target="_blank">DeNeRATe</a>
+                    <a href="https://denerate.ink/" title="https://denerate.ink/" rel="noopener" target="_blank">DeNeRATe</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
@@ -1119,6 +1115,10 @@
                 
                   <li class="links-of-blogroll-item">
                     <a href="https://www.cnblogs.com/ldxcaicai/" title="https://www.cnblogs.com/ldxcaicai/" rel="noopener" target="_blank">ldx</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://emoairx.top/" title="http://emoairx.top/" rel="noopener" target="_blank">emoairx</a>
                   </li>
                 
               </ul>
@@ -1144,7 +1144,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1361B-Johnny-and-Grandmaster"><span class="nav-number">1.</span> <span class="nav-text">1361B Johnny and Grandmaster</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1361C-Johnny-and-Megan’s-Necklace"><span class="nav-number">2.</span> <span class="nav-text">1361C Johnny and Megan’s Necklace</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#508D-Tanya-and-Password"><span class="nav-number">3.</span> <span class="nav-text">508D Tanya and Password</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#342E-Xenia-and-Tree"><span class="nav-number">4.</span> <span class="nav-text">342E Xenia and Tree</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#512D-Fox-And-Travelling"><span class="nav-number">5.</span> <span class="nav-text">512D Fox And Travelling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#449D-Jzzhu-and-Numbers"><span class="nav-number">6.</span> <span class="nav-text">449D Jzzhu and Numbers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#55D-Beautiful-Numbers"><span class="nav-number">7.</span> <span class="nav-text">55D Beautiful Numbers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#449C-Jzzhu-and-Apples"><span class="nav-number">8.</span> <span class="nav-text">449C Jzzhu and Apples</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1368E-Ski-Accident"><span class="nav-number">9.</span> <span class="nav-text">1368E Ski Accident</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10D-LCIS"><span class="nav-number">10.</span> <span class="nav-text">10D LCIS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#986C-AND-Graph"><span class="nav-number">11.</span> <span class="nav-text">986C AND Graph</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1325E-Ehab’s-REAL-Number-Theory-Problem"><span class="nav-number">12.</span> <span class="nav-text">1325E Ehab’s REAL Number Theory Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1043F-Make-It-One"><span class="nav-number">13.</span> <span class="nav-text">1043F Make It One</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#367E-Sereja-and-Intervals"><span class="nav-number">14.</span> <span class="nav-text">367E Sereja and Intervals</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#710F-String-Set-Queries"><span class="nav-number">15.</span> <span class="nav-text">710F String Set Queries</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#364D-Ghd"><span class="nav-number">16.</span> <span class="nav-text">364D Ghd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1270G-Subset-with-Zero-Sum"><span class="nav-number">17.</span> <span class="nav-text">1270G Subset with Zero Sum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#739E-Gosha-is-hunting"><span class="nav-number">18.</span> <span class="nav-text">739E Gosha is hunting</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#526F-Pudding-Monsters"><span class="nav-number">19.</span> <span class="nav-text">526F Pudding Monsters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#338D-GCD-Table"><span class="nav-number">20.</span> <span class="nav-text">338D GCD Table</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#839E-Mother-of-Dragons"><span class="nav-number">21.</span> <span class="nav-text">839E Mother of Dragons</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#960G-Bandit-Blues"><span class="nav-number">22.</span> <span class="nav-text">960G Bandit Blues</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1285F-Classical"><span class="nav-number">23.</span> <span class="nav-text">1285F Classical?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1295F-Good-Contest"><span class="nav-number">24.</span> <span class="nav-text">1295F Good Contest</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#961G-Partitions"><span class="nav-number">25.</span> <span class="nav-text">961G Partitions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#722E-Research-Rover"><span class="nav-number">26.</span> <span class="nav-text">722E Research Rover</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#995F-Cowmpany-Cowmpensation"><span class="nav-number">27.</span> <span class="nav-text">995F Cowmpany Cowmpensation</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1361B-Johnny-and-Grandmaster"><span class="nav-number">1.</span> <span class="nav-text">1361B Johnny and Grandmaster</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1361C-Johnny-and-Megan’s-Necklace"><span class="nav-number">2.</span> <span class="nav-text">1361C Johnny and Megan’s Necklace</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#508D-Tanya-and-Password"><span class="nav-number">3.</span> <span class="nav-text">508D Tanya and Password</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#342E-Xenia-and-Tree"><span class="nav-number">4.</span> <span class="nav-text">342E Xenia and Tree</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#512D-Fox-And-Travelling"><span class="nav-number">5.</span> <span class="nav-text">512D Fox And Travelling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#449D-Jzzhu-and-Numbers"><span class="nav-number">6.</span> <span class="nav-text">449D Jzzhu and Numbers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#55D-Beautiful-Numbers"><span class="nav-number">7.</span> <span class="nav-text">55D Beautiful Numbers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#449C-Jzzhu-and-Apples"><span class="nav-number">8.</span> <span class="nav-text">449C Jzzhu and Apples</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1368E-Ski-Accident"><span class="nav-number">9.</span> <span class="nav-text">1368E Ski Accident</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10D-LCIS"><span class="nav-number">10.</span> <span class="nav-text">10D LCIS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#986C-AND-Graph"><span class="nav-number">11.</span> <span class="nav-text">986C AND Graph</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1325E-Ehab’s-REAL-Number-Theory-Problem"><span class="nav-number">12.</span> <span class="nav-text">1325E Ehab’s REAL Number Theory Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1043F-Make-It-One"><span class="nav-number">13.</span> <span class="nav-text">1043F Make It One</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#367E-Sereja-and-Intervals"><span class="nav-number">14.</span> <span class="nav-text">367E Sereja and Intervals</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#710F-String-Set-Queries"><span class="nav-number">15.</span> <span class="nav-text">710F String Set Queries</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#364D-Ghd"><span class="nav-number">16.</span> <span class="nav-text">364D Ghd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1270G-Subset-with-Zero-Sum"><span class="nav-number">17.</span> <span class="nav-text">1270G Subset with Zero Sum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#739E-Gosha-is-hunting"><span class="nav-number">18.</span> <span class="nav-text">739E Gosha is hunting</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#526F-Pudding-Monsters"><span class="nav-number">19.</span> <span class="nav-text">526F Pudding Monsters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#338D-GCD-Table"><span class="nav-number">20.</span> <span class="nav-text">338D GCD Table</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#839E-Mother-of-Dragons"><span class="nav-number">21.</span> <span class="nav-text">839E Mother of Dragons</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#960G-Bandit-Blues"><span class="nav-number">22.</span> <span class="nav-text">960G Bandit Blues</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1285F-Classical"><span class="nav-number">23.</span> <span class="nav-text">1285F Classical?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1295F-Good-Contest"><span class="nav-number">24.</span> <span class="nav-text">1295F Good Contest</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#961G-Partitions"><span class="nav-number">25.</span> <span class="nav-text">961G Partitions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#722E-Research-Rover"><span class="nav-number">26.</span> <span class="nav-text">722E Research Rover</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#995F-Cowmpany-Cowmpensation"><span class="nav-number">27.</span> <span class="nav-text">995F Cowmpany Cowmpensation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#283E-Cow-Tennis-Tournament"><span class="nav-number">28.</span> <span class="nav-text">283E Cow Tennis Tournament</span></a></li></ol></div>
             
 
           </div>
