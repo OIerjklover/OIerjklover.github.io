@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="多项式的几个板子,代码也放在一起了.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-19T13:09:03.334Z">
+<meta property="og:updated_time" content="2020-07-23T12:13:46.840Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多项式的几个板子">
 <meta name="twitter:description" content="多项式的几个板子,代码也放在一起了.">
@@ -457,7 +457,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-19 21:09:03" itemprop="dateModified" datetime="2019-12-19T21:09:03+08:00">2019-12-19</time>
+                <time title="Modified: 2020-07-23 20:13:46" itemprop="dateModified" datetime="2020-07-23T20:13:46+08:00">2020-07-23</time>
               
             
           </span>
@@ -553,6 +553,13 @@
 <p>在 $\mbox{mod}\ x^n$ 下求多项式 $B(x)$ ,使得 $B(x)\equiv A^k(x)\ (\mbox{mod} \ x^n)$ .</p>
 <p>两边同时取对数,得到 $\ln B(x)\equiv k\ln A(x) \pmod {x^n}$ ,可以看出 $k$ 可以直接对 $P$ 取模.</p>
 <p>再对两边同时做一次 $\exp$ ,得到 $B(x)\equiv \exp(k\ln A(x)) \pmod {x^n}$ .</p>
+<h3 id="Luogu-P5050-多项式多点求值"><a href="#Luogu-P5050-多项式多点求值" class="headerlink" title="Luogu P5050 多项式多点求值"></a><a href="https://www.luogu.com.cn/problem/P5050" target="_blank" rel="noopener">Luogu P5050 多项式多点求值</a></h3><p>给定一个 $n$ 次多项式 $F(x)$ 和 $m$ 个数 $a_i$ ,需要求出每个 $F(a_i)$ 的值.</p>
+<p>定义减法卷积 ${\rm MULT}(F(x),G(x))=\sum_{i\ge0}(\sum_{j\ge 0}f_{i+j}g_j)x^i​$ ,可以将一个多项式取反后再卷积来实现.</p>
+<p>有 $F(a_i)=[x^0]{\rm MULT}(F(x),\frac{1}{1-a_ix})$ ,且 ${\rm MULT}(F(x),G(x)H(x))={\rm MULT}({\rm MULT}(F(x),G(x)),H(x))​$ .</p>
+<p>分治地来求每个 $F(a_i)​$ .<br>$$<br>G(l,r,x):={\rm MULT}(F(x),\frac 1{\prod_{i=l}^r(1-a_ix)}) \bmod x^{r-l+1}\\<br>G(l,mid,x)={\rm MULT}(G(l,r,x),\prod_{i=mid+1}^r (1-a_ix))\bmod x^{mid-l+1}\\<br>G(mid+1,r,x)={\rm MULT}(G(l,r,x),\prod_{i=l}^{mid} (1-a_ix)) \bmod x^{r-mid}<br>$$</p>
+<p>当递归到 $l=r​$ 时,此时的 $G(l,r,x)​$ 的常数项就是我们要求的点值了.</p>
+<p>每个要用到的 $\prod_{i=l}^r (1-a_ix)$ 可以用分治 NTT 预处理出来,时间复杂度 $O(n\log^2 n)​$ .</p>
+<p><a href="https://paste.ubuntu.com/p/GJ2C84bGpM/" target="_blank" rel="noopener">code</a></p>
 <h3 id="Loj-150-挑战多项式"><a href="#Loj-150-挑战多项式" class="headerlink" title="Loj 150 挑战多项式"></a><a href="https://loj.ac/problem/150" target="_blank" rel="noopener">Loj 150 挑战多项式</a></h3><p>给出次数为 $n$ 的多项式 $F(x)$ ,求<br>$$<br>\displaystyle G(x) \equiv \left({\left({1+\ln\left({2+F(x)-F(0)-{\exp\left({\int_0^x\frac{1}{\sqrt{F(t)}}\textrm{d}t}\right)}}\right)}\right)^k}\right)^\prime \pmod {x^n}<br>$$</p>
 <blockquote>
 <p>在代码里面把多项式除法/取模也加上了.</p>
@@ -685,7 +692,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">504</span>
+                    <span class="site-state-item-count">505</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1084,7 +1091,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Luogu-P4238-多项式求逆"><span class="nav-number">1.</span> <span class="nav-text">Luogu P4238 多项式求逆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Luogu-4721-分治FFT"><span class="nav-number">2.</span> <span class="nav-text">Luogu 4721 分治FFT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Luogu-P4512-多项式除法-多项式取模"><span class="nav-number">3.</span> <span class="nav-text">Luogu P4512 多项式除法/多项式取模</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Luogu-P4728-多项式-ln"><span class="nav-number">4.</span> <span class="nav-text">Luogu P4728 多项式 $\ln$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式牛顿迭代"><span class="nav-number">5.</span> <span class="nav-text">多项式牛顿迭代</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Luogu-P4726-多项式-exp"><span class="nav-number">6.</span> <span class="nav-text">Luogu P4726 多项式 $\exp$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Luogu-P5245-多项式快速幂"><span class="nav-number">7.</span> <span class="nav-text">Luogu P5245 多项式快速幂</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Loj-150-挑战多项式"><span class="nav-number">8.</span> <span class="nav-text">Loj 150 挑战多项式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Luogu-P4238-多项式求逆"><span class="nav-number">1.</span> <span class="nav-text">Luogu P4238 多项式求逆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Luogu-4721-分治FFT"><span class="nav-number">2.</span> <span class="nav-text">Luogu 4721 分治FFT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Luogu-P4512-多项式除法-多项式取模"><span class="nav-number">3.</span> <span class="nav-text">Luogu P4512 多项式除法/多项式取模</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Luogu-P4728-多项式-ln"><span class="nav-number">4.</span> <span class="nav-text">Luogu P4728 多项式 $\ln$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多项式牛顿迭代"><span class="nav-number">5.</span> <span class="nav-text">多项式牛顿迭代</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Luogu-P4726-多项式-exp"><span class="nav-number">6.</span> <span class="nav-text">Luogu P4726 多项式 $\exp$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Luogu-P5245-多项式快速幂"><span class="nav-number">7.</span> <span class="nav-text">Luogu P5245 多项式快速幂</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Luogu-P5050-多项式多点求值"><span class="nav-number">8.</span> <span class="nav-text">Luogu P5050 多项式多点求值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Loj-150-挑战多项式"><span class="nav-number">9.</span> <span class="nav-text">Loj 150 挑战多项式</span></a></li></ol></div>
             
 
           </div>

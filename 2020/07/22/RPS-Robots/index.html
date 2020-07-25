@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="DFT 处理循环卷积 + 状压 dp.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-07-22T13:34:45.662Z">
+<meta property="og:updated_time" content="2020-07-23T12:40:10.732Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RPS Robots">
 <meta name="twitter:description" content="DFT 处理循环卷积 + 状压 dp.">
@@ -440,12 +440,24 @@
                 
               
 
-              <time title="Created: 2020-07-22 16:49:41 / Modified: 21:34:45" itemprop="dateCreated datePublished" datetime="2020-07-22T16:49:41+08:00">2020-07-22</time>
+              <time title="Created: 2020-07-22 16:49:41" itemprop="dateCreated datePublished" datetime="2020-07-22T16:49:41+08:00">2020-07-22</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-07-23 20:40:10" itemprop="dateModified" datetime="2020-07-23T20:40:10+08:00">2020-07-23</time>
               
             
           </span>
@@ -493,14 +505,14 @@
 <p>有 $n$ 个人, 第 $i$ 个人有一个长度为 $k$ 的石头剪刀布字符串 $S_i$ ,由 <code>R,S,P</code> 三种字符组成,表示每次比赛的选择.<br>建一个 $n$ 个点的新图,每个点对应一个人.<br>两个人之间有边当且仅当不管字符串怎么循环移位,两个人进行 $k$ 次比赛后的胜场数和负场数不变.<br>求这个新图中团的个数, $n\le 10^5,k\le 18$ .</p>
 </blockquote>
 <p>考虑如何判定 $A,B$ 两个人在图中是否有边.</p>
-<p>对 $A$ 构造一个多项式 $A(x)$ ,第 $i$ 个字符确定第 $i$ 项的系数,令 <code>R,S,P</code> 分别对应 $a_i=1,\omega,\omega^2$ ,<br>对 $B$ 构造一个多项式 $B(x)$, 第 $i$ 个字符确定第 $i$ 项的系数,令 <code>R,S,P</code> 分别对应 $b_i=1,\omega^2,\omega$ .<br>其中 $\omega$ 为 $3​$ 次单位根.</p>
+<p>对 $A$ 构造一个多项式 $A(x)$ ,第 $i$ 个字符确定第 $i$ 项的系数,令 <code>R,S,P</code> 分别对应 $a_i=1,\omega,\omega^2$ ,<br>对 $B$ 构造一个多项式 $B(x)$, 第 $i$ 个字符确定第 $i$ 项的系数,令 <code>R,S,P</code> 分别对应 $b_i=1,\omega^2,\omega$ .<br>其中 $\omega$ 为 $3$ 次单位根.</p>
 <p>在某个循环移位下,比赛对应的两个字符在原串中下标之差在模 $k$ 意义下是确定的,即 $(i-j)\bmod k$ 为定值.</p>
 <p>于是我们将 $A(x),B^R(x)$ 这两个多项式做循环卷积,若胜负场数都一样,则得到的多项式每一项的系数是相同的.</p>
-<p>循环卷积可以用 DFT 来计算,乘出来的多项式为 ${\rm IDFT}({\rm DFT}(A) \cdot {\rm DFT}(B^R))$ ,这里的点乘表示各项系数对应相乘.</p>
+<p>循环卷积可以用 DFT 来计算,乘出来的多项式为 ${\rm IDFT}({\rm DFT}(A) \cdot {\rm DFT}(B^R))$ ,点乘为各项系数对应相乘.</p>
 <p>考虑 IDFT 的本质是代入了 $k$ 个点值,将得到的每个值作为系数,而我们要求每个系数相同,说明我们代入点值的 $k-1$ 次多项式,即 ${\rm DFT}(A) \cdot {\rm DFT}(B^R)$ 应当是一个常数函数,即除了常数项外,其余系数都是 $0$ .忽略常数项,就等价于要求 ${\rm DFT}(A),{\rm DFT}(B)$ 不能存在某一项的系数同时不为 $0$ ,将非 $0$ 的视作 $1$ ,可以看成二进制数按位与为 $0$ .</p>
-<p>$A,B$ 的构造形式不一样,不便于我们统计答案,但由于我们此时只考虑系数是否为 $0$ ,所以可以对 $B^R(x)$ 大胆操作:<br>$$<br>{\rm DFT}(B^R(x))=\sum_{j=0}^{k-1}x^j\cdot \sum_{i=0}^{k-1}b_{k-i}\omega_k^{ij}\\<br>{\rm DFT}(B^R(x))=\sum_{j=0}^{k-1}x^j\cdot \sum_{i=0}^{k-1}(\frac 1 {b_{k-i}}\omega_k^{(k-i)j})^{-1}\\<br>{\rm DFT}(B^R(x))=\sum_{j=0}^{k-1}x^j\cdot \sum_{i=0}^{k-1}(a_i\omega_k^{ij})^{-1}\\<br>{\rm DFT}(B^R(x))=\sum_{j=0}^{k-1}x^j\cdot \sum_{i=0}^{k-1}\overline {a_i\omega_k^{ij}}<br>$$</p>
+<p>$A,B$ 的构造形式不一样,不便于我们统计答案,但由于我们此时只考虑系数是否为 $0$ ,所以可以对 $B^R(x)$ 大胆操作:<br>$$<br>{\rm DFT}(B^R(x))=\sum_{j=0}^{k-1}x^j\cdot \sum_{i=0}^{k-1}b_{k-i-1}\omega_k^{ij}\\<br>{\rm DFT}(B^R(x))=\sum_{j=0}^{k-1}x^j\cdot \omega_{k}^{k-j}\cdot\sum_{i=0}^{k-1}(\frac 1 {b_{k-i-1}}\omega_k^{(k-i)j})^{-1}\\<br>{\rm DFT}(B^R(x))=\sum_{j=0}^{k-1}x^j\cdot \omega_{k}^{k-j}\cdot\sum_{i=0}^{k-1}(a_i\omega_k^{ij})^{-1}\\<br>{\rm DFT}(B^R(x))=\sum_{j=0}^{k-1}x^j\cdot \omega_{k}^{k-j}\cdot\sum_{i=0}^{k-1}\overline {a_i\omega_k^{ij}}<br>$$</p>
 <blockquote>
-<p>变式的依据是单位根的任意次幂模长都为 $1​$ ,此时它的共轭和倒数是相等的.</p>
+<p>变式的依据是单位根的任意次幂模长都为 $1$ ,此时它的共轭和倒数是相等的.</p>
 </blockquote>
 <p>这意味着在构造 $B(x)$ 时,也同样使用 $a_i$ 作为系数,也不用反转,直接 DFT, 不会影响系数是否为 $0$ ,形式就统一了.</p>
 <p>用 <del>Bluestein</del> 暴力求出每个人的 ${\rm DFT}(A)$ ,去掉常数项后,将非 $0$ 的系数用 $1$ 替换,得到一个二进制数 $x_i$ ,则答案转化为,从 $n$ 个人中选出一个非空子集,满足子集中所有的 $x_i$ 两两按为与都为 $0​$ ,即交集为空,求合法方案数.</p>
@@ -555,8 +567,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/9202/06/29/置顶-SCOI2020-游记/" rel="prev" title="置顶 SCOI2020游记">
-                置顶 SCOI2020游记 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/07/25/Hdu-6593-Coefficient/" rel="prev" title="Hdu 6593 Coefficient">
+                Hdu 6593 Coefficient <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -623,7 +635,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">504</span>
+                    <span class="site-state-item-count">505</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
