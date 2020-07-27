@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="多项式多点求值.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-07-27T12:15:41.184Z">
+<meta property="og:updated_time" content="2020-07-27T12:49:01.519Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hdu 6593 Coefficient">
 <meta name="twitter:description" content="多项式多点求值.">
@@ -457,7 +457,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-07-27 20:15:41" itemprop="dateModified" datetime="2020-07-27T20:15:41+08:00">2020-07-27</time>
+                <time title="Modified: 2020-07-27 20:49:01" itemprop="dateModified" datetime="2020-07-27T20:49:01+08:00">2020-07-27</time>
               
             
           </span>
@@ -505,7 +505,8 @@
 <p>每组数据的 $n$ 是一样的,有 $q$ 次询问,每次询问给出 $a,b,c,d$ ,需要求出对应的答案,系数对 $998244353$ 取模.<br>$0\le n,q\le 3\times 10^5,a\neq 0$ .</p>
 </blockquote>
 <h3 id="一个靠谱做法"><a href="#一个靠谱做法" class="headerlink" title="一个靠谱做法"></a>一个靠谱做法</h3><p>显然 $a,b,d$ 都没什么大用, $a,b$ 可以先忽略掉,最后乘上 $a^n\cdot b$ ,而 $d$ 只有平移的作用,可以直接忽略.</p>
-<p>于是转化为求<br>$$<br>ans=[x^n]\frac{1}{c+\exp(x)} \\<br>$$<br>尝试把分母构造成 $1-q\cdot (\exp(x)-1)$ 的形式,对比系数不难发现 $q=-\frac 1{c+1}$ .<br>$$<br>\begin{aligned}<br>ans&amp;=\frac{-1}{q}[x^n]\frac{1}{1-q\cdot (\exp(x)-1)} \\<br>&amp;=\frac{-1}{q}[x^n] \sum_{k=0}^n q^k(\exp(x)-1)^k \\<br>&amp;=\frac{-1}{q}[x^n] \sum_{k\ge 0}q^k\sum_{i=0}^k \binom k i\cdot \exp(ix)\cdot (-1)^{k-i}\\<br>&amp;=\frac{-1}{q}[x^n] \sum_{i+j\le n}q^{i+j}\cdot\binom{i+j}{i}\cdot\exp(ix)\cdot(-1)^j\\<br>&amp;=\frac{-1}{q}[x^n] \sum_{i+j\le n}q^{i+j}\cdot\binom{i+j}{i}\cdot \frac{i^n}{n!}\cdot(-1)^j<br>\end{aligned}<br>$$</p>
+<p>于是转化为求<br>$$<br>ans=[x^n]\frac{1}{c+\exp(x)} \\<br>$$<br>尝试把分母构造成 $1-q\cdot (\exp(x)-1)$ 的形式,对比系数不难发现 $q=-\frac 1{c+1}$ .<br>$$<br>\begin{aligned}<br>ans&amp;=\frac{-1}{q}[x^n]\frac{1}{1-q\cdot (\exp(x)-1)} \\<br>&amp;=\frac{-1}{q}[x^n] \sum_{k=0}^n q^k(\exp(x)-1)^k \\<br>\end{aligned}<br>$$<br>这里就能做了, $(\exp(x)-1)^k$ 再除个 $k!$ 就是第二类斯特林数一列的 EGF, 问题转化为求一行的第二类斯特林数.</p>
+<p>如果继续往下推也不是很复杂,<br>$$<br>\begin{aligned}<br>ans&amp;=\frac{-1}{q}[x^n] \sum_{k\ge 0}q^k\sum_{i=0}^k \binom k i\cdot \exp(ix)\cdot (-1)^{k-i}\\<br>&amp;=\frac{-1}{q}[x^n] \sum_{i+j\le n}q^{i+j}\cdot\binom{i+j}{i}\cdot\exp(ix)\cdot(-1)^j\\<br>&amp;=\frac{-1}{q}[x^n] \sum_{i+j\le n}q^{i+j}\cdot\binom{i+j}{i}\cdot \frac{i^n}{n!}\cdot(-1)^j<br>\end{aligned}<br>$$</p>
 <blockquote>
 <p>EI : 处理倒数上有些奇怪东西的时候,就得强行加一再减一.</p>
 <p>这里可以看出,强行凑出 $\exp(x)-1$ 的形式后,它的常数项是 $0$ ,枚举它的指数时就只用枚举到 $n$ 了.</p>
