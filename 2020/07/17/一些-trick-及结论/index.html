@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="主要记录了最近考试遇到的一些(可能)比较有用的 trick / 结论,不定时更新.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-07-21T12:55:12.922Z">
+<meta property="og:updated_time" content="2020-07-28T10:50:38.337Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一些 trick 及结论">
 <meta name="twitter:description" content="主要记录了最近考试遇到的一些(可能)比较有用的 trick / 结论,不定时更新.">
@@ -457,7 +457,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-07-21 20:55:12" itemprop="dateModified" datetime="2020-07-21T20:55:12+08:00">2020-07-21</time>
+                <time title="Modified: 2020-07-28 18:50:38" itemprop="dateModified" datetime="2020-07-28T18:50:38+08:00">2020-07-28</time>
               
             
           </span>
@@ -511,15 +511,24 @@
 <h3 id="循环矩阵的行列式计算"><a href="#循环矩阵的行列式计算" class="headerlink" title="循环矩阵的行列式计算"></a>循环矩阵的行列式计算</h3><p>若 $n​$ 阶方阵 $\mathbf C​$ 满足如下形式,则称它为循环矩阵:<br>$$<br>\mathbf  C=<br>\begin{bmatrix}<br>a_0&amp; a_1&amp; a_2&amp; \cdots&amp; a_{n-2}&amp; a_{n-1} \\<br>a_{n-1}&amp; a_0&amp; a_1&amp; \cdots&amp; a_{n-3}&amp; a_{n-2}\\<br>a_{n-2}&amp; a_{n-1}&amp; a_0&amp; \cdots&amp; a_{n-4}&amp; a_{n-3}\\<br>\vdots&amp; \vdots&amp; \vdots&amp; \ddots&amp; \vdots&amp; \vdots\\<br>a_2&amp; a_3&amp; a_4&amp; \cdots&amp; a_0&amp; a_1\\<br>a_1&amp; a_2&amp; a_3&amp; \cdots&amp; a_{n-1}&amp; a_0<br>\end{bmatrix}<br>$$</p>
 <p>记 $\displaystyle A(x)=\sum_{i=0}^{n-1}a_i x^i,\omega_n$ 为 $n$ 次单位根,则 $\displaystyle \det(\mathbf C)=\prod_{k=0}^{n-1} A(\omega_n^k)$ .对向量 $a$ 做一次 DFT 即可求出每个 $A(\omega_n^k)$ .</p>
 <p><del>由于我不会证,</del> 此处证明略去.</p>
+<h3 id="前缀和优化数列递推"><a href="#前缀和优化数列递推" class="headerlink" title="前缀和优化数列递推"></a>前缀和优化数列递推</h3><blockquote>
+<p>给定一个 $m$ 次多项式 $F(x)$ ,有递推式 $f_0=1,f_i=\sum_{j=0}^{i-1} f_j\cdot F(i-j)$ ,需要求出 $f_1,f_2,\dots, f_n$ .<br>系数对 $10^9+7$ 取模, $n$ 较大, $m$ 较小,要求时间复杂度做到 $O(nm)$ .</p>
+</blockquote>
+<p>设多项式 $G_i(x)=\sum_{j&lt; i} f_j\cdot F(x-j)​$ ,那么 $f_i=G_i(i)​$ .</p>
+<p>这里涉及到多项式的平移,考虑用点值维护 $G(x)​$ ,即维护 $G(0),G(1),\dots G(m)​$ 的值.</p>
+<p>由于 $G_i(x)=G_{i-1}(x)+ f_{i-1}\cdot F(x-i+1)$ ,预处理 $F(-n+1)\sim F(n+m-1)$ 这 $n+m$ 个点值就足够了.</p>
+<p>每次询问 $G(x)​$ 的值时使用拉格朗日插值,<br>$$<br>G(x)=\sum_{i=0}^m G(i)\cdot \prod_{j\neq i} \frac{x-j}{i-j}<br>$$<br>可以先算出 $\prod (x-j)​$ ,枚举 $i​$ 时将它除掉 $(x-i)​$ ,单次就可以 $O(m)​$ 计算 $G(x)​$ 了,总时间复杂度 $O(nm)​$ .</p>
+<p>拓展性比较强,可以钦定某些位置转移,比如给每个位置安排一个 $col_i​$ ,规定只有 $col_j\neq col_i​$ 的 $f_j​$ 才能转移.<br>那么我们维护原来的 $G​$ 和每种 $col​$ 的 $G​$ ,询问时将 $col​$ 相同部分的贡献减去即可.</p>
+<p>把 $F(x)$ 换成某个线性递推的第 $x$ 项的值仍是可做的,算出通项公式后相似地维护前缀和即可.</p>
+<h3 id="一类线性递推数列的计算"><a href="#一类线性递推数列的计算" class="headerlink" title="一类线性递推数列的计算"></a>一类线性递推数列的计算</h3><p>给定常量 $a,b$ ,有递推数列 $f_0=1,f_i=af_{i-1}+[i\ge k]bf_{i-k}$ ,求 $f_n$ .</p>
+<p>可以看成要上 $n$ 步阶梯,每次上 $1$ 步的方案数是 $a$ ,每次上 $k$ 步的方案数是 $b$ ,问上 $n$ 步的方案数,</p>
+<p>枚举有 $i$ 次上了 $k$ 步,可得 $f_n=\sum_{i\ge 0,ik\le n}a^{n-ik}b^i\binom{n-ik+i}{i}$ ,时间复杂度 $O(\frac n k)$ .<br>但需要先花 $O(n)$ 的时间去预处理阶乘及其逆元,只有在多次询问,或转移系数是多项式等情况下才比较有用.</p>
 <h3 id="竞赛图"><a href="#竞赛图" class="headerlink" title="竞赛图"></a>竞赛图</h3><blockquote>
 <p>$n$ 个点的竞赛图是一张有向图,满足每两个点之间都恰有一条边,由一者指向另外一者.</p>
 </blockquote>
 <h4 id="三元环"><a href="#三元环" class="headerlink" title="三元环"></a>三元环</h4><p>竞赛图要么是一张 DAG, 要么存在至少一个三元环.<br>若是 DAG, 则对于两个不同的点 $u,v$ ,$u$ 能到 $v$ 与 $v$ 能到 $u$ ,恰有一个是成立的.<br>竞赛图的三元环数目为 $\binom n 3-\sum_{i=1}^n \binom{outdeg(i)}2$ ,其中 $outdeg(i)$ 表示 $i$ 的出度.</p>
 <h4 id="哈密尔顿路径"><a href="#哈密尔顿路径" class="headerlink" title="哈密尔顿路径"></a>哈密尔顿路径</h4><p>$x$ 能成为哈密尔顿路径起点的充要条件是从 $x$ 出发能到达所有其他的 $n-1$ 个点,必要性显然,充分性可以归纳证明.<br>更一般地,若从 $x$ 出发能到达恰好 $k$ 个点(包括 $x$ 自己),则从 $x$ 出发的最长简单路径经过的点数恰好也为 $k$ .<br>从这个结论出发,不难分析出,竞赛图中必定存在至少一条哈密尔顿路径.</p>
 <h4 id="哈密尔顿回路"><a href="#哈密尔顿回路" class="headerlink" title="哈密尔顿回路"></a>哈密尔顿回路</h4><p>竞赛图存在一条哈密尔顿回路的充要条件是这个竞赛图强连通,必要性显然,充分性可以归纳证明.</p>
-<h3 id="一类线性递推数列的计算"><a href="#一类线性递推数列的计算" class="headerlink" title="一类线性递推数列的计算"></a>一类线性递推数列的计算</h3><p>有数列 $f_0=1,f_i=af_{i-1}+[i\ge k]bf_{i-k}$ ,求 $f_n$ .</p>
-<p>可以看成要上 $n$ 步阶梯,每次上 $1$ 步的方案数是 $a$ ,每次上 $k$ 步的方案数是 $b$ ,问上 $n$ 步的方案数,</p>
-<p>枚举有 $i$ 次上了 $k$ 步,可得 $f_n=\sum_{i\ge 0,ik\le n}a^{n-ik}b^i\binom{n-ik+i}{i}$ ,时间复杂度 $O(\frac n k)$ .<br>但需要先花 $O(n)​$ 的时间去预处理阶乘及其逆元,只有在多次询问等情况下才比较有用.</p>
 
       
     </div>
@@ -643,7 +652,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">506</span>
+                    <span class="site-state-item-count">507</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1042,7 +1051,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#系数模合数的截断多项式行列式计算"><span class="nav-number">1.</span> <span class="nav-text">系数模合数的截断多项式行列式计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一元多项式方程实数根求数值解"><span class="nav-number">2.</span> <span class="nav-text">一元多项式方程实数根求数值解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环矩阵的行列式计算"><span class="nav-number">3.</span> <span class="nav-text">循环矩阵的行列式计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#竞赛图"><span class="nav-number">4.</span> <span class="nav-text">竞赛图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#三元环"><span class="nav-number">4.1.</span> <span class="nav-text">三元环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#哈密尔顿路径"><span class="nav-number">4.2.</span> <span class="nav-text">哈密尔顿路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#哈密尔顿回路"><span class="nav-number">4.3.</span> <span class="nav-text">哈密尔顿回路</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一类线性递推数列的计算"><span class="nav-number">5.</span> <span class="nav-text">一类线性递推数列的计算</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#系数模合数的截断多项式行列式计算"><span class="nav-number">1.</span> <span class="nav-text">系数模合数的截断多项式行列式计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一元多项式方程实数根求数值解"><span class="nav-number">2.</span> <span class="nav-text">一元多项式方程实数根求数值解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环矩阵的行列式计算"><span class="nav-number">3.</span> <span class="nav-text">循环矩阵的行列式计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前缀和优化数列递推"><span class="nav-number">4.</span> <span class="nav-text">前缀和优化数列递推</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一类线性递推数列的计算"><span class="nav-number">5.</span> <span class="nav-text">一类线性递推数列的计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#竞赛图"><span class="nav-number">6.</span> <span class="nav-text">竞赛图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#三元环"><span class="nav-number">6.1.</span> <span class="nav-text">三元环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#哈密尔顿路径"><span class="nav-number">6.2.</span> <span class="nav-text">哈密尔顿路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#哈密尔顿回路"><span class="nav-number">6.3.</span> <span class="nav-text">哈密尔顿回路</span></a></li></ol></li></ol></div>
             
 
           </div>
