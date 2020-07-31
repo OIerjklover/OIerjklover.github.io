@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="主要记录了最近考试遇到的一些(可能)比较有用的 trick / 结论,不定时更新.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-07-28T10:50:38.337Z">
+<meta property="og:updated_time" content="2020-07-31T11:23:10.694Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一些 trick 及结论">
 <meta name="twitter:description" content="主要记录了最近考试遇到的一些(可能)比较有用的 trick / 结论,不定时更新.">
@@ -457,7 +457,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-07-28 18:50:38" itemprop="dateModified" datetime="2020-07-28T18:50:38+08:00">2020-07-28</time>
+                <time title="Modified: 2020-07-31 19:23:10" itemprop="dateModified" datetime="2020-07-31T19:23:10+08:00">2020-07-31</time>
               
             
           </span>
@@ -523,6 +523,16 @@
 <h3 id="一类线性递推数列的计算"><a href="#一类线性递推数列的计算" class="headerlink" title="一类线性递推数列的计算"></a>一类线性递推数列的计算</h3><p>给定常量 $a,b$ ,有递推数列 $f_0=1,f_i=af_{i-1}+[i\ge k]bf_{i-k}$ ,求 $f_n$ .</p>
 <p>可以看成要上 $n$ 步阶梯,每次上 $1$ 步的方案数是 $a$ ,每次上 $k$ 步的方案数是 $b$ ,问上 $n$ 步的方案数,</p>
 <p>枚举有 $i$ 次上了 $k$ 步,可得 $f_n=\sum_{i\ge 0,ik\le n}a^{n-ik}b^i\binom{n-ik+i}{i}$ ,时间复杂度 $O(\frac n k)$ .<br>但需要先花 $O(n)$ 的时间去预处理阶乘及其逆元,只有在多次询问,或转移系数是多项式等情况下才比较有用.</p>
+<h3 id="在线-“莫队”"><a href="#在线-“莫队”" class="headerlink" title="在线 “莫队”"></a>在线 “莫队”</h3><blockquote>
+<p>也不知道这个东西还能不能算莫队,不过最基础的思想和莫队是一样的,姑且叫在线 “莫队” 好了.</p>
+<p>这里假定从 $[L,R]$ 转移到 $[L,R+1],[L,R-1],[L+1,R],[L-1,R]$ 时更新信息的代价都是 $O(1)$ 的.</p>
+</blockquote>
+<p>莫队算法需要先将所有询问离线下来,经过适当排序后处理,若强制在线,可以用这个 trick 进行处理:</p>
+<p>考虑莫队的本质,可以看作是将一个询问 $[l,r]​$ 看作二维平面上的一个点,从一个区间转移到另一个区间的代价是对应的两个点之间的 Manhattan 距离,需要找一条总代价能接受的路径,经过每个点至少一次.</p>
+<p>莫队就是给这些点按照某种方式排了序,使得路径总代价是 $O(n\sqrt m)$ 的.</p>
+<p>而现在强制在线,每次必须走到一个给定的点,一个简单的想法是在平面上找一些关键点,预处理它们的信息,询问时找一个 Manhattan 距离最小的关键点转移过去就行了.</p>
+<p>均匀撒点,在所有 $L=i\cdot S,R=j\cdot S$ 的 $(L,R)$ 都设立一个关键点,并预处理每个关键点对应区间信息.<br>共 ${n^2}/{S^2}$ 个关键点,预处理复杂度 $O({n^3}/{S^2})$ ,每次询问到最近关键点 Manhattan 距离 $O(S)$ ,复杂度 $O(mS)$ .<br>假定 $n,m$ 同阶,则取 $S=n^{\frac 2 3}$ 可得到总时间复杂度与空间复杂度均为 $O(n^{\frac 5 3})$ .</p>
+<p>这个东西也可以方便地支持单点修改,每次将所有区间包含它的关键点都 $O(1)$ 更新一遍,总复杂度仍为 $O(n^{\frac 5 3})$ . </p>
 <h3 id="竞赛图"><a href="#竞赛图" class="headerlink" title="竞赛图"></a>竞赛图</h3><blockquote>
 <p>$n$ 个点的竞赛图是一张有向图,满足每两个点之间都恰有一条边,由一者指向另外一者.</p>
 </blockquote>
@@ -652,7 +662,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">507</span>
+                    <span class="site-state-item-count">509</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1051,7 +1061,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#系数模合数的截断多项式行列式计算"><span class="nav-number">1.</span> <span class="nav-text">系数模合数的截断多项式行列式计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一元多项式方程实数根求数值解"><span class="nav-number">2.</span> <span class="nav-text">一元多项式方程实数根求数值解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环矩阵的行列式计算"><span class="nav-number">3.</span> <span class="nav-text">循环矩阵的行列式计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前缀和优化数列递推"><span class="nav-number">4.</span> <span class="nav-text">前缀和优化数列递推</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一类线性递推数列的计算"><span class="nav-number">5.</span> <span class="nav-text">一类线性递推数列的计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#竞赛图"><span class="nav-number">6.</span> <span class="nav-text">竞赛图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#三元环"><span class="nav-number">6.1.</span> <span class="nav-text">三元环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#哈密尔顿路径"><span class="nav-number">6.2.</span> <span class="nav-text">哈密尔顿路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#哈密尔顿回路"><span class="nav-number">6.3.</span> <span class="nav-text">哈密尔顿回路</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#系数模合数的截断多项式行列式计算"><span class="nav-number">1.</span> <span class="nav-text">系数模合数的截断多项式行列式计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一元多项式方程实数根求数值解"><span class="nav-number">2.</span> <span class="nav-text">一元多项式方程实数根求数值解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环矩阵的行列式计算"><span class="nav-number">3.</span> <span class="nav-text">循环矩阵的行列式计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前缀和优化数列递推"><span class="nav-number">4.</span> <span class="nav-text">前缀和优化数列递推</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一类线性递推数列的计算"><span class="nav-number">5.</span> <span class="nav-text">一类线性递推数列的计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在线-“莫队”"><span class="nav-number">6.</span> <span class="nav-text">在线 “莫队”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#竞赛图"><span class="nav-number">7.</span> <span class="nav-text">竞赛图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#三元环"><span class="nav-number">7.1.</span> <span class="nav-text">三元环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#哈密尔顿路径"><span class="nav-number">7.2.</span> <span class="nav-text">哈密尔顿路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#哈密尔顿回路"><span class="nav-number">7.3.</span> <span class="nav-text">哈密尔顿回路</span></a></li></ol></li></ol></div>
             
 
           </div>

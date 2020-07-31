@@ -144,7 +144,7 @@
 <meta property="og:site_name" content="JKLover">
 <meta property="og:description" content="Div.1 vp.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-07-29T13:15:58.144Z">
+<meta property="og:updated_time" content="2020-07-30T09:28:02.373Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CF1383">
 <meta name="twitter:description" content="Div.1 vp.">
@@ -457,7 +457,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-07-29 21:15:58" itemprop="dateModified" datetime="2020-07-29T21:15:58+08:00">2020-07-29</time>
+                <time title="Modified: 2020-07-30 17:28:02" itemprop="dateModified" datetime="2020-07-30T17:28:02+08:00">2020-07-30</time>
               
             
           </span>
@@ -502,10 +502,10 @@
 <a id="more"></a>
 <h3 id="A-String-Transformation-1"><a href="#A-String-Transformation-1" class="headerlink" title="A - String Transformation 1"></a><a href="https://codeforces.com/contest/1383/problem/A" target="_blank" rel="noopener">A - String Transformation 1</a></h3><p>若初始时存在 $A_i&gt;B_i​$ 就无解.</p>
 <p>否则贪心,不难发现每种字符最多被改掉一次,从小到大枚举字符 $c$ ,考虑对串 $A$ 中的字符 $c$ 修改,</p>
-<p>显然 $A_i=B_i=c$ 的位置是不用改的,对于其他 $A_i=c$ 的位置,全部改成满足 $A_i=c,B_i\neq c$ 中最小的 $B_i$ 即可.</p>
+<p>$A_i=B_i=c$ 的位置是不用改的,对于其他 $A_i=c$ 的位置,全部改成满足 $A_i=c,B_i\neq c$ 中最小的 $B_i$ 即可.</p>
 <p><a href="https://codeforces.com/contest/1383/submission/88270763" target="_blank" rel="noopener">code</a></p>
 <h3 id="B-GameGame"><a href="#B-GameGame" class="headerlink" title="B - GameGame"></a><a href="https://codeforces.com/contest/1383/problem/B" target="_blank" rel="noopener">B - GameGame</a></h3><p>从高往低考虑每个二进制位,若到某一位时,有奇数个 $a_i$ 在这一位上为 $1​$ ,就能分出胜负了,</p>
-<p>记有 $t$ 个 $a_i$ 在这一位上为 $1$ ,若 $t\bmod 4=1$ ,则先取个 $1$ 就必胜了, 否则 $t\bmod 4=3$ ,再讨论下 $n$ 的奇偶性即可.</p>
+<p>记有 $t$ 个 $a_i$ 在这一位上为 $1$ ,若 $t\bmod 4=1$ ,则先取 $1$ 就必胜了, 若 $t\bmod 4=3$ ,再讨论下 $n$ 的奇偶性即可.</p>
 <p>若每一位都不能分出胜负,则最后为平局.</p>
 <p><a href="https://codeforces.com/contest/1383/submission/88281167" target="_blank" rel="noopener">code</a></p>
 <h3 id="C-String-Transformation-2"><a href="#C-String-Transformation-2" class="headerlink" title="C - String Transformation 2"></a><a href="https://codeforces.com/contest/1383/problem/C" target="_blank" rel="noopener">C - String Transformation 2</a></h3><p>建一个有 $|\sum|$ 个点的有向图,对于每个 $i$ ,从 $A_i$ 向 $B_i$ 连边.<br>问题转化为只加 $k$ 条边,使得每个 $A_i$ 仍能到 $B_i$ ,最小化这个 $k$ ,即操作次数.</p>
@@ -518,11 +518,16 @@
 <p>最后弱连通分量的个数为 $1$ ,说明有 $s-1$ 条边用于减少弱连通分量个数, $k+1-s$ 条边用于减少 $sum$ .<br>这说明最后的 $sum$ 为 $2s-1-k$ ,而最大的 $sum$ 就是 $|{\rm LDAG}|$ ,此时 $k$ 最小,为 $2s-1-|{\rm LDAG}|$ .</p>
 <p>求每个弱连通分量的 $|{\rm LDAG}|$ 可以用状压 dp 求出每个子点集 $S$ 的导出子图是否为 DAG .<br>一个 DAG 一定存在拓扑序,按拓扑序顺序加点,若 $S$ 合法,且 $x$ 出边指向的所有顶点与 $S$ 没有交,则 $S\cup \lbrace{x\rbrace}$ 也合法.</p>
 <p><a href="https://codeforces.com/contest/1383/submission/88288361" target="_blank" rel="noopener">code</a></p>
-<h3 id="D-Rearrange"><a href="#D-Rearrange" class="headerlink" title="D - Rearrange"></a><a href="https://codeforces.com/contest/1383/problem/D" target="_blank" rel="noopener">D - Rearrange</a></h3><p>明天再说.</p>
+<h3 id="D-Rearrange"><a href="#D-Rearrange" class="headerlink" title="D - Rearrange"></a><a href="https://codeforces.com/contest/1383/problem/D" target="_blank" rel="noopener">D - Rearrange</a></h3><p>考虑把所有数从大到小依次填入矩阵中,并且用一个队列维护接下来需要填数的位置,初始时矩阵行列数都是 $0$ .</p>
+<p>若下一个数是行 max 或列 max ,就新增一行/一列,将它放在右下角,并从它出发,将其左方 / 上方的位置依次入队.</p>
+<p>若它不是行 max 或列 max ,就取出队首的那个位置,将这个数填进去.</p>
+<p>这样构造显然能满足行列 max 的限制.</p>
+<p>对于一行来说,新增它的时候保证了左侧是递增的,而右侧一定是一列一列加入,是递减的,一定合法,同理,列也合法.</p>
+<p><a href="https://codeforces.com/contest/1383/submission/88421950" target="_blank" rel="noopener">code</a></p>
 <h3 id="E-Strange-Operation"><a href="#E-Strange-Operation" class="headerlink" title="E - Strange Operation"></a><a href="https://codeforces.com/contest/1383/problem/E" target="_blank" rel="noopener">E - Strange Operation</a></h3><p>如果要在最后的串中加入 $k$ 个 $0$ ,则一定是由原串中长度 $\ge k$ 的全为 $0$ 的某个子串合并来的.<br>如果要在最后的串中加入 $k$ 个 $1$ ,则一定是由原串中 $1$ 的个数 $\ge k​$ 的某个子串合并来的.</p>
 <p>以此为依据不难设计出线性的 dp ,注意对于不同合并方法,若最后串相同就只算一次,所以要钦定一些转移避免算重.</p>
 <p><a href="https://codeforces.com/contest/1383/submission/88204642" target="_blank" rel="noopener">code</a></p>
-<h3 id="F-Special-Edges"><a href="#F-Special-Edges" class="headerlink" title="F - Special Edges"></a><a href="https://codeforces.com/contest/1383/problem/F" target="_blank" rel="noopener">F - Special Edges</a></h3><p>明天再说.</p>
+<h3 id="F-Special-Edges"><a href="#F-Special-Edges" class="headerlink" title="F - Special Edges"></a><a href="https://codeforces.com/contest/1383/problem/F" target="_blank" rel="noopener">F - Special Edges</a></h3><p>复杂度看上去很神必,明天再说.</p>
 
       
     </div>
@@ -569,8 +574,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/9202/06/29/置顶-SCOI2020-游记/" rel="prev" title="置顶 SCOI2020游记">
-                置顶 SCOI2020游记 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/07/30/Loj-3080-国际象棋/" rel="prev" title="Loj 3080 国际象棋">
+                Loj 3080 国际象棋 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -646,7 +651,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">507</span>
+                    <span class="site-state-item-count">509</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
